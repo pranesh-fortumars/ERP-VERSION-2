@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiPlayCircle, FiCheckCircle, FiTrendingUp, FiSend, 
-  FiZap, FiSettings, FiArrowRight, FiShield, FiPlus, FiX 
+  FiZap, FiSettings, FiArrowRight, FiShield, FiPlus, FiX, FiActivity, FiCpu, FiMonitor, FiDatabase, FiFileText, FiLayers
 } from 'react-icons/fi';
 
 const WorkflowPage = () => {
@@ -17,9 +17,9 @@ const WorkflowPage = () => {
       efficiency: '94%',
       steps: [
         { title: 'Lead Capture', icon: <FiZap />, status: 'Completed' },
-        { title: 'Quote Generation', icon: <FiSettings />, status: 'Completed' },
+        { title: 'Quote Generation', icon: <FiCpu />, status: 'Completed' },
         { title: 'Manager Approval', icon: <FiShield />, status: 'Processing' },
-        { title: 'Invoice & Payment', icon: <FiSend />, status: 'Pending' },
+        { title: 'Invoice & Payment', icon: <FiDatabase />, status: 'Pending' },
       ]
     },
     { 
@@ -28,10 +28,10 @@ const WorkflowPage = () => {
       status: 'Optimization Needed', 
       efficiency: '78%',
       steps: [
-        { title: 'PR Creation', icon: <FiZap />, status: 'Completed' },
-        { title: 'Vendor Selection', icon: <FiSettings />, status: 'Completed' },
+        { title: 'PR Creation', icon: <FiPlayCircle />, status: 'Completed' },
+        { title: 'Vendor Selection', icon: <FiMonitor />, status: 'Completed' },
         { title: 'PO Approval', icon: <FiShield />, status: 'Warning' },
-        { title: 'Goods Receipt', icon: <FiSend />, status: 'Pending' },
+        { title: 'Goods Receipt', icon: <FiCheckCircle />, status: 'Pending' },
       ]
     }
   ]);
@@ -58,17 +58,23 @@ const WorkflowPage = () => {
   };
 
   return (
-    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0 transition-colors">
+    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0 transition-all duration-500">
+      {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Process Automation</h1>
-          <p className="text-slate-500 font-medium tracking-tight mt-1">Monitor and optimize mission-critical Business Process Automation (BPA)</p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+            <FiActivity className="animate-pulse" /> BPA Engine Online
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">Process Automation</h1>
+          <p className="text-slate-500 dark:text-slate-400 font-medium tracking-tight mt-1 flex items-center gap-2">
+            <FiSettings className="text-indigo-500" /> Mission-Critical Workflow Orchestration & Real-time Node Analytics
+          </p>
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="px-6 py-2.5 bg-indigo-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all flex items-center gap-2 uppercase tracking-widest"
+          className="px-8 py-2.5 bg-indigo-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all flex items-center gap-2 active:scale-95"
         >
-          <FiPlus /> Design New Workflow
+          <FiPlus className="w-4 h-4" /> Design New Workflow
         </button>
       </div>
 
@@ -79,52 +85,61 @@ const WorkflowPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1 }}
-            className="p-8 bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden"
+            className="p-10 bg-white dark:bg-slate-900 rounded-[56px] border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-indigo-500/50 transition-all duration-500"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500 opacity-[0.03] blur-[100px] -z-0" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500 opacity-[0.02] blur-[150px] -z-0" />
             
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6 relative z-10">
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-[10px] font-black uppercase text-indigo-500 tracking-[0.2em] bg-indigo-500/10 px-2 py-0.5 rounded-md">{flow.id}</span>
-                  <span className={`px-2.5 py-1 rounded-full text-[8px] font-black uppercase tracking-widest ${flow.status === 'Active' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 animate-pulse'}`}>
+            <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-16 gap-8 relative z-10">
+              <div className="flex-1">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-[10px] font-black uppercase text-indigo-600 dark:text-indigo-400 tracking-[0.3em] bg-indigo-500/10 px-4 py-1.5 rounded-xl border border-indigo-500/10">{flow.id}</span>
+                  <span className={`px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border shadow-sm ${flow.status === 'Active' ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/10' : 'bg-amber-500/10 text-amber-600 border-amber-500/10 animate-pulse'}`}>
                     {flow.status}
                   </span>
                 </div>
-                <h3 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">{flow.name}</h3>
+                <h3 className="text-4xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">{flow.name}</h3>
+                <p className="text-slate-400 dark:text-slate-500 font-bold text-[10px] mt-4 uppercase tracking-[0.4em]">Engine Deployment Vector: Node Cluster Alpha</p>
               </div>
-              <div className="px-8 py-5 bg-slate-50 dark:bg-slate-800/50 rounded-[28px] border border-slate-100 dark:border-slate-800 text-center shadow-inner group transition-all hover:bg-white dark:hover:bg-slate-800">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 group-hover:text-indigo-500 transition-colors">Efficiency Index</p>
-                <p className="text-3xl font-black text-indigo-600 dark:text-indigo-400">{flow.efficiency}</p>
+              <div className="px-10 py-8 bg-slate-50 dark:bg-slate-800/50 rounded-[32px] border border-slate-100 dark:border-slate-800 text-center shadow-inner group-hover:bg-white dark:group-hover:bg-slate-800 transition-all duration-500 ring-1 ring-black/5 min-w-[200px]">
+                <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mb-2 group-hover:text-indigo-500 transition-colors">Efficiency Index</p>
+                <div className="flex items-baseline justify-center gap-1">
+                  <p className="text-5xl font-black text-indigo-600 dark:text-indigo-400 tracking-tighter">{flow.efficiency.replace('%', '')}</p>
+                  <span className="text-xl font-black text-indigo-400 dark:text-indigo-600">%</span>
+                </div>
               </div>
             </div>
 
-            <div className="relative mb-8">
+            <div className="relative mb-12 px-4 lg:px-12">
               {/* Connector lines (Desktop) */}
-              <div className="hidden lg:block absolute top-[44px] left-[10%] w-[80%] h-[2px] bg-slate-100 dark:bg-slate-800 -z-0" />
+              <div className="hidden lg:block absolute top-[44px] left-[15%] w-[70%] h-[2px] bg-slate-100 dark:bg-slate-800 -z-0" />
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 relative z-10">
                 {flow.steps.map((step, sIdx) => (
                   <div key={sIdx} className="group flex flex-col items-center">
                     <motion.div 
-                      whileHover={{ scale: 1.05 }}
-                      className={`w-20 h-20 rounded-[32px] flex items-center justify-center text-3xl transition-all duration-500 border-4 border-white dark:border-slate-900 shadow-2xl
-                      ${step.status === 'Completed' ? 'bg-emerald-500 text-white' : 
-                        step.status === 'Processing' ? 'bg-indigo-600 text-white shadow-glow shadow-indigo-500/50 ring-4 ring-indigo-500/20' :
-                        step.status === 'Warning' ? 'bg-amber-500 text-white' : 'bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600'}`}>
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className={`w-24 h-24 rounded-[36px] flex items-center justify-center text-4xl transition-all duration-700 border-4 border-white dark:border-slate-950 shadow-2xl relative
+                      ${step.status === 'Completed' ? 'bg-emerald-500 text-white shadow-emerald-500/20' : 
+                        step.status === 'Processing' ? 'bg-indigo-600 text-white shadow-glow shadow-indigo-500/50 ring-4 ring-indigo-500/20 animate-pulse' :
+                        step.status === 'Warning' ? 'bg-amber-500 text-white shadow-amber-500/20' : 'bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 shadow-inner'}`}>
                       {step.icon}
+                      {step.status === 'Completed' && (
+                        <div className="absolute -top-2 -right-2 bg-emerald-500 text-white p-1 rounded-lg border-4 border-white dark:border-slate-950">
+                          <FiCheckCircle className="w-4 h-4" />
+                        </div>
+                      )}
                     </motion.div>
-                    <div className="mt-8 text-center px-4">
-                      <h4 className={`text-sm font-black mb-1 tracking-tight transition-colors ${step.status === 'Pending' ? 'text-slate-300 dark:text-slate-600' : 'text-slate-900 dark:text-white'}`}>
+                    <div className="mt-8 text-center w-full">
+                      <h4 className={`text-base font-black mb-2 tracking-tighter transition-colors uppercase ${step.status === 'Pending' ? 'text-slate-300 dark:text-slate-600' : 'text-slate-900 dark:text-white'}`}>
                         {step.title}
                       </h4>
-                      <div className="flex items-center justify-center gap-2">
-                        <span className={`w-1.5 h-1.5 rounded-full ${
+                      <div className="flex items-center justify-center gap-3">
+                        <span className={`w-2 h-2 rounded-full ${
                           step.status === 'Completed' ? 'bg-emerald-500' : 
                           step.status === 'Processing' ? 'bg-indigo-500 animate-pulse' :
                           step.status === 'Warning' ? 'bg-amber-500' : 'bg-slate-300 dark:bg-slate-600'
                         }`} />
-                        <p className={`text-[9px] font-black uppercase tracking-[0.1em]
+                        <p className={`text-[9px] font-black uppercase tracking-[0.2em]
                           ${step.status === 'Completed' ? 'text-emerald-500' : 
                             step.status === 'Processing' ? 'text-indigo-500' :
                             step.status === 'Warning' ? 'text-amber-500' : 'text-slate-300 dark:text-slate-600'}`}>
@@ -137,14 +152,20 @@ const WorkflowPage = () => {
               </div>
             </div>
             
-            <div className="mt-12 pt-8 border-t border-slate-50 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center bg-slate-50/30 dark:bg-slate-800/20 -mx-8 -mb-8 px-8 py-6 rounded-b-[40px] gap-4">
-              <div className="flex gap-6">
-                <button className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-indigo-600 transition-colors">Configuration</button>
-                <button className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-indigo-600 transition-colors">Audit Logs</button>
-                <button className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-indigo-600 transition-colors">Nodes</button>
+            <div className="mt-16 pt-10 border-t border-slate-50 dark:border-slate-800 flex flex-col xl:flex-row justify-between items-center bg-slate-50/40 dark:bg-slate-800/30 -mx-10 -mb-10 px-10 py-8 rounded-b-[56px] gap-6">
+              <div className="flex flex-wrap justify-center gap-8">
+                <button className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-indigo-600 transition-colors flex items-center gap-2 group">
+                   <FiSettings className="group-hover:rotate-90 transition-transform" /> Configuration
+                </button>
+                <button className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-indigo-600 transition-colors flex items-center gap-2">
+                   <FiFileText /> Audit Ledger
+                </button>
+                <button className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-indigo-600 transition-colors flex items-center gap-2">
+                   <FiLayers /> Node Topology
+                </button>
               </div>
-              <button className="px-6 py-3 bg-white dark:bg-slate-800 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-slate-200 dark:border-slate-700 hover:border-indigo-500/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm active:scale-95">
-                Run Multi-Node Simulation
+              <button className="px-8 py-3.5 bg-white dark:bg-slate-800 rounded-[20px] text-[10px] font-black uppercase tracking-[0.3em] border border-slate-200 dark:border-slate-700 hover:border-indigo-500/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm active:scale-95 group flex items-center gap-3">
+                <FiPlayCircle className="group-hover:text-indigo-500" /> Run Architecture Simulation
               </button>
             </div>
           </motion.div>
@@ -160,56 +181,59 @@ const WorkflowPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[40px] p-8 md:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-[56px] p-10 md:p-14 border border-slate-200 dark:border-slate-800 shadow-2xl"
             >
-              <div className="flex justify-between items-start mb-8">
+              <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Design Automation Workflow</h2>
-                  <p className="text-slate-500 font-medium text-xs mt-1 uppercase tracking-widest font-black">BPA Engine Config</p>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">Design Engine Blueprint</h2>
+                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">BPA Macro-Architecture Config</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors"
+                  className="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors active:scale-95"
                 >
                   <FiX size={24} />
                 </button>
               </div>
 
-              <form onSubmit={addWorkflow} className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Workflow Title</label>
+              <form onSubmit={addWorkflow} className="space-y-8">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Workflow Title Descriptor</label>
                   <input 
                     required
                     type="text" 
-                    placeholder="e.g. Employee Onboarding v2" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                    placeholder="e.g. Employee Lifecycle Automation v4" 
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-black"
                     value={newFlow.name}
                     onChange={(e) => setNewFlow({...newFlow, name: e.target.value})}
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Trigger Mechanism</label>
-                  <select className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold">
-                    <option>On Resource Creation</option>
-                    <option>Scheduled (CRON)</option>
-                    <option>Webhook Callback</option>
-                    <option>Manual Execution</option>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Trigger Mechanism Vector</label>
+                  <select className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-black appearance-none">
+                    <option>Protocol: Resource Creation</option>
+                    <option>Protocol: Scheduled (CRON)</option>
+                    <option>Protocol: Webhook Callback</option>
+                    <option>Protocol: Manual Execution</option>
                   </select>
                 </div>
-                <div className="p-5 bg-indigo-500/5 rounded-3xl border border-indigo-500/10">
-                  <p className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-2 flex items-center gap-2">
-                    <FiZap size={10} /> BPA Engine Note
-                  </p>
-                  <p className="text-[11px] text-slate-500 leading-relaxed font-medium">New workflows are initialized with a standard 4-node blueprint (Init, Config, Review, Deploy) for rapid prototyping.</p>
+                <div className="p-6 bg-indigo-500/10 rounded-[32px] border border-indigo-500/20 flex gap-4">
+                  <div className="p-3 bg-indigo-600 rounded-2xl h-fit shadow-lg shadow-indigo-500/20">
+                     <FiZap className="text-white w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.2em] mb-1">BPA Engine Propagation Note</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-bold">New workflows are initialized with a standard 4-node blueprint (Init, Config, Review, Deploy) for mission-critical synchronization & rapid orchestration.</p>
+                  </div>
                 </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-indigo-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all hover:scale-[1.01]">
-                  Commit & Deploy Engine
+                <button type="submit" className="w-full mt-6 py-5 bg-indigo-600 text-white rounded-3xl font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-95">
+                  Commit & Propagate Engine
                 </button>
               </form>
             </motion.div>
@@ -221,4 +245,5 @@ const WorkflowPage = () => {
 };
 
 export default WorkflowPage;
+
 

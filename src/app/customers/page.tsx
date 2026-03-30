@@ -2,7 +2,8 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSearch, FiX, FiFilter, FiPlus, FiPhone, FiMail, FiMapPin, FiBriefcase, FiCreditCard } from 'react-icons/fi';
+import { FiSearch, FiX, FiFilter, FiPlus, FiPhone, FiMail, FiMapPin, FiBriefcase, FiCreditCard, FiUsers, FiActivity, FiGlobe, FiLayers } from 'react-icons/fi';
+import Image from 'next/image';
 
 const initialCustomers = [
   { 
@@ -15,6 +16,7 @@ const initialCustomers = [
     location: 'Mumbai, MH',
     gstin: '27AAACI1234A1Z5',
     status: 'Active',
+    engagement: 88,
     notes: 'Primary contact for the Cloud Infrastructure project.' 
   },
   { 
@@ -27,6 +29,7 @@ const initialCustomers = [
     location: 'Bangalore, KA',
     gstin: '29ABBCH5678B2Z1',
     status: 'Lead',
+    engagement: 42,
     notes: 'Interested in AI-driven BPA solutions.' 
   },
   { 
@@ -39,6 +42,7 @@ const initialCustomers = [
     location: 'Delhi, DL',
     gstin: '07AAECR9012C3Z2',
     status: 'Active',
+    engagement: 95,
     notes: 'Needs periodic reports on manufacturing efficiency.' 
   },
   { 
@@ -51,6 +55,7 @@ const initialCustomers = [
     location: 'Ahmedabad, GJ',
     gstin: '24AAADW3456D4Z9',
     status: 'Reviewing',
+    engagement: 15,
     notes: 'Reviewing the pricing proposal for the enterprise suite.' 
   },
 ];
@@ -80,7 +85,8 @@ const CustomersPage = () => {
     setCustomers([{ 
       ...newCustomer, 
       id: Date.now(), 
-      status: 'Onboarding', 
+      status: 'Onboarding',
+      engagement: 10,
       lastContact: new Date().toISOString().split('T')[0],
       notes: 'Newly added enterprise client.'
     }, ...customers]);
@@ -90,127 +96,203 @@ const CustomersPage = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Active': return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400';
-      case 'Lead': return 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400';
-      case 'Onboarding': return 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400';
-      case 'Reviewing': return 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400';
-      default: return 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400';
+      case 'Active': return 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20';
+      case 'Lead': return 'bg-amber-500 text-white shadow-lg shadow-amber-500/20';
+      case 'Onboarding': return 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20';
+      case 'Reviewing': return 'bg-rose-500 text-white shadow-lg shadow-rose-500/20';
+      default: return 'bg-slate-500 text-white';
     }
   };
 
   return (
-    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0 transition-colors">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0 transition-colors duration-500">
+      {/* Header Section */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Enterprise Clients</h1>
-          <p className="text-slate-500 font-medium tracking-tight mt-1">Manage your Indian business partnerships and relationships</p>
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+            <FiGlobe className="animate-spin-slow" /> Global Entity Registry Operational
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">Client Matrix</h1>
+          <p className="text-slate-500 dark:text-slate-400 font-medium tracking-tight mt-1 flex items-center gap-2">
+            <FiUsers className="text-indigo-500" /> CRM Infrastructure & Strategic Partner Lifecycle Management
+          </p>
         </div>
-        <button 
-          onClick={() => setIsModalOpen(true)}
-          className="px-6 py-2.5 bg-indigo-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all flex items-center gap-2 uppercase tracking-widest"
-        >
-          <FiPlus /> Add Enterprise Client
-        </button>
-      </div>
-
-      {/* Filters & Search */}
-      <div className="p-6 bg-white dark:bg-slate-900 rounded-[32px] border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row items-center gap-4">
-        <div className="relative flex-1 group w-full">
-          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
-          <input 
-            type="text" 
-            placeholder="Search by name, company, or email..."
-            className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3 pl-12 pr-4 text-xs font-bold focus:ring-2 focus:ring-indigo-500/10 outline-none transition-all dark:text-white"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div className="flex flex-wrap gap-2 justify-center">
-          {['All', 'Active', 'Lead', 'Onboarding', 'Reviewing'].map((status) => (
-            <button
-              key={status}
-              onClick={() => setFilterStatus(status)}
-              className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
-                filterStatus === status 
-                  ? 'bg-indigo-600 text-white shadow-lg' 
-                  : 'bg-slate-50 dark:bg-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700'
-              }`}
-            >
-              {status}
-            </button>
-          ))}
+        <div className="flex gap-4">
+           <button className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:shadow-lg transition-all active:scale-95 shadow-sm">
+             Audit Reports
+           </button>
+           <button 
+            onClick={() => setIsModalOpen(true)}
+            className="px-8 py-2.5 bg-indigo-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all flex items-center gap-2 active:scale-95"
+          >
+            <FiPlus className="w-4 h-4" /> Register Identity
+          </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <AnimatePresence mode="popLayout">
-          {filteredCustomers.map((customer, i) => (
-            <motion.div
-              layout
-              key={customer.id}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
-              className="group bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-8 shadow-sm hover:shadow-xl transition-all relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
-              
-              <div className="flex items-center gap-5 mb-8 relative z-10">
-                <div className="w-16 h-16 rounded-[24px] bg-gradient-to-tr from-indigo-500 to-indigo-700 flex items-center justify-center text-white font-black text-2xl shadow-xl shadow-indigo-500/20 group-hover:rotate-6 transition-transform">
-                  {customer.name.charAt(0)}
-                </div>
-                <div>
-                  <h2 className="text-xl font-black text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors leading-tight">{customer.name}</h2>
-                  <p className="text-[11px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2 mt-1">
-                    <FiBriefcase className="text-indigo-500" /> {customer.company}
-                  </p>
-                </div>
+      <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
+        {/* Search & Filters */}
+        <div className="xl:col-span-3 space-y-8">
+           <div className="p-8 bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row items-center gap-6">
+              <div className="relative flex-1 group w-full">
+                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors w-5 h-5" />
+                <input 
+                  type="text" 
+                  placeholder="Search by contact identity, organization, or corporate link..."
+                  className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 pl-16 pr-6 text-sm font-black focus:ring-2 focus:ring-indigo-500/10 outline-none transition-all dark:text-white shadow-inner"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
               </div>
-
-              <div className="space-y-6 relative z-10">
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="flex items-center gap-4 px-5 py-3.5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-transparent group-hover:border-slate-100 dark:group-hover:border-slate-700 transition-colors">
-                    <FiMail className="text-indigo-500" />
-                    <div className="overflow-hidden">
-                      <p className="text-[9px] font-black uppercase text-slate-400 tracking-widest leading-none mb-1">Corporate Link</p>
-                      <p className="text-xs font-black text-slate-700 dark:text-slate-300 truncate">{customer.email}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4 px-5 py-3.5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-transparent group-hover:border-slate-100 dark:group-hover:border-slate-700 transition-colors">
-                    <FiPhone className="text-indigo-500" />
-                    <div>
-                      <p className="text-[9px] font-black uppercase text-slate-400 tracking-widest leading-none mb-1">Direct Comms</p>
-                      <p className="text-xs font-black text-slate-700 dark:text-slate-300">{customer.phone}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="px-5 py-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-transparent">
-                     <p className="text-[9px] font-black uppercase text-slate-400 tracking-widest mb-1">Node</p>
-                     <p className="text-[11px] font-black text-slate-900 dark:text-slate-100 flex items-center gap-1.5"><FiMapPin className="text-rose-500" /> {customer.location}</p>
-                  </div>
-                  <div className="px-5 py-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-transparent">
-                     <p className="text-[9px] font-black uppercase text-slate-400 tracking-widest mb-1">Fiscal ID</p>
-                     <p className="text-[11px] font-black text-indigo-600 dark:text-indigo-400">{customer.gstin || 'PENDING'}</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-between pt-4">
-                  <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest ${getStatusColor(customer.status)}`}>
-                    {customer.status}
-                  </span>
-                  <div className="text-right">
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Last Touch</p>
-                    <p className="text-[11px] font-black text-slate-900 dark:text-slate-100">{customer.lastContact}</p>
-                  </div>
-                </div>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {['All', 'Active', 'Lead', 'Onboarding', 'Reviewing'].map((status) => (
+                  <button
+                    key={status}
+                    onClick={() => setFilterStatus(status)}
+                    className={`px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${
+                      filterStatus === status 
+                        ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' 
+                        : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-black/5 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95'
+                    }`}
+                  >
+                    {status}
+                  </button>
+                ))}
               </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+              <AnimatePresence mode="popLayout">
+                {filteredCustomers.map((customer, i) => (
+                  <motion.div
+                    layout
+                    key={customer.id}
+                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                    className="group bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm hover:shadow-2xl hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden"
+                  >
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-3xl -mr-32 -mt-32 group-hover:scale-150 transition-transform duration-1000" />
+                    
+                    <div className="flex items-start justify-between mb-10 relative z-10">
+                      <div className="flex items-center gap-6">
+                        <div className="w-20 h-20 rounded-[32px] bg-indigo-600 flex items-center justify-center text-white font-black text-3xl shadow-2xl shadow-indigo-600/30 group-hover:rotate-12 transition-transform duration-700 ring-4 ring-indigo-600/20">
+                          {customer.name.charAt(0)}
+                        </div>
+                        <div>
+                          <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter uppercase leading-none mb-2">{customer.name}</h2>
+                          <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2">
+                             <FiBriefcase className="text-indigo-500" /> {customer.company}
+                          </p>
+                        </div>
+                      </div>
+                      <span className={`px-5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg ${getStatusColor(customer.status)}`}>
+                        {customer.status}
+                      </span>
+                    </div>
+
+                    <div className="space-y-8 relative z-10">
+                      <div className="grid grid-cols-1 gap-4">
+                        <div className="flex items-center gap-5 px-6 py-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-transparent group-hover:border-indigo-500/20 transition-all">
+                          <FiMail className="text-indigo-500 w-5 h-5" />
+                          <div className="flex-1 overflow-hidden">
+                            <p className="text-[9px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-[0.2em] leading-none mb-2">Corporate Artifact</p>
+                            <p className="text-xs font-black text-slate-700 dark:text-slate-300 truncate">{customer.email}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-5 px-6 py-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-transparent group-hover:border-indigo-500/20 transition-all">
+                          <FiPhone className="text-indigo-500 w-5 h-5" />
+                          <div>
+                            <p className="text-[9px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-[0.2em] leading-none mb-2">Secure Link</p>
+                            <p className="text-xs font-black text-slate-700 dark:text-slate-300">{customer.phone}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-6 pt-4">
+                        <div className="px-6 py-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl flex flex-col justify-center">
+                           <p className="text-[9px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-widest mb-2">Geospatial Node</p>
+                           <p className="text-xs font-black text-slate-900 dark:text-slate-100 flex items-center gap-2"><FiMapPin className="text-rose-500" /> {customer.location}</p>
+                        </div>
+                        <div className="px-6 py-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl flex flex-col justify-center text-right overflow-hidden">
+                           <p className="text-[9px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-widest mb-2 text-right">Fiscal Signature</p>
+                           <p className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 truncate tracking-tighter uppercase">{customer.gstin || 'PENDING EXECUTION'}</p>
+                        </div>
+                      </div>
+
+                      <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                         <div className="flex-1">
+                            <div className="flex items-center justify-between mb-2">
+                               <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest underline decoration-indigo-500/30">Relational Velocity</p>
+                               <p className="text-[10px] font-black text-indigo-600 dark:text-indigo-400">{customer.engagement}%</p>
+                            </div>
+                            <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                               <motion.div 
+                                 initial={{ width: 0 }}
+                                 animate={{ width: `${customer.engagement}%` }}
+                                 transition={{ delay: 0.5, duration: 1 }}
+                                 className="h-full bg-indigo-600 rounded-full" 
+                               />
+                            </div>
+                         </div>
+                         <div className="text-right pl-10">
+                            <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 whitespace-nowrap">Last Pulse</p>
+                            <p className="text-[10px] font-black text-slate-900 dark:text-slate-100">{customer.lastContact}</p>
+                         </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+           </div>
+        </div>
+
+        {/* Sidebar Info */}
+        <div className="space-y-8">
+           <div className="p-10 bg-slate-900 rounded-[48px] overflow-hidden relative group min-h-[400px] flex flex-col justify-end shadow-2xl">
+              <Image 
+                src="/media__1774860970866.png" 
+                alt="Client Hub" 
+                fill 
+                className="object-cover opacity-30 grayscale group-hover:scale-110 transition-transform duration-1000"
+              />
+              <div className="relative z-10 space-y-6">
+                 <div className="w-16 h-16 bg-white/10 backdrop-blur-xl rounded-[24px] flex items-center justify-center ring-1 ring-white/20">
+                    <FiActivity className="text-white w-8 h-8" />
+                 </div>
+                 <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none mb-2">Churn Matrix</h3>
+                 <p className="text-slate-400 text-sm font-medium leading-relaxed max-w-[200px]">Strategic analysis shows a <span className="text-indigo-400 font-black">98.4% retention rate</span> for Q1 2024 enterprise clients.</p>
+                 <button className="w-full py-4 bg-white text-indigo-600 font-black rounded-2xl text-[10px] uppercase tracking-[0.3em] active:scale-95 transition-all">
+                    Generate Analysis
+                 </button>
+              </div>
+           </div>
+
+           <div className="p-8 bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-6 flex items-center gap-3">
+                 <FiLayers className="text-indigo-600" /> Key Accounts
+              </h4>
+              <div className="space-y-6">
+                 {[
+                   { name: 'Tata Motors', value: '₹14.2Cr', delta: '+12%' },
+                   { name: 'Reliance Ind.', value: '₹8.4Cr', delta: '+5%' },
+                   { name: 'Adani Group', value: '₹3.1Cr', delta: '+22%' }
+                 ].map((account, i) => (
+                   <div key={i} className="flex justify-between items-center group cursor-pointer">
+                      <div>
+                         <p className="text-xs font-black text-slate-700 dark:text-slate-300 group-hover:text-indigo-600 transition-colors uppercase">{account.name}</p>
+                         <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{account.value} YTD</p>
+                      </div>
+                      <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-lg">
+                        {account.delta}
+                      </span>
+                   </div>
+                 ))}
+              </div>
+           </div>
+        </div>
       </div>
 
       {/* Add Modal */}
@@ -222,88 +304,88 @@ const CustomersPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[40px] p-8 md:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-[56px] p-10 md:p-14 border border-slate-200 dark:border-slate-800 shadow-2xl"
             >
-              <div className="flex justify-between items-start mb-8">
+              <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Register Enterprise Client</h2>
-                  <p className="text-slate-500 font-medium text-xs mt-1 uppercase tracking-widest font-black">CRM Ledger Entry</p>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">Register Identity</h2>
+                  <p className="text-slate-500 font-black text-[10px] mt-1 uppercase tracking-[0.3em]">CRM Ledger Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors"
+                  className="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors active:scale-95"
                 >
-                  <FiX size={24} />
+                  <FiX className="w-6 h-6" />
                 </button>
               </div>
 
-              <form onSubmit={addCustomer} className="space-y-5">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Contact Name</label>
+              <form onSubmit={addCustomer} className="space-y-8">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Principal Executive</label>
                     <input 
                       required
                       type="text" 
                       placeholder="e.g. Arjun Mehta" 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
                       value={newCustomer.name}
                       onChange={(e) => setNewCustomer({...newCustomer, name: e.target.value})}
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Organization</label>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Corporate Entity</label>
                     <input 
                       required
                       type="text" 
-                      placeholder="e.g. Blue Star Ltd" 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                      placeholder="e.g. Blue Star Systems Ltd" 
+                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
                       value={newCustomer.company}
                       onChange={(e) => setNewCustomer({...newCustomer, company: e.target.value})}
                     />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Corporate Email</label>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Official Comms Matrix (Email)</label>
                   <input 
                     required
                     type="email" 
-                    placeholder="name@company.com" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                    placeholder="executive@entity.com" 
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
                     value={newCustomer.email}
                     onChange={(e) => setNewCustomer({...newCustomer, email: e.target.value})}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Phone Number</label>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Direct Secure Line</label>
                     <input 
                       required
                       type="text" 
                       placeholder="+91 XXXXX-XXXXX" 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
                       value={newCustomer.phone}
                       onChange={(e) => setNewCustomer({...newCustomer, phone: e.target.value})}
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">GSTIN (Optional)</label>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Statutory GSTIN Signature</label>
                     <input 
                       type="text" 
-                      placeholder="GST Identification No" 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                      placeholder="Fiscal ID (Optional)" 
+                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
                       value={newCustomer.gstin}
                       onChange={(e) => setNewCustomer({...newCustomer, gstin: e.target.value})}
                     />
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-indigo-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all hover:scale-[1.01]">
-                  Commit Client to CRM
+                <button type="submit" className="w-full mt-6 py-5 bg-indigo-600 text-white rounded-3xl font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-95">
+                  Commit Identity to CRM Matrix
                 </button>
               </form>
             </motion.div>
@@ -315,4 +397,5 @@ const CustomersPage = () => {
 };
 
 export default CustomersPage;
+
 

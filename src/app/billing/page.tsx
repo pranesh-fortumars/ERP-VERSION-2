@@ -1,9 +1,8 @@
-
 'use client'
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiPlus, FiFilter, FiX, FiSearch, FiFileText, FiDownload, FiDollarSign, FiClock, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
+import { FiPlus, FiFilter, FiX, FiSearch, FiFileText, FiDownload, FiDollarSign, FiClock, FiCheckCircle, FiAlertCircle, FiShield, FiPercent, FiLayers } from 'react-icons/fi';
 import CustomTooltip from '@/components/CustomTooltip';
 
 const initialInvoices = [
@@ -47,69 +46,83 @@ const BillingPage = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Paid': return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400';
-      case 'Pending': return 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400';
-      case 'Overdue': return 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400';
-      default: return 'bg-slate-100 text-slate-700 dark:bg-slate-800';
+      case 'Paid': return 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20';
+      case 'Pending': return 'bg-amber-500/10 text-amber-600 border-amber-500/20';
+      case 'Overdue': return 'bg-rose-500/10 text-rose-600 border-rose-500/20';
+      default: return 'bg-slate-500/10 text-slate-600 border-slate-500/20';
     }
   };
 
   return (
-    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0">
+    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0 transition-all duration-500">
+      {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Accounts Receivable</h1>
-          <p className="text-slate-500 font-medium tracking-tight mt-1">Invoice orchestration, GST compliance, and recurring billing settlement.</p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+            <FiShield className="animate-pulse" /> Fiscal Integrity Protocol Active
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">Accounts Receivable</h1>
+          <p className="text-slate-500 dark:text-slate-400 font-medium tracking-tight mt-1 flex items-center gap-2">
+            <FiFileText className="text-indigo-500" /> Automated Invoice Orchestration & GST Compliance Master
+          </p>
         </div>
-        <div className="flex gap-3">
-          <button className="px-5 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-xs font-black hover:shadow-lg transition-all flex items-center gap-2 text-slate-700 dark:text-slate-200 uppercase tracking-widest">
+        <div className="flex flex-wrap items-center gap-4">
+          <button className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:shadow-lg transition-all active:scale-95 shadow-sm flex items-center gap-2">
             <FiDownload /> Tax Ledger
           </button>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="px-6 py-2.5 bg-indigo-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all flex items-center gap-2 uppercase tracking-widest"
+            className="px-8 py-2.5 bg-indigo-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all flex items-center gap-2 active:scale-95"
           >
-            <FiPlus /> Dispatch Invoice
+            <FiPlus className="w-4 h-4" /> Dispatch Invoice
           </button>
         </div>
       </div>
 
+      {/* Stats Summary */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
-          { label: 'Total Invoiced', value: `₹${(stats.total/100000).toFixed(1)}L`, icon: FiFileText, color: 'text-indigo-600', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
-          { label: 'Settled Funds', value: `₹${(stats.paid/100000).toFixed(1)}L`, icon: FiCheckCircle, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
-          { label: 'Pending Liquidity', value: `₹${(stats.pending/100000).toFixed(1)}L`, icon: FiClock, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
+          { label: 'Total Invoiced', value: `₹${(stats.total/100000).toFixed(1)}L`, icon: <FiLayers className="w-8 h-8" />, color: 'text-indigo-600', bg: 'bg-indigo-500/10' },
+          { label: 'Settled Funds', value: `₹${(stats.paid/100000).toFixed(1)}L`, icon: <FiCheckCircle className="w-8 h-8" />, color: 'text-emerald-600', bg: 'bg-emerald-500/10' },
+          { label: 'Pending Liquidity', value: `₹${(stats.pending/100000).toFixed(1)}L`, icon: <FiClock className="w-8 h-8" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
         ].map((stat, i) => (
-          <div key={i} className="p-8 bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-6 group hover:shadow-xl transition-all">
-            <div className={`p-5 rounded-[24px] ${stat.bg} ${stat.color} group-hover:rotate-12 transition-transform`}>
-              <stat.icon size={32} />
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className="p-10 bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-10 group hover:border-indigo-500/50 transition-all duration-500"
+          >
+            <div className={`p-8 rounded-[32px] ${stat.bg} ${stat.color} shadow-inner group-hover:scale-110 transition-transform duration-700 ring-1 ring-black/5`}>
+              {stat.icon}
             </div>
             <div>
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-2">{stat.label}</p>
-              <h4 className="text-4xl font-black tracking-tighter text-slate-900 dark:text-white">{stat.value}</h4>
+              <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
+              <h4 className="text-4xl font-black tracking-tighter text-slate-900 dark:text-white leading-none">{stat.value}</h4>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
-        <div className="p-8 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6 bg-slate-50/30">
-          <div className="relative w-full md:w-96 group">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+      {/* Invoice Ledger */}
+      <div className="bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
+        <div className="p-10 border-b border-slate-100 dark:border-slate-800 flex flex-col xl:flex-row justify-between items-center gap-8 bg-slate-50/20 dark:bg-slate-800/10">
+          <div className="relative w-full xl:max-w-xl group">
+            <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors w-5 h-5" />
             <input 
               type="text" 
-              placeholder="Search invoice registry..."
+              placeholder="Search invoice registry, client descriptor, or GST identifier..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white dark:bg-slate-800 border-none rounded-2xl py-3 pl-12 pr-4 text-xs font-bold focus:ring-2 focus:ring-indigo-500/10 outline-none transition-all dark:text-white"
+              className="w-full bg-white dark:bg-slate-800 border-none rounded-2xl py-4.5 pl-14 pr-6 text-sm font-black focus:ring-2 focus:ring-indigo-500/10 outline-none transition-all dark:text-white shadow-inner"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap justify-center gap-3">
             {['All', 'Paid', 'Pending', 'Overdue'].map(s => (
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/20' : 'bg-white dark:bg-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
+                className={`px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-black/5 hover:bg-slate-100 active:scale-95 shadow-sm'}`}
               >
                 {s}
               </button>
@@ -117,14 +130,14 @@ const BillingPage = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto no-scrollbar">
-          <table className="w-full text-left">
-            <thead className="bg-slate-50/50 dark:bg-slate-800/50">
-              <tr>
-                <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Descriptor</th>
-                <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Quantum (INR)</th>
-                <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Maturation</th>
-                <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Lifecycle State</th>
+        <div className="overflow-x-auto no-scrollbar flex-1">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-slate-50/30 dark:bg-slate-800/30">
+                <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Asset Descriptor</th>
+                <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Quantum (INR)</th>
+                <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Maturity Target</th>
+                <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] text-center">Lifecycle State</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -135,23 +148,31 @@ const BillingPage = () => {
                     key={inv.id} 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group"
+                    className="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-all group cursor-pointer"
                   >
-                    <td className="px-8 py-6">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-hover:text-indigo-500 transition-colors">
-                          <FiFileText />
+                    <td className="px-10 py-8">
+                      <div className="flex items-center gap-6">
+                        <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-hover:text-indigo-500 transition-colors shadow-inner border border-black/5">
+                          <FiFileText size={24} />
                         </div>
                         <div>
-                          <p className="text-sm font-black text-slate-900 dark:text-white leading-none">{inv.clientName}</p>
-                          <p className="text-[10px] text-slate-400 mt-1 uppercase font-black tracking-widest">ID: {inv.id} • GST: {inv.gst}</p>
+                          <p className="text-xl font-black text-slate-900 dark:text-white tracking-tighter uppercase leading-none mb-2 group-hover:text-indigo-600 transition-colors">{inv.clientName}</p>
+                          <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 uppercase font-black tracking-[0.3em] flex items-center gap-2">
+                             <span className="text-indigo-500">ID:</span> {inv.id} • <span className="text-indigo-500 text-[8px]">GST:</span> {inv.gst}
+                          </p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-8 py-6 text-sm font-black dark:text-white">₹{inv.amount.toLocaleString('en-IN')}</td>
-                    <td className="px-8 py-6 text-[11px] font-black text-slate-500 uppercase tracking-widest">{inv.dueDate}</td>
-                    <td className="px-8 py-6 text-center">
-                      <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest ${getStatusColor(inv.status)}`}>
+                    <td className="px-10 py-8">
+                       <p className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter whitespace-nowrap">₹{inv.amount.toLocaleString('en-IN')}</p>
+                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Settlement Value</p>
+                    </td>
+                    <td className="px-10 py-8">
+                       <p className="text-sm font-black text-slate-600 dark:text-slate-300 tracking-tight uppercase">{inv.dueDate}</p>
+                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Fiscal Deadline</p>
+                    </td>
+                    <td className="px-10 py-8 text-center">
+                      <span className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border shadow-sm ${getStatusColor(inv.status)}`}>
                         {inv.status}
                       </span>
                     </td>
@@ -172,73 +193,75 @@ const BillingPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[40px] p-10 border border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-[56px] p-10 md:p-14 border border-slate-200 dark:border-slate-800 shadow-2xl"
             >
-               <div className="flex justify-between items-start mb-8">
+               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Dispatch Invoice</h2>
-                  <p className="text-slate-500 font-medium text-xs mt-1 uppercase tracking-widest font-black">Billing Registry</p>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">Dispatch Legal Instrument</h2>
+                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Corporate Billing Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors"
+                  className="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors active:scale-95"
                 >
-                  <FiX size={24} />
+                  <FiX className="w-6 h-6" />
                 </button>
               </div>
 
-              <form onSubmit={addInvoice} className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Entity Name</label>
+              <form onSubmit={addInvoice} className="space-y-8">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Client/Entity Portfolio</label>
                   <input 
                     required
                     type="text" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
+                    placeholder="e.g. Tata Advanced Systems Ltd"
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
                     value={newInv.clientName}
                     onChange={(e) => setNewInv({...newInv, clientName: e.target.value})}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Quantum (INR)</label>
+                  <div className="space-y-3">
+                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Settlement Quantum (INR)</label>
                      <input 
                        required
                        type="number" 
-                       className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
+                       placeholder="0.00"
+                       className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
                        value={newInv.amount}
                        onChange={(e) => setNewInv({...newInv, amount: Number(e.target.value)})}
                      />
                   </div>
-                  <div className="space-y-2">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Maturity Date</label>
+                  <div className="space-y-3">
+                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Maturity Target Date</label>
                      <input 
                        required
                        type="date" 
-                       className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
+                       className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
                        value={newInv.dueDate}
                        onChange={(e) => setNewInv({...newInv, dueDate: e.target.value})}
                      />
                   </div>
                 </div>
-                <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Entity GSTIN</label>
+                <div className="space-y-3">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Corporate GSTIN Identifier</label>
                    <input 
                      required
                      type="text" 
                      placeholder="e.g. 27AAAAA0000A1Z5"
-                     className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
+                     className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white uppercase"
                      value={newInv.gst}
                      onChange={(e) => setNewInv({...newInv, gst: e.target.value})}
                    />
                 </div>
-                <button type="submit" className="w-full mt-4 py-5 bg-indigo-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all hover:scale-[1.02]">
-                  Dispatch Legal Instrument
+                <button type="submit" className="w-full mt-6 py-5 bg-indigo-600 text-white rounded-3xl font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-95">
+                  Commit Invoice to Ledger
                 </button>
               </form>
             </motion.div>
@@ -250,4 +273,5 @@ const BillingPage = () => {
 };
 
 export default BillingPage;
+
 
