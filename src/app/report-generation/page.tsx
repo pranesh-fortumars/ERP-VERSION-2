@@ -22,7 +22,7 @@ const ReportGenerationPage = () => {
     { name: 'Transit Stock', value: 10 },
   ];
   
-  const COLORS = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e'];
+  const COLORS = ['#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'];
 
   const [reportType, setReportType] = useState('Sales');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -45,7 +45,7 @@ const ReportGenerationPage = () => {
           </button>
           <button 
             onClick={startGeneration}
-            className="px-6 py-2.5 bg-indigo-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all flex items-center gap-2 uppercase tracking-widest relative overflow-hidden"
+            className="px-6 py-2.5 bg-blue-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-blue-600/20 hover:bg-blue-700 transition-all flex items-center gap-2 uppercase tracking-widest relative overflow-hidden"
           >
             <AnimatePresence mode="wait">
               {isGenerating ? (
@@ -65,16 +65,16 @@ const ReportGenerationPage = () => {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Report Config */}
         <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
-          <h2 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-[11px] text-indigo-500">Parameters</h2>
+          <h2 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-[11px] text-blue-500">Parameters</h2>
           <div className="space-y-6">
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Report Domain</label>
               <div className="relative group">
-                <FiPieChart className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-indigo-500 transition-colors" />
+                <FiPieChart className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-blue-500 transition-colors" />
                 <select 
                    value={reportType} 
                    onChange={(e) => setReportType(e.target.value)}
-                   className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white appearance-none"
+                   className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none"
                 >
                   <option>Sales Performance</option>
                   <option>Inventory Health</option>
@@ -88,9 +88,9 @@ const ReportGenerationPage = () => {
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Temporal Horizon</label>
               <div className="relative group">
-                <FiBarChart2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-indigo-500 transition-colors" />
+                <FiBarChart2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-blue-500 transition-colors" />
                 <select 
-                   className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-black outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white appearance-none"
+                   className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none"
                 >
                   <option>Last 6 Fiscal Months</option>
                   <option>Quarterly Analysis</option>
@@ -101,8 +101,8 @@ const ReportGenerationPage = () => {
             </div>
 
             <div className="pt-4 space-y-4">
-              <div className="p-5 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-[28px] border border-indigo-100/50 dark:border-indigo-500/10">
-                 <p className="text-[10px] font-black uppercase text-indigo-500 tracking-widest mb-1 leading-none">Last Compilation</p>
+              <div className="p-5 bg-blue-50/50 dark:bg-blue-900/10 rounded-[28px] border border-blue-100/50 dark:border-blue-500/10">
+                 <p className="text-[10px] font-black uppercase text-blue-500 tracking-widest mb-1 leading-none">Last Compilation</p>
                  <div className="flex items-center justify-between">
                     <span className="text-xs font-black text-slate-900 dark:text-white">March 28, 2024</span>
                     <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md text-[9px] font-black">STABLE</span>
@@ -129,8 +129,8 @@ const ReportGenerationPage = () => {
                   <AreaChart data={salesData}>
                     <defs>
                       <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#6366f1" stopOpacity={0.1}/>
-                        <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
+                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.1}/>
+                        <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -139,7 +139,7 @@ const ReportGenerationPage = () => {
                     <Tooltip 
                       contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)', fontWeight: 900, fontSize: '12px' }}
                     />
-                    <Area type="monotone" dataKey="revenue" stroke="#6366f1" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
+                    <Area type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
                     <Area type="monotone" dataKey="target" stroke="#cbd5e1" strokeWidth={2} strokeDasharray="5 5" fill="transparent" />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -170,7 +170,7 @@ const ReportGenerationPage = () => {
               </div>
 
               <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-8 shadow-sm flex flex-col justify-center text-center">
-                 <div className="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/20 rounded-3xl flex items-center justify-center mx-auto mb-4 text-indigo-600">
+                 <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-3xl flex items-center justify-center mx-auto mb-4 text-blue-600">
                     <FiDownload size={32} />
                  </div>
                  <h4 className="text-lg font-black text-slate-900 dark:text-white mb-2">Automated Archival</h4>

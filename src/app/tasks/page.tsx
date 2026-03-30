@@ -49,7 +49,7 @@ const TasksPage = () => {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'Completed': return <FiCheckCircle className="text-emerald-500" />;
-      case 'In Progress': return <FiClock className="text-indigo-500 animate-spin-slow" />;
+      case 'In Progress': return <FiClock className="text-blue-500 animate-spin-slow" />;
       case 'Not Started': return <FiAlertCircle className="text-slate-300" />;
       default: return null;
     }
@@ -64,7 +64,7 @@ const TasksPage = () => {
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="px-6 py-2.5 bg-indigo-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all flex items-center gap-2 uppercase tracking-widest"
+          className="px-6 py-2.5 bg-blue-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-blue-600/20 hover:bg-blue-700 transition-all flex items-center gap-2 uppercase tracking-widest"
         >
           <FiPlus /> New Operational Task
         </button>
@@ -77,7 +77,7 @@ const TasksPage = () => {
           <input 
             type="text" 
             placeholder="Search task registry..."
-            className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-bold focus:ring-2 focus:ring-indigo-500/10 outline-none transition-all dark:text-white"
+            className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-bold focus:ring-2 focus:ring-blue-500/10 outline-none transition-all dark:text-white"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -138,7 +138,7 @@ const TasksPage = () => {
                   >
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
                           <FiCheckCircle />
                         </div>
                         <div>
@@ -204,7 +204,7 @@ const TasksPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Q3 Compliance Audit" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white font-bold"
                     value={newTask.title}
                     onChange={(e) => setNewTask({...newTask, title: e.target.value})}
                   />
@@ -215,7 +215,7 @@ const TasksPage = () => {
                     <input 
                       required
                       type="date" 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white font-bold"
                       value={newTask.dueDate}
                       onChange={(e) => setNewTask({...newTask, dueDate: e.target.value})}
                     />
@@ -223,7 +223,7 @@ const TasksPage = () => {
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Urgency Level</label>
                     <select 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white font-bold"
                       value={newTask.priority}
                       onChange={(e) => setNewTask({...newTask, priority: e.target.value})}
                     >
@@ -239,12 +239,12 @@ const TasksPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Strategic Finance" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white font-bold"
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white font-bold"
                     value={newTask.category}
                     onChange={(e) => setNewTask({...newTask, category: e.target.value})}
                   />
                 </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-indigo-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all hover:scale-[1.01]">
+                <button type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-blue-600/20 hover:bg-blue-700 transition-all hover:scale-[1.01]">
                   Commit Task to Registry
                 </button>
               </form>

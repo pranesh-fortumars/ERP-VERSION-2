@@ -1,4 +1,3 @@
-
 'use client'
 
 import React, { useState } from 'react';
@@ -9,7 +8,7 @@ import {
   FiHome, FiArchive, FiUsers, FiBriefcase, 
   FiTool, FiFileText, FiBarChart2, FiDollarSign, 
   FiCreditCard, FiTrendingUp, FiSettings, FiActivity,
-  FiX, FiMenu
+  FiX, FiMenu, FiServer
 } from 'react-icons/fi';
 
 const navItems = [
@@ -39,11 +38,11 @@ const Sidebar = () => {
   return (
     <>
       <style jsx global>{`
-        .sidebar {
-          background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        .sidebar-standard {
+          background-color: #1e293b;
         }
-        .dark .sidebar {
-          background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+        .dark .sidebar-standard {
+          background-color: #020617;
         }
         .no-scrollbar::-webkit-scrollbar {
           display: none;
@@ -51,13 +50,13 @@ const Sidebar = () => {
       `}</style>
 
       {/* Desktop Sidebar */}
-      <div className="w-64 sidebar text-white p-6 hidden md:flex flex-col h-screen fixed left-0 top-0 z-50 border-r border-slate-700/50">
+      <div className="w-64 sidebar-standard text-white p-6 hidden md:flex flex-col h-screen fixed left-0 top-0 z-50 border-r border-slate-700/50">
         <div className="flex items-center gap-3 mb-10 px-2 mt-4">
-          <div className="p-2.5 bg-indigo-500 rounded-xl shadow-lg shadow-indigo-500/20">
-            <FiActivity className="w-6 h-6" />
+          <div className="w-9 h-9 bg-blue-600 rounded flex items-center justify-center text-white shadow-lg">
+            <FiServer size={20} />
           </div>
           <h1 className="text-xl font-black tracking-tighter">
-            ERP <span className="text-indigo-400">PRO</span>
+            PRO <span className="text-blue-500">ERP</span>
           </h1>
         </div>
         
@@ -69,16 +68,16 @@ const Sidebar = () => {
                 <li key={item.href}>
                   <Link 
                     href={item.href}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-300 group ${
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all group ${
                       isActive 
-                        ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/40' 
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' 
                         : 'text-slate-400 hover:text-white hover:bg-slate-800'
                     }`}
                   >
-                    <span className={`text-xl transition-all duration-300 group-hover:scale-125 ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-indigo-400'}`}>
+                    <span className={`text-lg transition-all duration-300 ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-blue-400'}`}>
                       {item.icon}
                     </span>
-                    <span className={`text-sm font-bold tracking-tight ${isActive ? 'translate-x-1' : ''}`}>{item.label}</span>
+                    <span className={`text-xs font-bold uppercase tracking-widest ${isActive ? 'translate-x-1' : ''}`}>{item.label}</span>
                   </Link>
                 </li>
               );
@@ -87,13 +86,13 @@ const Sidebar = () => {
         </nav>
 
         <div className="mt-auto pt-6 border-t border-slate-700/50">
-          <div className="flex items-center gap-4 px-3 py-4 bg-slate-800/40 rounded-3xl border border-white/5 hover:border-white/10 transition-all cursor-pointer">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-700 flex items-center justify-center font-black text-white shadow-lg">
+          <div className="flex items-center gap-4 px-3 py-4 bg-slate-800/40 rounded-xl border border-white/5 hover:border-white/10 transition-all cursor-pointer group">
+            <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center font-black text-white shadow-lg group-hover:scale-105 transition-transform">
               AS
             </div>
             <div className="flex-1 overflow-hidden">
-              <p className="text-sm font-black truncate">Arjun Sharma</p>
-              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-none mt-1">Admin Panel</p>
+              <p className="text-xs font-black truncate">Arjun Sharma</p>
+              <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest leading-none mt-1">Admin Panel</p>
             </div>
           </div>
         </div>
@@ -103,7 +102,7 @@ const Sidebar = () => {
       <div className="md:hidden fixed top-5 left-5 z-[100]">
         <button 
           onClick={() => setIsNavOpen(!isNavOpen)}
-          className="p-3.5 bg-indigo-600 text-white rounded-2xl shadow-2xl hover:bg-indigo-700 active:scale-90 transition-all border border-indigo-400/20"
+          className="p-3.5 bg-blue-600 text-white rounded-xl shadow-2xl hover:bg-blue-700 active:scale-90 transition-all border border-blue-400/20"
         >
           {isNavOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
@@ -126,16 +125,16 @@ const Sidebar = () => {
               exit="closed"
               variants={sidebarVariants}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed top-0 left-0 h-full w-[85%] sidebar text-white p-6 z-[90] md:hidden shadow-2xl border-r border-white/5 flex flex-col"
+              className="fixed top-0 left-0 h-full w-[280px] sidebar-standard text-white p-6 z-[90] md:hidden shadow-2xl border-r border-white/5 flex flex-col"
             >
               <div className="flex items-center gap-3 mb-12 px-2 pt-16">
-                <div className="p-3 bg-indigo-500 rounded-2xl shadow-xl">
-                  <FiActivity className="w-7 h-7" />
+                <div className="w-10 h-10 bg-blue-600 rounded flex items-center justify-center text-white shadow-xl">
+                  <FiServer size={24} />
                 </div>
-                <h1 className="text-2xl font-black tracking-tighter">ERP <span className="text-indigo-400 font-light">PRO</span></h1>
+                <h1 className="text-2xl font-black tracking-tighter">PRO <span className="text-blue-500">ERP</span></h1>
               </div>
               <nav className="overflow-y-auto flex-1 no-scrollbar pr-2 mb-8">
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {navItems.map((item) => {
                     const isActive = pathname === item.href;
                     return (
@@ -143,14 +142,14 @@ const Sidebar = () => {
                         <Link 
                           href={item.href}
                           onClick={() => setIsNavOpen(false)}
-                          className={`flex items-center gap-5 px-6 py-4 rounded-[24px] transition-all duration-300 ${
+                          className={`flex items-center gap-5 px-5 py-3.5 rounded-xl transition-all ${
                             isActive 
-                              ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/40 font-bold' 
+                              ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/40 font-bold' 
                               : 'text-slate-400 hover:text-white'
                           }`}
                         >
-                          <span className="text-2xl">{item.icon}</span>
-                          <span className="text-lg tracking-tight">{item.label}</span>
+                          <span className="text-xl">{item.icon}</span>
+                          <span className="text-xs font-black uppercase tracking-widest">{item.label}</span>
                         </Link>
                       </li>
                     );

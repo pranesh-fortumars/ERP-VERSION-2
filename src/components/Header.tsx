@@ -34,11 +34,11 @@ const Header = () => {
     <header className="h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 md:px-8 flex justify-between items-center sticky top-0 z-40 transition-colors">
       <div className="flex-1 flex items-center">
         <div className="relative group max-w-md w-full hidden sm:block">
-          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
           <input 
             type="text" 
             placeholder="Search analytics, tasks..." 
-            className="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-2xl py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-indigo-500/20 focus:bg-white dark:focus:bg-slate-700 transition-all text-sm outline-none font-medium"
+            className="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-2xl py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-blue-600/20 focus:bg-white dark:focus:bg-slate-700 transition-all text-sm outline-none font-medium"
           />
         </div>
       </div>
@@ -49,7 +49,7 @@ const Header = () => {
           className="p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl text-slate-500 transition-all"
           title="Toggle Theme"
         >
-          {isDark ? <FiSun size={20} className="text-amber-500" /> : <FiMoon size={20} className="text-indigo-600" />}
+          {isDark ? <FiSun size={20} className="text-amber-500" /> : <FiMoon size={20} className="text-blue-600" />}
         </button>
 
         <div className="flex items-center gap-1 md:gap-2 pr-2 md:pr-4 border-r border-slate-200 dark:border-slate-800 mr-1 md:mr-2 md:flex hidden">
@@ -79,7 +79,7 @@ const Header = () => {
             <p className="text-sm font-black leading-tight tracking-tight">Arjun Sharma</p>
             <p className="text-[10px] text-slate-500 font-bold tracking-widest uppercase mt-0.5">Operation Head</p>
           </div>
-          <div className="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-gradient-to-tr from-indigo-600 to-indigo-400 border-2 border-white dark:border-slate-800 shadow-lg shadow-indigo-200 dark:shadow-none flex items-center justify-center font-black text-white text-sm">
+          <div className="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-gradient-to-tr from-blue-700 to-blue-500 border-2 border-white dark:border-slate-800 shadow-lg shadow-blue-200 dark:shadow-none flex items-center justify-center font-black text-white text-sm">
             AS
           </div>
         </div>

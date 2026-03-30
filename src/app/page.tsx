@@ -2,151 +2,193 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiBox, FiUsers, FiDollarSign, FiBarChart2, FiGlobe, FiShield, FiCpu, FiTrendingUp, FiActivity } from 'react-icons/fi';
+import { FiArrowRight, FiBox, FiUsers, FiCpu, FiShield, FiTrendingUp, FiActivity, FiServer, FiLayers, FiDatabase } from 'react-icons/fi';
 import Link from 'next/link';
 
 const LandingPage = () => {
   const features = [
-    { icon: <FiBox className="w-6 h-6 md:w-7 md:h-7" />, title: 'Smart Inventory', desc: 'Real-time SKU tracking with AI-driven reorder alerts across PAN-India warehouses.' },
-    { icon: <FiUsers className="w-6 h-6 md:w-7 md:h-7" />, title: 'Enterprise CRM', desc: 'Lead generation, B2B contracts, GSTIN profiles, and stakeholder relations.' },
-    { icon: <FiCpu className="w-6 h-6 md:w-7 md:h-7" />, title: 'BPA Automation', desc: 'Business Process Automation for Lead-to-Cash and Procure-to-Pay cycles.' },
-    { icon: <FiShield className="w-6 h-6 md:w-7 md:h-7" />, title: 'Statutory Compliance', desc: 'GST, PF, and TDS reconciliation built into every transaction and payroll.' },
+    { icon: <FiBox className="w-5 h-5 md:w-6 md:h-6" />, title: 'Smart Inventory', desc: 'Real-time SKU tracking with AI-driven reorder alerts across PAN-India nodes.' },
+    { icon: <FiUsers className="w-5 h-5 md:w-6 md:h-6" />, title: 'Enterprise CRM', desc: 'B2B contract lifecycle, GSTIN verification, and stakeholder intelligence.' },
+    { icon: <FiCpu className="w-5 h-5 md:w-6 md:h-6" />, title: 'BPA Engine', desc: 'High-scale automation for Lead-to-Cash and Procure-to-Pay cycles.' },
+    { icon: <FiShield className="w-5 h-5 md:w-6 md:h-6" />, title: 'Statutory Compliance', desc: 'GST, PF, and TDS reconciliation built into every fiscal transaction.' },
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0c10] text-slate-900 dark:text-slate-200 selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden transition-colors duration-500">
-      {/* Dynamic Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-indigo-600/10 dark:bg-indigo-600/20 blur-[120px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] bg-teal-500/10 dark:bg-teal-500/20 blur-[120px] rounded-full animate-pulse [animation-delay:2s]" />
-      </div>
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/10 transition-colors">
+      
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white">
+              <FiServer size={18} />
+            </div>
+            <span className="text-xl font-black tracking-tighter">PRO<span className="text-blue-600">ERP</span></span>
+          </div>
+          <div className="hidden md:flex items-center gap-10">
+             {['Solutions', 'Features', 'Compliance', 'Security'].map(item => (
+               <button key={item} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-colors">{item}</button>
+             ))}
+          </div>
+          <Link href="/dashboard">
+            <button className="bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-6 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all hover:opacity-90 active:scale-95 shadow-sm">
+              Console Access
+            </button>
+          </Link>
+        </div>
+      </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="relative pt-48 pb-32 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-black uppercase tracking-widest mb-8">
-              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-ping" />
-              Trusted by 500+ Indian Enterprises
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-blue-600/20 bg-blue-600/5 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-10">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+              v2.8.0 Enterprise Release
             </div>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-slate-900 dark:text-white mb-8">
-              Industrial <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-teal-500 to-indigo-700 dark:from-indigo-400 dark:via-teal-400 dark:to-indigo-500">
-                Operating System
-              </span>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-10">
+              The Industrial <br />
+              <span className="text-blue-600">Operating System</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-lg font-medium leading-relaxed mb-10 tracking-tight">
-              An all-in-one ERP & Business Process Automation platform designed for high-scale Indian Manufacturing and Industrial Giants.
+            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-lg font-medium leading-relaxed mb-12">
+              Mission-critical ERP & Business Process Automation infrastructure for high-scale Indian manufacturing and corporate giants.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-5">
               <Link href="/dashboard">
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 20px 40px -10px rgba(79, 70, 229, 0.4)' }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-indigo-600 text-white font-black py-4 px-10 rounded-2xl shadow-xl transition-all flex items-center gap-3 active:scale-95"
-                >
-                  Enter Command Center <FiArrowRight size={20} />
-                </motion.button>
+                <button className="bg-blue-600 text-white font-black py-4 px-10 rounded-xl shadow-xl shadow-blue-600/20 transition-all flex items-center gap-3 active:scale-95 hover:bg-blue-700">
+                  Command Center <FiArrowRight size={18} />
+                </button>
               </Link>
-              <button className="bg-white dark:bg-slate-800/10 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 text-slate-900 dark:text-white font-black py-4 px-10 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-all active:scale-95">
-                Book a Demo
+              <button className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-black py-4 px-10 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all active:scale-95 shadow-sm">
+                Technical Blueprint
               </button>
             </div>
           </motion.div>
 
+          {/* Clean Dashboard Projection (No Image) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="relative"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative lg:block hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-teal-500/20 blur-[80px] rounded-[60px]" />
-            <div className="relative rounded-[48px] overflow-hidden border border-slate-200 dark:border-slate-700/50 shadow-2xl bg-white dark:bg-slate-900">
-              <img 
-                src="/industrial_erp_hero_1774856751712.png" 
-                alt="Industrial ERP Command Center" 
-                className="w-full grayscale dark:grayscale-0 contrast-125 dark:contrast-100 hover:grayscale-0 transition-all duration-700 brightness-100 dark:brightness-75 dark:hover:brightness-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#0a0c10]/60 via-transparent to-transparent pointer-events-none" />
+            <div className="relative industrial-card bg-slate-50 dark:bg-slate-900/50 p-6 aspect-video overflow-hidden group">
+               <div className="absolute top-0 left-0 w-full h-10 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur flex items-center px-4 gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+               </div>
+               
+               <div className="mt-10 grid grid-cols-3 gap-4 h-full pt-4">
+                  <div className="col-span-2 space-y-4">
+                     <div className="h-32 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+                        <div className="flex items-center justify-between mb-4">
+                           <div className="w-20 h-2 bg-blue-600/20 rounded" />
+                           <FiTrendingUp className="text-blue-500" />
+                        </div>
+                        <div className="flex items-end gap-2 h-16">
+                           {[40, 70, 45, 90, 65, 80, 50].map((h, i) => (
+                             <div key={i} className="flex-1 bg-blue-500/10 dark:bg-blue-500/20 rounded-t" style={{ height: `${h}%` }} />
+                           ))}
+                        </div>
+                     </div>
+                     <div className="grid grid-cols-2 gap-4">
+                        <div className="h-40 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+                           <FiBox className="text-slate-400 mb-4" />
+                           <div className="space-y-2">
+                             <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
+                             <div className="h-2 w-3/4 bg-slate-100 dark:bg-slate-700 rounded" />
+                             <div className="h-2 w-1/2 bg-blue-500/40 rounded" />
+                           </div>
+                        </div>
+                        <div className="h-40 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+                           <FiActivity className="text-slate-400 mb-4" />
+                           <div className="space-y-2">
+                             <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
+                             <div className="h-2 w-2/3 bg-slate-100 dark:bg-slate-700 rounded" />
+                             <div className="h-8 w-8 rounded-full border-4 border-blue-600/30 border-t-blue-600 animate-spin mx-auto mt-4" />
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div className="space-y-4">
+                     <div className="h-full bg-slate-900 text-white rounded-lg p-6 flex flex-col justify-between">
+                        <FiDatabase className="text-blue-400" />
+                        <div>
+                           <p className="text-[10px] font-black uppercase text-slate-500 mb-1">Fiscal Balance</p>
+                           <p className="text-2xl font-black tracking-tighter">₹42.8 Cr</p>
+                        </div>
+                        <div className="space-y-2">
+                           <div className="h-1 w-full bg-white/10 rounded" />
+                           <div className="h-1 w-3/4 bg-white/10 rounded" />
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <div className="absolute inset-0 border-[20px] border-transparent pointer-events-none group-hover:border-blue-600/5 transition-all duration-700" />
             </div>
-            
-            {/* Float Stat Cards */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-6 -right-6 p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl"
-            >
-              <FiTrendingUp className="text-teal-600 dark:text-teal-400 mb-2" size={24} />
-              <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-wider uppercase mb-1">Portfolio Value</p>
-              <h4 className="text-xl font-black text-slate-900 dark:text-white">₹84.2 Cr</h4>
-            </motion.div>
 
+            {/* Float Cards */}
             <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-6 -left-6 p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl"
+               animate={{ y: [0, -8, 0] }}
+               transition={{ duration: 4, repeat: Infinity }}
+               className="absolute -top-10 -right-10 p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xl flex items-center gap-4"
             >
-              <FiActivity className="text-indigo-600 dark:text-indigo-400 mb-2" size={24} />
-              <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-wider uppercase mb-1">Production OEE</p>
-              <h4 className="text-xl font-black text-slate-900 dark:text-white">92.4%</h4>
+               <div className="p-2 bg-emerald-500 rounded text-white"><FiTrendingUp size={16} /></div>
+               <div>
+                  <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Growth</p>
+                  <p className="text-sm font-black">+12.4%</p>
+               </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Grid Features */}
-      <section className="py-32 px-6 bg-white/50 dark:bg-slate-900/20 backdrop-blur-3xl">
+      <section className="py-32 px-6 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-24">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white mb-6">Built for Industrial Scale</h2>
-            <p className="text-slate-500 dark:text-slate-400 font-medium text-lg">Standardized protocols for Indian tax laws, heavy manufacturing workflows, and cross-border supply chain logistics.</p>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((f, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-10 rounded-[48px] bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 hover:border-indigo-500/50 transition-all hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:bg-slate-900/60"
+                className="industrial-card p-10 bg-white dark:bg-slate-900 group"
               >
-                <div className="w-16 h-16 rounded-[24px] bg-indigo-500/10 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 mb-10 shadow-inner">
+                <div className="w-12 h-12 rounded-lg bg-blue-600/10 dark:bg-blue-600/10 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 mb-8 border border-blue-600/10">
                   {f.icon}
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">{f.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed font-medium group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">{f.desc}</p>
+                <h3 className="text-xl font-bold mb-4 tracking-tight">{f.title}</h3>
+                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-medium transition-colors">{f.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Footer / CTA */}
-      <footer className="py-24 px-6 border-t border-slate-200 dark:border-slate-800/50 bg-white dark:bg-slate-900/20">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <div className="text-center md:text-left">
-            <h3 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-white mb-1">PRO<span className="text-indigo-600">ERP</span></h3>
-            <p className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Enterprise Command Infrastructure</p>
+      {/* Footer */}
+      <footer className="py-20 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-slate-500 text-xs font-bold uppercase tracking-widest">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">
+              <FiLayers size={14} />
+            </div>
+            <span className="text-slate-900 dark:text-white">PRO<span className="text-blue-600">ERP</span></span>
           </div>
-          <div className="flex flex-wrap justify-center gap-10">
-            {['Platform', 'Revenue', 'Assets', 'Shop Floor'].map((link, j) => (
-              <Link 
-                key={j} 
-                href={`/${link.toLowerCase().replace(' ', '-')}`} 
-                className="text-sm font-black text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all uppercase tracking-widest"
-              >
-                {link}
-              </Link>
-            ))}
+          <div className="flex gap-10">
+            <span>Platform</span>
+            <span>Security</span>
+            <span>T&C</span>
           </div>
           <div className="text-center md:text-right">
-             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">© 2024 Omni Industrial Solutions Pvt Ltd</p>
-             <p className="text-[10px] font-black text-slate-300 dark:text-slate-700 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full mt-4">v2.4.0 INDUSTRIAL RELEASE</p>
+             <p>© 2024 Omni Industrial Solutions</p>
           </div>
         </div>
       </footer>
