@@ -2,29 +2,35 @@
 
 @layer theme {
   :root {
-    --background: #f8fafc;
-    --foreground: #0f172a;
+    --background: #fdfdfe;
+    --foreground: #020617;
     --primary: #4f46e5;
     --primary-foreground: #ffffff;
-    --sidebar-bg: #1e293b;
-    --sidebar-fg: #f1f5f9;
+    --sidebar-bg: #0f172a;
+    --sidebar-fg: #f8fafc;
     --card-bg: #ffffff;
     --card-border: #e2e8f0;
     --accent: #10b981;
-    --glass: rgba(255, 255, 255, 0.7);
+    --muted: #64748b;
+    --glass: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --ring: rgba(79, 70, 229, 0.1);
   }
 
   .dark {
-    --background: #0f172a;
-    --foreground: #f8fafc;
+    --background: #020408;
+    --foreground: #f1f5f9;
     --primary: #6366f1;
     --primary-foreground: #ffffff;
-    --sidebar-bg: #020617;
+    --sidebar-bg: #030712;
     --sidebar-fg: #f1f5f9;
-    --card-bg: #1e293b;
-    --card-border: #334155;
+    --card-bg: #0c1017;
+    --card-border: #1e293b;
     --accent: #22c55e;
-    --glass: rgba(15, 23, 42, 0.7);
+    --muted: #94a3b8;
+    --glass: rgba(3, 7, 18, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --ring: rgba(99, 102, 241, 0.1);
   }
 }
 
@@ -32,14 +38,16 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-font-smoothing: antialiased;
 }
 
 .glass-card {
   background: var(--glass);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
 }
 
 .premium-shadow {
@@ -47,5 +55,17 @@ body {
 }
 
 .sidebar-gradient {
-  background: linear-gradient(180deg, var(--sidebar-bg) 0%, #0f172a 100%);
+  background: linear-gradient(180deg, var(--sidebar-bg) 0%, #030712 100%);
+}
+
+.shadow-glow-indigo {
+  box-shadow: 0 0 20px -5px rgba(79, 70, 229, 0.3);
+}
+
+.shadow-glow-emerald {
+  box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.3);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

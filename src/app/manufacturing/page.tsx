@@ -1,164 +1,250 @@
 'use client'
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  FiSettings, FiCpu, FiAlertCircle, FiCheckCircle, 
-  FiClock, FiTruck, FiBox, FiTrendingUp 
+  FiCpu, FiActivity, FiLayers, FiAlertTriangle, 
+  FiClock, FiCheckCircle, FiPlay, FiSettings, FiBarChart2, FiX 
 } from 'react-icons/fi';
-import { 
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, 
-  ResponsiveContainer, AreaChart, Area, PieChart, Pie, Cell 
-} from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import CustomTooltip from '@/components/CustomTooltip';
 
-const productionData = [
-  { name: 'Unit A', current: 85, capacity: 100 },
-  { name: 'Unit B', current: 92, capacity: 100 },
-  { name: 'Unit C', current: 78, capacity: 100 },
-  { name: 'Unit D', current: 95, capacity: 100 },
-  { name: 'Unit E', current: 60, capacity: 100 },
-];
-
-const resourceEfficiency = [
-  { time: '08:00', value: 82 },
-  { time: '10:00', value: 88 },
-  { time: '12:00', value: 92 },
-  { time: '14:00', value: 85 },
-  { time: '16:00', value: 90 },
-  { time: '18:00', value: 94 },
-];
-
-const COLORS = ['#6366f1', '#10b981', '#f59e0b', '#ef4444'];
-
 const ManufacturingPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [productionLog] = useState([
+    { name: 'Unit A', output: 450, target: 500, quality: 98 },
+    { name: 'Unit B', output: 380, target: 400, quality: 95 },
+    { name: 'Unit C', output: 520, target: 500, quality: 99 },
+    { name: 'Unit D', output: 290, target: 350, quality: 92 },
+  ]);
+
+  const [jobs, setJobs] = useState([
+    { id: 'JOB-902', product: 'Engine Transmission Case', priority: 'High', progress: 65, startTime: '06:00 AM' },
+    { id: 'JOB-905', product: 'Turbine Blade Core', priority: 'Critical', progress: 40, startTime: '08:30 AM' },
+    { id: 'JOB-899', product: 'Alloy Wheel Hub', priority: 'Medium', progress: 100, startTime: 'Yesterday' },
+  ]);
+
+  const [newJob, setNewJob] = useState({ product: '', priority: 'Medium' });
+
+  const addJob = (e: React.FormEvent) => {
+    e.preventDefault();
+    const id = `JOB-${Math.floor(Math.random() * 900 + 100)}`;
+    setJobs([{ ...newJob, id, progress: 0, startTime: 'Just Now' }, ...jobs]);
+    setIsModalOpen(false);
+    setNewJob({ product: '', priority: 'Medium' });
+  };
+
+  const maintenanceSchedule = [
+    { machine: 'CNC Milling X1', status: 'Optimal', health: 94, nextService: '12 Days' },
+    { machine: 'Heavy Press P4', status: 'Warning', health: 68, nextService: '2 Days' },
+    { machine: 'Robotic Arm R2', status: 'Optimal', health: 98, nextService: '25 Days' },
+  ];
+
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0">
+      {/* Header */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Manufacturing Operations</h1>
-          <p className="text-slate-500 font-medium">Real-time production monitoring & floor management</p>
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Shop Floor Control</h1>
+          <p className="text-slate-500 font-medium tracking-tight mt-1">Enterprise manufacturing execution system (MES) & BOM management.</p>
         </div>
-        <div className="flex gap-2">
-          <button className="px-4 py-2 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-indigo-600/20 hover:bg-indigo-700 transition-all flex items-center gap-2">
-            <FiSettings /> Master Schedule
+        <div className="flex flex-wrap items-center gap-3">
+          <button className="px-5 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-xs font-bold hover:shadow-lg transition-all flex items-center gap-2 text-slate-700 dark:text-slate-200">
+            <FiBarChart2 /> Efficiency Audit
+          </button>
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="px-6 py-2.5 bg-indigo-600 text-white rounded-2xl text-xs font-bold shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all flex items-center gap-2"
+          >
+            <FiPlay /> Launch New Batch
           </button>
         </div>
       </div>
 
-      {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          { label: 'Active Lines', value: '18/20', icon: FiCpu, color: 'text-indigo-600', bg: 'bg-indigo-50' },
-          { label: 'Efficiency', value: '92.4%', icon: FiTrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-          { label: 'Down Time', value: '14m', icon: FiClock, color: 'text-amber-600', bg: 'bg-amber-50' },
-          { label: 'QC Passed', value: '99.1%', icon: FiCheckCircle, color: 'text-rose-600', bg: 'bg-rose-50' },
-        ].map((stat, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 premium-shadow"
-          >
-            <div className={`p-3 w-fit rounded-2xl ${stat.bg} mb-4`}>
-              <stat.icon className={`w-6 h-6 ${stat.color}`} />
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        {/* Production Throughput */}
+        <div className="xl:col-span-2 p-6 md:p-8 bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-xl font-black tracking-tight text-slate-900 dark:text-white">Unit Output Analytics</h3>
+            <div className="flex gap-4">
+              <span className="flex items-center gap-2 text-[10px] font-black text-slate-400 border border-slate-100 dark:border-slate-800 px-3 py-1.5 rounded-xl uppercase tracking-widest">Shift A (Morning)</span>
             </div>
-            <p className="text-sm font-medium text-slate-500 uppercase tracking-wider">{stat.label}</p>
-            <h3 className="text-2xl font-bold mt-1 tracking-tight">{stat.value}</h3>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Production Capacity */}
-        <div className="lg:col-span-2 p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
-          <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
-             Production Units Load
-          </h3>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={productionData}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b'}} />
-                <YAxis axisLine={false} tickLine={false} tick={{fill: '#64748b'}} />
-                <Tooltip content={<CustomTooltip />} cursor={{fill: '#f1f5f9'}} />
-                <Bar dataKey="current" fill="#4f46e5" radius={[6, 6, 0, 0]} barSize={40} />
+          </div>
+          <div className="h-[300px] w-full">
+            <ResponsiveContainer width="100%" height="100%" minHeight={0} minWidth={0}>
+              <BarChart data={productionLog}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fontSize: 10, fontWeight: 700, fill: '#94a3b8'}} />
+                <YAxis axisLine={false} tickLine={false} tick={{fontSize: 10, fontWeight: 700, fill: '#94a3b8'}} />
+                <Tooltip content={<CustomTooltip />} cursor={{fill: 'transparent'}} />
+                <Bar dataKey="output" radius={[12, 12, 0, 0]} barSize={40}>
+                  {productionLog.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={index % 2 === 0 ? '#6366f1' : '#10b981'} />
+                  ))}
+                </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        {/* Real-time Status */}
-        <div className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
-          <h3 className="text-lg font-bold mb-6">Line Announcements</h3>
-          <div className="space-y-4">
-            {[
-              { title: 'Maintenance Overdue', time: 'Line 04 - Unit C', icon: FiAlertCircle, color: 'text-amber-500' },
-              { title: 'Shift Handover Ready', time: 'All Units', icon: FiCheckCircle, color: 'text-emerald-500' },
-              { title: 'Material Low: Iron Ore', time: 'Inventory System', icon: FiTruck, color: 'text-indigo-500' },
-              { title: 'Production Goal Met', time: 'Line 12', icon: FiBox, color: 'text-rose-500' },
-            ].map((item, i) => (
-              <div key={i} className="flex gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50 transition-all hover:translate-x-1">
-                <item.icon className={`w-5 h-5 ${item.color} shrink-0 mt-1`} />
-                <div>
-                  <p className="text-sm font-bold">{item.title}</p>
-                  <p className="text-xs text-slate-500 mt-0.5">{item.time}</p>
+        {/* Machine Health Metrics */}
+        <div className="p-8 bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 shadow-sm">
+          <h3 className="text-xl font-black tracking-tight mb-8 text-slate-900 dark:text-white">Equipment Status</h3>
+          <div className="space-y-6">
+            {maintenanceSchedule.map((m, i) => (
+              <div key={i} className="p-5 rounded-3xl border border-slate-50 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all group">
+                <div className="flex justify-between items-center mb-4 text-slate-900 dark:text-slate-100">
+                  <h4 className="text-sm font-bold">{m.machine}</h4>
+                  <span className={`px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${m.status === 'Optimal' ? 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30' : 'bg-rose-100 text-rose-600 dark:bg-rose-900/30 animate-pulse'}`}>{m.status}</span>
+                </div>
+                <div className="flex justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  <span>Health Index: {m.health}%</span>
+                  <span>Service: {m.nextService}</span>
+                </div>
+                <div className="mt-4 h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    animate={{ width: `${m.health}%` }}
+                    transition={{ duration: 1.5, delay: i * 0.2 }}
+                    className={`h-full rounded-full ${m.health > 80 ? 'bg-emerald-500' : 'bg-rose-500'}`} 
+                  />
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      
-      {/* Detail Table */}
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-        <div className="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50/50">
-          <h3 className="text-lg font-bold">Active Jobs (Shop Floor)</h3>
-          <span className="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full uppercase tracking-tighter">Live Updates</span>
+
+      {/* Active Batches & Jobs */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 p-6 md:p-8 bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <h3 className="text-xl font-black tracking-tight mb-8 text-slate-900 dark:text-white">Active Work Orders</h3>
+          <div className="space-y-4">
+            {jobs.map((job, i) => (
+              <div key={job.id} className="flex flex-col md:flex-row gap-6 p-6 rounded-[32px] border border-slate-100 dark:border-slate-800 items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-all group text-slate-900 dark:text-slate-100">
+                <div className="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center text-indigo-600 font-black group-hover:scale-110 transition-transform">
+                  {job.id.split('-')[1]}
+                </div>
+                <div className="flex-1 text-center md:text-left overflow-hidden">
+                  <h4 className="text-sm font-bold truncate">{job.product}</h4>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">ID: {job.id} • Started: {job.startTime}</p>
+                </div>
+                <div className="w-full md:w-48 text-center">
+                  <div className="flex justify-between items-end mb-2">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Progress</span>
+                    <span className="text-xs font-black text-indigo-600">{job.progress}%</span>
+                  </div>
+                  <div className="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: `${job.progress}%` }}
+                      transition={{ duration: 1, delay: 0.1 }}
+                      className="h-full bg-indigo-600 rounded-full" 
+                    />
+                  </div>
+                </div>
+                <div className="text-right">
+                  <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest ${job.priority === 'Critical' ? 'bg-rose-500 text-white' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'}`}>
+                    {job.priority}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
-            <thead className="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
-              <tr>
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Job ID</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Project Name</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Line No.</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Progress</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Due In</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-              {[
-                { id: 'JOB-9921', name: 'Turbine Component X-1', line: 'L-04', progress: 75, due: '2h 15m', status: 'In Progress' },
-                { id: 'JOB-9925', name: 'Precision Gear Shaft', line: 'L-02', progress: 40, due: '5h 40m', status: 'Maintenance' },
-                { id: 'JOB-9930', name: 'Alloy Casting Batch B', line: 'L-09', progress: 95, due: '12m', status: 'Final Stage' },
-                { id: 'JOB-9932', name: 'Electric Motor Housing', line: 'L-01', progress: 10, due: '14h 20m', status: 'Starting' },
-              ].map((job, i) => (
-                <tr key={i} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/50 transition-colors group">
-                  <td className="px-6 py-4 text-sm font-bold text-indigo-600">{job.id}</td>
-                  <td className="px-6 py-4 text-sm font-medium">{job.name}</td>
-                  <td className="px-6 py-4 text-sm font-mono text-slate-500">{job.line}</td>
-                  <td className="px-6 py-4">
-                    <div className="w-32 bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-indigo-600 h-full rounded-full" style={{ width: `${job.progress}%` }} />
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-sm font-medium text-slate-500">{job.due}</td>
-                  <td className="px-6 py-4">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 group-hover:bg-white transition-colors">
-                      {job.status}
-                    </span>
-                  </td>
-                </tr>
+
+        <div className="p-8 bg-slate-900 rounded-[40px] text-white shadow-xl flex flex-col justify-between relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900 via-indigo-600 to-transparent opacity-80" />
+          <div className="relative">
+            <FiSettings className="mb-6 opacity-80" size={32} />
+            <h3 className="text-2xl font-black mb-2 tracking-tight">Bill of Materials (BOM)</h3>
+            <p className="text-indigo-100 font-medium opacity-80 text-[13px] leading-relaxed mb-10">Configure multi-level production recipes with real-time cost estimation and shrinkage calculation.</p>
+            <div className="space-y-3">
+              {['Cost Roll-up', 'Waste Prediction', 'Sub-Batch Logic'].map((feat, i) => (
+                <div key={i} className="flex items-center gap-3 text-xs font-bold text-emerald-400">
+                  <FiCheckCircle size={14} /> {feat}
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
+          <button className="w-full py-4 bg-white text-indigo-600 font-black rounded-2xl text-[10px] uppercase tracking-[0.2em] relative z-10 hover:bg-indigo-50 transition-all shadow-lg hover:scale-[1.02] active:scale-95 mt-8">
+            Manage BOM Master
+          </button>
         </div>
       </div>
+
+      {/* Launch Batch Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[40px] p-8 md:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl"
+            >
+              <div className="flex justify-between items-start mb-8">
+                <div>
+                  <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Launch Production Batch</h2>
+                  <p className="text-slate-500 font-medium text-xs mt-1 uppercase tracking-widest font-black">MES Dispatcher</p>
+                </div>
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors"
+                >
+                  <FiX size={24} />
+                </button>
+              </div>
+
+              <form onSubmit={addJob} className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Product Component</label>
+                  <input 
+                    required
+                    type="text" 
+                    placeholder="e.g. Turbine Impeller Unit" 
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/10 dark:text-white"
+                    value={newJob.product}
+                    onChange={(e) => setNewJob({...newJob, product: e.target.value})}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Dispatch Priority</label>
+                  <div className="flex gap-2">
+                    {['Medium', 'High', 'Critical'].map(p => (
+                      <button 
+                        key={p}
+                        type="button"
+                        onClick={() => setNewJob({...newJob, priority: p})}
+                        className={`flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+                          newJob.priority === p 
+                            ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' 
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
+                        }`}
+                      >
+                        {p}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <button type="submit" className="w-full mt-4 py-4 bg-indigo-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all hover:scale-[1.01]">
+                  Initialize Workflow
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
 export default ManufacturingPage;
+
