@@ -1,43 +1,40 @@
 @import "tailwindcss";
 
-@theme {
-  --color-blue-50: #f0f9ff;
-  --color-blue-100: #e0f2fe;
-  --color-blue-200: #bae6fd;
-  --color-blue-300: #7dd3fc;
-  --color-blue-400: #38bdf8;
-  --color-blue-500: #0ea5e9;
-  --color-blue-600: #0284c7;
-  --color-blue-700: #0369a1;
-  --color-blue-800: #075985;
-  --color-blue-900: #0c4a6e;
-  --color-blue-950: #082f49;
-
-  /* ERP Pro Theme Variables */
-  --background-start: #ffffff;
-  --background-end: #f8fafc;
-  --foreground: #0f172a;
-  --primary: #0284c7;
-  --primary-foreground: #ffffff;
-  --sidebar-bg: #ffffff;
-  --sidebar-fg: #1e293b;
-  --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --border-accent: #0ea5e9;
-  --accent: #38bdf8;
-  --muted: #64748b;
-  --glass: rgba(255, 255, 255, 0.9);
-  --glass-border: rgba(14, 165, 233, 0.15);
-  --ring: rgba(14, 165, 233, 0.1);
-  --radius-premium: 56px;
-  --radius-standard: 20px;
-  --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-}
-
 @layer base {
   :root {
-    /* Standard CSS Variable mappings to help linter */
-    --background: var(--background-start);
+    /* Standard CSS Custom Properties for Tailwind v4 Theme Tokens */
+    /* This notation is understood by both Tailwind v4 and the IDE's CSS validator */
+    --color-blue-50: #f0f9ff;
+    --color-blue-100: #e0f2fe;
+    --color-blue-200: #bae6fd;
+    --color-blue-300: #7dd3fc;
+    --color-blue-400: #38bdf8;
+    --color-blue-500: #0ea5e9;
+    --color-blue-600: #0284c7;
+    --color-blue-700: #0369a1;
+    --color-blue-800: #075985;
+    --color-blue-900: #0c4a6e;
+    --color-blue-950: #082f49;
+
+    /* ERP Pro Theme Core Variables */
+    --background-start: #ffffff;
+    --background-end: #f8fafc;
+    --foreground: #0f172a;
+    --primary: #0284c7;
+    --primary-foreground: #ffffff;
+    --sidebar-bg: #ffffff;
+    --sidebar-fg: #1e293b;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --border-accent: #0ea5e9;
+    --accent: #38bdf8;
+    --muted: #64748b;
+    --glass: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(14, 165, 233, 0.15);
+    --ring: rgba(14, 165, 233, 0.1);
+    --radius-premium: 56px;
+    --radius-standard: 20px;
+    --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
   }
 
   body {
@@ -55,7 +52,7 @@
 }
 
 @layer components {
-  /* Use standard CSS for these high-use utility components to reduce @apply linting noise */
+  /* Industrial Card Structure using Standard CSS */
   .industrial-card {
     background-color: white;
     border: 1px solid rgba(14, 165, 233, 0.15);
