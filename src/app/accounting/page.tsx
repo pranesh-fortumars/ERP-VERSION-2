@@ -3,16 +3,15 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  FiDollarSign, FiCreditCard, FiTrendingUp, FiArrowUpRight, FiArrowDownRight,
-  FiPlus, FiX, FiSearch, FiFilter, FiActivity, FiGlobe, FiLayers, FiBriefcase
+  FiPlus, FiX, FiSearch, FiFilter, FiActivity, FiGlobe, FiLayers, FiBriefcase, FiDownload, FiUpload, FiDollarSign, FiTrendingUp, FiArrowUpRight, FiArrowDownRight, FiCreditCard
 } from 'react-icons/fi';
 
 const AccountingPage = () => {
   const [transactions, setTransactions] = useState([
-    { id: 'TXN-901', description: 'Vendor Payment: Node Steel Corp', amount: '₹1,24,000', type: 'Debit', status: 'Cleared', date: '2024-03-31' },
-    { id: 'TXN-842', description: 'Inward Credit: Reliance Logistics Node', amount: '₹4,50,000', type: 'Credit', status: 'Cleared', date: '2024-03-30' },
-    { id: 'TXN-715', description: 'Utility Node Cluster 7A Subscription', amount: '₹12,400', type: 'Debit', status: 'Pending', date: '2024-03-29' },
-    { id: 'TXN-650', description: 'Corporate Tax Settlement Q1', amount: '₹15,00,000', type: 'Debit', status: 'Reviewing', date: '2024-03-28' }
+    { id: 'TXN-901', description: 'Vendor Payment: Node Steel Corp', amount: '₹1,24,000', type: 'Debit', status: 'Cleared', date: '2024-03-31', time: '14:20' },
+    { id: 'TXN-842', description: 'Inward Credit: Reliance Logistics Node', amount: '₹4,50,000', type: 'Credit', status: 'Cleared', date: '2024-03-30', time: '09:15' },
+    { id: 'TXN-715', description: 'Utility Node Cluster 7A Subscription', amount: '₹12,400', type: 'Debit', status: 'Pending', date: '2024-03-29', time: '11:45' },
+    { id: 'TXN-650', description: 'Corporate Tax Settlement Q1', amount: '₹15,00,000', type: 'Debit', status: 'Reviewing', date: '2024-03-28', time: '16:30' }
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -36,7 +35,8 @@ const AccountingPage = () => {
   const addTransaction = (e: React.FormEvent) => {
     e.preventDefault();
     const id = `TXN-${Math.floor(Math.random() * 900 + 100)}`;
-    setTransactions([{ id, ...newTxn, date: new Date().toISOString().split('T')[0] }, ...transactions]);
+    const time = new Date().toLocaleTimeString('en-GB', { hour12: false });
+    setTransactions([{ id, ...newTxn, date: new Date().toISOString().split('T')[0], time }, ...transactions]);
     setIsModalOpen(false);
     setNewTxn({ description: '', amount: '', type: 'Debit', status: 'Pending' });
   };
@@ -54,10 +54,16 @@ const AccountingPage = () => {
             <FiCreditCard className="text-blue-500" /> Real-time Capital Flux & Operational Accounting
           </p>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiUpload /> Ledger Sync
+           </button>
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiDownload /> Tax Export
+           </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-8 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-10 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Record Flux
            </button>

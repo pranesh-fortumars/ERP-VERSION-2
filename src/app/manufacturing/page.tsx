@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiCpu, FiActivity, FiSettings, FiTool, FiCheckCircle, FiAlertCircle, 
-  FiArrowRight, FiPlay, FiBox, FiClock, FiShield, FiPlus, FiX, FiLayers
+  FiArrowRight, FiPlay, FiBox, FiClock, FiShield, FiPlus, FiX, FiLayers, FiDownload, FiUpload
 } from 'react-icons/fi';
 
 const ManufacturingPage = () => {
@@ -44,16 +44,19 @@ const ManufacturingPage = () => {
             <FiActivity className="text-blue-500" /> Real-time OEE & Neural Production Analytics
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-2 text-slate-600 shadow-sm">
-             Control Panel
-          </button>
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="px-8 py-2.5 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl shadow-blue-600/30 active:scale-95 transition-all flex items-center gap-2"
-          >
-            <FiPlus /> New Work Order
-          </button>
+        <div className="flex flex-wrap items-center gap-4">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiUpload /> Floor Sync
+           </button>
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiDownload /> Audit Export
+           </button>
+           <button 
+             onClick={() => setIsModalOpen(true)}
+             className="px-10 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+           >
+             <FiPlus /> New Work Order
+           </button>
         </div>
       </div>
 

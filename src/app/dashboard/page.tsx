@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiActivity, FiBox, FiUsers, FiDollarSign, 
   FiTrendingUp, FiArrowUpRight, FiArrowDownRight,
-  FiZap, FiServer, FiShield, FiCpu, FiGlobe, FiTarget, FiAlertTriangle, FiCheckCircle, FiPlus, FiX
+  FiZap, FiServer, FiShield, FiCpu, FiGlobe, FiTarget, FiAlertTriangle, FiCheckCircle, FiPlus, FiX, FiDownload
 } from 'react-icons/fi';
 import { 
   AreaChart, Area, XAxis, YAxis, 
@@ -15,12 +15,14 @@ import CustomTooltip from '@/components/CustomTooltip';
 
 const DashboardPage = () => {
   const [incidents, setIncidents] = useState([
-    { id: 'INC-901', type: 'Production Latency', severity: 'High', status: 'Reviewing' },
-    { id: 'INC-842', type: 'Quality Deviation', severity: 'Med', status: 'Logged' },
-    { id: 'INC-715', type: 'Node Desync', severity: 'Low', status: 'Resolved' }
+    { id: 'INC-901', type: 'Production Latency', severity: 'High', status: 'Reviewing', time: '14:20:01' },
+    { id: 'INC-842', type: 'Quality Deviation', severity: 'Med', status: 'Logged', time: '13:45:12' },
+    { id: 'INC-715', type: 'Node Desync', severity: 'Low', status: 'Resolved', time: '10:12:45' }
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAuditOpen, setIsAuditOpen] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const [newIncident, setNewIncident] = useState({ type: '', severity: 'Low', node: 'Unit-7A' });
 
   const stats = [
@@ -40,10 +42,19 @@ const DashboardPage = () => {
     { name: 'Sun', revenue: 3490, production: 4300, efficiency: 74 },
   ];
 
+  const handleExport = () => {
+    setIsExporting(true);
+    setTimeout(() => {
+      setIsExporting(false);
+      alert('PRODUCTION PROTOCOL: Enterprise State PDF generated. Shared to secure cloud archival.');
+    }, 2000);
+  };
+
   const handleAddIncident = (e: React.FormEvent) => {
     e.preventDefault();
     const id = `INC-${Math.floor(Math.random() * 900 + 100)}`;
-    setIncidents([{ id, ...newIncident, status: 'Logged' }, ...incidents]);
+    const time = new Date().toLocaleTimeString('en-GB', { hour12: false });
+    setIncidents([{ id, ...newIncident, status: 'Logged', time }, ...incidents]);
     setIsModalOpen(false);
     setNewIncident({ type: '', severity: 'Low', node: 'Unit-7A' });
   };
@@ -53,187 +64,177 @@ const DashboardPage = () => {
       {/* Professional Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
         <div>
-          <h1 className="text-3xl font-black tracking-tight text-slate-900 uppercase">Command Center</h1>
-          <p className="text-slate-500 text-sm font-bold mt-1 flex items-center gap-2">
-            <FiGlobe className="text-blue-600" /> Real-time Enterprise Telemetry • Node Cluster Alpha
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100 font-black">
+            <FiGlobe className="animate-spin-slow" /> Global Command Infrastructure Alpha-9
+          </div>
+          <h1 className="text-4xl font-black tracking-tighter text-slate-900 uppercase leading-none">Enterprise Matrix</h1>
+          <p className="text-slate-500 font-bold text-sm mt-3 flex items-center gap-2">
+            <FiActivity className="text-blue-600" /> Real-time Node Telemetry & Orchestration Dashboard
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="bg-white border border-slate-200 text-[10px] font-black uppercase tracking-widest px-6 py-2.5 rounded-lg hover:bg-slate-50 transition-all">
-            Audit Logs
-          </button>
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="bg-blue-600 text-white px-8 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-lg shadow-blue-600/20 active:scale-95 transition-all flex items-center gap-2"
-          >
-            <FiPlus /> Log Incident
-          </button>
+        <div className="flex flex-wrap items-center gap-4">
+           <button 
+             onClick={() => setIsAuditOpen(true)}
+             className="bg-white border border-slate-200 text-[10px] font-black uppercase tracking-widest px-6 py-3.5 rounded-2xl hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
+           >
+             <FiServer size={14} /> Audit Engine
+           </button>
+           <button 
+             onClick={handleExport}
+             disabled={isExporting}
+             className="bg-white border border-slate-200 text-[10px] font-black uppercase tracking-widest px-6 py-3.5 rounded-2xl hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
+           >
+             {isExporting ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiDownload />} {isExporting ? 'Generating...' : 'PDF Export'}
+           </button>
+           <button 
+             onClick={() => setIsModalOpen(true)}
+             className="bg-blue-600 text-white px-10 py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+           >
+             <FiPlus /> Log Incident
+           </button>
         </div>
       </div>
 
-      {/* Tighter Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat, i) => (
-          <div
-            key={i}
-            className="industrial-card p-6 flex flex-col justify-between"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <div className={`p-3 rounded-lg ${
-                stat.color === 'blue' ? 'bg-blue-600/10 text-blue-600' :
-                stat.color === 'emerald' ? 'bg-emerald-600/10 text-emerald-600' :
-                stat.color === 'rose' ? 'bg-rose-600/10 text-rose-600' :
-                'bg-amber-600/10 text-amber-600'
-              }`}>
-                {stat.icon}
-              </div>
-              <div className={`flex items-center gap-1 text-[10px] font-black px-2 py-1 rounded shadow-sm ${
-                stat.isUp ? 'bg-emerald-500/10 text-emerald-600' : 'bg-rose-500/10 text-rose-600'
-              }`}>
-                {stat.isUp ? <FiArrowUpRight /> : <FiArrowDownRight />} {stat.change}
-              </div>
-            </div>
-            <div>
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{stat.label}</p>
-              <h3 className="text-2xl font-black text-slate-900 tracking-tight leading-none">{stat.value}</h3>
-            </div>
+          <div key={i} className="industrial-card p-10 flex flex-col justify-between bg-white border border-slate-100 shadow-sm rounded-[48px] hover:shadow-2xl transition-all duration-700 relative overflow-hidden group">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
+             <div className="flex justify-between items-start mb-10 relative z-10">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-xl group-hover:rotate-12 transition-transform text-2xl ${
+                  stat.color === 'blue' ? 'bg-blue-600 shadow-blue-600/20' :
+                  stat.color === 'emerald' ? 'bg-emerald-600 shadow-emerald-600/20' :
+                  stat.color === 'rose' ? 'bg-rose-600 shadow-rose-600/20' :
+                  'bg-amber-600 shadow-amber-600/20'
+                }`}>
+                   {stat.icon}
+                </div>
+                <div className={`flex items-center gap-1 text-[10px] font-black px-3 py-1.5 rounded-xl shadow-sm border ${
+                  stat.isUp ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 'bg-rose-50 text-rose-600 border-rose-100'
+                }`}>
+                  {stat.isUp ? <FiArrowUpRight /> : <FiArrowDownRight />} {stat.change}
+                </div>
+             </div>
+             <div className="relative z-10">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{stat.label}</p>
+                <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
+             </div>
           </div>
         ))}
       </div>
 
-      {/* Geometric Analytics Hub */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 industrial-card p-8 flex flex-col relative overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 industrial-card p-10 flex flex-col relative overflow-hidden bg-white border border-slate-100 shadow-sm rounded-[56px]">
            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-[0.03] rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
-          <div className="flex items-center justify-between mb-10 relative z-10">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 relative z-10 gap-6">
             <div>
-              <h3 className="text-lg font-bold text-slate-900 uppercase tracking-tight">Throughput Intelligence</h3>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Operational Flux Monitoring</p>
+              <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter italic">Throughput Intelligence</h3>
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Operational Flux Monitoring</p>
             </div>
-            <div className="flex gap-2">
-               {['Revenue', 'Volume'].map((m, i) => (
-                 <button key={i} className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-xl transition-all ${i === 0 ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white text-slate-400 border border-slate-200 hover:bg-slate-50'}`}>
+            <div className="flex gap-3">
+               {['Revenue Flux', 'Batch Yield'].map((m, i) => (
+                 <button key={i} className={`text-[9px] font-black uppercase tracking-widest px-6 py-2.5 rounded-2xl transition-all ${i === 0 ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-50 text-slate-400 border border-slate-100 hover:bg-white'}`}>
                    {m}
                  </button>
                ))}
             </div>
           </div>
-          <div className="h-[350px] w-full flex-1 relative z-10">
+          <div className="h-[400px] w-full flex-1 relative z-10">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={chartData}>
                 <defs>
-                  <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#2563eb" stopOpacity={0.2}/>
-                    <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
-                  </linearGradient>
-                  <linearGradient id="colorProd" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.2}/>
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
-                  </linearGradient>
-                  <linearGradient id="colorEff" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.1}/>
-                    <stop offset="95%" stopColor="#f59e0b" stopOpacity={0}/>
-                  </linearGradient>
+                   {/* ... gradients ... */}
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" className="dark:stroke-slate-200" opacity={0.3} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" opacity={0.5} />
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#64748b', fontWeight: 900 }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#64748b', fontWeight: 900 }} />
+                <YAxis hide />
                 <Tooltip content={<CustomTooltip />} />
-                <Area type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" name="Revenue Flux" />
-                <Area type="monotone" dataKey="production" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorProd)" name="Batch Yield" />
-                <Line type="monotone" dataKey="efficiency" stroke="#f59e0b" strokeWidth={2} dot={{ stroke: '#f59e0b', strokeWidth: 2, r: 4, fill: '#fff' }} name="OEE Vector" />
+                <Area type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={4} fillOpacity={0.1} fill="#2563eb" name="Revenue Flux" />
+                <Area type="monotone" dataKey="production" stroke="#10b981" strokeWidth={4} fillOpacity={0.1} fill="#10b981" name="Batch Yield" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          <div className="industrial-card p-8 bg-blue-600 text-white flex-1 flex flex-col justify-between relative overflow-hidden group shadow-xl">
-            <div className="absolute inset-0 bg-white opacity-[0.05] pointer-events-none grid-dots" />
-            <div className="relative z-10">
-              <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur">
-                <FiZap size={24} />
+        <div className="flex flex-col gap-8">
+           <div className="industrial-card p-10 bg-blue-600 text-white flex-1 flex flex-col justify-between relative overflow-hidden group shadow-2xl rounded-[56px]">
+              <div className="absolute inset-0 bg-white opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
+              <div className="relative z-10">
+                 <div className="w-16 h-16 bg-white/10 rounded-[28px] border border-white/20 flex items-center justify-center mb-8 backdrop-blur shadow-2xl">
+                    <FiZap size={28} />
+                 </div>
+                 <h3 className="text-3xl font-black tracking-tighter mb-4 uppercase italic">System Health</h3>
+                 <p className="text-blue-50 text-sm font-medium leading-relaxed">Infrastructure status is currently <span className="text-white font-black underline decoration-blue-400 underline-offset-4">Optimal</span> across all nodes.</p>
               </div>
-              <h3 className="text-xl font-black tracking-tight mb-2 uppercase italic">System Health</h3>
-              <p className="text-white text-xs font-medium leading-relaxed">Infrastructure status is currently optimal across all nodes.</p>
-            </div>
-            <div className="pt-8 border-t border-white/10 flex items-end justify-between relative z-10">
-              <div>
-                <p className="text-[9px] font-black text-white/50 uppercase tracking-[0.3em] mb-1">Utilization</p>
-                <p className="text-4xl font-black tracking-tighter">92.4%</p>
+              <div className="pt-10 border-t border-white/10 flex items-end justify-between relative z-10">
+                 <div>
+                    <p className="text-[10px] font-black text-blue-200 uppercase tracking-[0.3em] mb-2">Cluster Util</p>
+                    <p className="text-5xl font-black tracking-tighter italic">92.4%</p>
+                 </div>
+                 <div className="w-16 h-16 rounded-full border-4 border-white/10 border-t-white animate-spin shadow-2xl" />
               </div>
-              <div className="w-14 h-14 rounded-full border-4 border-white/20 border-t-white animate-spin shadow-2xl" />
-            </div>
-          </div>
+           </div>
 
-          <div className="industrial-card p-8">
-            <h3 className="text-[11px] font-black text-slate-900 dark:text-blue-600 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-              <FiShield /> Security Perimeter
-            </h3>
-            <div className="space-y-5">
-              {[
-                { label: 'Gateway Firewall', status: 'Active', color: 'emerald' },
-                { label: 'Cloud Relays', status: 'Optimal', color: 'blue' },
-                { label: 'BPA Engines', status: 'Scaling', color: 'amber' }
-              ].map((item, i) => (
-                <div key={i} className="flex items-center justify-between">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{item.label}</span>
-                  <span className={`text-[9px] font-black uppercase px-3 py-1 rounded-full border shadow-sm ${
-                    item.color === 'emerald' ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/10' :
-                    item.color === 'blue' ? 'bg-blue-500/10 text-blue-600 border-blue-500/10' :
-                    'bg-amber-500/10 text-amber-600 border-amber-500/10'
-                  }`}>{item.status}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+           <div className="industrial-card p-10 bg-white border border-slate-100 shadow-sm rounded-[48px]">
+              <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
+                 <FiShield className="text-blue-600" /> Security Perimeter
+              </h3>
+              <div className="space-y-6">
+                 {[
+                   { label: 'Gateway Firewall', status: 'Active', color: 'emerald' },
+                   { label: 'Cloud Relays', status: 'Optimal', color: 'blue' },
+                   { label: 'BPA Engines', status: 'Scaling', color: 'amber' }
+                 ].map((item, i) => (
+                   <div key={i} className="flex items-center justify-between group">
+                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{item.label}</span>
+                     <span className={`text-[9px] font-black uppercase px-4 py-1.5 rounded-xl border shadow-sm ${
+                       item.color === 'emerald' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
+                       item.color === 'blue' ? 'bg-blue-50 text-blue-600 border-blue-100' :
+                       'bg-amber-50 text-amber-600 border-amber-100'
+                     }`}>{item.status}</span>
+                   </div>
+                 ))}
+              </div>
+           </div>
         </div>
       </div>
 
-      {/* Incident Ledger */}
-      <div className="industrial-card overflow-hidden">
-        <div className="p-8 border-b border-slate-100 bg-slate-50/20 flex items-center justify-between">
-          <div>
-            <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-900">Incident Tracking Ledger</h3>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Real-time Node Telemetry</p>
-          </div>
-          <span className="text-[10px] font-black text-blue-600 bg-blue-600/10 px-4 py-1.5 rounded-xl border border-blue-500/10 uppercase tracking-widest">
-            {incidents.filter(i => i.status !== 'Resolved').length} Pending Execution
-          </span>
+      <div className="industrial-card flex flex-col bg-white border border-slate-100 shadow-sm rounded-[48px] overflow-hidden">
+        <div className="p-10 border-b border-slate-50 flex flex-col md:flex-row justify-between items-center gap-10 bg-slate-50/20">
+           <div>
+              <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter italic">Incident Tracking Ledger</h3>
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Real-time Node Telemetry Log</p>
+           </div>
+           <span className="text-[10px] font-black text-white bg-slate-900 px-6 py-2.5 rounded-2xl uppercase tracking-widest">
+              {incidents.filter(i => i.status !== 'Resolved').length} Pending Vectors
+           </span>
         </div>
-        <div className="divide-y divide-slate-100 dark:divide-slate-200/5">
-          <AnimatePresence mode="popLayout">
-            {incidents.map((inc, j) => (
-              <motion.div 
-                layout
-                key={inc.id} 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="p-6 flex items-center justify-between data-table-row group cursor-pointer"
-              >
-                <div className="flex items-center gap-6">
-                  <div className={`w-3 h-3 rounded-full shadow-lg ${
-                    inc.severity === 'High' ? 'bg-rose-500 shadow-rose-500/20' : 
-                    inc.severity === 'Med' ? 'bg-amber-500 shadow-amber-500/20' : 
-                    'bg-blue-600 shadow-blue-500/20'
-                  }`} />
-                  <div>
-                    <p className="text-sm font-black text-slate-900 group-hover:text-blue-600 transition-colors uppercase tracking-tight">{inc.type}</p>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{inc.id} • Unit-7A</p>
-                  </div>
-                </div>
+        <div className="divide-y divide-slate-50">
+           {incidents.map((inc) => (
+             <div key={inc.id} className="p-8 flex items-center justify-between hover:bg-slate-50/50 transition-all cursor-pointer group">
                 <div className="flex items-center gap-8">
-                  <div className="text-right hidden md:block">
-                     <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Severity</p>
-                     <p className={`text-[10px] font-black uppercase ${inc.severity === 'High' ? 'text-rose-600' : 'text-slate-600'}`}>{inc.severity}</p>
-                  </div>
-                  <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] bg-slate-100 px-4 py-1.5 rounded-lg border border-black/5">
-                    {inc.status}
-                  </span>
+                   <div className={`w-3 h-3 rounded-full shadow-[0_0_15px] ${
+                     inc.severity === 'High' ? 'bg-rose-500 shadow-rose-500' : 
+                     inc.severity === 'Med' ? 'bg-amber-500 shadow-amber-500' : 
+                     'bg-blue-600 shadow-blue-600'
+                   }`} />
+                   <div>
+                      <p className="text-sm font-black text-slate-900 uppercase tracking-tight group-hover:text-blue-600 transition-colors">{inc.type}</p>
+                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">{inc.id} • {inc.time}</p>
+                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                <div className="flex items-center gap-10">
+                   <div className="text-right hidden md:block">
+                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Severity</p>
+                      <p className={`text-[10px] font-black uppercase ${inc.severity === 'High' ? 'text-rose-600' : 'text-slate-600'}`}>{inc.severity}</p>
+                   </div>
+                   <span className={`px-6 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border border-slate-100 ${
+                     inc.status === 'Resolved' ? 'bg-emerald-50 text-emerald-600' : 'bg-white text-slate-600'
+                   }`}>
+                      {inc.status}
+                   </span>
+                </div>
+             </div>
+           ))}
         </div>
       </div>
 
@@ -246,69 +247,84 @@ const DashboardPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-white/40 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg bg-white rounded-[48px] p-12 border border-blue-500/20 shadow-2xl"
+              className="relative w-full max-w-xl bg-white rounded-[56px] p-12 border border-blue-500/20 shadow-3xl overflow-hidden"
             >
-              <div className="flex justify-between items-start mb-10">
+              <div className="absolute top-0 left-0 w-full h-2 bg-blue-600" />
+              <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase">Log Global Incident</h2>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Log Global Incident</h2>
                   <p className="text-[10px] font-black text-slate-400 mt-2 uppercase tracking-[0.3em]">Critical Infrastructure Telemetry</p>
                 </div>
-                <button 
-                  onClick={() => setIsModalOpen(false)}
-                  className="p-3 hover:bg-slate-100 rounded-2xl transition-all"
-                >
-                  <FiX size={24} />
-                </button>
+                <button onClick={() => setIsModalOpen(false)} className="p-4 hover:bg-slate-50 rounded-2xl transition-all"><FiX size={24} /></button>
               </div>
 
-              <form onSubmit={handleAddIncident} className="space-y-8">
-                <div className="space-y-3">
+              <form onSubmit={handleAddIncident} className="space-y-10">
+                <div className="space-y-4">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Incident Classification</label>
-                  <input 
-                    required
-                    type="text" 
-                    placeholder="e.g. Node Cluster Desync" 
-                    className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10"
-                    value={newIncident.type}
-                    onChange={(e) => setNewIncident({...newIncident, type: e.target.value})}
-                  />
+                  <input required type="text" placeholder="e.g. Node Cluster Desync" className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900" 
+                         value={newIncident.type} onChange={(e) => setNewIncident({...newIncident, type: e.target.value})} />
                 </div>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="space-y-4">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Severity Vector</label>
-                    <select 
-                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 appearance-none"
-                      value={newIncident.severity}
-                      onChange={(e) => setNewIncident({...newIncident, severity: e.target.value})}
-                    >
+                    <select className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900 appearance-none"
+                            value={newIncident.severity} onChange={(e) => setNewIncident({...newIncident, severity: e.target.value})}>
                       <option>Low</option>
                       <option>Med</option>
                       <option>High</option>
-                      <option>Critical</option>
                     </select>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Origin Node</label>
-                    <input 
-                      required
-                      type="text" 
-                      placeholder="e.g. Unit-7A" 
-                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10"
-                      value={newIncident.node}
-                      onChange={(e) => setNewIncident({...newIncident, node: e.target.value})}
-                    />
+                    <input required type="text" placeholder="e.g. Unit-7A" className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900"
+                           value={newIncident.node} onChange={(e) => setNewIncident({...newIncident, node: e.target.value})} />
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
-                  <FiAlertTriangle /> Commit Incident to Discovery Hub
+                <button type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[32px] font-black text-xs uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
+                   <FiAlertTriangle /> Commit Incident to discovery hub
                 </button>
               </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Audit Modal */}
+      <AnimatePresence>
+        {isAuditOpen && (
+          <div className="fixed inset-0 z-[110] flex items-center justify-end p-0 md:p-6">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsAuditOpen(false)} className="absolute inset-0 bg-slate-900/60 backdrop-blur-md" />
+            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25, stiffness: 200 }} className="relative w-full max-w-2xl h-full md:h-[calc(100vh-3rem)] bg-white rounded-none md:rounded-[56px] p-12 border-l border-slate-200 shadow-3xl overflow-y-auto no-scrollbar">
+              <div className="flex justify-between items-start mb-12">
+                <div>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Audit Engine</h2>
+                  <p className="text-[10px] font-black text-slate-400 mt-2 uppercase tracking-[0.3em]">System Identity & Access Logs</p>
+                </div>
+                <button onClick={() => setIsAuditOpen(false)} className="p-4 hover:bg-slate-50 rounded-2xl transition-all"><FiX size={28} /></button>
+              </div>
+              <div className="space-y-8">
+                 {[1,2,3,4,5,6].map((log) => (
+                   <div key={log} className="p-8 bg-slate-50 rounded-[40px] border border-transparent hover:border-blue-600/10 transition-all group">
+                      <div className="flex items-center justify-between mb-6">
+                         <div className="flex items-center gap-3">
+                            <FiShield className="text-blue-600" size={20} />
+                            <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Access Authorized</span>
+                         </div>
+                         <span className="text-[9px] font-bold text-slate-400">14:02:{10+log} AM</span>
+                      </div>
+                      <p className="text-xs font-bold text-slate-600 leading-relaxed uppercase tracking-tight">
+                         User <span className="text-blue-600">Admin_Root</span> initiated metadata sync for Node cluster {log}A. Security check: <span className="text-emerald-500 underline decoration-emerald-200">Passed</span>.
+                      </p>
+                   </div>
+                 ))}
+              </div>
+              <button className="w-full mt-12 py-7 bg-slate-900 text-white rounded-[40px] font-black text-[10px] uppercase tracking-[0.4em] hover:bg-black transition-all shadow-2xl">Download Full Audit Trail</button>
             </motion.div>
           </div>
         )}
@@ -318,4 +334,3 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
-

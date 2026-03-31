@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSearch, FiX, FiFilter, FiPlus, FiPhone, FiMail, FiMapPin, FiBriefcase, FiCreditCard, FiUsers, FiActivity, FiGlobe, FiLayers } from 'react-icons/fi';
+import { FiFileText, FiBarChart2, FiPieChart, FiChevronDown, FiDownload, FiArrowUpRight, FiSearch, FiPlus, FiX, FiLayers, FiUpload, FiPhone, FiMail, FiMapPin, FiBriefcase, FiCreditCard, FiUsers, FiActivity, FiGlobe } from 'react-icons/fi';
 
 const initialCustomers = [
   { 
@@ -121,13 +121,16 @@ const CustomersPage = () => {
             <FiUsers className="text-blue-500" /> CRM Infrastructure & Strategic Partner Lifecycle Management
           </p>
         </div>
-        <div className="flex gap-4">
-           <button className="padding-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 shadow-sm px-6">
-             Audit Reports
+        <div className="flex flex-wrap items-center gap-4">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiUpload /> Batch Upload
+           </button>
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiDownload /> Audit Export
            </button>
            <button 
             onClick={() => setIsModalOpen(true)}
-            className="px-8 py-2.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 active:scale-95"
+            className="px-10 py-3 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 active:scale-95"
           >
             <FiPlus className="w-4 h-4" /> Register Identity
           </button>

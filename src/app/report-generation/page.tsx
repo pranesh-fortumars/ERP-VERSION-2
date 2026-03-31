@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiFileText, FiBarChart2, FiPieChart, FiChevronDown, FiDownload, FiArrowUpRight, FiSearch, FiPlus, FiX, FiLayers } from 'react-icons/fi';
+import { FiFileText, FiBarChart2, FiPieChart, FiChevronDown, FiDownload, FiArrowUpRight, FiSearch, FiPlus, FiX, FiLayers, FiUpload } from 'react-icons/fi';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area } from 'recharts';
 
 const ReportGenerationPage = () => {
@@ -62,23 +62,31 @@ const ReportGenerationPage = () => {
         </div>
         <div className="flex flex-wrap items-center gap-4">
            <button 
+             onClick={startGeneration}
+             disabled={isGenerating}
+             className="px-8 py-3 bg-white border border-slate-200 rounded-2xl text-[10px] font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:shadow-lg active:scale-95"
+           >
+             {isGenerating ? <div className="w-4 h-4 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isGenerating ? 'Archiving...' : 'Metadata Import'}
+           </button>
+           <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:shadow-lg active:scale-95"
+             className="px-6 py-3 bg-white border border-slate-200 rounded-2xl text-[10px] font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:shadow-lg active:scale-95"
            >
             <FiPlus /> Register Template
           </button>
           <button 
             onClick={startGeneration}
-            className="px-8 py-2.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 uppercase tracking-[0.3em] relative overflow-hidden active:scale-95"
+            disabled={isGenerating}
+            className="px-10 py-3 bg-blue-600 text-white rounded-2xl text-[10px] font-black shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-3 uppercase tracking-[0.3em] relative overflow-hidden active:scale-95"
           >
             <AnimatePresence mode="wait">
               {isGenerating ? (
-                <motion.span key="gen" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ y: -20 }} className="flex items-center gap-2">
+                <motion.span key="gen" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ y: -20 }} className="flex items-center gap-3">
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Compiling...
                 </motion.span>
               ) : (
-                <motion.span key="idle" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ y: -20 }} className="flex items-center gap-2">
-                  <FiFileText /> Generate Report
+                <motion.span key="idle" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ y: -20 }} className="flex items-center gap-3">
+                  <FiFileText size={16} /> Generate Report
                 </motion.span>
               )}
             </AnimatePresence>
@@ -223,16 +231,16 @@ const ReportGenerationPage = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-[48px] p-10 flex flex-col justify-center text-center relative overflow-hidden group">
-                 <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-700" />
-                 <div className="w-20 h-20 bg-slate-50 rounded-[32px] flex items-center justify-center mx-auto mb-8 text-blue-500 shadow-2xl relative z-10 border border-slate-100">
-                    <FiDownload size={32} />
+              <div className="bg-white border border-slate-100 rounded-[48px] p-12 flex flex-col justify-center text-center relative overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-700">
+                 <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700" />
+                 <div className="w-24 h-24 bg-blue-50 rounded-[36px] flex items-center justify-center mx-auto mb-10 text-blue-600 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 border border-blue-100">
+                    <FiDownload size={36} />
                  </div>
-                 <h4 className="text-xl font-black text-white mb-3 relative z-10 uppercase tracking-tighter italic">Automated Archival</h4>
-                 <p className="text-xs font-bold text-slate-500 leading-relaxed max-w-[220px] mx-auto mb-10 relative z-10 uppercase tracking-tight">
-                   Enable scheduled delivery of analytical clusters to stakeholders.
+                 <h4 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tighter leading-none italic">Automated Archival</h4>
+                 <p className="text-xs font-bold text-slate-400 leading-relaxed max-w-[240px] mx-auto mb-12 uppercase tracking-widest">
+                   Enable scheduled delivery of <span className="text-blue-600">Encrypted Analytical Clusters</span> to authorized stakeholders.
                  </p>
-                 <button className="relative z-10 py-5 bg-white text-slate-900 rounded-3xl text-[10px] font-black uppercase tracking-[0.4em] hover:scale-105 transition-all shadow-xl active:scale-95 mx-auto px-12">
+                 <button className="py-6 bg-blue-600 text-white rounded-[32px] text-[10px] font-black uppercase tracking-[0.4em] hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-95 mx-auto px-16">
                    Configure cron
                  </button>
               </div>

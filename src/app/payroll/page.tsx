@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiSettings, FiUsers, FiCreditCard, FiZap, FiPlus, FiX, 
-  FiSearch, FiFilter, FiActivity, FiGlobe, FiDatabase, FiClock
+  FiSearch, FiFilter, FiActivity, FiGlobe, FiDatabase, FiClock, FiDownload, FiUpload
 } from 'react-icons/fi';
 
 const PayrollPage = () => {
@@ -54,10 +54,16 @@ const PayrollPage = () => {
             <FiSettings className="text-blue-500" /> Automated Human Capital Resource Allocation
           </p>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiUpload /> Ledger Sync
+           </button>
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiDownload /> Audit Export
+           </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-8 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-10 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Register Contributor
            </button>

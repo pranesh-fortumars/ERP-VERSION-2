@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiPlus, FiFilter, FiX, FiSearch, FiFileText, FiDownload, FiDollarSign, FiClock, FiCheckCircle, FiAlertCircle, FiShield, FiPercent, FiLayers } from 'react-icons/fi';
+import { FiPlus, FiFilter, FiX, FiSearch, FiFileText, FiDownload, FiDollarSign, FiClock, FiCheckCircle, FiAlertCircle, FiShield, FiPercent, FiLayers, FiUpload } from 'react-icons/fi';
 import CustomTooltip from '@/components/CustomTooltip';
 
 const initialInvoices = [
@@ -67,15 +67,18 @@ const BillingPage = () => {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
-          <button className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 text-slate-600 hover:shadow-lg transition-all active:scale-95 shadow-sm flex items-center gap-2">
-            <FiDownload /> Tax Ledger
-          </button>
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="px-8 py-2.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 active:scale-95"
-          >
-            <FiPlus className="w-4 h-4" /> Dispatch Invoice
-          </button>
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiUpload /> Ledger Sync
+           </button>
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiDownload /> Fiscal Export
+           </button>
+           <button 
+             onClick={() => setIsModalOpen(true)}
+             className="px-10 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+           >
+             <FiPlus /> Dispatch Invoice
+           </button>
         </div>
       </div>
 
