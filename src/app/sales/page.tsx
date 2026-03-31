@@ -71,15 +71,15 @@ const SalesPage = () => {
   return (
     <div className="space-y-8 max-w-[1600px] mx-auto pb-12 transition-all">
       {/* Professional Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">Sales Revenue</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1 flex items-center gap-2">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Sales Revenue</h1>
+          <p className="text-slate-500 text-slate-500 text-sm font-medium mt-1 flex items-center gap-2">
             <FiTarget className="text-blue-600" /> Enterprise Contract Orchestration • Performance Node 01
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <button className="px-5 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-2 text-slate-600 dark:text-slate-300 shadow-sm">
+          <button className="px-5 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-2 text-slate-600 text-slate-600 shadow-sm">
             <FiFileText className="w-4 h-4" /> Ledger
           </button>
           <button 
@@ -104,7 +104,7 @@ const SalesPage = () => {
             </div>
             <div>
               <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
-              <h4 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">{stat.value}</h4>
+              <h4 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 leading-none">{stat.value}</h4>
             </div>
           </div>
         ))}
@@ -115,7 +115,7 @@ const SalesPage = () => {
         <div className="xl:col-span-2 industrial-card p-10 flex flex-col">
           <div className="flex items-center justify-between mb-10">
              <div>
-                <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest">Revenue Trajectory</h3>
+                <h3 className="text-sm font-black text-slate-900 text-slate-900 uppercase tracking-widest">Revenue Trajectory</h3>
                 <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Cross-Sectoral Yield Analysis</p>
              </div>
              <div className="flex gap-2">
@@ -143,7 +143,7 @@ const SalesPage = () => {
           </div>
         </div>
 
-        <div className="industrial-card p-10 bg-slate-900 text-white flex flex-col justify-between relative overflow-hidden group min-h-[450px]">
+        <div className="industrial-card p-10 bg-blue-600 text-white flex flex-col justify-between relative overflow-hidden group min-h-[450px]">
           <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
           <div className="relative z-10">
              <div className="w-14 h-14 bg-blue-600 rounded flex items-center justify-center mb-8 shadow-lg group-hover:rotate-12 transition-transform">
@@ -167,7 +167,7 @@ const SalesPage = () => {
 
       {/* Table & Filters */}
       <div className="industrial-card flex flex-col overflow-hidden">
-        <div className="p-8 border-b border-slate-200 dark:border-slate-800 flex flex-col xl:flex-row justify-between items-center gap-6 bg-slate-50/50 dark:bg-slate-800/50">
+        <div className="p-8 border-b border-slate-200 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-6 bg-slate-50/50 /50">
           <div className="relative w-full xl:max-w-md group">
             <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
             <input 
@@ -175,7 +175,7 @@ const SalesPage = () => {
               placeholder="Search Invoice ID or Customer Matrix..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg py-2.5 pl-11 pr-4 text-xs font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all dark:text-white"
+              className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-2.5 pl-11 pr-4 text-xs font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-slate-900"
             />
           </div>
           <div className="flex flex-wrap justify-center gap-2">
@@ -183,7 +183,7 @@ const SalesPage = () => {
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-4 py-2 rounded text-[9px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white dark:bg-slate-900 text-slate-400 border border-slate-200 dark:border-slate-800 hover:text-blue-500 active:scale-95'}`}
+                className={`px-4 py-2 rounded text-[9px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white  text-slate-400 border border-slate-200 border-slate-200 hover:text-blue-500 active:scale-95'}`}
               >
                 {s}
               </button>
@@ -194,7 +194,7 @@ const SalesPage = () => {
         <div className="overflow-x-auto no-scrollbar">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-50/20 dark:bg-slate-900/20">
+              <tr className="bg-slate-50/20 /20">
                 <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">ID Trace</th>
                 <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Client Engagement</th>
                 <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Base Valuation</th>
@@ -203,28 +203,28 @@ const SalesPage = () => {
                 <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest text-center">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-100 divide-slate-100">
               {filteredSales.map((sale) => (
                 <tr key={sale.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all group cursor-pointer data-table-row">
                   <td className="px-8 py-6 text-[10px] font-bold text-blue-600 uppercase tracking-tight">{sale.id}</td>
                   <td className="px-8 py-6">
                     <div className="flex items-center gap-4">
-                       <div className="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
+                       <div className="w-10 h-10 rounded bg-slate-100  flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
                           <FiShoppingCart size={18} />
                        </div>
                        <div>
-                          <p className="text-xs font-bold text-slate-900 dark:text-white uppercase leading-none mb-1.5 group-hover:text-blue-600 transition-colors">{sale.customer}</p>
+                          <p className="text-xs font-bold text-slate-900 text-slate-900 uppercase leading-none mb-1.5 group-hover:text-blue-600 transition-colors">{sale.customer}</p>
                           <p className="text-[8px] text-slate-400 uppercase font-bold tracking-widest">{sale.product}</p>
                        </div>
                     </div>
                   </td>
                   <td className="px-8 py-6 text-xs font-bold text-slate-500 tracking-tight">₹{sale.baseAmount.toLocaleString('en-IN')}</td>
                   <td className="px-8 py-6 text-center">
-                     <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">
+                     <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100  rounded">
                         {sale.gstRate}% Statutory
                      </span>
                   </td>
-                  <td className="px-8 py-6 text-sm font-black text-right text-slate-900 dark:text-white tracking-tighter">₹{calculateTotal(sale.baseAmount, sale.gstRate).toLocaleString('en-IN')}</td>
+                  <td className="px-8 py-6 text-sm font-black text-right text-slate-900 text-slate-900 tracking-tighter">₹{calculateTotal(sale.baseAmount, sale.gstRate).toLocaleString('en-IN')}</td>
                   <td className="px-8 py-6 text-center">
                     <span className={`px-4 py-1 rounded text-[8px] font-black uppercase tracking-widest ${getStatusColor(sale.status)}`}>
                       {sale.status}
@@ -246,17 +246,17 @@ const SalesPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+              className="absolute inset-0 bg-white/60 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-2xl p-10 border border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="relative w-full max-w-lg bg-white  rounded-2xl p-10 border border-slate-200 border-slate-200 shadow-2xl"
             >
               <div className="flex justify-between items-start mb-10">
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">Record Engagement</h2>
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Record Engagement</h2>
                   <p className="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Fiscal Revenue Infrastructure</p>
                 </div>
                 <button 
@@ -274,7 +274,7 @@ const SalesPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Tata Steel Ltd" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                     value={newSale.customer}
                     onChange={(e) => setNewSale({...newSale, customer: e.target.value})}
                   />
@@ -285,7 +285,7 @@ const SalesPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Precision Components" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                     value={newSale.product}
                     onChange={(e) => setNewSale({...newSale, product: e.target.value})}
                   />
@@ -297,7 +297,7 @@ const SalesPage = () => {
                       required
                       type="number" 
                       placeholder="0.00" 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                       value={newSale.baseAmount}
                       onChange={(e) => setNewSale({...newSale, baseAmount: e.target.value})}
                     />
@@ -305,7 +305,7 @@ const SalesPage = () => {
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Statutory GST (%)</label>
                     <select 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                       value={newSale.gstRate}
                       onChange={(e) => setNewSale({...newSale, gstRate: parseInt(e.target.value)})}
                     >

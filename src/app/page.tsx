@@ -14,10 +14,10 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/10 transition-colors">
+    <div className="min-h-screen bg-white  text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/10 transition-colors">
       
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md">
+      <nav className="fixed top-0 w-full z-50 border-b border-slate-200 border-slate-200 bg-white/80 /80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white">
@@ -31,7 +31,7 @@ const LandingPage = () => {
              ))}
           </div>
           <Link href="/dashboard">
-            <button className="bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-6 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all hover:opacity-90 active:scale-95 shadow-sm">
+            <button className="bg-white dark:bg-slate-100 text-white dark:text-slate-900 px-6 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all hover:opacity-90 active:scale-95 shadow-sm">
               Console Access
             </button>
           </Link>
@@ -54,7 +54,7 @@ const LandingPage = () => {
               The Industrial <br />
               <span className="text-blue-600">Operating System</span>
             </h1>
-            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-lg font-medium leading-relaxed mb-12">
+            <p className="text-lg text-slate-500 text-slate-500 max-w-lg font-medium leading-relaxed mb-12">
               Mission-critical ERP & Business Process Automation infrastructure for high-scale Indian manufacturing and corporate giants.
             </p>
             <div className="flex flex-wrap gap-5">
@@ -63,7 +63,7 @@ const LandingPage = () => {
                   Command Center <FiArrowRight size={18} />
                 </button>
               </Link>
-              <button className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-black py-4 px-10 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all active:scale-95 shadow-sm">
+              <button className="bg-white  border border-slate-200 border-slate-200 text-slate-700 dark:text-slate-200 font-black py-4 px-10 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all active:scale-95 shadow-sm">
                 Technical Blueprint
               </button>
             </div>
@@ -76,8 +76,8 @@ const LandingPage = () => {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative lg:block hidden"
           >
-            <div className="relative industrial-card bg-slate-50 dark:bg-slate-900/50 p-6 aspect-video overflow-hidden group">
-               <div className="absolute top-0 left-0 w-full h-10 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur flex items-center px-4 gap-2">
+            <div className="relative industrial-card bg-slate-50 /50 p-6 aspect-video overflow-hidden group">
+               <div className="absolute top-0 left-0 w-full h-10 border-b border-slate-200 border-slate-200 bg-white/50 /50 backdrop-blur flex items-center px-4 gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-rose-500" />
                   <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
@@ -85,7 +85,7 @@ const LandingPage = () => {
                
                <div className="mt-10 grid grid-cols-3 gap-4 h-full pt-4">
                   <div className="col-span-2 space-y-4">
-                     <div className="h-32 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+                     <div className="h-32 bg-white  rounded-lg border border-slate-200 border-slate-200 p-4 shadow-sm">
                         <div className="flex items-center justify-between mb-4">
                            <div className="w-20 h-2 bg-blue-600/20 rounded" />
                            <FiTrendingUp className="text-blue-500" />
@@ -97,7 +97,7 @@ const LandingPage = () => {
                         </div>
                      </div>
                      <div className="grid grid-cols-2 gap-4">
-                        <div className="h-40 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+                        <div className="h-40 bg-white  rounded-lg border border-slate-200 border-slate-200 p-4 shadow-sm">
                            <FiBox className="text-slate-400 mb-4" />
                            <div className="space-y-2">
                              <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
@@ -105,7 +105,7 @@ const LandingPage = () => {
                              <div className="h-2 w-1/2 bg-blue-500/40 rounded" />
                            </div>
                         </div>
-                        <div className="h-40 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+                        <div className="h-40 bg-white  rounded-lg border border-slate-200 border-slate-200 p-4 shadow-sm">
                            <FiActivity className="text-slate-400 mb-4" />
                            <div className="space-y-2">
                              <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
@@ -116,7 +116,7 @@ const LandingPage = () => {
                      </div>
                   </div>
                   <div className="space-y-4">
-                     <div className="h-full bg-slate-900 text-white rounded-lg p-6 flex flex-col justify-between">
+                     <div className="h-full bg-blue-600 text-white rounded-lg p-6 flex flex-col justify-between shadow-xl">
                         <FiDatabase className="text-blue-400" />
                         <div>
                            <p className="text-[10px] font-black uppercase text-slate-500 mb-1">Fiscal Balance</p>
@@ -137,7 +137,7 @@ const LandingPage = () => {
             <motion.div 
                animate={{ y: [0, -8, 0] }}
                transition={{ duration: 4, repeat: Infinity }}
-               className="absolute -top-10 -right-10 p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xl flex items-center gap-4"
+               className="absolute -top-10 -right-10 p-5 bg-white  border border-slate-200 border-slate-200 rounded-xl shadow-2xl flex items-center gap-4"
             >
                <div className="p-2 bg-emerald-500 rounded text-white"><FiTrendingUp size={16} /></div>
                <div>
@@ -150,7 +150,7 @@ const LandingPage = () => {
       </section>
 
       {/* Grid Features */}
-      <section className="py-32 px-6 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-200 dark:border-slate-800">
+      <section className="py-32 px-6 bg-slate-50/50 /20 border-y border-slate-200 border-slate-200">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((f, i) => (
@@ -160,13 +160,13 @@ const LandingPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="industrial-card p-10 bg-white dark:bg-slate-900 group"
+                className="industrial-card p-10 bg-white  group"
               >
                 <div className="w-12 h-12 rounded-lg bg-blue-600/10 dark:bg-blue-600/10 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 mb-8 border border-blue-600/10">
                   {f.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-4 tracking-tight">{f.title}</h3>
-                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-medium transition-colors">{f.desc}</p>
+                <p className="text-slate-500 text-slate-500 text-sm leading-relaxed font-medium transition-colors">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -174,13 +174,13 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <footer className="py-20 px-6 border-t border-slate-200 border-slate-200 bg-white ">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-slate-500 text-xs font-bold uppercase tracking-widest">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">
               <FiLayers size={14} />
             </div>
-            <span className="text-slate-900 dark:text-white">PRO<span className="text-blue-600">ERP</span></span>
+            <span className="text-slate-900 text-slate-900">PRO<span className="text-blue-600">ERP</span></span>
           </div>
           <div className="flex gap-10">
             <span>Platform</span>

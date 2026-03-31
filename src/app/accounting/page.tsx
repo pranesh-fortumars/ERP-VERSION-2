@@ -63,15 +63,15 @@ const AccountingPage = () => {
   return (
     <div className="space-y-8 max-w-[1600px] mx-auto pb-12 transition-all">
       {/* Professional Header Section */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">Fiscal Treasury</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1 flex items-center gap-2">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Fiscal Treasury</h1>
+          <p className="text-slate-500 text-slate-500 text-sm font-medium mt-1 flex items-center gap-2">
             <FiShield className="text-blue-600" /> Enterprise Audit Ledger • Treasury Node 01
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-           <button className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:bg-slate-50 shadow-sm transition-all">
+           <button className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-600 text-slate-600 hover:bg-slate-50 shadow-sm transition-all">
              GST RECONCILIATION
            </button>
            <button 
@@ -96,7 +96,7 @@ const AccountingPage = () => {
             </div>
             <div>
               <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
-              <h4 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">{stat.value}</h4>
+              <h4 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 leading-none">{stat.value}</h4>
             </div>
           </div>
         ))}
@@ -106,7 +106,7 @@ const AccountingPage = () => {
         <div className="industrial-card p-10 flex flex-col">
           <div className="flex items-center justify-between mb-12">
              <div>
-                <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest">Inflow Vector</h3>
+                <h3 className="text-sm font-black text-slate-900 text-slate-900 uppercase tracking-widest">Inflow Vector</h3>
                 <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Quarterly Reconciliation Analysis</p>
              </div>
              <span className="text-[9px] font-black uppercase tracking-widest text-blue-600 bg-blue-600/10 px-3 py-1.5 rounded">
@@ -130,7 +130,7 @@ const AccountingPage = () => {
         <div className="industrial-card p-10">
           <div className="flex items-center justify-between mb-12">
              <div>
-                <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest">Substrate Distribution</h3>
+                <h3 className="text-sm font-black text-slate-900 text-slate-900 uppercase tracking-widest">Substrate Distribution</h3>
                 <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Portfolio Asset Allocation</p>
              </div>
           </div>
@@ -147,17 +147,17 @@ const AccountingPage = () => {
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">Total</p>
-                 <p className="text-xl font-bold text-slate-900 dark:text-white tracking-tighter uppercase leading-none">₹{(stats.revenue/100000).toFixed(1)}L</p>
+                 <p className="text-xl font-bold text-slate-900 text-slate-900 tracking-tighter uppercase leading-none">₹{(stats.revenue/100000).toFixed(1)}L</p>
               </div>
             </div>
             <div className="flex-1 space-y-3 w-full">
               {stats.pieData.map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-transparent hover:border-blue-500/30 transition-all group">
+                <div key={i} className="flex items-center justify-between p-4 bg-slate-50 /50 rounded-lg border border-transparent hover:border-blue-500/30 transition-all group">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
-                    <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{item.name}</span>
+                    <span className="text-[10px] font-bold text-slate-500 text-slate-500 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{item.name}</span>
                   </div>
-                  <span className="text-xs font-bold text-slate-900 dark:text-white tracking-tight">₹{(item.value/1000).toFixed(0)}k</span>
+                  <span className="text-xs font-bold text-slate-900 text-slate-900 tracking-tight">₹{(item.value/1000).toFixed(0)}k</span>
                 </div>
               ))}
             </div>
@@ -167,7 +167,7 @@ const AccountingPage = () => {
 
       {/* Transaction Ledger */}
       <div className="industrial-card flex flex-col overflow-hidden">
-        <div className="p-8 border-b border-slate-200 dark:border-slate-800 flex flex-col xl:flex-row justify-between items-center gap-6 bg-slate-50/50 dark:bg-slate-800/50">
+        <div className="p-8 border-b border-slate-200 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-6 bg-slate-50/50 /50">
           <div className="relative w-full xl:max-w-md group">
             <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
             <input 
@@ -175,7 +175,7 @@ const AccountingPage = () => {
               placeholder="Search Fiscal Identifier or Quantum..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg py-2.5 pl-11 pr-4 text-xs font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all dark:text-white"
+              className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-2.5 pl-11 pr-4 text-xs font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-slate-900"
             />
           </div>
           <div className="flex gap-2">
@@ -183,7 +183,7 @@ const AccountingPage = () => {
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-4 py-2 rounded text-[9px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg' : 'bg-white dark:bg-slate-900 text-slate-400 border border-slate-200 dark:border-slate-800 hover:text-blue-500 active:scale-95'}`}
+                className={`px-4 py-2 rounded text-[9px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg' : 'bg-white  text-slate-400 border border-slate-200 border-slate-200 hover:text-blue-500 active:scale-95'}`}
               >
                 {s}
               </button>
@@ -194,14 +194,14 @@ const AccountingPage = () => {
         <div className="overflow-x-auto no-scrollbar">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-50/20 dark:bg-slate-900/20">
+              <tr className="bg-slate-50/20 /20">
                 <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Artifact Descriptor</th>
                 <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Audit ID</th>
                 <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Classification</th>
                 <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest text-right">Settlement Quantum</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-100 divide-slate-100">
               <AnimatePresence mode="popLayout">
                 {filteredTransactions.map((t, i) => (
                   <motion.tr 
@@ -217,14 +217,14 @@ const AccountingPage = () => {
                           {t.type === 'Income' ? <FiTrendingUp size={20} /> : <FiTrendingDown size={20} />}
                         </div>
                         <div>
-                          <p className="text-sm font-bold text-slate-900 dark:text-white uppercase leading-none group-hover:text-blue-600 transition-colors">{t.description}</p>
+                          <p className="text-sm font-bold text-slate-900 text-slate-900 uppercase leading-none group-hover:text-blue-600 transition-colors">{t.description}</p>
                           <p className="text-[8px] text-slate-400 mt-1.5 uppercase font-black tracking-widest flex items-center gap-2"><FiCalendar className="text-blue-500" /> {t.date}</p>
                         </div>
                       </div>
                     </td>
                     <td className="px-8 py-6 text-[10px] font-bold text-blue-600 uppercase tracking-tight">{t.id}</td>
                     <td className="px-8 py-6">
-                      <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded text-[8px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{t.category}</span>
+                      <span className="px-3 py-1 bg-slate-100  border border-slate-200 border-slate-200 rounded text-[8px] font-bold text-slate-500 text-slate-500 uppercase tracking-widest">{t.category}</span>
                     </td>
                     <td className={`px-8 py-6 text-xl font-black text-right tracking-tighter ${t.type === 'Income' ? 'text-emerald-600' : 'text-rose-600'}`}>
                       {t.type === 'Income' ? '+' : '-'} ₹{Number(t.amount).toLocaleString('en-IN')}
@@ -246,17 +246,17 @@ const AccountingPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+              className="absolute inset-0 bg-white/60 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-2xl p-10 border border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="relative w-full max-w-lg bg-white  rounded-2xl p-10 border border-slate-200 border-slate-200 shadow-2xl"
             >
                <div className="flex justify-between items-start mb-10">
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">Fiscal Acquisition</h2>
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Fiscal Acquisition</h2>
                   <p className="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Corporate Audit Infrastructure</p>
                 </div>
                 <button 
@@ -274,7 +274,7 @@ const AccountingPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Revenue Settlement" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                     value={newTxn.description}
                     onChange={(e) => setNewTxn({...newTxn, description: e.target.value})}
                   />
@@ -286,7 +286,7 @@ const AccountingPage = () => {
                        required
                        type="number" 
                        placeholder="0.00"
-                       className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                       className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                        value={newTxn.amount}
                        onChange={(e) => setNewTxn({...newTxn, amount: Number(e.target.value)})}
                      />
@@ -294,7 +294,7 @@ const AccountingPage = () => {
                   <div className="space-y-2">
                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Flow Direction</label>
                      <select 
-                       className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                       className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                        value={newTxn.type}
                        onChange={(e) => setNewTxn({...newTxn, type: e.target.value})}
                      >
@@ -306,7 +306,7 @@ const AccountingPage = () => {
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Asset Class</label>
                    <select 
-                     className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                     className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                      value={newTxn.category}
                      onChange={(e) => setNewTxn({...newTxn, category: e.target.value})}
                    >

@@ -55,7 +55,7 @@ const ReportGenerationPage = () => {
            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
             <FiLayers /> Intelligence Engine v3.2
           </div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white uppercase">Analytical Intelligence</h1>
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 text-slate-900 uppercase">Analytical Intelligence</h1>
           <p className="text-slate-500 font-medium tracking-tight mt-1 flex items-center gap-2">
             <FiBarChart2 className="text-blue-500" /> High-Fidelity Business Process Reporting Cluster
           </p>
@@ -63,7 +63,7 @@ const ReportGenerationPage = () => {
         <div className="flex flex-wrap items-center gap-4">
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[10px] font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:shadow-lg active:scale-95"
+             className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-2xl text-[10px] font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:shadow-lg active:scale-95"
            >
             <FiPlus /> Register Template
           </button>
@@ -89,7 +89,7 @@ const ReportGenerationPage = () => {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Report Config */}
         <div className="space-y-8">
-          <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm relative overflow-hidden group">
+          <div className="bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-1000" />
             <h2 className="text-[11px] font-black text-blue-600 mb-8 uppercase tracking-[0.3em]">Execution Parameters</h2>
             <div className="space-y-8 relative z-10">
@@ -100,7 +100,7 @@ const ReportGenerationPage = () => {
                   <select 
                     value={reportType} 
                     onChange={(e) => setReportType(e.target.value)}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 pl-14 pr-6 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none cursor-pointer"
+                    className="w-full bg-slate-50  border-none rounded-2xl py-4.5 pl-14 pr-6 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 appearance-none cursor-pointer"
                   >
                     <option>Sales Performance</option>
                     <option>Inventory Health</option>
@@ -116,7 +116,7 @@ const ReportGenerationPage = () => {
                 <div className="relative group/select">
                   <FiBarChart2 className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-hover/select:text-blue-500 transition-colors" />
                   <select 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 pl-14 pr-6 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none cursor-pointer"
+                    className="w-full bg-slate-50  border-none rounded-2xl py-4.5 pl-14 pr-6 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 appearance-none cursor-pointer"
                   >
                     <option>Last 6 Fiscal Months</option>
                     <option>Quarterly Analysis</option>
@@ -127,10 +127,10 @@ const ReportGenerationPage = () => {
               </div>
 
               <div className="pt-6 space-y-5">
-                <div className="p-6 bg-blue-500/5 dark:bg-blue-900/10 rounded-[32px] border border-blue-500/10">
+                <div className="p-6 bg-blue-500/5 /10 rounded-[32px] border border-blue-500/10">
                   <p className="text-[10px] font-black uppercase text-blue-500 tracking-[0.2em] mb-2 leading-none">Status: Stable</p>
                   <div className="flex items-center justify-between">
-                      <span className="text-xs font-black text-slate-900 dark:text-white">Last Compilation</span>
+                      <span className="text-xs font-black text-slate-900 text-slate-900">Last Compilation</span>
                       <span className="text-[10px] font-bold text-slate-400">Mar 28, 2024</span>
                   </div>
                 </div>
@@ -141,17 +141,17 @@ const ReportGenerationPage = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm">
-             <h2 className="text-[11px] font-black text-slate-900 dark:text-white mb-8 uppercase tracking-[0.3em]">Active Templates</h2>
+          <div className="bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm">
+             <h2 className="text-[11px] font-black text-slate-900 text-slate-900 mb-8 uppercase tracking-[0.3em]">Active Templates</h2>
              <div className="space-y-6">
                 {templates.map((tpl, i) => (
                   <div key={i} className="flex items-center justify-between group cursor-pointer">
                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition-all">
+                        <div className="w-10 h-10 bg-slate-50  rounded-xl flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition-all">
                            <FiFileText size={18} />
                         </div>
                         <div>
-                           <p className="text-xs font-black text-slate-700 dark:text-slate-300 group-hover:text-blue-600 transition-colors">{tpl.name}</p>
+                           <p className="text-xs font-black text-slate-700 text-slate-600 group-hover:text-blue-600 transition-colors">{tpl.name}</p>
                            <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{tpl.cluster} • {tpl.frequency}</p>
                         </div>
                      </div>
@@ -164,11 +164,11 @@ const ReportGenerationPage = () => {
 
         {/* Visual Analytics */}
         <div className="xl:col-span-2 space-y-8">
-           <div className="bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm relative overflow-hidden group">
+           <div className="bg-white  rounded-[48px] border border-slate-200 border-slate-200 p-10 shadow-sm relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent opacity-50" />
               <div className="flex items-center justify-between mb-12">
                  <div>
-                   <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter uppercase leading-none mb-1">Fiscal Trajectory</h3>
+                   <h3 className="text-2xl font-black text-slate-900 text-slate-900 tracking-tighter uppercase leading-none mb-1">Fiscal Trajectory</h3>
                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Revenue Vectors & Performance Anchors</p>
                  </div>
                  <div className="flex items-center gap-3 text-emerald-500 bg-emerald-500/10 px-5 py-2 rounded-2xl border border-emerald-500/10 font-black text-xs">
@@ -198,9 +198,9 @@ const ReportGenerationPage = () => {
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm">
+              <div className="bg-white  rounded-[48px] border border-slate-200 border-slate-200 p-10 shadow-sm">
                 <div className="flex items-center justify-between mb-8">
-                   <h3 className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.3em]">Substrate Mix</h3>
+                   <h3 className="text-[11px] font-black text-slate-900 text-slate-900 uppercase tracking-[0.3em]">Substrate Mix</h3>
                    <FiPieChart className="text-blue-500" />
                 </div>
                 <div style={{ width: '100%', minWidth: 0 }}>
@@ -215,7 +215,7 @@ const ReportGenerationPage = () => {
                 </div>
                 <div className="mt-8 grid grid-cols-2 gap-4">
                    {inventoryData.map((item, i) => (
-                     <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-transparent hover:border-blue-500/10 transition-all">
+                     <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 /50 rounded-2xl border border-transparent hover:border-blue-500/10 transition-all">
                         <div className="w-2.5 h-2.5 rounded-full shadow-lg" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                         <span className="text-[9px] font-black text-slate-500 uppercase tracking-tight truncate">{item.name}</span>
                      </div>
@@ -223,7 +223,7 @@ const ReportGenerationPage = () => {
                 </div>
               </div>
 
-              <div className="bg-slate-900 rounded-[48px] p-10 flex flex-col justify-center text-center relative overflow-hidden group">
+              <div className="bg-white rounded-[48px] p-10 flex flex-col justify-center text-center relative overflow-hidden group">
                  <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-700" />
                  <div className="w-20 h-20 bg-white/5 rounded-[32px] flex items-center justify-center mx-auto mb-8 text-blue-500 shadow-2xl relative z-10 backdrop-blur-3xl border border-white/5">
                     <FiDownload size={32} />
@@ -249,17 +249,17 @@ const ReportGenerationPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+              className="absolute inset-0 bg-white/60 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[56px] p-12 md:p-16 border border-blue-500/20 shadow-2xl"
+              className="relative w-full max-w-lg bg-white  rounded-[56px] p-12 md:p-16 border border-blue-500/20 shadow-2xl"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-2">Register Blueprint</h2>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 text-slate-900 uppercase leading-none mb-2">Register Blueprint</h2>
                   <p className="text-slate-500 font-black text-[10px] uppercase tracking-[0.3em]">Analytical Intelligence Manifest</p>
                 </div>
                 <button 
@@ -277,7 +277,7 @@ const ReportGenerationPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Sales Master Audit v3" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white"
+                    className="w-full bg-slate-50  border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                     value={newTemplate.name}
                     onChange={(e) => setNewTemplate({...newTemplate, name: e.target.value})}
                   />
@@ -286,7 +286,7 @@ const ReportGenerationPage = () => {
                   <div className="space-y-3">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Target Cluster</label>
                     <select 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none cursor-pointer"
+                      className="w-full bg-slate-50  border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 appearance-none cursor-pointer"
                       value={newTemplate.cluster}
                       onChange={(e) => setNewTemplate({...newTemplate, cluster: e.target.value})}
                     >
@@ -299,7 +299,7 @@ const ReportGenerationPage = () => {
                   <div className="space-y-3">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Temporal Frequency</label>
                     <select 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none cursor-pointer"
+                      className="w-full bg-slate-50  border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 appearance-none cursor-pointer"
                       value={newTemplate.frequency}
                       onChange={(e) => setNewTemplate({...newTemplate, frequency: e.target.value})}
                     >

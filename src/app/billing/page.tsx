@@ -61,13 +61,13 @@ const BillingPage = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
             <FiShield className="animate-pulse" /> Fiscal Integrity Protocol Active
           </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">Accounts Receivable</h1>
-          <p className="text-slate-500 dark:text-slate-400 font-medium tracking-tight mt-1 flex items-center gap-2">
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 text-slate-900 uppercase leading-none">Accounts Receivable</h1>
+          <p className="text-slate-500 text-slate-500 font-medium tracking-tight mt-1 flex items-center gap-2">
             <FiFileText className="text-blue-500" /> Automated Invoice Orchestration & GST Compliance Master
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
-          <button className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:shadow-lg transition-all active:scale-95 shadow-sm flex items-center gap-2">
+          <button className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 text-slate-600 hover:shadow-lg transition-all active:scale-95 shadow-sm flex items-center gap-2">
             <FiDownload /> Tax Ledger
           </button>
           <button 
@@ -91,22 +91,22 @@ const BillingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="p-10 bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-10 group hover:border-blue-500/50 transition-all duration-500"
+            className="p-10 bg-white  rounded-[48px] border border-slate-200 border-slate-200 shadow-sm flex items-center gap-10 group hover:border-blue-500/50 transition-all duration-500"
           >
             <div className={`p-8 rounded-[32px] ${stat.bg} ${stat.color} shadow-inner group-hover:scale-110 transition-transform duration-700 ring-1 ring-black/5`}>
               {stat.icon}
             </div>
             <div>
               <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
-              <h4 className="text-4xl font-black tracking-tighter text-slate-900 dark:text-white leading-none">{stat.value}</h4>
+              <h4 className="text-4xl font-black tracking-tighter text-slate-900 text-slate-900 leading-none">{stat.value}</h4>
             </div>
           </motion.div>
         ))}
       </div>
 
       {/* Invoice Ledger */}
-      <div className="bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
-        <div className="p-10 border-b border-slate-100 dark:border-slate-800 flex flex-col xl:flex-row justify-between items-center gap-8 bg-slate-50/20 dark:bg-slate-800/10">
+      <div className="bg-white  rounded-[48px] border border-slate-200 border-slate-200 shadow-sm overflow-hidden flex flex-col">
+        <div className="p-10 border-b border-slate-100 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-8 bg-slate-50/20 /10">
           <div className="relative w-full xl:max-w-xl group">
             <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors w-5 h-5" />
             <input 
@@ -114,7 +114,7 @@ const BillingPage = () => {
               placeholder="Search invoice registry, client descriptor, or GST identifier..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white dark:bg-slate-800 border-none rounded-2xl py-4.5 pl-14 pr-6 text-sm font-black focus:ring-2 focus:ring-blue-500/10 outline-none transition-all dark:text-white shadow-inner"
+              className="w-full bg-white  border-none rounded-2xl py-4.5 pl-14 pr-6 text-sm font-black focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-900 shadow-inner"
             />
           </div>
           <div className="flex flex-wrap justify-center gap-3">
@@ -122,7 +122,7 @@ const BillingPage = () => {
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-black/5 hover:bg-slate-100 active:scale-95 shadow-sm'}`}
+                className={`px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-white  text-slate-500 text-slate-500 border border-black/5 hover:bg-slate-100 active:scale-95 shadow-sm'}`}
               >
                 {s}
               </button>
@@ -133,14 +133,14 @@ const BillingPage = () => {
         <div className="overflow-x-auto no-scrollbar flex-1">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-50/30 dark:bg-slate-800/30">
+              <tr className="bg-slate-50/30 /30">
                 <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Asset Descriptor</th>
                 <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Quantum (INR)</th>
                 <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Maturity Target</th>
                 <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] text-center">Lifecycle State</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-100 divide-slate-100">
               <AnimatePresence mode="popLayout">
                 {filteredInvoices.map((inv, i) => (
                   <motion.tr 
@@ -152,11 +152,11 @@ const BillingPage = () => {
                   >
                     <td className="px-10 py-8">
                       <div className="flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-hover:text-blue-500 transition-colors shadow-inner border border-black/5">
+                        <div className="w-14 h-14 rounded-2xl bg-slate-100  flex items-center justify-center text-slate-500 group-hover:text-blue-500 transition-colors shadow-inner border border-black/5">
                           <FiFileText size={24} />
                         </div>
                         <div>
-                          <p className="text-xl font-black text-slate-900 dark:text-white tracking-tighter uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors">{inv.clientName}</p>
+                          <p className="text-xl font-black text-slate-900 text-slate-900 tracking-tighter uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors">{inv.clientName}</p>
                           <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 uppercase font-black tracking-[0.3em] flex items-center gap-2">
                              <span className="text-blue-500">ID:</span> {inv.id} • <span className="text-blue-500 text-[8px]">GST:</span> {inv.gst}
                           </p>
@@ -164,11 +164,11 @@ const BillingPage = () => {
                       </div>
                     </td>
                     <td className="px-10 py-8">
-                       <p className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter whitespace-nowrap">₹{inv.amount.toLocaleString('en-IN')}</p>
+                       <p className="text-2xl font-black text-slate-900 text-slate-900 tracking-tighter whitespace-nowrap">₹{inv.amount.toLocaleString('en-IN')}</p>
                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Settlement Value</p>
                     </td>
                     <td className="px-10 py-8">
-                       <p className="text-sm font-black text-slate-600 dark:text-slate-300 tracking-tight uppercase">{inv.dueDate}</p>
+                       <p className="text-sm font-black text-slate-600 text-slate-600 tracking-tight uppercase">{inv.dueDate}</p>
                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Fiscal Deadline</p>
                     </td>
                     <td className="px-10 py-8 text-center">
@@ -193,17 +193,17 @@ const BillingPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md"
+              className="absolute inset-0 bg-white/60 /80 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-[56px] p-10 md:p-14 border border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="relative w-full max-w-xl bg-white  rounded-[56px] p-10 md:p-14 border border-slate-200 border-slate-200 shadow-2xl"
             >
                <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">Dispatch Legal Instrument</h2>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 text-slate-900 uppercase leading-none">Dispatch Legal Instrument</h2>
                   <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Corporate Billing Infrastructure</p>
                 </div>
                 <button 
@@ -221,7 +221,7 @@ const BillingPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Tata Advanced Systems Ltd"
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white"
+                    className="w-full bg-slate-50  border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                     value={newInv.clientName}
                     onChange={(e) => setNewInv({...newInv, clientName: e.target.value})}
                   />
@@ -233,7 +233,7 @@ const BillingPage = () => {
                        required
                        type="number" 
                        placeholder="0.00"
-                       className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white"
+                       className="w-full bg-slate-50  border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                        value={newInv.amount}
                        onChange={(e) => setNewInv({...newInv, amount: Number(e.target.value)})}
                      />
@@ -243,7 +243,7 @@ const BillingPage = () => {
                      <input 
                        required
                        type="date" 
-                       className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white"
+                       className="w-full bg-slate-50  border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                        value={newInv.dueDate}
                        onChange={(e) => setNewInv({...newInv, dueDate: e.target.value})}
                      />
@@ -255,7 +255,7 @@ const BillingPage = () => {
                      required
                      type="text" 
                      placeholder="e.g. 27AAAAA0000A1Z5"
-                     className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white uppercase"
+                     className="w-full bg-slate-50  border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 uppercase"
                      value={newInv.gst}
                      onChange={(e) => setNewInv({...newInv, gst: e.target.value})}
                    />

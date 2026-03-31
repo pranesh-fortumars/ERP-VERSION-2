@@ -108,7 +108,7 @@ const Sidebar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsNavOpen(false)}
-              className="fixed inset-0 bg-slate-900/40 backdrop-blur-xl z-[80] md:hidden"
+              className="fixed inset-0 bg-white/40 backdrop-blur-xl z-[80] md:hidden"
             />
             <motion.div
               initial="closed"

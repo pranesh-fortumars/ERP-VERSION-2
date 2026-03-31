@@ -50,15 +50,15 @@ const ProductManagementPage = () => {
   return (
     <div className="space-y-8 max-w-[1600px] mx-auto pb-12 transition-all">
       {/* Professional Header Section */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">Product Lifecycle</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1 flex items-center gap-2">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Product Lifecycle</h1>
+          <p className="text-slate-500 text-slate-500 text-sm font-medium mt-1 flex items-center gap-2">
             <FiCpu className="text-blue-600" /> Enterprise SKU Orchestration • Catalog Master 01
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <button className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:bg-slate-50 shadow-sm transition-all">
+          <button className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-600 text-slate-600 hover:bg-slate-50 shadow-sm transition-all">
             EXPORT LEDGER
           </button>
           <button 
@@ -77,13 +77,13 @@ const ProductManagementPage = () => {
           <input 
             type="text" 
             placeholder="Search by SKU designation or vendor portfolio..."
-            className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg py-3 pl-11 pr-4 text-xs font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all dark:text-white"
+            className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-3 pl-11 pr-4 text-xs font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-slate-900"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <div className="flex flex-wrap gap-3 w-full md:w-auto">
-          <div className="flex items-center gap-3 bg-white dark:bg-slate-950 px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm group">
+          <div className="flex items-center gap-3 bg-white  px-4 py-3 rounded-lg border border-slate-200 border-slate-200 shadow-sm group">
             <FiFilter className="text-slate-400 group-hover:text-blue-500 transition-colors" />
             <select 
               className="bg-transparent text-[10px] font-bold uppercase tracking-widest outline-none dark:text-slate-200 appearance-none cursor-pointer min-w-[120px]"
@@ -93,7 +93,7 @@ const ProductManagementPage = () => {
               {categories.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
           </div>
-          <div className="flex items-center gap-3 bg-white dark:bg-slate-950 px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm group">
+          <div className="flex items-center gap-3 bg-white  px-4 py-3 rounded-lg border border-slate-200 border-slate-200 shadow-sm group">
             <FiLayers className="text-slate-400 group-hover:text-blue-500 transition-colors" />
             <select 
               className="bg-transparent text-[10px] font-bold uppercase tracking-widest outline-none dark:text-slate-200 appearance-none cursor-pointer min-w-[140px]"
@@ -123,7 +123,7 @@ const ProductManagementPage = () => {
               className="industrial-card overflow-hidden group flex flex-col h-full"
             >
               {/* CSS Schematic Visualization */}
-              <div className="w-full h-48 relative bg-slate-900 border-b border-slate-800 overflow-hidden">
+              <div className="w-full h-48 relative bg-white border-b border-slate-800 overflow-hidden">
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#2563eb 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
                 <div className="absolute top-1/2 left-0 w-full h-px bg-blue-500/20" />
                 <div className="absolute top-0 left-1/2 w-px h-full bg-blue-500/20" />
@@ -154,22 +154,22 @@ const ProductManagementPage = () => {
 
               <div className="p-8 flex flex-col flex-1">
                 <div className="flex-1">
-                   <h3 className="text-lg font-bold text-slate-900 dark:text-white uppercase leading-none group-hover:text-blue-600 transition-colors mb-3">{product.name}</h3>
+                   <h3 className="text-lg font-bold text-slate-900 text-slate-900 uppercase leading-none group-hover:text-blue-600 transition-colors mb-3">{product.name}</h3>
                    <p className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center gap-2">
                      <FiTruck className="text-blue-500" /> {product.supplier}
                    </p>
                 </div>
                 
-                <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/80 flex items-end justify-between">
+                <div className="mt-8 pt-6 border-t border-slate-100 border-slate-200/80 flex items-end justify-between">
                   <div>
                     <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1.5">UNIT VALUATION</p>
-                    <p className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">₹{product.price.toLocaleString('en-IN')}</p>
+                    <p className="text-xl font-bold text-slate-900 text-slate-900 tracking-tight">₹{product.price.toLocaleString('en-IN')}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1.5">UNITS IN NODE</p>
-                    <div className="flex items-center gap-2 justify-end px-3 py-1 bg-slate-50 dark:bg-slate-800 rounded">
+                    <div className="flex items-center gap-2 justify-end px-3 py-1 bg-slate-50  rounded">
                       <span className={`w-1.5 h-1.5 rounded-full ${Number(product.stock) < 100 ? 'bg-rose-500 animate-pulse' : 'bg-emerald-500'}`} />
-                      <p className={`text-xs font-bold ${Number(product.stock) < 100 ? 'text-rose-600' : 'text-slate-900 dark:text-white'}`}>
+                      <p className={`text-xs font-bold ${Number(product.stock) < 100 ? 'text-rose-600' : 'text-slate-900 text-slate-900'}`}>
                         {product.stock}
                       </p>
                     </div>
@@ -189,17 +189,17 @@ const ProductManagementPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+              className="absolute inset-0 bg-white/60 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-2xl p-10 border border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="relative w-full max-w-lg bg-white  rounded-2xl p-10 border border-slate-200 border-slate-200 shadow-2xl"
             >
                <div className="flex justify-between items-start mb-10">
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">Register Strategic SKU</h2>
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Register Strategic SKU</h2>
                   <p className="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Catalog Master Infrastructure</p>
                 </div>
                 <button 
@@ -217,7 +217,7 @@ const ProductManagementPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Industrial Transformer" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                     value={newProduct.name}
                     onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
                   />
@@ -228,7 +228,7 @@ const ProductManagementPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Tata Systems" 
-                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                     value={newProduct.supplier}
                     onChange={(e) => setNewProduct({...newProduct, supplier: e.target.value})}
                   />
@@ -240,7 +240,7 @@ const ProductManagementPage = () => {
                       required
                       type="number" 
                       placeholder="0.00" 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                       value={newProduct.price}
                       onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
                     />
@@ -251,7 +251,7 @@ const ProductManagementPage = () => {
                       required
                       type="number" 
                       placeholder="000" 
-                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 dark:text-white"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                       value={newProduct.stock}
                       onChange={(e) => setNewProduct({...newProduct, stock: e.target.value})}
                     />

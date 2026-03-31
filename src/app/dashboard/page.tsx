@@ -51,15 +51,15 @@ const DashboardPage = () => {
   return (
     <div className="space-y-8 max-w-[1600px] mx-auto pb-12 transition-all">
       {/* Professional Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white uppercase">Command Center</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1 flex items-center gap-2">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase">Command Center</h1>
+          <p className="text-slate-500 text-slate-500 text-sm font-medium mt-1 flex items-center gap-2">
             <FiGlobe className="text-blue-600" /> Real-time Enterprise Telemetry • Node Cluster Alpha
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-black uppercase tracking-widest px-6 py-2.5 rounded-lg hover:bg-slate-50 transition-all">
+          <button className="bg-white border border-slate-200 text-[10px] font-black uppercase tracking-widest px-6 py-2.5 rounded-lg hover:bg-slate-50 transition-all">
             Audit Logs
           </button>
           <button 
@@ -95,7 +95,7 @@ const DashboardPage = () => {
             </div>
             <div>
               <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight leading-none">{stat.value}</h3>
+              <h3 className="text-2xl font-bold text-slate-900 text-slate-900 tracking-tight leading-none">{stat.value}</h3>
             </div>
           </div>
         ))}
@@ -107,12 +107,12 @@ const DashboardPage = () => {
            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-[0.03] rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
           <div className="flex items-center justify-between mb-10 relative z-10">
             <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-tight">Throughput Intelligence</h3>
-              <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mt-1">Operational Flux Monitoring</p>
+              <h3 className="text-lg font-bold text-slate-900 uppercase tracking-tight">Throughput Intelligence</h3>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Operational Flux Monitoring</p>
             </div>
             <div className="flex gap-2">
                {['Revenue', 'Volume'].map((m, i) => (
-                 <button key={i} className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-xl transition-all ${i === 0 ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white dark:bg-slate-800 text-slate-400 border border-slate-200 dark:border-slate-700 hover:bg-slate-50'}`}>
+                 <button key={i} className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-xl transition-all ${i === 0 ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white text-slate-400 border border-slate-200 hover:bg-slate-50'}`}>
                    {m}
                  </button>
                ))}
@@ -139,14 +139,14 @@ const DashboardPage = () => {
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="industrial-card p-8 bg-slate-900 dark:bg-blue-600 text-white flex-1 flex flex-col justify-between relative overflow-hidden group">
+          <div className="industrial-card p-8 bg-blue-600 text-white flex-1 flex flex-col justify-between relative overflow-hidden group shadow-xl">
             <div className="absolute inset-0 bg-white opacity-[0.05] pointer-events-none grid-dots" />
             <div className="relative z-10">
               <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur">
                 <FiZap size={24} />
               </div>
               <h3 className="text-xl font-black tracking-tight mb-2 uppercase italic">System Health</h3>
-              <p className="text-white/70 text-xs font-medium leading-relaxed">Infrastructure status is currently optimal across all nodes.</p>
+              <p className="text-white text-xs font-medium leading-relaxed">Infrastructure status is currently optimal across all nodes.</p>
             </div>
             <div className="pt-8 border-t border-white/10 flex items-end justify-between relative z-10">
               <div>
@@ -183,7 +183,7 @@ const DashboardPage = () => {
 
       {/* Incident Ledger */}
       <div className="industrial-card overflow-hidden">
-        <div className="p-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/30 flex items-center justify-between">
+        <div className="p-8 border-b border-slate-200 border-slate-200 bg-slate-50/30 flex items-center justify-between">
           <div>
             <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-900">Incident Tracking Ledger</h3>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Real-time Node Telemetry</p>
@@ -237,7 +237,7 @@ const DashboardPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/40 backdrop-blur-md"
+              className="absolute inset-0 bg-white/40 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
