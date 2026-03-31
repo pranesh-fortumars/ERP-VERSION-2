@@ -31,14 +31,14 @@ const Header = () => {
   };
 
   return (
-    <header className="h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 md:px-8 flex justify-between items-center sticky top-0 z-40 transition-colors">
+    <header className="h-20 glass-header px-6 md:px-8 flex justify-between items-center sticky top-0 z-40 transition-all duration-500">
       <div className="flex-1 flex items-center">
         <div className="relative group max-w-md w-full hidden sm:block">
           <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
           <input 
             type="text" 
-            placeholder="Search analytics, tasks..." 
-            className="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-2xl py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-blue-600/20 focus:bg-white dark:focus:bg-slate-700 transition-all text-sm outline-none font-medium"
+            placeholder="Search operational clusters..." 
+            className="w-full bg-slate-100/50 dark:bg-white/40 border border-black/5 rounded-2xl py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-blue-600/20 focus:bg-white transition-all text-xs outline-none font-black uppercase tracking-widest text-slate-700"
           />
         </div>
       </div>
@@ -46,19 +46,19 @@ const Header = () => {
       <div className="flex items-center gap-2 md:gap-4">
         <button 
           onClick={toggleTheme}
-          className="p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl text-slate-500 transition-all"
-          title="Toggle Theme"
+          className="p-3 hover:bg-white/50 rounded-2xl text-slate-500 transition-all shadow-sm border border-black/5"
+          title="Toggle Phase"
         >
-          {isDark ? <FiSun size={20} className="text-amber-500" /> : <FiMoon size={20} className="text-blue-600" />}
+          {isDark ? <FiSun size={20} className="text-amber-500 animate-pulse" /> : <FiMoon size={20} className="text-blue-600" />}
         </button>
 
-        <div className="flex items-center gap-1 md:gap-2 pr-2 md:pr-4 border-r border-slate-200 dark:border-slate-800 mr-1 md:mr-2 md:flex hidden">
+        <div className="flex items-center gap-1 md:gap-2 pr-2 md:pr-4 border-r border-slate-200 dark:border-slate-300 mr-1 md:mr-2 md:flex hidden">
           {[FiMaximize, FiGrid, FiSettings].map((Icon, i) => (
             <motion.button
               key={i}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, translateY: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl text-slate-500 transition-colors"
+              className="p-3 hover:bg-white/50 rounded-2xl text-slate-500 transition-all border border-transparent hover:border-black/5 shadow-sm"
             >
               <Icon size={18} />
             </motion.button>
@@ -68,18 +68,18 @@ const Header = () => {
         <motion.button 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="relative p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl text-slate-500 transition-colors"
+          className="relative p-3 hover:bg-white/50 rounded-2xl text-slate-500 transition-colors shadow-sm border border-black/5"
         >
           <FiBell size={20} />
-          <span className="absolute top-2 right-2.5 w-2.5 h-2.5 bg-rose-500 rounded-full border-2 border-white dark:border-slate-900" />
+          <span className="absolute top-2.5 right-2.5 w-3 h-3 bg-blue-600 rounded-full border-2 border-white animate-pulse" />
         </motion.button>
 
-        <div className="flex items-center gap-3 pl-1 md:pl-2">
+        <div className="flex items-center gap-4 pl-2">
           <div className="text-right hidden lg:block">
-            <p className="text-sm font-black leading-tight tracking-tight">Arjun Sharma</p>
-            <p className="text-[10px] text-slate-500 font-bold tracking-widest uppercase mt-0.5">Operation Head</p>
+            <p className="text-sm font-black leading-tight tracking-tighter text-slate-900 uppercase italic">Arjun Sharma</p>
+            <p className="text-[9px] text-blue-600 font-black tracking-widest uppercase mt-0.5 opacity-80">Operation Head</p>
           </div>
-          <div className="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-gradient-to-tr from-blue-700 to-blue-500 border-2 border-white dark:border-slate-800 shadow-lg shadow-blue-200 dark:shadow-none flex items-center justify-center font-black text-white text-sm">
+          <div className="w-12 h-12 rounded-[20px] bg-gradient-to-tr from-blue-700 to-blue-500 border-4 border-white shadow-2xl flex items-center justify-center font-black text-white text-sm ring-1 ring-blue-100">
             AS
           </div>
         </div>

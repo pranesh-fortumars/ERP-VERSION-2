@@ -2,10 +2,15 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiFileText, FiBarChart2, FiPieChart, FiChevronDown, FiDownload, FiArrowUpRight, FiSearch } from 'react-icons/fi';
+import { FiFileText, FiBarChart2, FiPieChart, FiChevronDown, FiDownload, FiArrowUpRight, FiSearch, FiPlus, FiX, FiLayers } from 'react-icons/fi';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area } from 'recharts';
 
 const ReportGenerationPage = () => {
+  const [templates, setTemplates] = useState([
+    { id: 'T-01', name: 'Quarterly Revenue Retrospective', cluster: 'Sales', frequency: 'Quarterly' },
+    { id: 'T-02', name: 'Inventory Health Audit', cluster: 'Logistics', frequency: 'Weekly' }
+  ]);
+
   const salesData = [
     { month: 'Jan', revenue: 4500000, target: 4000000 },
     { month: 'Feb', revenue: 3800000, target: 4000000 },
@@ -24,33 +29,52 @@ const ReportGenerationPage = () => {
   
   const COLORS = ['#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'];
 
-  const [reportType, setReportType] = useState('Sales');
+  const [reportType, setReportType] = useState('Sales Performance');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newTemplate, setNewTemplate] = useState({ name: '', cluster: 'Sales Performance', frequency: 'Monthly' });
 
   const startGeneration = () => {
     setIsGenerating(true);
     setTimeout(() => setIsGenerating(false), 2000);
   };
 
+  const handleAddTemplate = (e: React.FormEvent) => {
+    e.preventDefault();
+    const id = `T-${Math.floor(Math.random() * 90 + 10)}`;
+    setTemplates([{ id, ...newTemplate }, ...templates]);
+    setIsModalOpen(false);
+    setNewTemplate({ name: '', cluster: 'Sales Performance', frequency: 'Monthly' });
+  };
+
   return (
     <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0">
+      {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Analytical Intelligence</h1>
-          <p className="text-slate-500 font-medium tracking-tight mt-1">Generate high-fidelity reports and mission-critical business insights.</p>
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+            <FiLayers /> Intelligence Engine v3.2
+          </div>
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white uppercase">Analytical Intelligence</h1>
+          <p className="text-slate-500 font-medium tracking-tight mt-1 flex items-center gap-2">
+            <FiBarChart2 className="text-blue-500" /> High-Fidelity Business Process Reporting Cluster
+          </p>
         </div>
-        <div className="flex gap-4">
-           <button className="px-6 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-2xl text-xs font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:bg-slate-200">
-            <FiDownload /> Export Archive
+        <div className="flex flex-wrap items-center gap-4">
+           <button 
+             onClick={() => setIsModalOpen(true)}
+             className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[10px] font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:shadow-lg active:scale-95"
+           >
+            <FiPlus /> Register Template
           </button>
           <button 
             onClick={startGeneration}
-            className="px-6 py-2.5 bg-blue-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-blue-600/20 hover:bg-blue-700 transition-all flex items-center gap-2 uppercase tracking-widest relative overflow-hidden"
+            className="px-8 py-2.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 uppercase tracking-[0.3em] relative overflow-hidden active:scale-95"
           >
             <AnimatePresence mode="wait">
               {isGenerating ? (
                 <motion.span key="gen" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ y: -20 }} className="flex items-center gap-2">
-                  <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Compiling...
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Compiling...
                 </motion.span>
               ) : (
                 <motion.span key="idle" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ y: -20 }} className="flex items-center gap-2">
@@ -64,129 +88,240 @@ const ReportGenerationPage = () => {
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Report Config */}
-        <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
-          <h2 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-[11px] text-blue-500">Parameters</h2>
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Report Domain</label>
-              <div className="relative group">
-                <FiPieChart className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-blue-500 transition-colors" />
-                <select 
-                   value={reportType} 
-                   onChange={(e) => setReportType(e.target.value)}
-                   className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none"
-                >
-                  <option>Sales Performance</option>
-                  <option>Inventory Health</option>
-                  <option>Customer Dynamics</option>
-                  <option>Financial Audit</option>
-                  <option>Logistics Nodes</option>
-                </select>
+        <div className="space-y-8">
+          <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-1000" />
+            <h2 className="text-[11px] font-black text-blue-600 mb-8 uppercase tracking-[0.3em]">Execution Parameters</h2>
+            <div className="space-y-8 relative z-10">
+              <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Analytical Domain</label>
+                <div className="relative group/select">
+                  <FiPieChart className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-hover/select:text-blue-500 transition-colors" />
+                  <select 
+                    value={reportType} 
+                    onChange={(e) => setReportType(e.target.value)}
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 pl-14 pr-6 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none cursor-pointer"
+                  >
+                    <option>Sales Performance</option>
+                    <option>Inventory Health</option>
+                    <option>Customer Dynamics</option>
+                    <option>Financial Audit</option>
+                    <option>Logistics Nodes</option>
+                  </select>
+                </div>
               </div>
-            </div>
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Temporal Horizon</label>
-              <div className="relative group">
-                <FiBarChart2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-blue-500 transition-colors" />
-                <select 
-                   className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none"
-                >
-                  <option>Last 6 Fiscal Months</option>
-                  <option>Quarterly Analysis</option>
-                  <option>Yearly Retrospective</option>
-                  <option>Custom Epoch</option>
-                </select>
+              <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Temporal Horizon</label>
+                <div className="relative group/select">
+                  <FiBarChart2 className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-hover/select:text-blue-500 transition-colors" />
+                  <select 
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-4.5 pl-14 pr-6 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none cursor-pointer"
+                  >
+                    <option>Last 6 Fiscal Months</option>
+                    <option>Quarterly Analysis</option>
+                    <option>Yearly Retrospective</option>
+                    <option>Custom Epoch</option>
+                  </select>
+                </div>
               </div>
-            </div>
 
-            <div className="pt-4 space-y-4">
-              <div className="p-5 bg-blue-50/50 dark:bg-blue-900/10 rounded-[28px] border border-blue-100/50 dark:border-blue-500/10">
-                 <p className="text-[10px] font-black uppercase text-blue-500 tracking-widest mb-1 leading-none">Last Compilation</p>
-                 <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-slate-900 dark:text-white">March 28, 2024</span>
-                    <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md text-[9px] font-black">STABLE</span>
-                 </div>
+              <div className="pt-6 space-y-5">
+                <div className="p-6 bg-blue-500/5 dark:bg-blue-900/10 rounded-[32px] border border-blue-500/10">
+                  <p className="text-[10px] font-black uppercase text-blue-500 tracking-[0.2em] mb-2 leading-none">Status: Stable</p>
+                  <div className="flex items-center justify-between">
+                      <span className="text-xs font-black text-slate-900 dark:text-white">Last Compilation</span>
+                      <span className="text-[10px] font-bold text-slate-400">Mar 28, 2024</span>
+                  </div>
+                </div>
+                <p className="text-[10px] text-slate-400 font-bold px-3 leading-relaxed uppercase tracking-tight">
+                  Reports are cryptographically hashed and committed to the secure audit ledger automatically.
+                </p>
               </div>
-              <p className="text-[10px] text-slate-400 font-medium px-2 leading-relaxed">
-                Reports are cryptographically signed and stored in the secure audit ledger. GST compliance is automatically verified.
-              </p>
             </div>
+          </div>
+
+          <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm">
+             <h2 className="text-[11px] font-black text-slate-900 dark:text-white mb-8 uppercase tracking-[0.3em]">Active Templates</h2>
+             <div className="space-y-6">
+                {templates.map((tpl, i) => (
+                  <div key={i} className="flex items-center justify-between group cursor-pointer">
+                     <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition-all">
+                           <FiFileText size={18} />
+                        </div>
+                        <div>
+                           <p className="text-xs font-black text-slate-700 dark:text-slate-300 group-hover:text-blue-600 transition-colors">{tpl.name}</p>
+                           <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{tpl.cluster} • {tpl.frequency}</p>
+                        </div>
+                     </div>
+                     <FiArrowUpRight className="text-slate-300 group-hover:text-blue-500 transition-all" />
+                  </div>
+                ))}
+             </div>
           </div>
         </div>
 
-        {/* Real-time Visualization */}
+        {/* Visual Analytics */}
         <div className="xl:col-span-2 space-y-8">
-           <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
-              <div className="flex items-center justify-between mb-8">
-                 <h3 className="text-lg font-black text-slate-900 dark:text-white tracking-tight">Revenue Vectors</h3>
-                 <div className="flex items-center gap-2 text-emerald-500 font-black text-xs">
+           <div className="bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent opacity-50" />
+              <div className="flex items-center justify-between mb-12">
+                 <div>
+                   <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter uppercase leading-none mb-1">Fiscal Trajectory</h3>
+                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Revenue Vectors & Performance Anchors</p>
+                 </div>
+                 <div className="flex items-center gap-3 text-emerald-500 bg-emerald-500/10 px-5 py-2 rounded-2xl border border-emerald-500/10 font-black text-xs">
                     <FiArrowUpRight /> +14.2% Growth
                  </div>
               </div>
-              <div style={{ width: '100%', minWidth: 0, minHeight: 320 }}>
-                <ResponsiveContainer width="100%" height={320} minHeight={320}>
+              <div style={{ width: '100%', minWidth: 0 }}>
+                <ResponsiveContainer width="100%" height={380}>
                   <AreaChart data={salesData}>
                     <defs>
                       <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.1}/>
+                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.2}/>
                         <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                    <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{fontSize: 10, fontWeight: 900, fill: '#94a3b8'}} />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" opacity={0.5} />
+                    <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{fontSize: 10, fontWeight: 900, fill: '#64748b'}} dy={10} />
                     <YAxis hide />
                     <Tooltip 
-                      contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)', fontWeight: 900, fontSize: '12px' }}
+                      contentStyle={{ borderRadius: '24px', border: 'none', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.1)', fontWeight: 900, fontSize: '12px', padding: '20px' }}
                     />
-                    <Area type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
-                    <Area type="monotone" dataKey="target" stroke="#cbd5e1" strokeWidth={2} strokeDasharray="5 5" fill="transparent" />
+                    <Area type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={4} fillOpacity={1} fill="url(#colorRev)" />
+                    <Area type="monotone" dataKey="target" stroke="#cbd5e1" strokeWidth={2} strokeDasharray="6 6" fill="transparent" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
-                <h3 className="text-sm font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-[11px]">Substrate Mix</h3>
-                <div style={{ width: '100%', minWidth: 0, minHeight: 200 }}>
-                  <ResponsiveContainer width="100%" height={240} minHeight={240}>
+              <div className="bg-white dark:bg-slate-900 rounded-[48px] border border-slate-200 dark:border-slate-800 p-10 shadow-sm">
+                <div className="flex items-center justify-between mb-8">
+                   <h3 className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.3em]">Substrate Mix</h3>
+                   <FiPieChart className="text-blue-500" />
+                </div>
+                <div style={{ width: '100%', minWidth: 0 }}>
+                  <ResponsiveContainer width="100%" height={260}>
                     <PieChart>
-                      <Pie data={inventoryData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
+                      <Pie data={inventoryData} cx="50%" cy="50%" innerRadius={70} outerRadius={95} paddingAngle={8} dataKey="value" stroke="none">
                         {inventoryData.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
                       </Pie>
                       <Tooltip />
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
-                <div className="mt-4 grid grid-cols-2 gap-2">
+                <div className="mt-8 grid grid-cols-2 gap-4">
                    {inventoryData.map((item, i) => (
-                     <div key={i} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
-                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-tight">{item.name}</span>
+                     <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-transparent hover:border-blue-500/10 transition-all">
+                        <div className="w-2.5 h-2.5 rounded-full shadow-lg" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
+                        <span className="text-[9px] font-black text-slate-500 uppercase tracking-tight truncate">{item.name}</span>
                      </div>
                    ))}
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-slate-900 rounded-[40px] border border-slate-200 dark:border-slate-800 p-8 shadow-sm flex flex-col justify-center text-center">
-                 <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-3xl flex items-center justify-center mx-auto mb-4 text-blue-600">
+              <div className="bg-slate-900 rounded-[48px] p-10 flex flex-col justify-center text-center relative overflow-hidden group">
+                 <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-700" />
+                 <div className="w-20 h-20 bg-white/5 rounded-[32px] flex items-center justify-center mx-auto mb-8 text-blue-500 shadow-2xl relative z-10 backdrop-blur-3xl border border-white/5">
                     <FiDownload size={32} />
                  </div>
-                 <h4 className="text-lg font-black text-slate-900 dark:text-white mb-2">Automated Archival</h4>
-                 <p className="text-xs font-medium text-slate-500 leading-relaxed max-w-[200px] mx-auto">
+                 <h4 className="text-xl font-black text-white mb-3 relative z-10 uppercase tracking-tighter italic">Automated Archival</h4>
+                 <p className="text-xs font-bold text-slate-500 leading-relaxed max-w-[220px] mx-auto mb-10 relative z-10 uppercase tracking-tight">
                    Enable scheduled delivery of analytical clusters to stakeholders.
                  </p>
-                 <button className="mt-6 py-3 bg-slate-900 dark:bg-slate-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform">
+                 <button className="relative z-10 py-5 bg-white text-slate-900 rounded-3xl text-[10px] font-black uppercase tracking-[0.4em] hover:scale-105 transition-all shadow-xl active:scale-95 mx-auto px-12">
                    Configure cron
                  </button>
               </div>
            </div>
         </div>
       </div>
+
+      {/* Template Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[56px] p-12 md:p-16 border border-blue-500/20 shadow-2xl"
+            >
+              <div className="flex justify-between items-start mb-12">
+                <div>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-2">Register Blueprint</h2>
+                  <p className="text-slate-500 font-black text-[10px] uppercase tracking-[0.3em]">Analytical Intelligence Manifest</p>
+                </div>
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-3xl transition-all active:scale-90"
+                >
+                  <FiX size={26} />
+                </button>
+              </div>
+
+              <form onSubmit={handleAddTemplate} className="space-y-8">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Template Designation</label>
+                  <input 
+                    required
+                    type="text" 
+                    placeholder="e.g. Sales Master Audit v3" 
+                    className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white"
+                    value={newTemplate.name}
+                    onChange={(e) => setNewTemplate({...newTemplate, name: e.target.value})}
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Target Cluster</label>
+                    <select 
+                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none cursor-pointer"
+                      value={newTemplate.cluster}
+                      onChange={(e) => setNewTemplate({...newTemplate, cluster: e.target.value})}
+                    >
+                      <option>Sales Performance</option>
+                      <option>Inventory Health</option>
+                      <option>Financial Audit</option>
+                      <option>Logistics Nodes</option>
+                    </select>
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Temporal Frequency</label>
+                    <select 
+                      className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 dark:text-white appearance-none cursor-pointer"
+                      value={newTemplate.frequency}
+                      onChange={(e) => setNewTemplate({...newTemplate, frequency: e.target.value})}
+                    >
+                      <option>Daily</option>
+                      <option>Weekly</option>
+                      <option>Monthly</option>
+                      <option>Quarterly</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[32px] font-black text-xs uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
+                  <FiPlus /> Commit Template to Registry
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
 export default ReportGenerationPage;
+
 

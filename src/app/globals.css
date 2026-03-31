@@ -2,84 +2,122 @@
 
 @layer theme {
   :root {
-    --background: #f8fafc;
+    --background-start: #ffffff;
+    --background-end: #f1f5f9;
     --foreground: #0f172a;
     --primary: #2563eb;
     --primary-foreground: #ffffff;
-    --sidebar-bg: #1e293b;
-    --sidebar-fg: #f1f5f9;
-    --card-bg: #ffffff;
-    --card-border: #e2e8f0;
-    --accent: #059669;
+    --sidebar-bg: #f8fafc;
+    --sidebar-fg: #1e293b;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --card-border: rgba(226, 232, 240, 0.5);
+    --accent: #3b82f6;
     --muted: #64748b;
-    --glass: rgba(255, 255, 255, 0.7);
-    --glass-border: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.4);
     --ring: rgba(37, 99, 235, 0.1);
-    --radius: 12px;
+    --radius: 24px;
+    --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
   }
 
   .dark {
-    --background: #0f172a;
-    --foreground: #f8fafc;
-    --primary: #3b82f6;
+    --background-start: #f8fafc;
+    --background-end: #e2e8f0;
+    --foreground: #1e293b;
+    --primary: #1d4ed8;
     --primary-foreground: #ffffff;
-    --sidebar-bg: #020617;
-    --sidebar-fg: #f1f5f9;
-    --card-bg: #1e293b;
-    --card-border: #334155;
-    --accent: #10b981;
-    --muted: #94a3b8;
-    --glass: rgba(2, 6, 23, 0.7);
-    --glass-border: #334155;
-    --ring: rgba(59, 130, 246, 0.1);
+    --sidebar-bg: #ffffff;
+    --sidebar-fg: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(203, 213, 225, 0.5);
+    --accent: #2563eb;
+    --muted: #475569;
+    --glass: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --ring: rgba(29, 78, 216, 0.15);
   }
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
-.auth-grid {
-  background-image: 
-    radial-gradient(circle at 2px 2px, var(--card-border) 1px, transparent 0);
-  background-size: 24px 24px;
+/* Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .industrial-card {
   background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-premium);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .industrial-card:hover {
+  transform: translateY(-4px);
   border-color: var(--primary);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-standard {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--card-border);
+}
+
+.dark .sidebar-standard {
+  background: #ffffff;
+}
+
+.navigation-link {
+  transition: all 0.3s ease;
+}
+
+.navigation-link:hover {
+  background: rgba(37, 99, 235, 0.05);
+  color: var(--primary);
 }
 
 .glass-header {
   background: var(--glass);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--glass-border);
 }
 
 .btn-primary {
   background: var(--primary);
   color: var(--primary-foreground);
-  font-weight: 600;
-  border-radius: 8px;
-  padding: 8px 16px;
-  transition: opacity 0.2s;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  transform: scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -88,9 +126,26 @@ body {
 
 .data-table-row {
   border-bottom: 1px solid var(--card-border);
-  transition: background-color 0.1s;
+  transition: all 0.2s;
 }
 
 .data-table-row:hover {
-  background-color: rgba(37, 99, 235, 0.02);
+  background-color: rgba(37, 99, 235, 0.04);
+  transform: scale(1.005);
 }
+
+/* Animations for industrial items */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Custom Grid Utility */
+.grid-dots {
+  background-image: radial-gradient(var(--card-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
