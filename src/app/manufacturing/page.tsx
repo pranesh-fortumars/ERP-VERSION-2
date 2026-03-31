@@ -19,10 +19,10 @@ const ManufacturingPage = () => {
   ];
 
   const machineStatus = [
-    { machine: 'Heavy Press 01', status: 'Optimal', health: 94, load: 78 },
-    { machine: 'CNC Router B2', status: 'Optimal', health: 88, load: 92 },
-    { machine: 'Automated Welder', status: 'Maintenance', health: 42, load: 0 },
-    { machine: 'Injection Mold 5', status: 'Optimal', health: 91, load: 65 },
+    { machine: 'Heavy Press 01', status: 'Optimal', health: 94, load: 78, color: 'bg-cyan-500' },
+    { machine: 'CNC Router B2', status: 'Optimal', health: 88, load: 92, color: 'bg-indigo-500' },
+    { machine: 'Automated Welder', status: 'Maintenance', health: 42, load: 0, color: 'bg-rose-500' },
+    { machine: 'Injection Mold 5', status: 'Optimal', health: 91, load: 65, color: 'bg-blue-600' },
   ];
 
   const jobs = [
@@ -120,7 +120,7 @@ const ManufacturingPage = () => {
                     initial={{ width: 0 }}
                     animate={{ width: `${m.health}%` }}
                     transition={{ duration: 1.5, delay: i * 0.2 }}
-                    className={`h-full ${m.health > 80 ? 'bg-blue-500' : 'bg-sky-500'}`} 
+                    className={`h-full ${m.color}`} 
                   />
                 </div>
                 <div className="flex justify-between items-center text-[8px] font-black text-slate-400 uppercase tracking-widest mt-2 px-1">

@@ -27,7 +27,7 @@ const ReportGenerationPage = () => {
     { name: 'Transit Stock', value: 10 },
   ];
   
-  const COLORS = ['#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'];
+  const COLORS = ['#2563eb', '#10b981', '#6366f1', '#f59e0b', '#0ea5e9'];
 
   const [reportType, setReportType] = useState('Sales Performance');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -52,10 +52,10 @@ const ReportGenerationPage = () => {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
             <FiLayers /> Intelligence Engine v3.2
           </div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 text-slate-900 uppercase">Analytical Intelligence</h1>
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 uppercase">Analytical Intelligence</h1>
           <p className="text-slate-500 font-medium tracking-tight mt-1 flex items-center gap-2">
             <FiBarChart2 className="text-blue-500" /> High-Fidelity Business Process Reporting Cluster
           </p>
@@ -63,7 +63,7 @@ const ReportGenerationPage = () => {
         <div className="flex flex-wrap items-center gap-4">
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-2xl text-[10px] font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:shadow-lg active:scale-95"
+             className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black transition-all flex items-center gap-2 uppercase tracking-widest hover:shadow-lg active:scale-95"
            >
             <FiPlus /> Register Template
           </button>
@@ -141,8 +141,8 @@ const ReportGenerationPage = () => {
             </div>
           </div>
 
-          <div className="bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm">
-             <h2 className="text-[11px] font-black text-slate-900 text-slate-900 mb-8 uppercase tracking-[0.3em]">Active Templates</h2>
+          <div className="bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm">
+             <h2 className="text-[11px] font-black text-slate-900 mb-8 uppercase tracking-[0.3em]">Active Templates</h2>
              <div className="space-y-6">
                 {templates.map((tpl, i) => (
                   <div key={i} className="flex items-center justify-between group cursor-pointer">
@@ -198,9 +198,9 @@ const ReportGenerationPage = () => {
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white  rounded-[48px] border border-slate-200 border-slate-200 p-10 shadow-sm">
+              <div className="bg-white rounded-[48px] border border-slate-200 p-10 shadow-sm">
                 <div className="flex items-center justify-between mb-8">
-                   <h3 className="text-[11px] font-black text-slate-900 text-slate-900 uppercase tracking-[0.3em]">Substrate Mix</h3>
+                   <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.3em]">Substrate Mix</h3>
                    <FiPieChart className="text-blue-500" />
                 </div>
                 <div style={{ width: '100%', minWidth: 0 }}>
@@ -215,7 +215,7 @@ const ReportGenerationPage = () => {
                 </div>
                 <div className="mt-8 grid grid-cols-2 gap-4">
                    {inventoryData.map((item, i) => (
-                     <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 /50 rounded-2xl border border-transparent hover:border-blue-500/10 transition-all">
+                     <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-transparent hover:border-blue-500/10 transition-all">
                         <div className="w-2.5 h-2.5 rounded-full shadow-lg" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                         <span className="text-[9px] font-black text-slate-500 uppercase tracking-tight truncate">{item.name}</span>
                      </div>
@@ -225,7 +225,7 @@ const ReportGenerationPage = () => {
 
               <div className="bg-white rounded-[48px] p-10 flex flex-col justify-center text-center relative overflow-hidden group">
                  <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-700" />
-                 <div className="w-20 h-20 bg-white/5 rounded-[32px] flex items-center justify-center mx-auto mb-8 text-blue-500 shadow-2xl relative z-10 backdrop-blur-3xl border border-white/5">
+                 <div className="w-20 h-20 bg-slate-50 rounded-[32px] flex items-center justify-center mx-auto mb-8 text-blue-500 shadow-2xl relative z-10 border border-slate-100">
                     <FiDownload size={32} />
                  </div>
                  <h4 className="text-xl font-black text-white mb-3 relative z-10 uppercase tracking-tighter italic">Automated Archival</h4>
@@ -255,11 +255,11 @@ const ReportGenerationPage = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg bg-white  rounded-[56px] p-12 md:p-16 border border-blue-500/20 shadow-2xl"
+              className="relative w-full max-w-lg bg-white rounded-[56px] p-12 md:p-16 border border-blue-500/20 shadow-2xl"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 text-slate-900 uppercase leading-none mb-2">Register Blueprint</h2>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none mb-2">Register Blueprint</h2>
                   <p className="text-slate-500 font-black text-[10px] uppercase tracking-[0.3em]">Analytical Intelligence Manifest</p>
                 </div>
                 <button 

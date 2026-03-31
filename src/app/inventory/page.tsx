@@ -43,9 +43,9 @@ const InventoryPage = () => {
   ];
 
   const warehouses = [
-    { name: 'Pune Logistics Hub', capacity: 92, location: 'Chakan, MH' },
-    { name: 'Chennai Unit 2', capacity: 45, location: 'Sriperumbudur, TN' },
-    { name: 'Mumbai Central Depot', capacity: 78, location: 'Bhiwandi, MH' },
+    { name: 'Pune Logistics Hub', capacity: 92, location: 'Chakan, MH', color: 'bg-blue-600' },
+    { name: 'Chennai Unit 2', capacity: 45, location: 'Sriperumbudur, TN', color: 'bg-indigo-600' },
+    { name: 'Mumbai Central Depot', capacity: 78, location: 'Bhiwandi, MH', color: 'bg-sky-500' },
   ];
 
   return (
@@ -200,7 +200,7 @@ const InventoryPage = () => {
                       initial={{ width: 0 }}
                       animate={{ width: `${wh.capacity}%` }}
                       transition={{ duration: 1.5, delay: i * 0.2 }}
-                      className="h-full bg-blue-600 rounded-full" 
+                      className={`h-full ${wh.color} rounded-full`} 
                     />
                   </div>
                 </div>

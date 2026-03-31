@@ -16,6 +16,7 @@ const initialCustomers = [
     gstin: '27AAACI1234A1Z5',
     status: 'Active',
     engagement: 88,
+    color: 'bg-blue-600',
     notes: 'Primary contact for the Cloud Infrastructure project.' 
   },
   { 
@@ -29,6 +30,7 @@ const initialCustomers = [
     gstin: '29ABBCH5678B2Z1',
     status: 'Lead',
     engagement: 42,
+    color: 'bg-indigo-600',
     notes: 'Interested in AI-driven BPA solutions.' 
   },
   { 
@@ -42,6 +44,7 @@ const initialCustomers = [
     gstin: '07AAECR9012C3Z2',
     status: 'Active',
     engagement: 95,
+    color: 'bg-sky-500',
     notes: 'Needs periodic reports on manufacturing efficiency.' 
   },
   { 
@@ -55,6 +58,7 @@ const initialCustomers = [
     gstin: '24AAADW3456D4Z9',
     status: 'Reviewing',
     engagement: 15,
+    color: 'bg-indigo-400',
     notes: 'Reviewing the pricing proposal for the enterprise suite.' 
   },
 ];
@@ -86,6 +90,7 @@ const CustomersPage = () => {
       id: Date.now(), 
       status: 'Onboarding',
       engagement: 10,
+      color: 'bg-emerald-500',
       lastContact: new Date().toISOString().split('T')[0],
       notes: 'Newly added enterprise client.'
     }, ...customers]);
@@ -176,7 +181,7 @@ const CustomersPage = () => {
                     
                     <div className="flex items-start justify-between mb-10 relative z-10">
                       <div className="flex items-center gap-6">
-                        <div className="w-20 h-20 rounded-[32px] bg-blue-600 flex items-center justify-center text-white font-black text-3xl shadow-2xl shadow-blue-600/30 group-hover:rotate-12 transition-transform duration-700 ring-4 ring-blue-600/20">
+                        <div className={`w-20 h-20 rounded-[32px] flex items-center justify-center text-white font-black text-3xl shadow-2xl transition-transform duration-700 ring-4 ring-slate-100 ${customer.color || 'bg-blue-600'}`}>
                           {customer.name.charAt(0)}
                         </div>
                         <div>
@@ -232,7 +237,11 @@ const CustomersPage = () => {
                                  initial={{ width: 0 }}
                                  animate={{ width: `${customer.engagement}%` }}
                                  transition={{ delay: 0.5, duration: 1 }}
-                                 className="h-full bg-blue-600 rounded-full" 
+                                 className={`h-full rounded-full bg-gradient-to-r ${
+                                    customer.engagement > 80 ? 'from-emerald-500 to-blue-600' :
+                                    customer.engagement > 40 ? 'from-blue-400 to-indigo-600' :
+                                    'from-rose-400 to-amber-500'
+                                  }`} 
                                />
                             </div>
                          </div>

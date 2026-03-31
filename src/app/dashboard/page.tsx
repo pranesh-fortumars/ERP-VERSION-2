@@ -31,13 +31,13 @@ const DashboardPage = () => {
   ];
 
   const chartData = [
-    { name: 'Mon', revenue: 4000, production: 2400 },
-    { name: 'Tue', revenue: 3000, production: 1398 },
-    { name: 'Wed', revenue: 2000, production: 9800 },
-    { name: 'Thu', revenue: 2780, production: 3908 },
-    { name: 'Fri', revenue: 1890, production: 4800 },
-    { name: 'Sat', revenue: 2390, production: 3800 },
-    { name: 'Sun', revenue: 3490, production: 4300 },
+    { name: 'Mon', revenue: 4000, production: 2400, efficiency: 70 },
+    { name: 'Tue', revenue: 3000, production: 1398, efficiency: 85 },
+    { name: 'Wed', revenue: 2000, production: 9800, efficiency: 65 },
+    { name: 'Thu', revenue: 2780, production: 3908, efficiency: 92 },
+    { name: 'Fri', revenue: 1890, production: 4800, efficiency: 78 },
+    { name: 'Sat', revenue: 2390, production: 3800, efficiency: 88 },
+    { name: 'Sun', revenue: 3490, production: 4300, efficiency: 74 },
   ];
 
   const handleAddIncident = (e: React.FormEvent) => {
@@ -126,13 +126,22 @@ const DashboardPage = () => {
                     <stop offset="5%" stopColor="#2563eb" stopOpacity={0.2}/>
                     <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
                   </linearGradient>
+                  <linearGradient id="colorProd" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.2}/>
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorEff" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor="#f59e0b" stopOpacity={0}/>
+                  </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" className="dark:stroke-slate-200" opacity={0.3} />
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#64748b', fontWeight: 900 }} dy={10} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#64748b', fontWeight: 900 }} />
                 <Tooltip content={<CustomTooltip />} />
-                <Area type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
-                <Line type="monotone" dataKey="production" stroke="#059669" strokeWidth={2} dot={false} strokeDasharray="4 4" />
+                <Area type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" name="Revenue Flux" />
+                <Area type="monotone" dataKey="production" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorProd)" name="Batch Yield" />
+                <Line type="monotone" dataKey="efficiency" stroke="#f59e0b" strokeWidth={2} dot={{ stroke: '#f59e0b', strokeWidth: 2, r: 4, fill: '#fff' }} name="OEE Vector" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
