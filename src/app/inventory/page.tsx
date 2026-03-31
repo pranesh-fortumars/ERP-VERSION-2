@@ -37,9 +37,9 @@ const InventoryPage = () => {
 
   const inventorySummary = [
     { label: 'Asset Value', value: '₹4.2 Cr', icon: <FiPackage className="w-5 h-5" />, color: 'blue' },
-    { label: 'Critical SKU', value: stocks.filter(s => s.status !== 'Optimal').length, icon: <FiAlertCircle className="w-5 h-5" />, color: 'rose' },
-    { label: 'Load Factor', value: '82%', icon: <FiDatabase className="w-5 h-5" />, color: 'emerald' },
-    { label: 'In-Transit', value: '08', icon: <FiTruck className="w-5 h-5" />, color: 'amber' },
+    { label: 'Critical SKU', value: stocks.filter(s => s.status !== 'Optimal').length, icon: <FiAlertCircle className="w-5 h-5" />, color: 'sky' },
+    { label: 'Load Factor', value: '82%', icon: <FiDatabase className="w-5 h-5" />, color: 'blue' },
+    { label: 'In-Transit', value: '08', icon: <FiTruck className="w-5 h-5" />, color: 'blue' },
   ];
 
   const warehouses = [
@@ -75,12 +75,10 @@ const InventoryPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {inventorySummary.map((stat, i) => (
           <div key={i} className="industrial-card p-6 flex flex-col justify-between">
-            <div className={`p-3 rounded-lg ${
-              stat.color === 'blue' ? 'bg-blue-600/10 text-blue-600' :
-              stat.color === 'rose' ? 'bg-rose-600/10 text-rose-600' :
-              stat.color === 'emerald' ? 'bg-emerald-600/10 text-emerald-600' :
-              'bg-amber-600/10 text-amber-600'
-            } w-fit mb-4`}>
+            <div className={`p-4 rounded-2xl ${
+              stat.color === 'blue' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' :
+              'bg-sky-500 text-white shadow-lg shadow-sky-500/20'
+            } w-fit mb-6`}>
               {stat.icon}
             </div>
             <div>
@@ -131,12 +129,12 @@ const InventoryPage = () => {
                   <tr key={item.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all cursor-pointer data-table-row">
                     <td className="py-5 px-8">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-slate-900 text-white rounded flex items-center justify-center font-black text-sm uppercase tracking-tighter shadow-sm">
+                        <div className="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center font-black text-sm uppercase tracking-tighter shadow-lg shadow-blue-600/10">
                           {item.id.split('-')[1]}
                         </div>
                         <div>
-                          <p className="text-xs font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase leading-none mb-1">{item.name}</p>
-                          <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">{item.id}</p>
+                          <p className="text-xs font-bold text-slate-900 tracking-tight uppercase leading-none mb-1">{item.name}</p>
+                          <p className="text-[8px] font-bold text-blue-400 uppercase tracking-widest">{item.id}</p>
                         </div>
                       </div>
                     </td>
@@ -151,9 +149,9 @@ const InventoryPage = () => {
                       </div>
                     </td>
                     <td className="py-5 px-4 whitespace-nowrap">
-                      <span className={`px-3 py-1 rounded text-[8px] font-black uppercase tracking-widest ${
-                        item.status === 'Optimal' ? 'bg-emerald-500 text-white' : 
-                        item.status === 'Low Stock' ? 'bg-amber-500 text-white' : 'bg-rose-500 text-white animate-pulse'
+                      <span className={`px-4 py-1.5 rounded-xl text-[8px] font-black uppercase tracking-widest border ${
+                        item.status === 'Optimal' ? 'bg-blue-50 text-blue-600 border-blue-100' : 
+                        item.status === 'Low Stock' ? 'bg-sky-50 text-sky-600 border-sky-100' : 'bg-blue-50 text-blue-600 border-blue-100 animate-pulse'
                       }`}>
                         {item.status}
                       </span>

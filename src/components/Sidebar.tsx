@@ -38,7 +38,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Desktop Sidebar */}
-      <div className="w-64 sidebar-standard p-6 hidden md:flex flex-col h-screen fixed left-0 top-0 z-50 border-r border-slate-200/50 shadow-2xl shadow-blue-900/5">
+      <div className="w-64 sidebar-standard p-6 hidden md:flex flex-col h-screen fixed left-0 top-0 z-50 border-r border-blue-500/10 shadow-2xl shadow-blue-900/5">
         <div className="flex items-center gap-4 mb-14 px-2 mt-4 group cursor-pointer">
           <div className="w-11 h-11 bg-blue-600 rounded-[14px] flex items-center justify-center text-white shadow-xl shadow-blue-600/20 group-hover:scale-110 transition-transform duration-500 ring-4 ring-blue-50">
             <FiServer size={22} />
@@ -61,7 +61,7 @@ const Sidebar = () => {
                     href={item.href}
                     className={`flex items-center gap-4 px-5 py-3.5 rounded-[18px] transition-all duration-300 group ${
                       isActive 
-                        ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' 
+                        ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30 blue-glow' 
                         : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'
                     }`}
                   >
@@ -77,7 +77,7 @@ const Sidebar = () => {
         </nav>
 
         <div className="mt-auto pt-8 border-t border-slate-100">
-          <div className="flex items-center gap-4 px-4 py-5 bg-white/40 rounded-[24px] border border-black/[0.03] hover:border-blue-500/10 transition-all cursor-pointer group shadow-sm">
+          <div className="flex items-center gap-4 px-4 py-5 bg-white/40 rounded-[24px] border border-blue-500/5 hover:border-blue-500/10 transition-all cursor-pointer group shadow-sm">
             <div className="w-12 h-12 rounded-[18px] bg-gradient-to-tr from-blue-700 to-blue-500 flex items-center justify-center font-black text-white shadow-lg group-hover:rotate-12 transition-all ring-2 ring-white">
               AS
             </div>

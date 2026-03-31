@@ -64,26 +64,14 @@ const ManufacturingPage = () => {
       </div>
 
       {/* Industrial Digital Twin (Replaces Image) */}
-      <div className="relative h-80 w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 p-10 flex items-center justify-between group">
-         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+      <div className="h-64 w-full rounded-3xl overflow-hidden border border-blue-500/20 bg-blue-900 p-8 flex flex-col justify-between relative group">
+         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#38bdf8 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
          
          <div className="relative z-10 space-y-4 max-w-md">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-600/20 text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2">
                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" /> Asset: Unit-7 ASSEMBLY
             </div>
             <h2 className="text-4xl font-black text-white tracking-tighter uppercase leading-none">High-Speed <br />Assembly Line</h2>
-            <p className="text-slate-400 text-xs font-medium max-w-sm">Autonomous robotic matrix with real-time desync correction and AI-driven quality validation protocols active.</p>
-         </div>
-
-         <div className="relative z-10 hidden xl:flex gap-4">
-            <div className="w-48 h-48 rounded-xl border border-blue-500/20 bg-blue-500/5 backdrop-blur flex items-center justify-center relative overflow-hidden group-hover:border-blue-500/40 transition-all">
-               <FiActivity className="text-blue-500 animate-pulse" size={64} />
-               <div className="absolute bottom-4 text-[10px] font-black text-blue-400 uppercase tracking-widest">OEE: 92.4%</div>
-            </div>
-            <div className="w-48 h-48 rounded-xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur flex items-center justify-center relative overflow-hidden group-hover:border-emerald-500/40 transition-all">
-               <FiCheckCircle className="text-emerald-500" size={64} />
-               <div className="absolute bottom-4 text-[10px] font-black text-emerald-400 uppercase tracking-widest">Quality: 98.1%</div>
-            </div>
          </div>
       </div>
 
@@ -125,19 +113,19 @@ const ManufacturingPage = () => {
               <div key={i} className="group">
                 <div className="flex justify-between items-center mb-3 text-slate-900 dark:text-slate-100">
                   <div className="flex items-center gap-3">
-                     <div className={`p-2 rounded ${m.status === 'Optimal' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-rose-500/10 text-rose-500'}`}>
+                     <div className={`p-2 rounded ${m.status === 'Optimal' ? 'bg-blue-500/10 text-blue-500' : 'bg-sky-500/10 text-sky-500'}`}>
                         <FiActivity className="w-4 h-4" />
                      </div>
                      <h4 className="text-xs font-bold uppercase tracking-tight">{m.machine}</h4>
                   </div>
-                  <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-widest ${m.status === 'Optimal' ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white animate-pulse'}`}>{m.status}</span>
+                  <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-widest ${m.status === 'Optimal' ? 'bg-blue-500 text-white' : 'bg-sky-500 text-white animate-pulse'}`}>{m.status}</span>
                 </div>
-                <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-1.5 w-full bg-blue-50 rounded-full overflow-hidden">
                   <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: `${m.health}%` }}
                     transition={{ duration: 1.5, delay: i * 0.2 }}
-                    className={`h-full ${m.health > 80 ? 'bg-emerald-500' : 'bg-rose-500'}`} 
+                    className={`h-full ${m.health > 80 ? 'bg-blue-500' : 'bg-sky-500'}`} 
                   />
                 </div>
                 <div className="flex justify-between items-center text-[8px] font-black text-slate-400 uppercase tracking-widest mt-2 px-1">
@@ -158,7 +146,7 @@ const ManufacturingPage = () => {
                 <h3 className="text-sm font-black tracking-widest text-slate-900 dark:text-white uppercase leading-none">Work Order Backlog</h3>
                 <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Real-time batch progress</p>
              </div>
-             <button className="text-[9px] font-black text-blue-600 uppercase tracking-widest bg-blue-600/10 px-4 py-2 rounded">View High Priority</button>
+             <button className="text-[9px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-4 py-2 rounded-xl border border-blue-100">View High Priority</button>
           </div>
           <div className="divide-y divide-slate-200 dark:divide-slate-800">
             {jobs.map((job, i) => (

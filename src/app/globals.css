@@ -1,140 +1,99 @@
 @import "tailwindcss";
 
+@theme {
+  --color-blue-50: #f0f9ff;
+  --color-blue-100: #e0f2fe;
+  --color-blue-200: #bae6fd;
+  --color-blue-300: #7dd3fc;
+  --color-blue-400: #38bdf8;
+  --color-blue-500: #0ea5e9;
+  --color-blue-600: #0284c7;
+  --color-blue-700: #0369a1;
+  --color-blue-800: #075985;
+  --color-blue-900: #0c4a6e;
+  --color-blue-950: #082f49;
+}
+
 @layer theme {
   :root {
     --background-start: #ffffff;
-    --background-end: #f1f5f9;
+    --background-end: #f8fafc;
     --foreground: #0f172a;
-    --primary: #2563eb;
+    --primary: #0284c7;
     --primary-foreground: #ffffff;
-    --sidebar-bg: #f8fafc;
+    --sidebar-bg: #ffffff;
     --sidebar-fg: #1e293b;
-    --card-bg: rgba(255, 255, 255, 0.8);
-    --card-border: rgba(226, 232, 240, 0.5);
-    --accent: #3b82f6;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --border-accent: #0ea5e9;
+    --accent: #38bdf8;
     --muted: #64748b;
-    --glass: rgba(255, 255, 255, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --ring: rgba(37, 99, 235, 0.1);
-    --radius: 24px;
-    --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --glass: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(14, 165, 233, 0.15);
+    --ring: rgba(14, 165, 233, 0.1);
+    --radius: 20px;
+    --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
   }
 
   .dark {
-    --background-start: #f8fafc;
-    --background-end: #e2e8f0;
-    --foreground: #1e293b;
-    --primary: #1d4ed8;
+    --background-start: #ffffff;
+    --background-end: #f1f5f9;
+    --foreground: #0f172a;
+    --primary: #0369a1;
     --primary-foreground: #ffffff;
     --sidebar-bg: #ffffff;
-    --sidebar-fg: #0f172a;
-    --card-bg: rgba(255, 255, 255, 0.9);
-    --card-border: rgba(203, 213, 225, 0.5);
-    --accent: #2563eb;
+    --sidebar-fg: #1e293b;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --border-accent: #0ea5e9;
+    --accent: #0284c7;
     --muted: #475569;
-    --glass: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --ring: rgba(29, 78, 216, 0.15);
+    --glass: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(14, 165, 233, 0.2);
+    --ring: rgba(14, 165, 233, 0.15);
   }
 }
 
-body {
-  background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
-  background-attachment: fixed;
-  color: var(--foreground);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  transition: all 0.5s ease;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+@layer base {
+  body {
+    @apply bg-[var(--background-start)] text-[var(--foreground)] min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(200, 100%, 98%, 1) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(190, 100%, 98%, 1) 0px, transparent 50%);
+  }
 }
 
-/* Texture Overlay */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-  opacity: 0.02;
-  pointer-events: none;
-  z-index: -1;
+@layer components {
+  .industrial-card {
+    @apply bg-white dark:bg-white rounded-[24px] border border-slate-200 shadow-sm transition-all duration-300;
+  }
+
+  .industrial-card:hover {
+    @apply shadow-xl shadow-blue-900/5 border-blue-400/50 -translate-y-1;
+  }
+
+  .glass-header {
+    @apply bg-white/80 backdrop-blur-xl border-b border-slate-100 sticky top-0 z-40;
+  }
+
+  .sidebar-standard {
+    @apply bg-white border-r border-slate-100;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95 px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[11px];
+  }
+
+  .data-table-row {
+    @apply border-b border-slate-50 transition-all hover:bg-blue-50/30 hover:scale-[1.002];
+  }
 }
 
-.industrial-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-premium);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.grid-dots {
+  background-image: radial-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.industrial-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-standard {
-  background: var(--sidebar-bg);
-  border-right: 1px solid var(--card-border);
-}
-
-.dark .sidebar-standard {
-  background: #ffffff;
-}
-
-.navigation-link {
-  transition: all 0.3s ease;
-}
-
-.navigation-link:hover {
-  background: rgba(37, 99, 235, 0.05);
-  color: var(--primary);
-}
-
-.glass-header {
-  background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  font-weight: 700;
-  border-radius: 12px;
-  padding: 12px 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: all 0.2s ease;
-  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
-}
-
-.btn-primary:hover {
-  transform: scale(1.02);
-  box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.data-table-row {
-  border-bottom: 1px solid var(--card-border);
-  transition: all 0.2s;
-}
-
-.data-table-row:hover {
-  background-color: rgba(37, 99, 235, 0.04);
-  transform: scale(1.005);
-}
-
-/* Animations for industrial items */
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -143,9 +102,6 @@ body::before {
   animation: spin-slow 20s linear infinite;
 }
 
-/* Custom Grid Utility */
-.grid-dots {
-  background-image: radial-gradient(var(--card-border) 1px, transparent 1px);
-  background-size: 24px 24px;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-

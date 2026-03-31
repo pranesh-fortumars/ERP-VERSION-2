@@ -38,7 +38,7 @@ const Header = () => {
           <input 
             type="text" 
             placeholder="Search operational clusters..." 
-            className="w-full bg-slate-100/50 dark:bg-white/40 border border-black/5 rounded-2xl py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-blue-600/20 focus:bg-white transition-all text-xs outline-none font-black uppercase tracking-widest text-slate-700"
+            className="w-full bg-slate-50 dark:bg-white/40 border border-blue-500/10 rounded-2xl py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-blue-600/20 focus:bg-white transition-all text-xs outline-none font-black uppercase tracking-widest text-slate-700"
           />
         </div>
       </div>
@@ -46,7 +46,7 @@ const Header = () => {
       <div className="flex items-center gap-2 md:gap-4">
         <button 
           onClick={toggleTheme}
-          className="p-3 hover:bg-white/50 rounded-2xl text-slate-500 transition-all shadow-sm border border-black/5"
+          className="p-3 hover:bg-blue-50 rounded-2xl text-slate-500 transition-all shadow-sm border border-blue-500/10"
           title="Toggle Phase"
         >
           {isDark ? <FiSun size={20} className="text-amber-500 animate-pulse" /> : <FiMoon size={20} className="text-blue-600" />}
@@ -58,7 +58,7 @@ const Header = () => {
               key={i}
               whileHover={{ scale: 1.1, translateY: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 hover:bg-white/50 rounded-2xl text-slate-500 transition-all border border-transparent hover:border-black/5 shadow-sm"
+              className="p-3 hover:bg-blue-50 rounded-2xl text-slate-500 transition-all border border-transparent hover:border-blue-500/10 shadow-sm"
             >
               <Icon size={18} />
             </motion.button>
@@ -68,7 +68,7 @@ const Header = () => {
         <motion.button 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="relative p-3 hover:bg-white/50 rounded-2xl text-slate-500 transition-colors shadow-sm border border-black/5"
+          className="relative p-3 hover:bg-blue-50 rounded-2xl text-slate-500 transition-colors shadow-sm border border-blue-500/10"
         >
           <FiBell size={20} />
           <span className="absolute top-2.5 right-2.5 w-3 h-3 bg-blue-600 rounded-full border-2 border-white animate-pulse" />

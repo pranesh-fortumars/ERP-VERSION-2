@@ -85,9 +85,9 @@ const WorkflowPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1 }}
-            className="p-10 bg-white dark:bg-slate-900 rounded-[56px] border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-blue-500/50 transition-all duration-500"
+            className="p-10 bg-white rounded-[56px] border border-blue-500/20 shadow-xl shadow-blue-900/5 relative overflow-hidden group hover:border-blue-500 transition-all duration-500"
           >
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 opacity-[0.02] blur-[150px] -z-0" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 opacity-[0.05] blur-[150px] -z-0" />
             
             <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-16 gap-8 relative z-10">
               <div className="flex-1">
@@ -97,11 +97,11 @@ const WorkflowPage = () => {
                     {flow.status}
                   </span>
                 </div>
-                <h3 className="text-4xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none">{flow.name}</h3>
-                <p className="text-slate-400 dark:text-slate-500 font-bold text-[10px] mt-4 uppercase tracking-[0.4em]">Engine Deployment Vector: Node Cluster Alpha</p>
+                <h3 className="text-4xl font-black tracking-tighter text-slate-900 uppercase leading-none">{flow.name}</h3>
+                <p className="text-slate-400 font-bold text-[10px] mt-4 uppercase tracking-[0.4em]">Engine Deployment Vector: Node Cluster Alpha</p>
               </div>
-              <div className="px-10 py-8 bg-slate-50 dark:bg-slate-800/50 rounded-[32px] border border-slate-100 dark:border-slate-800 text-center shadow-inner group-hover:bg-white dark:group-hover:bg-slate-800 transition-all duration-500 ring-1 ring-black/5 min-w-[200px]">
-                <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mb-2 group-hover:text-blue-500 transition-colors">Efficiency Index</p>
+              <div className="px-10 py-8 bg-blue-50 rounded-[32px] border border-blue-100 text-center shadow-inner group-hover:bg-blue-100/50 transition-all duration-500 ring-1 ring-blue-500/5 min-w-[200px]">
+                <p className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] mb-2">Efficiency Index</p>
                 <div className="flex items-baseline justify-center gap-1">
                   <p className="text-5xl font-black text-blue-600 dark:text-blue-400 tracking-tighter">{flow.efficiency.replace('%', '')}</p>
                   <span className="text-xl font-black text-blue-400 dark:text-blue-600">%</span>
@@ -111,17 +111,17 @@ const WorkflowPage = () => {
 
             <div className="relative mb-12 px-4 lg:px-12">
               {/* Connector lines (Desktop) */}
-              <div className="hidden lg:block absolute top-[44px] left-[15%] w-[70%] h-[2px] bg-slate-100 dark:bg-slate-800 -z-0" />
+              <div className="hidden lg:block absolute top-[44px] left-[15%] w-[70%] h-[2px] bg-blue-100 -z-0" />
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 relative z-10">
                 {flow.steps.map((step, sIdx) => (
                   <div key={sIdx} className="group flex flex-col items-center">
                     <motion.div 
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      className={`w-24 h-24 rounded-[36px] flex items-center justify-center text-4xl transition-all duration-700 border-4 border-white dark:border-slate-950 shadow-2xl relative
+                      className={`w-24 h-24 rounded-[36px] flex items-center justify-center text-4xl transition-all duration-700 border-4 border-white shadow-2xl relative
                       ${step.status === 'Completed' ? 'bg-emerald-500 text-white shadow-emerald-500/20' : 
                         step.status === 'Processing' ? 'bg-blue-600 text-white shadow-glow shadow-blue-500/50 ring-4 ring-blue-500/20 animate-pulse' :
-                        step.status === 'Warning' ? 'bg-amber-500 text-white shadow-amber-500/20' : 'bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 shadow-inner'}`}>
+                        step.status === 'Warning' ? 'bg-amber-500 text-white shadow-amber-500/20' : 'bg-slate-50 text-slate-300 shadow-inner'}`}>
                       {step.icon}
                       {step.status === 'Completed' && (
                         <div className="absolute -top-2 -right-2 bg-emerald-500 text-white p-1 rounded-lg border-4 border-white dark:border-slate-950">
@@ -130,7 +130,7 @@ const WorkflowPage = () => {
                       )}
                     </motion.div>
                     <div className="mt-8 text-center w-full">
-                      <h4 className={`text-base font-black mb-2 tracking-tighter transition-colors uppercase ${step.status === 'Pending' ? 'text-slate-300 dark:text-slate-600' : 'text-slate-900 dark:text-white'}`}>
+                      <h4 className={`text-base font-black mb-2 tracking-tighter transition-colors uppercase ${step.status === 'Pending' ? 'text-slate-300' : 'text-slate-900'}`}>
                         {step.title}
                       </h4>
                       <div className="flex items-center justify-center gap-3">

@@ -206,7 +206,7 @@ const DashboardPage = () => {
                   <div className={`w-3 h-3 rounded-full shadow-lg ${
                     inc.severity === 'High' ? 'bg-rose-500 shadow-rose-500/20' : 
                     inc.severity === 'Med' ? 'bg-amber-500 shadow-amber-500/20' : 
-                    'bg-blue-500 shadow-blue-500/20'
+                    'bg-blue-600 shadow-blue-500/20'
                   }`} />
                   <div>
                     <p className="text-sm font-black text-slate-900 group-hover:text-blue-600 transition-colors uppercase tracking-tight">{inc.type}</p>
