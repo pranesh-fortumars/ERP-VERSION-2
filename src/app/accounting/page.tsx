@@ -2,242 +2,154 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiPlus, FiFilter, FiX, FiTrendingUp, FiTrendingDown, FiPieChart, FiDollarSign, FiSearch, FiCalendar, FiCreditCard, FiShield, FiActivity, FiLayers } from 'react-icons/fi';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, AreaChart, Area } from 'recharts';
-import CustomTooltip from '@/components/CustomTooltip';
-
-const initialTransactions = [
-  { id: 'TXN-00165', date: '2024-03-25', description: 'Raw Material Procurement (Steel)', amount: 1250000, type: 'Expense', category: 'Procurement' },
-  { id: 'TXN-00166', date: '2024-03-24', description: 'Enterprise Software Subscription', amount: 85000, type: 'Expense', category: 'Operations' },
-  { id: 'TXN-00167', date: '2024-03-23', description: 'Client Payment - Tata Motors', amount: 4500000, type: 'Income', category: 'Sales' },
-  { id: 'TXN-00168', date: '2024-03-22', description: 'Factory Electricity Bill (Feb)', amount: 45000, type: 'Expense', category: 'Utilities' },
-  { id: 'TXN-00169', date: '2024-03-21', description: 'Consulting Fee - Bharat Tech', amount: 120000, type: 'Income', category: 'Services' },
-];
-
-const COLORS = ['#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+import { 
+  FiDollarSign, FiCreditCard, FiTrendingUp, FiArrowUpRight, FiArrowDownRight,
+  FiPlus, FiX, FiSearch, FiFilter, FiActivity, FiGlobe, FiLayers, FiBriefcase
+} from 'react-icons/fi';
 
 const AccountingPage = () => {
-  const [transactions, setTransactions] = useState(initialTransactions);
-  const [filter, setFilter] = useState('All');
+  const [transactions, setTransactions] = useState([
+    { id: 'TXN-901', description: 'Vendor Payment: Node Steel Corp', amount: '₹1,24,000', type: 'Debit', status: 'Cleared', date: '2024-03-31' },
+    { id: 'TXN-842', description: 'Inward Credit: Reliance Logistics Node', amount: '₹4,50,000', type: 'Credit', status: 'Cleared', date: '2024-03-30' },
+    { id: 'TXN-715', description: 'Utility Node Cluster 7A Subscription', amount: '₹12,400', type: 'Debit', status: 'Pending', date: '2024-03-29' },
+    { id: 'TXN-650', description: 'Corporate Tax Settlement Q1', amount: '₹15,00,000', type: 'Debit', status: 'Reviewing', date: '2024-03-28' }
+  ]);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newTxn, setNewTxn] = useState({ description: '', amount: 0, type: 'Expense', category: 'Operations' });
+  const [newTxn, setNewTxn] = useState({ description: '', amount: '', type: 'Debit', status: 'Pending' });
 
-  const stats = useMemo(() => {
-    const revenue = transactions.filter(t => t.type === 'Income').reduce((acc, t) => acc + t.amount, 0);
-    const expenses = transactions.filter(t => t.type === 'Expense').reduce((acc, t) => acc + t.amount, 0);
-    
-    const categoryData: { [key: string]: number } = {};
-    transactions.forEach(t => {
-      categoryData[t.category] = (categoryData[t.category] || 0) + Number(t.amount);
-    });
+  const summary = [
+    { label: 'Cluster Balance', value: '₹45.2 Lakh', delta: '+12%', isUp: true, icon: <FiDollarSign /> },
+    { label: 'Outward Flux', value: '₹8.4 Lakh', delta: '-5%', isUp: false, icon: <FiTrendingUp /> },
+    { label: 'Treasury Reserves', value: '₹1.2 Cr', delta: '+2%', isUp: true, icon: <FiLayers /> },
+    { label: 'System P&L', value: '₹4.2 Lakh', delta: '+8%', isUp: true, icon: <FiActivity /> }
+  ];
 
-    const pieData = Object.keys(categoryData).map(name => ({ name, value: categoryData[name] }));
-    
-    const barData = [
-      { name: 'Jan', income: 3200000, expense: 2100000 },
-      { name: 'Feb', income: 4500000, expense: 2800000 },
-      { name: 'Mar', income: 3800000, expense: 3100000 },
-    ];
-
-    return { revenue, expenses, net: revenue - expenses, pieData, barData };
-  }, [transactions]);
-
-  const filteredTransactions = transactions.filter(t => {
-    const matchesFilter = filter === 'All' || t.type === filter;
-    const matchesSearch = t.description.toLowerCase().includes(searchTerm.toLowerCase()) || t.id.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesFilter && matchesSearch;
-  });
+  const filteredTxns = useMemo(() => {
+    return transactions.filter(t => 
+      t.description.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      t.id.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [transactions, searchTerm]);
 
   const addTransaction = (e: React.FormEvent) => {
     e.preventDefault();
-    setTransactions([{ 
-      ...newTxn, 
-      id: `TXN-${Math.floor(Math.random() * 10000).toString().padStart(5, '0')}`,
-      date: new Date().toISOString().split('T')[0]
-    }, ...transactions]);
+    const id = `TXN-${Math.floor(Math.random() * 900 + 100)}`;
+    setTransactions([{ id, ...newTxn, date: new Date().toISOString().split('T')[0] }, ...transactions]);
     setIsModalOpen(false);
-    setNewTxn({ description: '', amount: 0, type: 'Expense', category: 'Operations' });
+    setNewTxn({ description: '', amount: '', type: 'Debit', status: 'Pending' });
   };
 
   return (
-    <div className="space-y-8 max-w-[1600px] mx-auto pb-12 transition-all">
-      {/* Professional Header Section */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
+    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 transition-all">
+      {/* Structural Header */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Fiscal Treasury</h1>
-          <p className="text-slate-500 text-slate-500 text-sm font-medium mt-1 flex items-center gap-2">
-            <FiShield className="text-blue-600" /> Enterprise Audit Ledger • Treasury Node 01
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100">
+            <FiGlobe className="animate-spin-slow" /> Financial Governance Matrix Active
+          </div>
+          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Treasury Hub</h1>
+          <p className="text-slate-500 font-bold text-sm mt-2 flex items-center gap-2">
+            <FiCreditCard className="text-blue-500" /> Real-time Capital Flux & Operational Accounting
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
-           <button className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-600 text-slate-600 hover:bg-slate-50 shadow-sm transition-all">
-             GST RECONCILIATION
-           </button>
+        <div className="flex items-center gap-4">
            <button 
-            onClick={() => setIsModalOpen(true)}
-            className="px-8 py-2.5 bg-blue-600 text-white rounded-lg text-[10px] font-black uppercase tracking-[0.3em] shadow-lg shadow-blue-600/20 active:scale-95 transition-all flex items-center gap-2"
-          >
-            <FiPlus className="w-4 h-4" /> Commit Capital
-          </button>
+             onClick={() => setIsModalOpen(true)}
+             className="px-8 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+           >
+             <FiPlus /> Record Flux
+           </button>
         </div>
       </div>
 
-      {/* Stats Summary */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[
-          { label: 'Fiscal Inflow', value: `₹${(stats.revenue/100000).toFixed(1)}L`, icon: <FiTrendingUp className="w-5 h-5" />, color: 'emerald' },
-          { label: 'Fiscal Outflow', value: `₹${(stats.expenses/100000).toFixed(1)}L`, icon: <FiTrendingDown className="w-5 h-5" />, color: 'rose' },
-          { label: 'Net Liquidity', value: `₹${(stats.net/100000).toFixed(1)}L`, icon: <FiShield className="w-5 h-5" />, color: 'blue' },
-        ].map((stat, i) => (
-          <div key={i} className="industrial-card p-8 flex items-center gap-6 group">
-            <div className={`p-4 rounded-lg bg-${stat.color === 'emerald' ? 'emerald' : stat.color === 'rose' ? 'rose' : 'blue'}-600/10 text-${stat.color === 'emerald' ? 'emerald' : stat.color === 'rose' ? 'rose' : 'blue'}-600 group-hover:scale-110 transition-transform`}>
-              {stat.icon}
-            </div>
-            <div>
-              <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
-              <h4 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 leading-none">{stat.value}</h4>
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {summary.map((stat, i) => (
+          <div key={i} className="industrial-card p-10 flex flex-col justify-between bg-white border border-slate-100 shadow-sm rounded-[40px] hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
+             <div className="flex justify-between items-start mb-10 relative z-10">
+                <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-600/20 group-hover:rotate-12 transition-transform text-2xl">
+                   {stat.icon}
+                </div>
+                <span className={`text-[10px] font-black px-3 py-1.5 rounded-xl flex items-center gap-1 ${stat.isUp ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'}`}>
+                   {stat.isUp ? <FiArrowUpRight /> : <FiArrowDownRight />} {stat.delta}
+                </span>
+             </div>
+             <div className="relative z-10">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{stat.label}</p>
+                <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
+             </div>
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-        <div className="industrial-card p-10 flex flex-col">
-          <div className="flex items-center justify-between mb-12">
-             <div>
-                <h3 className="text-sm font-black text-slate-900 text-slate-900 uppercase tracking-widest">Inflow Vector</h3>
-                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Quarterly Reconciliation Analysis</p>
+      <div className="industrial-card flex flex-col bg-white border border-slate-100 shadow-sm rounded-[48px] overflow-hidden">
+        <div className="p-8 border-b border-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-slate-50/20">
+          <div>
+             <h3 className="text-lg font-black tracking-widest text-slate-900 uppercase italic">Transaction Ledger</h3>
+             <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Multi-Node Capital Correlation</p>
+          </div>
+          <div className="flex gap-4 w-full md:w-auto">
+             <div className="relative group flex-1 md:w-80">
+                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                <input 
+                  type="text" 
+                  placeholder="ID / Nomenclature Query..." 
+                  className="w-full bg-slate-100/50 border-none rounded-2xl py-4 pl-16 pr-6 text-xs font-black outline-none focus:bg-white focus:ring-4 focus:ring-blue-600/5 transition-all text-slate-900"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
              </div>
-             <span className="text-[9px] font-black uppercase tracking-widest text-blue-600 bg-blue-600/10 px-3 py-1.5 rounded">
-                Real-time Data
-             </span>
-          </div>
-          <div className="flex-1 min-h-[350px]">
-            <ResponsiveContainer width="100%" height={350}>
-              <BarChart data={stats.barData}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" className="dark:stroke-slate-800" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 10, fontWeight: 700}} dy={15} />
-                <YAxis hide />
-                <Tooltip content={<CustomTooltip />} cursor={{fill: 'rgba(37, 99, 235, 0.05)'}} />
-                <Bar dataKey="income" fill="#2563eb" radius={[4, 4, 0, 0]} barSize={32} />
-                <Bar dataKey="expense" fill="#e2e8f0" radius={[4, 4, 0, 0]} barSize={32} className="dark:fill-slate-800" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        <div className="industrial-card p-10">
-          <div className="flex items-center justify-between mb-12">
-             <div>
-                <h3 className="text-sm font-black text-slate-900 text-slate-900 uppercase tracking-widest">Substrate Distribution</h3>
-                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Portfolio Asset Allocation</p>
-             </div>
-          </div>
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full md:w-1/2 flex items-center justify-center relative">
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <title>Asset Distribution</title>
-                  <Pie data={stats.pieData} innerRadius={80} outerRadius={110} paddingAngle={4} dataKey="value" stroke="none">
-                    {stats.pieData.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
-                  </Pie>
-                  <Tooltip content={<CustomTooltip />} />
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                 <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">Total</p>
-                 <p className="text-xl font-bold text-slate-900 text-slate-900 tracking-tighter uppercase leading-none">₹{(stats.revenue/100000).toFixed(1)}L</p>
-              </div>
-            </div>
-            <div className="flex-1 space-y-3 w-full">
-              {stats.pieData.map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-4 bg-slate-50 /50 rounded-lg border border-transparent hover:border-blue-500/30 transition-all group">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
-                    <span className="text-[10px] font-bold text-slate-500 text-slate-500 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{item.name}</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-900 text-slate-900 tracking-tight">₹{(item.value/1000).toFixed(0)}k</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Transaction Ledger */}
-      <div className="industrial-card flex flex-col overflow-hidden">
-        <div className="p-8 border-b border-slate-200 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-6 bg-slate-50/50 /50">
-          <div className="relative w-full xl:max-w-md group">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
-            <input 
-              type="text" 
-              placeholder="Search Fiscal Identifier or Quantum..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-2.5 pl-11 pr-4 text-xs font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-slate-900"
-            />
-          </div>
-          <div className="flex gap-2">
-            {['All', 'Income', 'Expense'].map(s => (
-              <button 
-                key={s} 
-                onClick={() => setFilter(s)}
-                className={`px-4 py-2 rounded text-[9px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg' : 'bg-white  text-slate-400 border border-slate-200 border-slate-200 hover:text-blue-500 active:scale-95'}`}
-              >
-                {s}
-              </button>
-            ))}
+             <button className="p-4 bg-white border border-slate-100 rounded-2xl text-slate-500 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
           </div>
         </div>
 
         <div className="overflow-x-auto no-scrollbar">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-50/20 /20">
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Artifact Descriptor</th>
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Audit ID</th>
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Classification</th>
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest text-right">Settlement Quantum</th>
+              <tr className="bg-slate-50/40 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                <th className="py-5 px-10">Flux Reference</th>
+                <th className="py-5 px-6">Description Artifact</th>
+                <th className="py-5 px-6">Quantum</th>
+                <th className="py-5 px-6">Status Vector</th>
+                <th className="py-5 px-10 text-right">Commit Date</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 divide-slate-100">
-              <AnimatePresence mode="popLayout">
-                {filteredTransactions.map((t, i) => (
-                  <motion.tr 
-                    layout
-                    key={t.id} 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all group cursor-pointer data-table-row"
-                  >
-                    <td className="px-8 py-6">
-                      <div className="flex items-center gap-5">
-                        <div className={`w-12 h-12 rounded flex items-center justify-center shadow-lg ${t.type === 'Income' ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'}`}>
-                          {t.type === 'Income' ? <FiTrendingUp size={20} /> : <FiTrendingDown size={20} />}
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold text-slate-900 text-slate-900 uppercase leading-none group-hover:text-blue-600 transition-colors">{t.description}</p>
-                          <p className="text-[8px] text-slate-400 mt-1.5 uppercase font-black tracking-widest flex items-center gap-2"><FiCalendar className="text-blue-500" /> {t.date}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="px-8 py-6 text-[10px] font-bold text-blue-600 uppercase tracking-tight">{t.id}</td>
-                    <td className="px-8 py-6">
-                      <span className="px-3 py-1 bg-slate-100  border border-slate-200 border-slate-200 rounded text-[8px] font-bold text-slate-500 text-slate-500 uppercase tracking-widest">{t.category}</span>
-                    </td>
-                    <td className={`px-8 py-6 text-xl font-black text-right tracking-tighter ${t.type === 'Income' ? 'text-emerald-600' : 'text-rose-600'}`}>
-                      {t.type === 'Income' ? '+' : '-'} ₹{Number(t.amount).toLocaleString('en-IN')}
-                    </td>
-                  </motion.tr>
-                ))}
-              </AnimatePresence>
+            <tbody className="divide-y divide-slate-50">
+              {filteredTxns.map((t) => (
+                <tr key={t.id} className="group hover:bg-blue-50/30 transition-all cursor-pointer">
+                  <td className="py-6 px-10">
+                     <span className="text-xs font-black text-blue-600 uppercase tracking-tighter">{t.id}</span>
+                  </td>
+                  <td className="py-6 px-6">
+                     <p className="text-xs font-black text-slate-900 uppercase group-hover:text-blue-600 transition-colors">{t.description}</p>
+                     <p className="text-[8px] font-bold text-slate-400 uppercase mt-0.5">Corporate Node X-1</p>
+                  </td>
+                  <td className="py-6 px-6">
+                     <span className={`text-xs font-black italic ${t.type === 'Credit' ? 'text-emerald-600' : 'text-rose-600'}`}>
+                        {t.type === 'Credit' ? '+' : '-'}{t.amount}
+                     </span>
+                  </td>
+                  <td className="py-6 px-6">
+                     <span className={`px-4 py-1.5 rounded-xl text-[8px] font-black uppercase tracking-widest border ${
+                       t.status === 'Cleared' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 
+                       t.status === 'Pending' ? 'bg-amber-50 text-amber-600 border-amber-100' : 'bg-blue-50 text-blue-600 border-blue-100'
+                     }`}>
+                        {t.status}
+                     </span>
+                  </td>
+                  <td className="py-6 px-10 text-right">
+                     <span className="text-[10px] font-black text-slate-400 uppercase">{t.date}</span>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
 
-      {/* Transaction Modal */}
+      {/* Initialize Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -246,79 +158,65 @@ const AccountingPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-white/60 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-lg bg-white  rounded-2xl p-10 border border-slate-200 border-slate-200 shadow-2xl"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-xl bg-white rounded-[56px] p-10 md:p-14 border border-blue-500/10 shadow-3xl"
             >
-               <div className="flex justify-between items-start mb-10">
+              <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Fiscal Acquisition</h2>
-                  <p className="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Corporate Audit Infrastructure</p>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase">Record Flux</h2>
+                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Treasury Ledger Artifact</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition-colors"
+                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-400 transition-colors active:scale-95"
                 >
-                  <FiX className="w-5 h-5" />
+                  <FiX className="w-6 h-6" />
                 </button>
               </div>
 
-              <form onSubmit={addTransaction} className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Asset Descriptor</label>
+              <form onSubmit={addTransaction} className="space-y-8">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Flux Description</label>
                   <input 
                     required
                     type="text" 
-                    placeholder="e.g. Revenue Settlement" 
-                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
+                    placeholder="e.g. Inward Capital Injection: Node Cluster B" 
+                    className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900"
                     value={newTxn.description}
                     onChange={(e) => setNewTxn({...newTxn, description: e.target.value})}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Quantum (INR)</label>
-                     <input 
-                       required
-                       type="number" 
-                       placeholder="0.00"
-                       className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
-                       value={newTxn.amount}
-                       onChange={(e) => setNewTxn({...newTxn, amount: Number(e.target.value)})}
-                     />
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Flux Quantum (Amount)</label>
+                    <input 
+                      required
+                      type="text" 
+                      placeholder="e.g. ₹5,00,000" 
+                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900"
+                      value={newTxn.amount}
+                      onChange={(e) => setNewTxn({...newTxn, amount: e.target.value})}
+                    />
                   </div>
-                  <div className="space-y-2">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Flow Direction</label>
-                     <select 
-                       className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
-                       value={newTxn.type}
-                       onChange={(e) => setNewTxn({...newTxn, type: e.target.value})}
-                     >
-                       <option value="Income">Fiscal Inflow (+)</option>
-                       <option value="Expense">Fiscal Outflow (-)</option>
-                     </select>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Flux Vector (Type)</label>
+                    <select 
+                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none"
+                      value={newTxn.type}
+                      onChange={(e) => setNewTxn({...newTxn, type: e.target.value})}
+                    >
+                      <option>Debit</option>
+                      <option>Credit</option>
+                    </select>
                   </div>
                 </div>
-                <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Asset Class</label>
-                   <select 
-                     className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
-                     value={newTxn.category}
-                     onChange={(e) => setNewTxn({...newTxn, category: e.target.value})}
-                   >
-                     <option>Sales Ledger</option>
-                     <option>Procurement Pipeline</option>
-                     <option>Operations Overhead</option>
-                     <option>Infrastructure Utilities</option>
-                     <option>Professional Services</option>
-                   </select>
-                </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-black text-[10px] uppercase tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all">
-                  Commit Transaction
+                <button type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[24px] font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90">
+                   Commit Flux to Matrix
                 </button>
               </form>
             </motion.div>
@@ -330,4 +228,3 @@ const AccountingPage = () => {
 };
 
 export default AccountingPage;
-

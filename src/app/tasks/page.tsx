@@ -2,172 +2,184 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiPlus, FiFilter, FiX, FiCheckCircle, FiClock, FiAlertCircle, FiCalendar, FiSearch } from 'react-icons/fi';
-
-const initialTasks = [
-  { id: 1, title: 'Finalize GST Reconciliation (Q4)', dueDate: '2024-03-30', priority: 'High', status: 'In Progress', category: 'Finance' },
-  { id: 2, title: 'Warehouse Audit - Sector 7', dueDate: '2024-04-05', priority: 'Medium', status: 'Not Started', category: 'Logistics' },
-  { id: 3, title: 'Vendor Onboarding: Tata Steel', dueDate: '2024-03-28', priority: 'High', status: 'In Progress', category: 'Procurement' },
-  { id: 4, title: 'Update BPA Workflow Nodes', dueDate: '2024-03-25', priority: 'Low', status: 'Completed', category: 'Operations' },
-];
+import { 
+  FiTool, FiCheckCircle, FiClock, FiAlertTriangle, FiPlus, FiX, 
+  FiSearch, FiFilter, FiActivity, FiUser, FiCalendar, FiGlobe, FiDatabase
+} from 'react-icons/fi';
 
 const TasksPage = () => {
-  const [tasks, setTasks] = useState(initialTasks);
-  const [priorityFilter, setPriorityFilter] = useState('All');
-  const [statusFilter, setStatusFilter] = useState('All');
+  const [tasks, setTasks] = useState([
+    { id: 'TSK-201', title: 'Calibrate Precision Press 07', priority: 'High', status: 'Pending', assignedTo: 'Rahul Kumar', deadline: '2024-03-31' },
+    { id: 'TSK-184', title: 'Audit Logistics Node Delta', priority: 'Med', status: 'In Progress', assignedTo: 'Anjali Singh', deadline: '2024-04-02' },
+    { id: 'TSK-092', title: 'Update BPA Logic Flow', priority: 'Low', status: 'Completed', assignedTo: 'Priya Sharma', deadline: '2024-03-25' },
+    { id: 'TSK-215', title: 'Emergency Node De-sync Repair', priority: 'Critical', status: 'In Progress', assignedTo: 'Vikram Mehta', deadline: '2024-03-30' }
+  ]);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newTask, setNewTask] = useState({ title: '', dueDate: '', priority: 'Medium', category: 'Operations' });
+  const [newTask, setNewTask] = useState({ title: '', priority: 'Low', assignedTo: 'Arjun Sharma', deadline: '' });
 
   const filteredTasks = useMemo(() => {
-    return tasks
-      .filter(t => t.title.toLowerCase().includes(searchTerm.toLowerCase()))
-      .filter(t => priorityFilter === 'All' || t.priority === priorityFilter)
-      .filter(t => statusFilter === 'All' || t.status === statusFilter);
-  }, [priorityFilter, statusFilter, searchTerm, tasks]);
+    return tasks.filter(t => 
+      t.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      t.id.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [tasks, searchTerm]);
 
-  const handleCreateTask = (e: React.FormEvent) => {
+  const addTask = (e: React.FormEvent) => {
     e.preventDefault();
-    setTasks([{ 
-      ...newTask, 
-      id: Date.now(), 
-      status: 'Not Started' 
-    }, ...tasks]);
+    const id = `TSK-${Math.floor(Math.random() * 900 + 100)}`;
+    setTasks([{ id, ...newTask, status: 'Pending' }, ...tasks]);
     setIsModalOpen(false);
-    setNewTask({ title: '', dueDate: '', priority: 'Medium', category: 'Operations' });
+    setNewTask({ title: '', priority: 'Low', assignedTo: 'Arjun Sharma', deadline: '' });
   };
 
-  const getPriorityStyles = (priority: string) => {
-    switch (priority) {
-      case 'High': return 'text-rose-600 bg-rose-50 dark:bg-rose-900/20 dark:text-rose-400';
-      case 'Medium': return 'text-amber-600 bg-amber-50 dark:bg-amber-900/20 dark:text-amber-400';
-      case 'Low': return 'text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-400';
-      default: return 'text-slate-600 bg-slate-50 ';
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'Completed': return 'bg-emerald-50 text-emerald-600 border-emerald-200';
+      case 'In Progress': return 'bg-blue-50 text-blue-600 border-blue-200';
+      case 'Pending': return 'bg-slate-50 text-slate-400 border-slate-200';
+      default: return 'bg-slate-100 text-slate-500';
     }
   };
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'Completed': return <FiCheckCircle className="text-emerald-500" />;
-      case 'In Progress': return <FiClock className="text-blue-500 animate-spin-slow" />;
-      case 'Not Started': return <FiAlertCircle className="text-slate-300" />;
-      default: return null;
+  const getPriorityColor = (priority: string) => {
+    switch (priority) {
+      case 'Critical': return 'text-rose-600 bg-rose-50';
+      case 'High': return 'text-amber-600 bg-amber-50';
+      case 'Med': return 'text-blue-600 bg-blue-50';
+      default: return 'text-slate-500 bg-slate-50';
     }
   };
 
   return (
-    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 px-4 md:px-0">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+    <div className="space-y-10 max-w-[1600px] mx-auto pb-12 transition-all">
+      {/* Structural Header */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 text-slate-900">Active Tasks</h1>
-          <p className="text-slate-500 font-medium tracking-tight mt-1">Orchestrate mission-critical enterprise operations and milestones.</p>
-        </div>
-        <button 
-          onClick={() => setIsModalOpen(true)}
-          className="px-6 py-2.5 bg-blue-600 text-white rounded-2xl text-xs font-black shadow-xl shadow-blue-600/20 hover:bg-blue-700 transition-all flex items-center gap-2 uppercase tracking-widest"
-        >
-          <FiPlus /> New Operational Task
-        </button>
-      </div>
-
-      {/* Control Bar */}
-      <div className="p-6 bg-white  rounded-[32px] border border-slate-200 border-slate-200 shadow-sm flex flex-col xl:flex-row items-center gap-6">
-        <div className="relative flex-1 w-full">
-          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-          <input 
-            type="text" 
-            placeholder="Search task registry..."
-            className="w-full bg-slate-50  border-none rounded-2xl py-3.5 pl-12 pr-4 text-xs font-bold focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-900"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div className="flex flex-wrap gap-4 w-full xl:w-auto">
-          <div className="flex items-center gap-3 bg-slate-50  px-5 py-2.5 rounded-2xl border border-slate-100 border-slate-200">
-            <FiFilter className="text-slate-400" size={14} />
-            <select 
-              className="bg-transparent text-[10px] font-black uppercase tracking-widest outline-none dark:text-slate-200"
-              value={priorityFilter}
-              onChange={e => setPriorityFilter(e.target.value)}
-            >
-              <option value="All">All Priority</option>
-              <option value="High">High Priority</option>
-              <option value="Medium">Medium Priority</option>
-              <option value="Low">Low Priority</option>
-            </select>
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100">
+             <FiGlobe className="animate-spin-slow" /> Global Task Network Active
           </div>
-          <div className="flex items-center gap-3 bg-slate-50  px-5 py-2.5 rounded-2xl border border-slate-100 border-slate-200">
-            <FiCalendar className="text-slate-400" size={14} />
-            <select 
-              className="bg-transparent text-[10px] font-black uppercase tracking-widest outline-none dark:text-slate-200"
-              value={statusFilter}
-              onChange={e => setStatusFilter(e.target.value)}
-            >
-              <option value="All">All Status</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Not Started">Not Started</option>
-              <option value="Completed">Completed</option>
-            </select>
-          </div>
+          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Task Matrix</h1>
+          <p className="text-slate-500 font-bold text-sm mt-2 flex items-center gap-2">
+            <FiActivity className="text-blue-500" /> Real-time Operational Execution & Service Maintenance
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+           <button 
+             onClick={() => setIsModalOpen(true)}
+             className="px-8 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+           >
+             <FiPlus /> Initialize Task
+           </button>
         </div>
       </div>
 
-      {/* Task Ledger */}
-      <div className="bg-white  rounded-[40px] border border-slate-200 border-slate-200 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto no-scrollbar">
-          <table className="w-full text-left">
-            <thead className="bg-slate-50/50 /30 border-b border-slate-100 border-slate-200">
-              <tr>
-                <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Operational Task</th>
-                <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Horizon (Due)</th>
-                <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Urgency</th>
-                <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Lifecycle State</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-50 divide-slate-100">
-              <AnimatePresence mode="popLayout">
-                {filteredTasks.map((task, index) => (
-                  <motion.tr
-                    layout
+      <div className="grid grid-cols-1 xl:grid-cols-4 gap-10">
+        {/* Main Task List */}
+        <div className="xl:col-span-3 space-y-8">
+           <div className="p-8 bg-white rounded-[40px] border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-8">
+              <div className="relative group flex-1 w-full">
+                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors w-5 h-5" />
+                <input 
+                  type="text" 
+                  placeholder="Query task identifier, nomenclature, or priority..."
+                  className="w-full bg-slate-50 border-none rounded-2xl py-5 pl-16 pr-6 text-sm font-black focus:ring-4 focus:ring-blue-600/5 outline-none transition-all text-slate-900"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+              <div className="flex gap-4">
+                 <button className="padding-6 py-3.5 bg-white border border-slate-100 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all active:scale-95 px-6">
+                    Audit Log
+                 </button>
+                 <button className="p-3.5 bg-blue-50 text-blue-600 rounded-2xl hover:bg-blue-600 hover:text-white transition-all active:scale-95 border border-blue-100">
+                    <FiFilter size={20} />
+                 </button>
+              </div>
+           </div>
+
+           <div className="grid grid-cols-1 gap-6">
+              <AnimatePresence>
+                {filteredTasks.map((task, i) => (
+                  <motion.div
                     key={task.id}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group"
+                    transition={{ delay: i * 0.05 }}
+                    className="p-8 bg-white border border-slate-100 rounded-[32px] shadow-sm hover:shadow-2xl hover:border-blue-200 transition-all flex flex-col md:flex-row items-center justify-between gap-8 group"
                   >
-                    <td className="px-8 py-6">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-slate-100  flex items-center justify-center text-slate-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                          <FiCheckCircle />
-                        </div>
-                        <div>
-                          <p className="text-sm font-black text-slate-900 text-slate-900">{task.title}</p>
-                          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1 italic">{task.category}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="px-8 py-6 text-sm font-bold text-slate-600 text-slate-500">{task.dueDate}</td>
-                    <td className="px-8 py-6 text-center">
-                      <span className={`px-4 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${getPriorityStyles(task.priority)}`}>
-                        {task.priority}
-                      </span>
-                    </td>
-                    <td className="px-8 py-6">
-                      <div className="flex items-center justify-end gap-3 text-sm font-black text-slate-900 text-slate-900">
-                        {task.status}
-                        {getStatusIcon(task.status)}
-                      </div>
-                    </td>
-                  </motion.tr>
+                    <div className="flex items-center gap-6 flex-1 w-full overflow-hidden">
+                       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-black text-xs shrink-0 shadow-lg ${getPriorityColor(task.priority)}`}>
+                          {task.priority.charAt(0)}
+                       </div>
+                       <div className="overflow-hidden">
+                          <h3 className="text-lg font-black text-slate-900 uppercase tracking-tighter truncate group-hover:text-blue-600 transition-colors leading-none mb-1">{task.title}</h3>
+                          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                             <FiTool className="text-blue-500" /> {task.id} • Assigned to {task.assignedTo}
+                          </p>
+                       </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-6 w-full md:w-auto justify-end">
+                       <div className="text-right flex flex-col items-end">
+                          <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Target Deadline</p>
+                          <p className="text-[10px] font-black text-slate-900 flex items-center gap-2"><FiCalendar className="text-blue-600" /> {task.deadline}</p>
+                       </div>
+                       <span className={`px-6 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border ${getStatusColor(task.status)} shadow-sm`}>
+                          {task.status}
+                       </span>
+                    </div>
+                  </motion.div>
                 ))}
               </AnimatePresence>
-            </tbody>
-          </table>
+           </div>
+        </div>
+
+        {/* Sidebar Info */}
+        <div className="space-y-8">
+           <div className="p-10 bg-blue-600 rounded-[48px] overflow-hidden relative group min-h-[400px] flex flex-col justify-between shadow-2xl">
+              <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
+              <div className="relative z-10 flex flex-col flex-1 justify-between">
+                 <div>
+                    <div className="w-16 h-16 bg-white rounded-[24px] flex items-center justify-center shadow-2xl mb-8 group-hover:rotate-12 transition-transform ring-8 ring-white/10">
+                       <FiActivity className="text-blue-600 w-8 h-8" />
+                    </div>
+                    <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none mb-4">Throughput Matrix</h3>
+                    <p className="text-blue-50 text-xs font-medium leading-relaxed">Task resolution velocity has increased by <span className="text-white font-black">22.4%</span> this procurement cycle.</p>
+                 </div>
+                 <button className="w-full py-5 bg-white text-blue-600 font-black rounded-3xl text-[10px] uppercase tracking-[0.4em] active:scale-95 transition-all shadow-2xl">
+                    Performance Stats
+                 </button>
+              </div>
+           </div>
+
+           <div className="p-8 bg-white rounded-[40px] border border-slate-100 shadow-sm">
+              <h4 className="text-lg font-black text-slate-900 uppercase tracking-tighter mb-6 flex items-center gap-3">
+                 <FiDatabase className="text-blue-600" /> Network Nodes
+              </h4>
+              <div className="space-y-6">
+                 {[
+                   { node: 'Node-4 Alpha', load: '88%', status: 'Active' },
+                   { node: 'Node-7 Delta', load: '42%', status: 'Active' },
+                   { node: 'Node-2 Omega', load: '95%', status: 'Warning' }
+                 ].map((n, i) => (
+                   <div key={i} className="space-y-2 group cursor-pointer">
+                      <div className="flex justify-between items-center text-[10px] font-black uppercase italic text-slate-700">
+                         <span>{n.node}</span>
+                         <span className={n.status === 'Warning' ? 'text-amber-500' : 'text-blue-600'}>{n.load}</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden border border-slate-200/20">
+                         <motion.div initial={{ width: 0 }} animate={{ width: n.load }} transition={{ duration: 1, delay: i * 0.1 }} className={`h-full ${n.status === 'Warning' ? 'bg-amber-500' : 'bg-blue-600'}`} />
+                      </div>
+                   </div>
+                 ))}
+              </div>
+           </div>
         </div>
       </div>
 
-      {/* Task Modal */}
+      {/* Initialize Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -176,95 +188,74 @@ const TasksPage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-white/60 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-lg bg-white  rounded-[40px] p-8 md:p-10 border border-slate-200 border-slate-200 shadow-2xl"
+              className="relative w-full max-w-xl bg-white rounded-[56px] p-10 md:p-14 border border-blue-500/10 shadow-3xl"
             >
-              <div className="flex justify-between items-start mb-8">
+              <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-2xl font-black tracking-tight text-slate-900 text-slate-900">New Operational Task</h2>
-                  <p className="text-slate-500 font-medium text-xs mt-1 uppercase tracking-widest font-black">Registry Entry</p>
+                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Initialize Task</h2>
+                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Operational Network Ledger</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors"
+                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-400 transition-colors active:scale-95"
                 >
-                  <FiX size={24} />
+                  <FiX className="w-6 h-6" />
                 </button>
               </div>
 
-              <form onSubmit={handleCreateTask} className="space-y-5">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Task Designation</label>
+              <form onSubmit={addTask} className="space-y-8">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Task Nomenclature</label>
                   <input 
                     required
                     type="text" 
-                    placeholder="e.g. Q3 Compliance Audit" 
-                    className="w-full bg-slate-50  border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 font-bold"
+                    placeholder="e.g. Audit Node Cluster Velocity" 
+                    className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900"
                     value={newTask.title}
                     onChange={(e) => setNewTask({...newTask, title: e.target.value})}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Completion Horizon</label>
-                    <input 
-                      required
-                      type="date" 
-                      className="w-full bg-slate-50  border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 font-bold"
-                      value={newTask.dueDate}
-                      onChange={(e) => setNewTask({...newTask, dueDate: e.target.value})}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Urgency Level</label>
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Priority Vector</label>
                     <select 
-                      className="w-full bg-slate-50  border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 font-bold"
+                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none"
                       value={newTask.priority}
                       onChange={(e) => setNewTask({...newTask, priority: e.target.value})}
                     >
-                      <option value="High">High Urgency</option>
-                      <option value="Medium">Medium Urgency</option>
-                      <option value="Low">Low Urgency</option>
+                      <option>Low</option>
+                      <option>Med</option>
+                      <option>High</option>
+                      <option>Critical</option>
                     </select>
                   </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Execution Deadline</label>
+                    <input 
+                      required
+                      type="date" 
+                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900"
+                      value={newTask.deadline}
+                      onChange={(e) => setNewTask({...newTask, deadline: e.target.value})}
+                    />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Functional Category</label>
-                  <input 
-                    required
-                    type="text" 
-                    placeholder="e.g. Strategic Finance" 
-                    className="w-full bg-slate-50  border-none rounded-2xl py-3.5 px-5 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 font-bold"
-                    value={newTask.category}
-                    onChange={(e) => setNewTask({...newTask, category: e.target.value})}
-                  />
-                </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-blue-600/20 hover:bg-blue-700 transition-all hover:scale-[1.01]">
-                  Commit Task to Registry
+                <button type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[24px] font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 flex items-center justify-center gap-3">
+                   <FiCheckCircle size={20} /> Deploy Operational Artifact
                 </button>
               </form>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
-
-      <style jsx global>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 3s linear infinite;
-        }
-      `}</style>
     </div>
   );
 };
 
 export default TasksPage;
-

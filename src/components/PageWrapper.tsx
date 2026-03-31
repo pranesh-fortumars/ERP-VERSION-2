@@ -5,7 +5,7 @@ import MotionWrapper from './MotionWrapper';
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
     return (
         <MotionWrapper>
-            <div className="p-6">{children}</div>
+            <div className="w-full h-full">{children}</div>
         </MotionWrapper>
     )
 }

@@ -19,13 +19,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
-      <body className="antialiased">
-        <div className="flex min-h-screen bg-transparent">
+      <body className="antialiased font-sans">
+        <div className="flex min-h-screen bg-transparent relative">
           <Sidebar />
-          <div className="flex-1 md:pl-64 flex flex-col">
+          {/* Main Content Area */}
+          <div className="flex-1 lg:pl-72 pt-20 lg:pt-0 flex flex-col w-full overflow-x-hidden">
             <Header />
             <PageWrapper>
-              {children}
+              <main className="p-6 md:p-10 lg:p-12 w-full max-w-[1920px] mx-auto">
+                {children}
+              </main>
             </PageWrapper>
           </div>
         </div>

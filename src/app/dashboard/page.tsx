@@ -51,10 +51,10 @@ const DashboardPage = () => {
   return (
     <div className="space-y-8 max-w-[1600px] mx-auto pb-12 transition-all">
       {/* Professional Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase">Command Center</h1>
-          <p className="text-slate-500 text-slate-500 text-sm font-medium mt-1 flex items-center gap-2">
+          <h1 className="text-3xl font-black tracking-tight text-slate-900 uppercase">Command Center</h1>
+          <p className="text-slate-500 text-sm font-bold mt-1 flex items-center gap-2">
             <FiGlobe className="text-blue-600" /> Real-time Enterprise Telemetry • Node Cluster Alpha
           </p>
         </div>
@@ -94,8 +94,8 @@ const DashboardPage = () => {
               </div>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
-              <h3 className="text-2xl font-bold text-slate-900 text-slate-900 tracking-tight leading-none">{stat.value}</h3>
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{stat.label}</p>
+              <h3 className="text-2xl font-black text-slate-900 tracking-tight leading-none">{stat.value}</h3>
             </div>
           </div>
         ))}
@@ -183,10 +183,10 @@ const DashboardPage = () => {
 
       {/* Incident Ledger */}
       <div className="industrial-card overflow-hidden">
-        <div className="p-8 border-b border-slate-200 border-slate-200 bg-slate-50/30 flex items-center justify-between">
+        <div className="p-8 border-b border-slate-100 bg-slate-50/20 flex items-center justify-between">
           <div>
             <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-900">Incident Tracking Ledger</h3>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Real-time Node Telemetry</p>
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Real-time Node Telemetry</p>
           </div>
           <span className="text-[10px] font-black text-blue-600 bg-blue-600/10 px-4 py-1.5 rounded-xl border border-blue-500/10 uppercase tracking-widest">
             {incidents.filter(i => i.status !== 'Resolved').length} Pending Execution

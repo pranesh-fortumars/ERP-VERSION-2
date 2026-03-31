@@ -1,95 +1,37 @@
-# Enterprise ERP & BPA Modernization Blueprint
+# ERP PRO: Industrial Command Center
 
-## Purpose
-A professional-grade, industrial Enterprise Resource Planning (ERP) and Business Process Automation (BPA) suite tailored for Indian manufacturing enterprises. The platform focuses on operational intelligence, real-time shop floor control, and automated financial reconciliation.
+## Project Overview
+ERP PRO is a high-performance, professional-grade Enterprise Resource Planning (ERP) application designed for modern industrial environments. It features a "Light White & Blue" industrial aesthetic, focusing on data-dense layouts, real-time telemetry visualizations, and seamless multi-instance management.
 
-## Core Characteristics & Style
-- **Aesthetic:** Industrial Command Center; crisp, high-contrast, professional-grade.
-- **Design System:** Standardized "Industrial Blue" (`blue-600`) palette across all modules.
-- **Typography:** Inter (Modern & Technical).
-- **UX:** High-density data environments; real-time telemetry; mission-critical feel.
-- **Visuals:** CSS-based schematic visualizations for all mechanical and workflow nodes (decommissioned all mock imagery).
-- **Themes:** Fully synchronized Light/Dark modes with `localStorage` persistence.
-- **Commerce:** Standardized to Indian Rupee (₹), GST-compliant (5%, 12%, 18%, 28%).
+## Core Design System
+- **Theme**: "Light White & Blue" (Primary: Sky Blue #0284c7, Steel Blue #0369a1; Background: #ffffff / #f8fafc).
+- **Aesthetics**: Industrial-grade cards with subtle shadows, 20px - 56px corner radii, and custom utility classes for "blue-glow" interactive states.
+- **Typography**: High-contrast, bold uppercase tracking for headers; clean, legible font stacks for data.
+- **Iconography**: React Icons (Lucide/Feather) with blue/sky accents.
 
-## Project Architecture & Modules
+## Key Features & Modules
+1. **Command Center (Dashboard)**: Real-time throughput intelligence, system health monitoring, and incident tracking.
+2. **Manufacturing**: Floor intelligence with machine status tracking, work order management, and OEE analytics.
+3. **Inventory Management**: Asset ledger with SKU tracking, warehouse capacity allocation, and AI-driven replenishment.
+4. **Workflow Orchestration**: BPA pipeline management with visual progress tracking for Lead-to-Cash and Procure-to-Pay cycles.
+5. **Client Matrix (CRM)**: Enterprise partner management with engagement velocity tracking and fiscal signature validation.
+6. **Billing & Sales**: Professional invoice generation and sales performance matrix.
+7. **Multi-Instance Management**: Ability to manage multiple industrial nodes (ERPs) via the Tenant Selector in the primary navigation.
 
-### 1. Command Center (Dashboard)
-- Real-time OEE (Overall Equipment Effectiveness) monitoring.
-- Revenue Intelligence Area Charts (Actual vs Target).
-- Operational Risk & Incident Monitoring.
-- Infrastructure Status Telemetry (Node Cluster Alpha).
+## Recent Changes & Plan
+### Completed Changes
+- [x] **Global Theme Migration**: Replaced all dark/pink elements with the "Light White & Blue" theme across 12+ modules.
+- [x] **Responsive Cards**: Refactored `industrial-card` for consistent behavior across all pages.
+- [x] **Functional State**: Implemented local state management for "Add Data" modals in Customers, Dashboard, Inventory, and Manufacturing.
 
-### 2. Shop Floor Operations (Manufacturing)
-- Machine health telemetry & maintenance scheduling.
-- Real-time work order tracking with priority-coded progress.
-- Bill of Materials (BOM) management system with cost roll-ups.
-- High-speed assembly line visualization (Robotic Matrix).
+### Current Objectives (Mobile & Multi-Tenant)
+1. **Mobile Alignment**: Optimize the Sidebar and Grid layouts for 100% mobile responsiveness (ensure no horizontal overflow and touch-friendly targets).
+2. **Multi-ERP Support**: Implement a "Node/Instance Selector" in the top of the sidebar to allow users to switch between different industrial ERP instances (e.g., "North Plant", "South Logistics Hub").
+3. **Data Integrity**: Standardize the "Log Transformation" (Add Data) flow across all remaining modules.
+4. **Visual Polish**: Add subtle micro-animations for tenant switching and mobile menu transitions.
 
-### 3. Asset Inventory (Stock Ledger)
-- SKU Master Ledger with batch volume tracking.
-- Multi-warehouse capacity allocation (Pune, Mumbai, Chennai units).
-- AI-driven replenishment forecasting.
-- Global stock flow visualization.
-
-### 4. Revenue Pipeline (Sales & Billing)
-- Enterprise contract orchestration & dispatch.
-- GST-compliant automated invoicing engine.
-- Accounts Receivable (AR) settlement tracker.
-- Predictive flux matrix for high-intensity contracts.
-
-### 5. Fiscal Ledger (Accounting)
-- Enterprise audit ledger & treasury node control.
-- Quarterly reconciliation analysis.
-- GST reconciliation and tax ledger integration.
-- Asset class distribution (Sales, Procurement, Operations, Utilities).
-
-### 6. Process Automation (Workflow & Tasks)
-- Business Process Automation (BPA) node visualization.
-- Lead-to-Cash (L2C) and Procure-to-Pay (P2P) tracking.
-- Operational Execution (Task Registry) with state-coded status tracking.
-- Node topology for efficiency optimization.
-
-### 7. Human Capital (Payroll & CRM)
-- Employee lifecycle management & disbursement pool.
-- Statutory CTC (Cost to Company) with PF/TDS deductions.
-- CRM Client Matrix with engagement velocity scores.
-- Corporate identity registry and stakeholder intelligence.
-
-## Decommissioned Elements (Legacy Cleanup)
-- [x] Experimental "wavy" elements (deprecated).
-- [x] Mock imagery (placeholders) replaced by high-fidelity CSS visualizations.
-- [x] Indigo gradients replaced by Corporate Industrial Blue (`blue-600`).
-- [x] Informal emojis replaced by professional React Icons (Fi).
-
-## Implementation Roadmap
-
-### Phase 1: Foundation (COMPLETED)
-- [x] Global layout with sidebar navigation.
-- [x] Sophisticated Dark/Light theme system with persistent preferences.
-- [x] Responsive boilerplate for all core modules.
-
-### Phase 2: Intelligence & Operations (COMPLETED)
-- [x] Executive Dashboard refinement.
-- [x] Inventory & SKU Master Ledger.
-- [x] Shop Floor (MES) Orchestration.
-
-### Phase 3: Financials & Compliance (COMPLETED)
-- [x] Sales & Revenue Pipeline.
-- [x] Billing & GST-Compliant Invoicing.
-- [x] Fiscal Ledger & Treasury.
-
-### Phase 4: Modernization & Standardization (COMPLETED)
-- [x] Unified Corporate "Industrial Blue" design system.
-- [x] High-fidelity CSS-based data visualizations.
-- [x] Decommissioned all legacy mock imagery and wavy aesthetics.
-- [x] Full light/dark theme synchronization across all modules.
-
-## Technical Stack
-- **Frontend:** Next.js 16.2.1 (App Router), Tailwind CSS.
-- **Interactivity:** Framer Motion (animated transitions).
-- **Data Visualization:** Recharts (high-scale charting).
-- **Iconography:** React Icons (Fi).
-- **Theming:** CSS Variables with `localStorage` persistence.
-- **Data Handling:** React State Management (prepped for REST/GraphQL API).
-
+## Project Structure
+- `/src/app`: File-based routing for all ERP modules.
+- `/src/components`: Shared UI components (Sidebar, Tooltips, Layout).
+- `globals.css`: Single source of truth for the industrial design system.
+- `fix_theme.js`: (Maintenance) Script for global theme synchronization.
