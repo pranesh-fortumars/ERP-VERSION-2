@@ -2,18 +2,16 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FiActivity, FiBox, FiUsers, FiDollarSign, 
-  FiTrendingUp, FiArrowUpRight, FiArrowDownRight,
-  FiZap, FiServer, FiShield, FiCpu, FiGlobe, FiTarget, FiAlertTriangle, FiCheckCircle, FiPlus, FiX, FiDownload
-} from 'react-icons/fi';
+import { FiActivity, FiBox, FiUsers, FiDollarSign, FiTrendingUp, FiArrowUpRight, FiArrowDownRight, FiZap, FiServer, FiShield, FiCpu, FiGlobe, FiTarget, FiAlertTriangle, FiCheckCircle, FiPlus, FiX, FiDownload } from 'react-icons/fi';
 import { 
   AreaChart, Area, XAxis, YAxis, 
   CartesianGrid, Tooltip, ResponsiveContainer, Line
 } from 'recharts';
 import CustomTooltip from '@/components/CustomTooltip';
+import { useIndustry } from '@/context/IndustryContext';
 
 const DashboardPage = () => {
+  const { activeIndustry } = useIndustry();
   const [incidents, setIncidents] = useState([
     { id: 'INC-901', type: 'Production Latency', severity: 'High', status: 'Reviewing', time: '14:20:01' },
     { id: 'INC-842', type: 'Quality Deviation', severity: 'Med', status: 'Logged', time: '13:45:12' },
@@ -23,13 +21,13 @@ const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAuditOpen, setIsAuditOpen] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
-  const [newIncident, setNewIncident] = useState({ type: '', severity: 'Low', node: 'Unit-7A' });
+  const [newIncident, setNewIncident] = useState({ type: '', severity: 'Low', node: activeIndustry.id });
 
   const stats = [
-    { label: 'Total Revenue', value: '₹4.2 Cr', change: '+12.5%', isUp: true, icon: <FiDollarSign className="w-5 h-5" />, color: 'blue' },
-    { label: 'Active Orders', value: '1,284', change: '+5.2%', isUp: true, icon: <FiBox className="w-5 h-5" />, color: 'emerald' },
-    { label: 'OEE Status', value: '94.2%', change: '-0.4%', isUp: false, icon: <FiActivity className="w-5 h-5" />, color: 'rose' },
-    { label: 'Workforce', value: '850', change: '+2.1%', isUp: true, icon: <FiUsers className="w-5 h-5" />, color: 'amber' },
+    { label: 'Total Revenue', value: activeIndustry.stats.revenue, change: '+12.5%', isUp: true, icon: <FiDollarSign className="w-5 h-5" />, color: 'blue' },
+    { label: 'Active Orders', value: activeIndustry.stats.throughput, change: '+5.2%', isUp: true, icon: <FiBox className="w-5 h-5" />, color: 'emerald' },
+    { label: 'OEE Status', value: activeIndustry.stats.efficiency, change: '-0.4%', isUp: false, icon: <FiActivity className="w-5 h-5" />, color: 'rose' },
+    { label: 'Workforce', value: activeIndustry.stats.workforce, change: '+2.1%', isUp: true, icon: <FiUsers className="w-5 h-5" />, color: 'amber' },
   ];
 
   const chartData = [
@@ -56,7 +54,7 @@ const DashboardPage = () => {
     const time = new Date().toLocaleTimeString('en-GB', { hour12: false });
     setIncidents([{ id, ...newIncident, status: 'Logged', time }, ...incidents]);
     setIsModalOpen(false);
-    setNewIncident({ type: '', severity: 'Low', node: 'Unit-7A' });
+    setNewIncident({ type: '', severity: 'Low', node: activeIndustry.id });
   };
 
   return (
@@ -65,11 +63,11 @@ const DashboardPage = () => {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
         <div>
            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100 font-black">
-            <FiGlobe className="animate-spin-slow" /> Global Command Infrastructure Alpha-9
+            <FiGlobe className="animate-spin-slow" /> Global Command Infrastructure • {activeIndustry.name}
           </div>
-          <h1 className="text-4xl font-black tracking-tighter text-slate-900 uppercase leading-none">Enterprise Matrix</h1>
+          <h1 className="text-4xl font-black tracking-tighter text-slate-900 uppercase leading-none">{activeIndustry.type} Matrix</h1>
           <p className="text-slate-900 font-bold text-sm mt-3 flex items-center gap-2">
-            <FiActivity className="text-blue-600" /> Real-time Node Telemetry & Orchestration Dashboard
+            <FiActivity className="text-blue-600" /> Real-time Node Telemetry & Orchestration Dashboard for {activeIndustry.location}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
@@ -282,8 +280,8 @@ const DashboardPage = () => {
                   </div>
                   <div className="space-y-4">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Origin Node</label>
-                    <input required type="text" placeholder="e.g. Unit-7A" className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900"
-                           value={newIncident.node} onChange={(e) => setNewIncident({...newIncident, node: e.target.value})} />
+                    <input disabled required type="text" className="w-full bg-slate-100 border-none rounded-3xl py-6 px-8 text-sm font-black outline-none text-slate-900 opacity-50 cursor-not-allowed"
+                           value={activeIndustry.id} />
                   </div>
                 </div>
                 <button type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[32px] font-black text-xs uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">

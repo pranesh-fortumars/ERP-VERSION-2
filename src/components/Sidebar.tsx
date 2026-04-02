@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useIndustry, industries } from '@/context/IndustryContext';
 import { 
   FiHome, FiArchive, FiUsers, FiBriefcase, 
   FiTool, FiFileText, FiBarChart2, FiDollarSign, 
@@ -26,15 +27,9 @@ const navItems = [
   { href: '/payroll', icon: <FiSettings />, label: 'Payroll' },
 ];
 
-const instances = [
-  { id: 'INST-01', name: 'Pune Manufacturing Hub', location: 'Maharashtra' },
-  { id: 'INST-02', name: 'Chennai Logistics Node', location: 'Tamil Nadu' },
-  { id: 'INST-03', name: 'Global R&D Center', location: 'Bangalore' },
-];
-
 const Sidebar = () => {
+  const { activeIndustry: activeInstance, setIndustry } = useIndustry();
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [activeInstance, setActiveInstance] = useState(instances[0]);
   const [isInstanceSelectorOpen, setIsInstanceSelectorOpen] = useState(false);
   const pathname = usePathname();
 
@@ -87,11 +82,11 @@ const Sidebar = () => {
                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
                  className="absolute top-full mt-2 left-0 right-0 bg-white border border-slate-200 rounded-2xl shadow-2xl z-50 p-2 overflow-hidden"
                >
-                 {instances.map((instance) => (
+                 {industries.map((instance) => (
                    <button
                      key={instance.id}
                      onClick={() => {
-                       setActiveInstance(instance);
+                       setIndustry(instance.id);
                        setIsInstanceSelectorOpen(false);
                      }}
                      className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all text-left group hover:bg-blue-50 ${activeInstance.id === instance.id ? 'bg-blue-50' : ''}`}
@@ -281,10 +276,10 @@ const Sidebar = () => {
                      <button onClick={() => setIsInstanceSelectorOpen(false)} className="p-3 bg-slate-50 rounded-2xl"><FiX /></button>
                   </div>
                   <div className="space-y-4">
-                     {instances.map(instance => (
+                     {industries.map(instance => (
                         <button 
                           key={instance.id}
-                          onClick={() => { setActiveInstance(instance); setIsInstanceSelectorOpen(false); }}
+                          onClick={() => { setIndustry(instance.id); setIsInstanceSelectorOpen(false); }}
                           className={`w-full p-6 rounded-3xl border transition-all flex items-center gap-4 ${activeInstance.id === instance.id ? 'bg-blue-50 border-blue-600/30' : 'bg-white border-slate-100 hover:border-blue-500/20'}`}
                         >
                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg ${activeInstance.id === instance.id ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-100 text-slate-900'}`}>

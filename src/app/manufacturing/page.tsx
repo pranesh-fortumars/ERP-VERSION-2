@@ -2,12 +2,11 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FiCpu, FiActivity, FiSettings, FiTool, FiCheckCircle, FiAlertCircle, 
-  FiArrowRight, FiPlay, FiBox, FiClock, FiShield, FiPlus, FiX, FiLayers, FiDownload, FiUpload
-} from 'react-icons/fi';
+import { FiCpu, FiActivity, FiSettings, FiTool, FiCheckCircle, FiAlertCircle, FiArrowRight, FiPlay, FiBox, FiClock, FiShield, FiPlus, FiX, FiLayers, FiDownload, FiUpload, FiGlobe } from 'react-icons/fi';
+import { useIndustry } from '@/context/IndustryContext';
 
 const ManufacturingPage = () => {
+  const { activeIndustry } = useIndustry();
   const [activeTab, setActiveTab] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -39,9 +38,9 @@ const ManufacturingPage = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100">
              <FiCpu className="animate-spin-slow" /> Manufacturing Execution System Active
           </div>
-          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Floor Intelligence</h1>
+          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">{activeIndustry.name} Floor</h1>
           <p className="text-slate-900 font-bold text-sm mt-2 flex items-center gap-2">
-            <FiActivity className="text-blue-500" /> Real-time OEE & Neural Production Analytics
+            <FiActivity className="text-blue-500" /> Production Analytics for {activeIndustry.location} for {activeIndustry.location}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">

@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description: 'Streamline your manufacturing, sales, and operations with our comprehensive ERP & BPA platform.',
 };
 
+import { ClientProviders } from '@/context/ClientProviders';
+import SidebarWrapper from '@/components/SidebarWrapper';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -20,18 +23,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased font-sans">
-        <div className="flex min-h-screen bg-transparent relative">
-          <Sidebar />
-          {/* Main Content Area */}
-          <div className="flex-1 lg:pl-72 pt-20 lg:pt-0 flex flex-col w-full overflow-x-hidden">
-            <Header />
-            <PageWrapper>
-              <main className="p-6 md:p-10 lg:p-12 w-full max-w-[1920px] mx-auto">
-                {children}
-              </main>
-            </PageWrapper>
+        <ClientProviders>
+          <div className="flex min-h-screen bg-transparent relative">
+            <SidebarWrapper />
+            {/* Main Content Area */}
+            <div className="flex-1 lg:pl-72 pt-20 lg:pt-0 flex flex-col w-full overflow-x-hidden">
+              <Header />
+              <PageWrapper>
+                <main className="p-6 md:p-10 lg:p-12 w-full max-w-[1920px] mx-auto">
+                  {children}
+                </main>
+              </PageWrapper>
+            </div>
           </div>
-        </div>
+        </ClientProviders>
       </body>
     </html>
   );

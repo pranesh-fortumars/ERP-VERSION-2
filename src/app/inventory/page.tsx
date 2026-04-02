@@ -2,16 +2,15 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FiPackage, FiAlertCircle, FiTruck, FiDatabase, FiPlus, FiX, 
-  FiSearch, FiFilter, FiActivity, FiGlobe, FiLayers, FiDownload, FiUpload, FiMapPin, FiBarChart2
-} from 'react-icons/fi';
+import { FiPackage, FiAlertCircle, FiTruck, FiDatabase, FiPlus, FiX, FiSearch, FiFilter, FiActivity, FiGlobe, FiLayers, FiDownload, FiUpload, FiMapPin, FiBarChart2 } from 'react-icons/fi';
+import { useIndustry } from '@/context/IndustryContext';
 
 const InventoryPage = () => {
+  const { activeIndustry } = useIndustry();
   const [inventory, setInventory] = useState([
-    { id: 'SKU-7701', name: 'Precision Alloy Plate', category: 'Raw Materials', stock: 1240, status: 'Stable', color: 'text-blue-600 bg-blue-50', warehouse: 'Pune Hub', price: '₹75,000' },
+    { id: 'SKU-7701', name: 'Precision Alloy Plate', category: 'Raw Materials', stock: 1240, status: 'Stable', color: 'text-blue-600 bg-blue-50', warehouse: activeIndustry.location, price: '₹75,000' },
     { id: 'SKU-8824', name: 'Neural Logic Core v2', category: 'WIP Goods', stock: 85, status: 'Low Stock', color: 'text-amber-600 bg-amber-50', warehouse: 'Chennai U2', price: '₹12,400' },
-    { id: 'SKU-0091', name: 'Steel Housing - Node 7', category: 'Finished Goods', stock: 450, status: 'Stable', color: 'text-blue-600 bg-blue-50', warehouse: 'Pune Hub', price: '₹5,200' },
+    { id: 'SKU-0091', name: 'Steel Housing - Node 7', category: 'Finished Goods', stock: 450, status: 'Stable', color: 'text-blue-600 bg-blue-50', warehouse: activeIndustry.location, price: '₹5,200' },
     { id: 'SKU-2150', name: 'High-Tensile Fasteners', category: 'Consumables', stock: 12, status: 'Critical', color: 'text-rose-600 bg-rose-50', warehouse: 'Mumbai Depot', price: '₹850' }
   ]);
 
@@ -20,7 +19,7 @@ const InventoryPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newItem, setNewItem] = useState({ name: '', category: 'Raw Materials', stock: '', warehouse: 'Pune Hub', price: '' });
+  const [newItem, setNewItem] = useState({ name: '', category: 'Raw Materials', stock: '', warehouse: activeIndustry.location, price: '' });
 
   const handleExport = () => {
     setIsExporting(true);
@@ -57,7 +56,7 @@ const InventoryPage = () => {
     };
     setInventory([newEntry, ...inventory]);
     setIsModalOpen(false);
-    setNewItem({ name: '', category: 'Raw Materials', stock: '', warehouse: 'Pune Hub', price: '' });
+    setNewItem({ name: '', category: 'Raw Materials', stock: '', warehouse: activeIndustry.location, price: '' });
   };
 
   const inventorySummary = [
@@ -80,9 +79,9 @@ const InventoryPage = () => {
            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100">
             <FiGlobe className="animate-spin-slow" /> Supply Chain Infrastructure Active
           </div>
-          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Asset Inventory</h1>
+          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">{activeIndustry.name} Inventory</h1>
           <p className="text-slate-900 font-bold text-sm mt-2 flex items-center gap-2">
-            <FiLayers className="text-blue-600" /> Multi-Unit Stock Ledger & Warehouse Intelligence
+            <FiLayers className="text-blue-600" /> Stock Ledger for {activeIndustry.location}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
