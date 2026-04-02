@@ -68,25 +68,25 @@ const AccountingPage = () => {
       {/* Structural Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold  tracking-widest mb-4 border border-blue-100">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[14px] font-bold  tracking-widest mb-4 border border-blue-100">
             <FiGlobe className="animate-spin-slow" /> Finance Dashboard Active
           </div>
-          <h1 className="text-4xl font-bold text-slate-900  tracking-tighter leading-none">Finance Center</h1>
-          <p className="text-slate-900 font-bold text-sm mt-2 flex items-center gap-2">
+          <h1 className="text-5xl font-serif-professional tracking-tight text-slate-900  tracking-tighter leading-none">Finance Center</h1>
+          <p className="text-slate-900 font-bold text-lg mt-2 flex items-center gap-2">
             <FiCreditCard className="text-blue-500" /> Real-time Capital Transactions & Operational Accounting
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
            
-           <button onClick={handleLedgerSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-bold  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+           <button onClick={handleLedgerSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[14px] font-bold  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              {isSyncing ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isSyncing ? 'Synchronizing...' : 'Sync Accounts'}
            </button>
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-bold  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[14px] font-bold  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiDownload /> Export Audit
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-10 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-14 py-5 bg-blue-600 text-white rounded-2xl text-[14px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Record Transactions
            </button>
@@ -101,13 +101,13 @@ const AccountingPage = () => {
                 <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-600/20 group-hover:rotate-12 transition-transform text-2xl">
                    {stat.icon}
                 </div>
-                <span className={`text-[10px] font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 ${stat.isUp ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'}`}>
+                <span className={`text-[14px] font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 ${stat.isUp ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'}`}>
                    {stat.isUp ? <FiArrowUpRight /> : <FiArrowDownRight />} {stat.delta}
                 </span>
              </div>
              <div className="relative z-10">
-                <p className="text-[10px] font-bold text-slate-900  tracking-widest mb-2">{stat.label}</p>
-                <h3 className="text-3xl font-bold text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
+                <p className="text-[14px] font-bold text-slate-900  tracking-widest mb-2">{stat.label}</p>
+                <h3 className="text-4xl font-serif-professional tracking-tight text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
              </div>
           </div>
         ))}
@@ -117,7 +117,7 @@ const AccountingPage = () => {
         <div className="p-8 border-b border-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-slate-50/20">
           <div>
              <h3 className="text-lg font-bold tracking-widest text-slate-900  ">Transaction Ledger</h3>
-             <p className="text-[9px] font-bold text-slate-900  tracking-widest mt-1">Total Company Balances</p>
+             <p className="text-[12px] font-bold text-slate-900  tracking-widest mt-1">Total Company Balances</p>
           </div>
           <div className="flex gap-4 w-full md:w-auto">
              <div className="relative group flex-1 md:w-80">
@@ -125,7 +125,7 @@ const AccountingPage = () => {
                 <input 
                   type="text" 
                   placeholder="ID / Nomenclature Query..." 
-                  className="w-full bg-slate-100/50 border-none rounded-2xl py-4 pl-16 pr-6 text-xs font-bold outline-none focus:bg-white focus:ring-4 focus:ring-blue-600/5 transition-all text-slate-900"
+                  className="w-full bg-slate-100/50 border-none rounded-2xl py-4 pl-16 pr-6 text-base font-bold outline-none focus:bg-white focus:ring-4 focus:ring-blue-600/5 transition-all text-slate-900"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -137,39 +137,39 @@ const AccountingPage = () => {
         <div className="overflow-x-auto no-scrollbar">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-50/40 text-[9px] font-bold  tracking-widest text-slate-900">
-                <th className="py-5 px-10">Transactions Reference</th>
+              <tr className="bg-slate-50/40 text-[12px] font-bold  tracking-widest text-slate-900">
+                <th className="py-5 px-14">Transactions Reference</th>
                 <th className="py-5 px-6">Description</th>
                 <th className="py-5 px-6">Amount</th>
                 <th className="py-5 px-6">Status</th>
-                <th className="py-5 px-10 text-right">Date</th>
+                <th className="py-5 px-14 text-right">Date</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
               {filteredTxns.map((t) => (
                 <tr key={t.id} className="group hover:bg-blue-50/30 transition-all cursor-pointer">
-                  <td className="py-6 px-10">
-                     <span className="text-xs font-bold text-blue-600  tracking-tighter">{t.id}</span>
+                  <td className="py-6 px-14">
+                     <span className="text-base font-bold text-blue-600  tracking-tighter">{t.id}</span>
                   </td>
                   <td className="py-6 px-6">
-                     <p className="text-xs font-bold text-slate-900  group-hover:text-blue-600 transition-colors">{t.description}</p>
-                     <p className="text-[8px] font-bold text-slate-900  mt-0.5">Corporate Node X-1</p>
+                     <p className="text-base font-bold text-slate-900  group-hover:text-blue-600 transition-colors">{t.description}</p>
+                     <p className="text-[15px] font-bold text-slate-900  mt-0.5">Corporate Node X-1</p>
                   </td>
                   <td className="py-6 px-6">
-                     <span className={`text-xs font-bold  ${t.type === 'Credit' ? 'text-emerald-600' : 'text-rose-600'}`}>
+                     <span className={`text-base font-bold  ${t.type === 'Credit' ? 'text-emerald-600' : 'text-rose-600'}`}>
                         {t.type === 'Credit' ? '+' : '-'}{t.amount}
                      </span>
                   </td>
                   <td className="py-6 px-6">
-                     <span className={`px-4 py-1.5 rounded-xl text-[8px] font-bold  tracking-widest border ${
+                     <span className={`px-4 py-1.5 rounded-xl text-[15px] font-bold  tracking-widest border ${
                        t.status === 'Cleared' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 
                        t.status === 'Pending' ? 'bg-amber-50 text-amber-600 border-amber-100' : 'bg-blue-50 text-blue-600 border-blue-100'
                      }`}>
                         {t.status}
                      </span>
                   </td>
-                  <td className="py-6 px-10 text-right">
-                     <span className="text-[10px] font-bold text-slate-900 ">{t.date}</span>
+                  <td className="py-6 px-14 text-right">
+                     <span className="text-[14px] font-bold text-slate-900 ">{t.date}</span>
                   </td>
                 </tr>
               ))}
@@ -197,8 +197,8 @@ const AccountingPage = () => {
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-bold tracking-tighter text-slate-900 ">Record Transactions</h2>
-                  <p className="text-slate-900 font-bold text-[10px] mt-2  tracking-[0.3em]">Treasury Ledger Artifact</p>
+                  <h2 className="text-4xl font-serif-professional tracking-tight tracking-tighter text-slate-900 ">Record Transactions</h2>
+                  <p className="text-slate-900 font-bold text-[14px] mt-2  tracking-[0.3em]">Treasury Ledger Artifact</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
@@ -210,32 +210,32 @@ const AccountingPage = () => {
 
               <form onSubmit={handleTransactionsSubmit} className="space-y-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Description</label>
+                  <label className="text-[14px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Description</label>
                   <input 
                     required
                     type="text" 
                     placeholder="e.g. Inward Capital Injection: Node Cluster B" 
-                    className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900"
+                    className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-lg outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900"
                     value={newTxn.description}
                     onChange={(e) => setNewTxn({...newTxn, description: e.target.value})}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Amount (Amount)</label>
+                    <label className="text-[14px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Amount (Amount)</label>
                     <input 
                       required
                       type="text" 
                       placeholder="e.g. ₹5,00,000" 
-                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900"
+                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-lg outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900"
                       value={newTxn.amount}
                       onChange={(e) => setNewTxn({...newTxn, amount: e.target.value})}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Vector (Type)</label>
+                    <label className="text-[14px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Vector (Type)</label>
                     <select 
-                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900 appearance-none"
+                      className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-lg outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900 appearance-none"
                       value={newTxn.type}
                       onChange={(e) => setNewTxn({...newTxn, type: e.target.value})}
                     >
@@ -244,7 +244,7 @@ const AccountingPage = () => {
                     </select>
                   </div>
                 </div>
-                                  <button disabled={isPending} type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[24px] font-bold text-[11px]  tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 disabled:opacity-50">
+                                  <button disabled={isPending} type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[24px] font-bold text-[15px]  tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 disabled:opacity-50">
                      {isPending ? (
                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                      ) : (
