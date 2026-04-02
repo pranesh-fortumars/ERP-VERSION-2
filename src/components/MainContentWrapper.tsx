@@ -17,7 +17,7 @@ export default function MainContentWrapper({ children }: { children: React.React
     >
       <Header />
       <PageWrapper>
-        <main className="p-6 md:p-10 lg:p-12 w-full max-w-[1920px] mx-auto">
+        <main className="p-6 md:p-10 lg:p-8 w-full max-w-[1920px] mx-auto">
           {children}
         </main>
       </PageWrapper>

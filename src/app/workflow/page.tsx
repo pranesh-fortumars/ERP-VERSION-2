@@ -46,49 +46,49 @@ const WorkflowPage = () => {
       {/* Structural Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[12px] font-serif-professional tracking-wide  tracking-widest mb-4 border border-blue-100">
             <FiGlobe className="animate-spin-slow" /> Orchestration Infrastructure Active
           </div>
-          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Workflow Matrix</h1>
-          <p className="text-slate-900 font-bold text-sm mt-2 flex items-center gap-2">
+          <h1 className="text-xl font-black text-slate-900 uppercase tracking-tight leading-none">Workflow Matrix</h1>
+          <p className="text-slate-900 font-bold text-base mt-2 flex items-center gap-2">
             <FiLayers className="text-blue-500" /> BPA Pipeline Execution & Node Tracking
           </p>
         </div>
         <div className="flex items-center gap-4">
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-8 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-8 py-3.5 bg-blue-600 text-white rounded-[24px] text-[12px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Initialize Pipe
            </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-12">
+      <div className="grid grid-cols-1 gap-8">
         {workflows.map((flow) => (
           <div 
             key={flow.id}
-            className={`industrial-card p-10 bg-white group transition-all duration-700 ${activeWorkflow === flow.id ? 'ring-2 ring-blue-600/20 shadow-2xl' : ''}`}
+            className={`industrial-card animate-fade-up p-10 bg-white group transition-all duration-700 ${activeWorkflow === flow.id ? 'ring-2 ring-blue-600/20 shadow-2xl' : ''}`}
             onClick={() => setActiveWorkflow(flow.id)}
           >
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-16 px-4">
               <div className="flex items-center gap-6">
-                 <div className={`w-16 h-16 rounded-3xl flex items-center justify-center text-white shadow-2xl shadow-blue-600/30 ${flow.status === 'Active' ? 'bg-blue-600' : 'bg-amber-500'}`}>
+                 <div className={`w-16 h-16 rounded-[32px] flex items-center justify-center text-white shadow-2xl shadow-blue-600/30 ${flow.status === 'Active' ? 'bg-blue-600' : 'bg-amber-500'}`}>
                     <FiZap size={28} />
                  </div>
                  <div>
-                    <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter leading-none">{flow.name}</h3>
-                    <p className="text-xs font-black text-slate-900 uppercase tracking-[0.2em] mt-2 flex items-center gap-2">
+                    <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight leading-none">{flow.name}</h3>
+                    <p className="text-sm font-black text-slate-900 uppercase tracking-[0.2em] mt-2 flex items-center gap-2">
                        {flow.status} <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     </p>
                  </div>
               </div>
               <div className="flex items-center gap-10">
                  <div className="text-center">
-                    <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-1">Efficiency Delta</p>
-                    <p className="text-2xl font-black text-blue-600 italic tracking-tighter">{flow.efficiency}</p>
+                    <p className="text-[12px] font-black text-slate-900 uppercase tracking-widest mb-1">Efficiency Delta</p>
+                    <p className="text-xl font-black text-blue-600  tracking-tight">{flow.efficiency}</p>
                  </div>
-                 <button className="p-4 bg-slate-50 rounded-2xl text-slate-900 hover:text-blue-600 hover:bg-blue-50 transition-all border border-slate-100">
+                 <button className="p-4 bg-slate-50 rounded-[24px] text-slate-900 hover:text-blue-600 hover:bg-blue-50 transition-all border border-slate-100">
                     <FiSettings size={20} />
                  </button>
               </div>
@@ -96,7 +96,7 @@ const WorkflowPage = () => {
 
             <div className="relative">
               {/* Process Line */}
-              <div className="hidden lg:block absolute top-12 left-0 right-0 h-1 bg-slate-100 -z-0 rounded-full overflow-hidden">
+              <div className="hidden lg:block absolute top-8 left-0 right-0 h-1 bg-slate-100 -z-0 rounded-full overflow-hidden">
                  <motion.div 
                    initial={{ width: 0 }}
                    animate={{ width: flow.status === 'Active' ? '70%' : '100%' }}
@@ -105,7 +105,7 @@ const WorkflowPage = () => {
                  />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                 {flow.nodes.map((node, nIdx) => (
                   <div key={nIdx} className="flex flex-col items-center group/node">
                     <motion.div 
@@ -121,8 +121,8 @@ const WorkflowPage = () => {
                       )}
                     </motion.div>
                     <div className="mt-8 text-center px-4">
-                       <h4 className="text-[11px] font-black text-slate-900 uppercase tracking-widest leading-none mb-2">{node.title}</h4>
-                       <p className={`text-[8px] font-black uppercase tracking-[0.3em] ${node.status === 'Pending' ? 'text-slate-300' : 'text-blue-600'}`}>
+                       <h4 className="text-[13px] font-black text-slate-900 uppercase tracking-widest leading-none mb-2">{node.title}</h4>
+                       <p className={`text-[10px] font-serif-professional tracking-wide  tracking-[0.3em] ${node.status === 'Pending' ? 'text-slate-300' : 'text-blue-600'}`}>
                          {node.status} • {node.time}
                        </p>
                     </div>
@@ -149,16 +149,16 @@ const WorkflowPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-xl bg-white rounded-[56px] p-12 md:p-14 border border-blue-500/10 shadow-3xl"
+              className="relative w-full max-w-xl bg-white rounded-[40px] p-8 md:p-10 border border-blue-500/10 shadow-3xl"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Initialize Pipe</h2>
-                  <p className="text-slate-900 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Protocol Orchestration Artifact</p>
+                  <h2 className="text-3xl font-black tracking-tight text-slate-900 uppercase leading-none">Initialize Pipe</h2>
+                  <p className="text-slate-900 font-black text-[12px] mt-2 uppercase tracking-[0.3em]">Protocol Orchestration Artifact</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-900 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-50 rounded-[24px] text-slate-900 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -166,31 +166,31 @@ const WorkflowPage = () => {
 
               <form className="space-y-10">
                 <div className="space-y-4">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Process Identification</label>
+                  <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Process Identification</label>
                   <input 
                     type="text" 
                     placeholder="e.g. Asset Recovery Pipeline Delta" 
-                    className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 shadow-inner"
+                    className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 shadow-inner"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Priority Vector</label>
-                    <select className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none shadow-inner">
+                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Priority Vector</label>
+                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none shadow-inner">
                       <option>Standard</option>
                       <option>High Priority</option>
                       <option>Critical</option>
                     </select>
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Node Selection</label>
-                    <select className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none shadow-inner">
+                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Node Selection</label>
+                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none shadow-inner">
                       <option>All Logic Nodes</option>
                       <option>Cluster Alpha Only</option>
                     </select>
                   </div>
                 </div>
-                <button type="button" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[32px] font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90">
+                <button type="button" className="w-full mt-6 py-4 bg-blue-600 text-white rounded-[32px] font-black text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90">
                    Deploy Workflow Orchestration
                 </button>
               </form>

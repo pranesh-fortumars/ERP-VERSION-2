@@ -18,20 +18,20 @@ const LandingPage = () => {
       
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-slate-200 border-slate-200 bg-white/80 /80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="max-w-[1600px] mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white">
               <FiServer size={18} />
             </div>
-            <span className="text-xl font-black tracking-tighter">PRO<span className="text-blue-600">ERP</span></span>
+            <span className="text-base font-black tracking-tight">PRO<span className="text-blue-600">ERP</span></span>
           </div>
           <div className="hidden md:flex items-center gap-10">
              {['Solutions', 'Features', 'Compliance', 'Security'].map(item => (
-               <button key={item} className="text-xs font-black uppercase tracking-widest text-slate-900 hover:text-blue-600 transition-colors">{item}</button>
+               <button key={item} className="text-sm font-serif-professional tracking-wide  tracking-widest text-slate-900 hover:text-blue-600 transition-colors">{item}</button>
              ))}
           </div>
           <Link href="/dashboard">
-            <button className="bg-slate-900 text-white px-6 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all hover:bg-black active:scale-95 shadow-lg">
+            <button className="bg-slate-900 text-white px-6 py-2.5 rounded-lg text-sm font-serif-professional tracking-wide  tracking-widest transition-all hover:bg-black active:scale-95 shadow-lg">
               Console Access
             </button>
           </Link>
@@ -40,21 +40,21 @@ const LandingPage = () => {
 
       {/* Hero Section */}
       <section className="relative pt-48 pb-32 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-blue-600/20 bg-blue-600/5 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-blue-600/20 bg-blue-600/5 text-blue-600 text-[12px] font-serif-professional tracking-wide  tracking-[0.2em] mb-10">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
               v2.8.0 Enterprise Release
             </div>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-10 text-slate-900">
+            <h1 className="text-4xl md:text-6xl font-serif-professional tracking-tight font-black tracking-tight leading-[1.05] mb-10 text-slate-900">
               The Industrial <br />
               <span className="text-blue-600">Operating System</span>
             </h1>
-            <p className="text-lg text-slate-800 max-w-lg font-bold leading-relaxed mb-12">
+            <p className="text-sm text-slate-800 max-w-lg font-bold leading-relaxed mb-12">
               Mission-critical ERP & Business Process Automation infrastructure for high-scale Indian manufacturing and corporate giants.
             </p>
             <div className="flex flex-wrap gap-5">
@@ -76,7 +76,7 @@ const LandingPage = () => {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative lg:block hidden"
           >
-            <div className="relative industrial-card bg-slate-50 /50 p-6 aspect-video overflow-hidden group">
+            <div className="relative industrial-card animate-fade-up animate-float bg-slate-50 /50 p-6 aspect-video overflow-hidden group">
                <div className="absolute top-0 left-0 w-full h-10 border-b border-slate-200 border-slate-200 bg-white/50 /50 backdrop-blur flex items-center px-4 gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-rose-500" />
                   <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
@@ -119,8 +119,8 @@ const LandingPage = () => {
                      <div className="h-full bg-blue-600 text-white rounded-lg p-6 flex flex-col justify-between shadow-xl">
                         <FiDatabase className="text-blue-400" />
                         <div>
-                           <p className="text-[10px] font-black uppercase text-white font-black mb-1">Fiscal Balance</p>
-                           <p className="text-2xl font-black tracking-tighter">₹42.8 Cr</p>
+                           <p className="text-[12px] font-serif-professional tracking-wide  text-white font-black mb-1">Fiscal Balance</p>
+                           <p className="text-xl font-black tracking-tight">₹42.8 Cr</p>
                         </div>
                         <div className="space-y-2">
                            <div className="h-1 w-full bg-white/10 rounded" />
@@ -141,8 +141,8 @@ const LandingPage = () => {
             >
                <div className="p-2 bg-emerald-500 rounded text-white"><FiTrendingUp size={16} /></div>
                <div>
-                  <p className="text-[8px] font-black text-slate-900 uppercase tracking-widest">Growth</p>
-                  <p className="text-sm font-black">+12.4%</p>
+                  <p className="text-[12px] font-black text-slate-900 uppercase tracking-widest">Growth</p>
+                  <p className="text-base font-black">+12.4%</p>
                </div>
             </motion.div>
           </motion.div>
@@ -150,8 +150,8 @@ const LandingPage = () => {
       </section>
 
       {/* Grid Features */}
-      <section className="py-32 px-6 bg-slate-50/50 /20 border-y border-slate-200 border-slate-200">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-48 px-6 bg-slate-50/50 /20 border-y border-slate-200 border-slate-200">
+        <div className="max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((f, i) => (
               <motion.div
@@ -160,13 +160,13 @@ const LandingPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="industrial-card p-10 bg-white  group"
+                className="industrial-card animate-fade-up animate-float p-10 bg-white  group"
               >
                 <div className="w-12 h-12 rounded-lg bg-blue-600/10 dark:bg-blue-600/10 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 mb-8 border border-blue-600/10">
                   {f.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 tracking-tight">{f.title}</h3>
-                <p className="text-slate-900 text-slate-900 text-sm leading-relaxed font-bold transition-colors">{f.desc}</p>
+                <h3 className="text-3xl font-serif-professional tracking-tight mb-4 tracking-tight">{f.title}</h3>
+                <p className="text-slate-900 text-slate-900 text-base leading-relaxed font-bold transition-colors">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -175,7 +175,7 @@ const LandingPage = () => {
 
       {/* Footer */}
       <footer className="py-20 px-6 border-t border-slate-200 border-slate-200 bg-white ">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-slate-900 text-xs font-black uppercase tracking-widest">
+          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-slate-900 text-sm font-serif-professional tracking-wide  tracking-widest">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">
               <FiLayers size={14} />

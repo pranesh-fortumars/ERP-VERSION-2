@@ -113,24 +113,24 @@ const CustomersPage = () => {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
         <div>
-           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-[12px] font-serif-professional tracking-wide  tracking-[0.2em] mb-4">
             <FiGlobe className="animate-spin-slow" /> Global Entity Registry Operational
           </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 uppercase leading-none">Client Matrix</h1>
+          <h1 className="text-xl md:text-3xl font-black tracking-tight text-slate-900 uppercase leading-none">Client Matrix</h1>
           <p className="text-slate-900 font-bold tracking-tight mt-1 flex items-center gap-2">
             <FiUsers className="text-blue-500" /> CRM Infrastructure & Strategic Partner Lifecycle Management
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiUpload /> Batch Upload
            </button>
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiDownload /> Audit Export
            </button>
            <button 
             onClick={() => setIsModalOpen(true)}
-            className="px-10 py-3 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 active:scale-95"
+            className="px-10 py-3 bg-blue-600 text-white rounded-[24px] text-[12px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 active:scale-95"
           >
             <FiPlus className="w-4 h-4" /> Register Identity
           </button>
@@ -146,7 +146,7 @@ const CustomersPage = () => {
                 <input 
                   type="text" 
                   placeholder="Search by contact identity, organization, or corporate link..."
-                  className="w-full bg-slate-50 border-none rounded-2xl py-4.5 pl-16 pr-6 text-sm font-black focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-900 shadow-inner"
+                  className="w-full bg-slate-50 border-none rounded-[24px] py-4.5 pl-16 pr-6 text-base font-black focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-900 shadow-inner"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -156,7 +156,7 @@ const CustomersPage = () => {
                   <button
                     key={status}
                     onClick={() => setFilterStatus(status)}
-                    className={`px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${
+                    className={`px-6 py-2.5 rounded-[24px] text-[12px] font-serif-professional tracking-wide  tracking-widest transition-all ${
                       filterStatus === status 
                         ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' 
                         : 'bg-white text-slate-900 border border-black/5 hover:bg-slate-100 active:scale-95'
@@ -178,7 +178,7 @@ const CustomersPage = () => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
-                    className="group bg-white rounded-[48px] border border-slate-200 p-10 shadow-sm hover:shadow-2xl hover:border-blue-500/30 transition-all duration-500 relative overflow-hidden"
+                    className="group bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm hover:shadow-2xl hover:border-blue-500/30 transition-all duration-500 relative overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:scale-150 transition-transform duration-1000" />
                     
@@ -188,52 +188,52 @@ const CustomersPage = () => {
                           {customer.name.charAt(0)}
                         </div>
                         <div>
-                          <h2 className="text-2xl font-black text-slate-900 tracking-tighter uppercase leading-none mb-2">{customer.name}</h2>
-                          <p className="text-[10px] font-black text-slate-900 uppercase tracking-[0.2em] flex items-center gap-2">
+                          <h2 className="text-xl font-black text-slate-900 tracking-tight uppercase leading-none mb-2">{customer.name}</h2>
+                          <p className="text-[12px] font-black text-slate-900 uppercase tracking-[0.2em] flex items-center gap-2">
                              <FiBriefcase className="text-blue-500" /> {customer.company}
                           </p>
                         </div>
                       </div>
-                      <span className={`px-5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg ${getStatusColor(customer.status)}`}>
+                      <span className={`px-5 py-1.5 rounded-full text-[11px] font-serif-professional tracking-wide  tracking-widest shadow-lg ${getStatusColor(customer.status)}`}>
                         {customer.status}
                       </span>
                     </div>
 
                     <div className="space-y-8 relative z-10">
                       <div className="grid grid-cols-1 gap-4">
-                        <div className="flex items-center gap-5 px-6 py-4 bg-slate-50 rounded-2xl border border-transparent group-hover:border-blue-500/20 transition-all">
+                        <div className="flex items-center gap-5 px-6 py-4 bg-slate-50 rounded-[24px] border border-transparent group-hover:border-blue-500/20 transition-all">
                           <FiMail className="text-blue-500 w-5 h-5" />
                           <div className="flex-1 overflow-hidden">
-                            <p className="text-[9px] font-black uppercase text-slate-900 tracking-[0.2em] leading-none mb-2">Corporate Artifact</p>
-                            <p className="text-xs font-black text-slate-900 truncate">{customer.email}</p>
+                            <p className="text-[11px] font-serif-professional tracking-wide  text-slate-900 tracking-[0.2em] leading-none mb-2">Corporate Artifact</p>
+                            <p className="text-sm font-black text-slate-900 truncate">{customer.email}</p>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-5 px-6 py-4 bg-slate-50 rounded-2xl border border-transparent group-hover:border-blue-500/20 transition-all">
+                        <div className="flex items-center gap-5 px-6 py-4 bg-slate-50 rounded-[24px] border border-transparent group-hover:border-blue-500/20 transition-all">
                           <FiPhone className="text-blue-500 w-5 h-5" />
                           <div>
-                            <p className="text-[9px] font-black uppercase text-slate-900 tracking-[0.2em] leading-none mb-2">Secure Link</p>
-                            <p className="text-xs font-black text-slate-900">{customer.phone}</p>
+                            <p className="text-[11px] font-serif-professional tracking-wide  text-slate-900 tracking-[0.2em] leading-none mb-2">Secure Link</p>
+                            <p className="text-sm font-black text-slate-900">{customer.phone}</p>
                           </div>
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-6 pt-4">
-                        <div className="px-6 py-4 bg-slate-50 rounded-2xl flex flex-col justify-center">
-                           <p className="text-[9px] font-black uppercase text-slate-900 tracking-widest mb-2">Geospatial Node</p>
-                           <p className="text-xs font-black text-slate-900 flex items-center gap-2"><FiMapPin className="text-rose-500" /> {customer.location}</p>
+                        <div className="px-6 py-4 bg-slate-50 rounded-[24px] flex flex-col justify-center">
+                           <p className="text-[11px] font-serif-professional tracking-wide  text-slate-900 tracking-widest mb-2">Geospatial Node</p>
+                           <p className="text-sm font-black text-slate-900 flex items-center gap-2"><FiMapPin className="text-rose-500" /> {customer.location}</p>
                         </div>
-                        <div className="px-6 py-4 bg-slate-50 rounded-2xl flex flex-col justify-center text-right overflow-hidden">
-                           <p className="text-[9px] font-black uppercase text-slate-900 tracking-widest mb-2 text-right">Fiscal Signature</p>
-                           <p className="text-[10px] font-black text-blue-600 truncate tracking-tighter uppercase">{customer.gstin || 'PENDING EXECUTION'}</p>
+                        <div className="px-6 py-4 bg-slate-50 rounded-[24px] flex flex-col justify-center text-right overflow-hidden">
+                           <p className="text-[11px] font-serif-professional tracking-wide  text-slate-900 tracking-widest mb-2 text-right">Fiscal Signature</p>
+                           <p className="text-[12px] font-black text-blue-600 truncate tracking-tight uppercase">{customer.gstin || 'PENDING EXECUTION'}</p>
                         </div>
                       </div>
 
                       <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
                          <div className="flex-1">
                             <div className="flex items-center justify-between mb-2">
-                               <p className="text-[9px] font-black text-slate-900 uppercase tracking-widest underline decoration-blue-500/30">Relational Velocity</p>
-                               <p className="text-[10px] font-black text-blue-600">{customer.engagement}%</p>
+                               <p className="text-[11px] font-black text-slate-900 uppercase tracking-widest underline decoration-blue-500/30">Relational Velocity</p>
+                               <p className="text-[12px] font-black text-blue-600">{customer.engagement}%</p>
                             </div>
                             <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
                                <motion.div 
@@ -249,8 +249,8 @@ const CustomersPage = () => {
                             </div>
                          </div>
                          <div className="text-right pl-10">
-                            <p className="text-[9px] font-black text-slate-900 uppercase tracking-widest mb-1 whitespace-nowrap">Last Pulse</p>
-                            <p className="text-[10px] font-black text-slate-900">{customer.lastContact}</p>
+                            <p className="text-[11px] font-black text-slate-900 uppercase tracking-widest mb-1 whitespace-nowrap">Last Pulse</p>
+                            <p className="text-[12px] font-black text-slate-900">{customer.lastContact}</p>
                          </div>
                       </div>
                     </div>
@@ -262,7 +262,7 @@ const CustomersPage = () => {
 
         {/* Sidebar Info */}
         <div className="space-y-8">
-           <div className="p-10 bg-white rounded-[48px] overflow-hidden relative group min-h-[400px] flex flex-col justify-end shadow-xl border border-slate-100">
+           <div className="p-10 bg-white rounded-[40px] overflow-hidden relative group min-h-[400px] flex flex-col justify-end shadow-xl border border-slate-100">
               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
               <div className="absolute top-10 right-10 flex gap-1 items-end h-24">
                  {[60, 90, 40, 70, 100].map((h, i) => (
@@ -273,16 +273,16 @@ const CustomersPage = () => {
                  <div className="w-16 h-16 bg-blue-600 rounded-[24px] flex items-center justify-center ring-4 ring-blue-600/10 shadow-xl shadow-blue-600/20 group-hover:rotate-6 transition-transform">
                     <FiActivity className="text-white w-8 h-8" />
                  </div>
-                 <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-none mb-2">Churn Matrix</h3>
-                 <p className="text-slate-900 text-xs font-bold leading-relaxed max-w-[200px]">Strategic analysis shows a <span className="text-blue-600 font-black">98.4% retention rate</span> for Q1 2024 enterprise clients.</p>
-                 <button className="w-full py-4 bg-blue-600 text-white font-black rounded-2xl text-[10px] uppercase tracking-[0.3em] active:scale-95 transition-all shadow-xl hover:bg-blue-700">
+                 <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tight leading-none mb-2">Churn Matrix</h3>
+                 <p className="text-slate-900 text-sm font-bold leading-relaxed max-w-[200px]">Strategic analysis shows a <span className="text-blue-600 font-black">98.4% retention rate</span> for Q1 2024 enterprise clients.</p>
+                 <button className="w-full py-4 bg-blue-600 text-white font-black rounded-[24px] text-[12px] uppercase tracking-[0.3em] active:scale-95 transition-all shadow-xl hover:bg-blue-700">
                     Generate Analysis
                  </button>
               </div>
            </div>
 
            <div className="p-8 bg-white rounded-[40px] border border-slate-200 shadow-sm">
-              <h4 className="text-lg font-black text-slate-900 uppercase tracking-tighter mb-6 flex items-center gap-3">
+              <h4 className="text-sm font-black text-slate-900 uppercase tracking-tight mb-6 flex items-center gap-3">
                  <FiLayers className="text-blue-600" /> Key Accounts
               </h4>
               <div className="space-y-6">
@@ -293,10 +293,10 @@ const CustomersPage = () => {
                  ].map((account, i) => (
                    <div key={i} className="flex justify-between items-center group cursor-pointer">
                       <div>
-                         <p className="text-xs font-black text-slate-900 group-hover:text-blue-600 transition-colors uppercase">{account.name}</p>
-                         <p className="text-[9px] font-black text-slate-900 uppercase tracking-widest">{account.value} YTD</p>
+                         <p className="text-sm font-black text-slate-900 group-hover:text-blue-600 transition-colors uppercase">{account.name}</p>
+                         <p className="text-[11px] font-black text-slate-900 uppercase tracking-widest">{account.value} YTD</p>
                       </div>
-                      <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-lg">
+                      <span className="text-[12px] font-black text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-lg">
                         {account.delta}
                       </span>
                    </div>
@@ -321,16 +321,16 @@ const CustomersPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-xl bg-white rounded-[56px] p-10 md:p-14 border border-slate-200 shadow-2xl"
+              className="relative w-full max-w-xl bg-white rounded-[40px] p-10 md:p-10 border border-slate-200 shadow-2xl"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Register Identity</h2>
-                  <p className="text-slate-900 font-black text-[10px] mt-1 uppercase tracking-[0.3em]">CRM Ledger Infrastructure</p>
+                  <h2 className="text-3xl font-black tracking-tight text-slate-900 uppercase leading-none">Register Identity</h2>
+                  <p className="text-slate-900 font-black text-[12px] mt-1 uppercase tracking-[0.3em]">CRM Ledger Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-100 rounded-2xl text-slate-900 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-100 rounded-[24px] text-slate-900 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -339,63 +339,63 @@ const CustomersPage = () => {
               <form onSubmit={addCustomer} className="space-y-8">
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Principal Executive</label>
+                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Principal Executive</label>
                     <input 
                       required
                       type="text" 
                       placeholder="e.g. Arjun Mehta" 
-                      className="w-full bg-slate-50 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-4.5 px-6 text-base font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                       value={newCustomer.name}
                       onChange={(e) => setNewCustomer({...newCustomer, name: e.target.value})}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Corporate Entity</label>
+                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Corporate Entity</label>
                     <input 
                       required
                       type="text" 
                       placeholder="e.g. Blue Star Systems Ltd" 
-                      className="w-full bg-slate-50 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-4.5 px-6 text-base font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                       value={newCustomer.company}
                       onChange={(e) => setNewCustomer({...newCustomer, company: e.target.value})}
                     />
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Official Comms Matrix (Email)</label>
+                  <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Official Comms Matrix (Email)</label>
                   <input 
                     required
                     type="email" 
                     placeholder="executive@entity.com" 
-                    className="w-full bg-slate-50 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
+                    className="w-full bg-slate-50 border-none rounded-[24px] py-4.5 px-6 text-base font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                     value={newCustomer.email}
                     onChange={(e) => setNewCustomer({...newCustomer, email: e.target.value})}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Direct Secure Line</label>
+                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Direct Secure Line</label>
                     <input 
                       required
                       type="text" 
                       placeholder="+91 XXXXX-XXXXX" 
-                      className="w-full bg-slate-50 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-4.5 px-6 text-base font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                       value={newCustomer.phone}
                       onChange={(e) => setNewCustomer({...newCustomer, phone: e.target.value})}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Statutory GSTIN Signature</label>
+                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Statutory GSTIN Signature</label>
                     <input 
                       type="text" 
                       placeholder="Fiscal ID (Optional)" 
-                      className="w-full bg-slate-50 border-none rounded-2xl py-4.5 px-6 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-4.5 px-6 text-base font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900"
                       value={newCustomer.gstin}
                       onChange={(e) => setNewCustomer({...newCustomer, gstin: e.target.value})}
                     />
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-6 py-5 bg-blue-600 text-white rounded-3xl font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95">
+                <button type="submit" className="w-full mt-6 py-3 bg-blue-600 text-white rounded-[32px] font-black text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95">
                   Commit Identity to CRM Matrix
                 </button>
               </form>
