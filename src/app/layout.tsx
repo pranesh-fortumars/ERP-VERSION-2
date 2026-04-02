@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 import { ClientProviders } from '@/context/ClientProviders';
 import SidebarWrapper from '@/components/SidebarWrapper';
+import MainContentWrapper from '@/components/MainContentWrapper';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,14 +28,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="flex min-h-screen bg-transparent relative">
             <SidebarWrapper />
             {/* Main Content Area */}
-            <div className="flex-1 lg:pl-72 pt-20 lg:pt-0 flex flex-col w-full overflow-x-hidden">
-              <Header />
-              <PageWrapper>
-                <main className="p-6 md:p-10 lg:p-12 w-full max-w-[1920px] mx-auto">
-                  {children}
-                </main>
-              </PageWrapper>
-            </div>
+            <MainContentWrapper>
+              {children}
+            </MainContentWrapper>
           </div>
         </ClientProviders>
       </body>
