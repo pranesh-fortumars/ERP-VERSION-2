@@ -2,11 +2,25 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTransition } from 'react';
+import { recordFiscalFlux, synchronizeTreasury } from '@/app/actions/accounting';
 import { 
   FiPlus, FiX, FiSearch, FiFilter, FiActivity, FiGlobe, FiLayers, FiBriefcase, FiDownload, FiUpload, FiDollarSign, FiTrendingUp, FiArrowUpRight, FiArrowDownRight, FiCreditCard
 } from 'react-icons/fi';
 
 const AccountingPage = () => {
+  const [isPending, startTransition] = useTransition();
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const handleLedgerSync = () => {
+    setIsSyncing(true);
+    startTransition(async () => {
+      await synchronizeTreasury();
+      setIsSyncing(false);
+      alert('PROTOCOL COMPLETE: High-scale Capital Correlation aligned across all nodes.');
+    });
+  };
+
   const [transactions, setTransactions] = useState([
     { id: 'TXN-901', description: 'Vendor Payment: Node Steel Corp', amount: '₹1,24,000', type: 'Debit', status: 'Cleared', date: '2024-03-31', time: '14:20' },
     { id: 'TXN-842', description: 'Inward Credit: Reliance Logistics Node', amount: '₹4,50,000', type: 'Credit', status: 'Cleared', date: '2024-03-30', time: '09:15' },
@@ -32,13 +46,21 @@ const AccountingPage = () => {
     );
   }, [transactions, searchTerm]);
 
-  const addTransaction = (e: React.FormEvent) => {
+    const handleFluxSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const id = `TXN-${Math.floor(Math.random() * 900 + 100)}`;
-    const time = new Date().toLocaleTimeString('en-GB', { hour12: false });
-    setTransactions([{ id, ...newTxn, date: new Date().toISOString().split('T')[0], time }, ...transactions]);
-    setIsModalOpen(false);
-    setNewTxn({ description: '', amount: '', type: 'Debit', status: 'Pending' });
+    const formData = new FormData();
+    formData.append('description', newTxn.description);
+    formData.append('amount', newTxn.amount);
+    formData.append('type', newTxn.type);
+
+    startTransition(async () => {
+      const result = await recordFiscalFlux(formData);
+      if (result.success) {
+        setTransactions([result.transaction as any, ...transactions]);
+        setIsModalOpen(false);
+        setNewTxn({ description: '', amount: '', type: 'Debit', status: 'Pending' });
+      }
+    });
   };
 
   return (
@@ -55,8 +77,9 @@ const AccountingPage = () => {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
-             <FiUpload /> Ledger Sync
+           
+           <button onClick={handleLedgerSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             {isSyncing ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isSyncing ? 'Synchronizing...' : 'Ledger Sync'}
            </button>
            <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiDownload /> Tax Export
@@ -185,7 +208,7 @@ const AccountingPage = () => {
                 </button>
               </div>
 
-              <form onSubmit={addTransaction} className="space-y-8">
+              <form onSubmit={handleFluxSubmit} className="space-y-8">
                 <div className="space-y-3">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Flux Description</label>
                   <input 
@@ -221,9 +244,13 @@ const AccountingPage = () => {
                     </select>
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[24px] font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90">
-                   Commit Flux to Matrix
-                </button>
+                                  <button disabled={isPending} type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[24px] font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 disabled:opacity-50">
+                     {isPending ? (
+                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                     ) : (
+                       'Commit Flux to Matrix'
+                     )}
+                  </button>
               </form>
             </motion.div>
           </div>

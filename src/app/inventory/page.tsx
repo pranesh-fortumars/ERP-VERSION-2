@@ -4,8 +4,11 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiPackage, FiAlertCircle, FiTruck, FiDatabase, FiPlus, FiX, FiSearch, FiFilter, FiActivity, FiGlobe, FiLayers, FiDownload, FiUpload, FiMapPin, FiBarChart2 } from 'react-icons/fi';
 import { useIndustry } from '@/context/IndustryContext';
+import { addInventoryItem } from '@/app/actions/inventory';
+import { useTransition } from 'react';
 
 const InventoryPage = () => {
+  const [isPending, startTransition] = useTransition();
   const { activeIndustry } = useIndustry();
   const [inventory, setInventory] = useState([
     { id: 'SKU-7701', name: 'Precision Alloy Plate', category: 'Raw Materials', stock: 1240, status: 'Stable', color: 'text-blue-600 bg-blue-50', warehouse: activeIndustry.location, price: '₹75,000' },
@@ -44,19 +47,23 @@ const InventoryPage = () => {
     );
   }, [inventory, searchTerm]);
 
-  const addItem = (e: React.FormEvent) => {
+  const addItem = async (e: React.FormEvent) => {
     e.preventDefault();
-    const id = `SKU-${Math.floor(Math.random() * 9000 + 1000)}`;
-    const newEntry = { 
-      ...newItem, 
-      id, 
-      stock: parseInt(newItem.stock) || 0, 
-      status: (parseInt(newItem.stock) || 0) < 20 ? 'Critical' : 'Stable',
-      color: (parseInt(newItem.stock) || 0) < 20 ? 'text-rose-600 bg-rose-50' : 'text-blue-600 bg-blue-50'
-    };
-    setInventory([newEntry, ...inventory]);
-    setIsModalOpen(false);
-    setNewItem({ name: '', category: 'Raw Materials', stock: '', warehouse: activeIndustry.location, price: '' });
+    const formData = new FormData();
+    formData.append('name', newItem.name);
+    formData.append('category', newItem.category);
+    formData.append('stock', newItem.stock);
+    formData.append('warehouse', newItem.warehouse);
+    formData.append('price', newItem.price);
+
+    startTransition(async () => {
+      const result = await addInventoryItem(formData);
+      if (result.success) {
+        setInventory([result.item as any, ...inventory]);
+        setIsModalOpen(false);
+        setNewItem({ name: '', category: 'Raw Materials', stock: '', warehouse: activeIndustry.location, price: '' });
+      }
+    });
   };
 
   const inventorySummary = [
@@ -334,9 +341,14 @@ const InventoryPage = () => {
                      />
                    </div>
                  </div>
-                 <button type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[32px] font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 flex items-center justify-center gap-3">
-                    Commit Artifact to Ledger
-                 </button>
+                                   <button disabled={isPending} type="submit" className="w-full mt-6 py-6 bg-blue-600 text-white rounded-[32px] font-black text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed">
+                     {isPending ? (
+                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                     ) : (
+                       <FiPlus />
+                     )}
+                     {isPending ? 'Committing to Ledger...' : 'Commit Artifact to Ledger'}
+                  </button>
               </form>
             </motion.div>
           </div>

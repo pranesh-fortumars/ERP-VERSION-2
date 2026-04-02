@@ -4,9 +4,35 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiCpu, FiActivity, FiSettings, FiTool, FiCheckCircle, FiAlertCircle, FiArrowRight, FiPlay, FiBox, FiClock, FiShield, FiPlus, FiX, FiLayers, FiDownload, FiUpload, FiGlobe } from 'react-icons/fi';
 import { useIndustry } from '@/context/IndustryContext';
+import { useTransition } from 'react';
+import { initializeWorkOrder, synchronizeFloor } from '@/app/actions/manufacturing';
 
 const ManufacturingPage = () => {
-  const { activeIndustry } = useIndustry();
+  const [isPending, startTransition] = useTransition();
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const handleFloorSync = () => {
+    setIsSyncing(true);
+    startTransition(async () => {
+      await synchronizeFloor('NODE-4A');
+      setIsSyncing(false);
+      alert('PROTOCOL COMPLETE: Node Cluster 4A resynchronized with zero desync.');
+    });
+  };
+
+  const handleOrderSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+
+    startTransition(async () => {
+      const result = await initializeWorkOrder(formData);
+      if (result.success) {
+        alert(`SUCCESS: ${result.order.id} INITIALIZED COMPETE.\nPart: ${result.order.part}\nPriority: ${result.order.priority}`);
+        setIsModalOpen(false);
+      }
+    });
+  };
+   const { activeIndustry } = useIndustry();
   const [activeTab, setActiveTab] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -44,8 +70,9 @@ const ManufacturingPage = () => {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
-             <FiUpload /> Floor Sync
+           
+           <button onClick={handleFloorSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             {isSyncing ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isSyncing ? 'Optimizing...' : 'Floor Sync'}
            </button>
            <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiDownload /> Audit Export
@@ -194,13 +221,13 @@ const ManufacturingPage = () => {
                 </button>
               </div>
 
-              <form className="space-y-6">
+              <form onSubmit={handleOrderSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Inventory SKU / Part Part</label>
                   <input 
                     required
                     type="text" 
-                    placeholder="e.g. Engine Housing Unit" 
+                    name="part" placeholder="e.g. Engine Housing Unit" 
                     className="w-full bg-slate-50 border-none rounded-lg py-4 px-6 text-sm outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900 font-bold"
                   />
                 </div>
@@ -210,13 +237,13 @@ const ManufacturingPage = () => {
                     <input 
                       required
                       type="number" 
-                      placeholder="00" 
+                      name="volume" placeholder="00" 
                       className="w-full bg-slate-50 border-none rounded-lg py-4 px-6 text-sm outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900 font-bold"
                     />
                   </div>
                    <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Priority Matrix</label>
-                    <select className="w-full bg-slate-50 border-none rounded-lg py-4 px-6 text-xs outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900 font-bold appearance-none">
+                    <select name="priority" className="w-full bg-slate-50 border-none rounded-lg py-4 px-6 text-xs outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900 font-bold appearance-none">
                       <option>Low</option>
                       <option>Med</option>
                       <option>High</option>
@@ -224,8 +251,9 @@ const ManufacturingPage = () => {
                     </select>
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-black text-[10px] uppercase tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all">
-                  Initialize Work Order
+                
+                <button disabled={isPending} type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-black text-[10px] uppercase tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all disabled:opacity-50">
+                  {isPending ? 'Synchronizing MES...' : 'Initialize Work Order'}
                 </button>
               </form>
             </motion.div>
