@@ -220,7 +220,7 @@ const SalesPage = () => {
                   </td>
                   <td className="px-8 py-4 text-base font-bold text-slate-950 tracking-tight">₹{sale.baseAmount.toLocaleString('en-IN')}</td>
                   <td className="px-8 py-4 text-center">
-                     <span className="text-[12px] font-bold text-slate-950 uppercase tracking-widest px-2 py-0.5 bg-slate-100  rounded">
+                     <span className="text-[14px] font-bold text-slate-950 uppercase tracking-widest px-2 py-0.5 bg-slate-100  rounded">
                         {sale.gstRate}% Statutory
                      </span>
                   </td>

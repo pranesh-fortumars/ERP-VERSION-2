@@ -131,13 +131,13 @@ const PayrollPage = () => {
                                </div>
                                <div>
                                   <p className="text-base font-black text-slate-950 uppercase">{e.name}</p>
-                                  <p className="text-[12px] font-bold text-blue-600 uppercase tracking-widest">{e.id}</p>
+                                  <p className="text-[14px] font-bold text-blue-600 uppercase tracking-widest">{e.id}</p>
                                </div>
                              </div>
                           </td>
                           <td className="py-4 px-6">
                              <p className="text-[14px] font-black text-slate-950 uppercase leading-none mb-1">{e.role}</p>
-                             <p className="text-[12px] font-bold text-slate-950 uppercase tracking-widest ">Node Cluster Alpha</p>
+                             <p className="text-[14px] font-bold text-slate-950 uppercase tracking-widest ">Node Cluster Alpha</p>
                           </td>
                           <td className="py-4 px-6">
                              <p className="text-base font-black text-slate-950 tracking-tight whitespace-nowrap">{e.salary} / Cycle</p>

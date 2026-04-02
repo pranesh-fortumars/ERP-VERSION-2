@@ -59,8 +59,8 @@ const Sidebar = () => {
              </div>
              {!isCollapsed && (
                <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
-                 <h1 className="text-lg font-serif-professional font-black tracking-tight text-slate-950 uppercase  leading-none">PRO <span className="text-blue-600">ERP</span></h1>
-                 <p className="text-[14px] font-black text-slate-800 uppercase tracking-[0.3em] leading-none mt-1">Industrial Command</p>
+                 <h1 className="text-xl font-serif-professional font-black tracking-tight text-slate-950 uppercase  leading-none">PRO <span className="text-blue-600">ERP</span></h1>
+                 <p className="text-[16px] font-black text-slate-800 uppercase tracking-[0.3em] leading-none mt-1">Industrial Command</p>
                </motion.div>
              )}
           </div>
@@ -70,7 +70,7 @@ const Sidebar = () => {
         <div className={`mb-8 relative ${isCollapsed ? 'flex justify-center' : 'px-2'}`}>
            {!isCollapsed ? (
              <>
-               <p className="text-[15px] font-black text-blue-600 uppercase tracking-widest ml-3 mb-3">Enterprise Node</p>
+               <p className="text-[18px] font-black text-blue-600 uppercase tracking-widest ml-3 mb-3">Enterprise Node</p>
                <button 
                  onClick={() => setIsInstanceSelectorOpen(!isInstanceSelectorOpen)}
                  className={`w-full flex items-center justify-between p-3.5 rounded-[32px] border transition-all duration-300 ${isInstanceSelectorOpen ? 'bg-blue-50 border-blue-200' : 'bg-slate-50/50 border-slate-100 hover:border-blue-500/20'}`}
@@ -80,8 +80,8 @@ const Sidebar = () => {
                         {activeInstance.id.split('-')[1]}
                      </div>
                      <div className="overflow-hidden">
-                        <p className="text-[14px] font-black text-slate-950 uppercase truncate leading-none mb-1">{activeInstance.name}</p>
-                        <p className="text-[14px] font-black text-slate-800 uppercase tracking-[0.1em]">{activeInstance.location}</p>
+                        <p className="text-[16px] font-black text-slate-950 uppercase truncate leading-none mb-1">{activeInstance.name}</p>
+                        <p className="text-[16px] font-black text-slate-800 uppercase tracking-[0.1em]">{activeInstance.location}</p>
                      </div>
                   </div>
                   <FiChevronDown className={`text-slate-950 transition-transform duration-300 ${isInstanceSelectorOpen ? 'rotate-180 text-blue-600' : ''}`} />
@@ -143,7 +143,7 @@ const Sidebar = () => {
                 <li key={item.href}>
                   <Link 
                     href={item.href}
-                    className={`flex items-center gap-4 px-5 py-3 rounded-[32px] transition-all duration-300 group relative ${
+                    className={`flex items-center gap-5 px-6 py-3.5 rounded-[32px] transition-all duration-300 group relative ${
                       isActive 
                         ? 'text-blue-600 bg-blue-50/50' 
                         : 'text-slate-950 hover:text-blue-600 hover:bg-slate-50/50'
@@ -152,15 +152,15 @@ const Sidebar = () => {
                     {isActive && (
                       <motion.div 
                         layoutId="nav-pill"
-                        className={`absolute left-0 top-2 bottom-2 w-1.5 bg-blue-600 rounded-r-full shadow-[0_0_10px_rgba(37,99,235,0.4)] ${isCollapsed ? 'w-1' : ''}`}
+                        className={`absolute left-0 top-2 bottom-2 w-2 bg-blue-600 rounded-r-full shadow-[0_0_10px_rgba(37,99,235,0.4)] ${isCollapsed ? 'w-1' : ''}`}
                       />
                     )}
-                    <span className={`text-lg transition-all duration-500 ${isActive ? 'text-blue-600 scale-110 drop-shadow-[0_0_8px_rgba(37,99,235,0.2)]' : 'text-slate-950 group-hover:text-blue-600 group-hover:scale-110'} ${isCollapsed ? 'text-3xl' : ''}`}>
+                    <span className={`text-xl transition-all duration-500 ${isActive ? 'text-blue-600 scale-110 drop-shadow-[0_0_8px_rgba(37,99,235,0.2)]' : 'text-slate-950 group-hover:text-blue-600 group-hover:scale-110'} ${isCollapsed ? 'text-3xl' : ''}`}>
                       {item.icon}
                     </span>
-                    {!isCollapsed && <span className={`text-[15px] font-serif-professional tracking-wide  tracking-[0.15em] shrink-0 ${isActive ? 'text-blue-600' : 'text-slate-950 font-bold'}`}>{item.label}</span>}
+                    {!isCollapsed && <span className={`text-[18px] font-serif-professional tracking-wide  tracking-[0.15em] shrink-0 ${isActive ? 'text-blue-600' : 'text-slate-950 font-bold'}`}>{item.label}</span>}
                     {isCollapsed && (
-                      <div className="absolute left-24 bg-slate-900 text-white text-[15px] font-black px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-all uppercase tracking-widest whitespace-nowrap z-[100] border border-white/10 shadow-2xl">
+                      <div className="absolute left-24 bg-slate-900 text-white text-[18px] font-black px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-all uppercase tracking-widest whitespace-nowrap z-[100] border border-white/10 shadow-2xl">
                         {item.label}
                       </div>
                     )}
@@ -194,7 +194,7 @@ const Sidebar = () => {
              <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg">
                 <FiServer size={18} />
              </div>
-             <h1 className="text-lg font-serif-professional font-black tracking-tight text-slate-950 uppercase ">PRO <span className="text-blue-600">ERP</span></h1>
+             <h1 className="text-xl font-serif-professional font-black tracking-tight text-slate-950 uppercase ">PRO <span className="text-blue-600">ERP</span></h1>
            </div>
            {/* Multi-Industry Quick Switcher (Mobile) */}
            <button 
@@ -249,7 +249,7 @@ const Sidebar = () => {
                             }`}
                           >
                             <span className="text-3xl">{item.icon}</span>
-                            <span className="text-lg font-serif-professional tracking-wide  tracking-[0.2em]">{item.label}</span>
+                            <span className="text-xl font-serif-professional tracking-wide  tracking-[0.2em]">{item.label}</span>
                           </Link>
                         </li>
                       );
@@ -314,7 +314,7 @@ const Sidebar = () => {
                           onClick={() => { setIndustry(instance.id); setIsInstanceSelectorOpen(false); }}
                           className={`w-full p-6 rounded-[32px] border transition-all flex items-center gap-4 ${activeInstance.id === instance.id ? 'bg-blue-50 border-blue-600/30' : 'bg-white border-slate-100 hover:border-blue-500/20'}`}
                         >
-                           <div className={`w-12 h-12 rounded-[32px] flex items-center justify-center font-black text-lg font-serif-professional ${activeInstance.id === instance.id ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-100 text-slate-950'}`}>
+                           <div className={`w-12 h-12 rounded-[32px] flex items-center justify-center font-black text-xl font-serif-professional ${activeInstance.id === instance.id ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-100 text-slate-950'}`}>
                               {instance.id.split('-')[1]}
                            </div>
                            <div className="text-left overflow-hidden">

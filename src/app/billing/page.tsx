@@ -101,7 +101,7 @@ const BillingPage = () => {
               {stat.icon}
             </div>
             <div className="mt-8">
-              <p className="text-[14px] font-bold text-slate-950 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
+              <p className="text-[16px] font-black text-slate-950 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
               <h4 className="text-3xl font-serif-professional tracking-tight text-slate-950 leading-none">{stat.value}</h4>
             </div>
           </motion.div>
@@ -145,10 +145,10 @@ const BillingPage = () => {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50/30 /30">
-                <th className="px-8 py-5 text-[13px] font-bold text-slate-950/60 dark:text-slate-950 uppercase tracking-[0.2em]">Asset Descriptor</th>
-                <th className="px-8 py-5 text-[13px] font-bold text-slate-950/60 dark:text-slate-950 uppercase tracking-[0.2em]">Quantum (INR)</th>
-                <th className="px-8 py-5 text-[13px] font-bold text-slate-950/60 dark:text-slate-950 uppercase tracking-[0.2em]">Maturity Target</th>
-                <th className="px-8 py-5 text-[13px] font-bold text-slate-950/60 dark:text-slate-950 uppercase tracking-[0.2em] text-center">Lifecycle State</th>
+                <th className="px-8 py-5 text-[15px] font-bold text-slate-950/70 dark:text-slate-950 uppercase tracking-[0.2em]">Asset Descriptor</th>
+                <th className="px-8 py-5 text-[15px] font-bold text-slate-950/70 dark:text-slate-950 uppercase tracking-[0.2em]">Quantum (INR)</th>
+                <th className="px-8 py-5 text-[15px] font-bold text-slate-950/70 dark:text-slate-950 uppercase tracking-[0.2em]">Maturity Target</th>
+                <th className="px-8 py-5 text-[15px] font-bold text-slate-950/70 dark:text-slate-950 uppercase tracking-[0.2em] text-center">Lifecycle State</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 divide-slate-100">
@@ -183,7 +183,7 @@ const BillingPage = () => {
                        <p className="text-[13px] font-medium text-slate-950/60 uppercase tracking-widest mt-1">Fiscal Deadline</p>
                     </td>
                     <td className="px-8 py-6 text-center">
-                      <span className={`px-5 py-2 rounded-xl text-[12px] font-bold uppercase tracking-[0.2em] border shadow-sm ${getStatusColor(inv.status)}`}>
+                      <span className={`px-5 py-2 rounded-xl text-[14px] font-bold uppercase tracking-[0.2em] border shadow-sm ${getStatusColor(inv.status)}`}>
                         {inv.status}
                       </span>
                     </td>

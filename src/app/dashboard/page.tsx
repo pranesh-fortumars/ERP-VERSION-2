@@ -113,7 +113,7 @@ const DashboardPage = () => {
                 </div>
              </div>
              <div className="relative z-10">
-                <p className="text-[14px] font-black text-slate-950 uppercase tracking-widest mb-2">{stat.label}</p>
+                <p className="text-[16px] font-black text-slate-950 uppercase tracking-widest mb-3">{stat.label}</p>
                 <h3 className="text-3xl font-serif-professional tracking-tight text-slate-950 tracking-tight leading-none">{stat.value}</h3>
              </div>
           </motion.div>

@@ -83,7 +83,7 @@ const InventoryPage = () => {
     <div className="space-y-8 max-w-[1600px] mx-auto pb-12 transition-all">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200">
         <div>
-           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[12px] font-bold  tracking-widest mb-4 border border-blue-100">
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[14px] font-bold  tracking-widest mb-4 border border-blue-100">
             <FiGlobe className="animate-spin-slow" /> Inventory System Stable
           </div>
           <h1 className="text-3xl font-serif-professional tracking-tight text-slate-950  tracking-tight leading-none">{activeIndustry.name} Inventory</h1>
@@ -95,20 +95,20 @@ const InventoryPage = () => {
            <button 
              onClick={handleImport}
              disabled={isImporting}
-             className="px-8 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[12px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
+             className="px-8 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[14px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
            >
              {isImporting ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isImporting ? 'Syncing...' : 'Bulk Sync'}
            </button>
            <button 
              onClick={handleExport}
              disabled={isExporting}
-             className="px-8 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[12px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
+             className="px-8 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[14px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
            >
              {isExporting ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiDownload />} {isExporting ? 'Generating...' : 'Audit Export'}
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-10 py-3 bg-blue-600 text-white rounded-[24px] text-[12px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 active:scale-95"
+             className="px-10 py-3 bg-blue-600 text-white rounded-[24px] text-[14px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 active:scale-95"
            >
              <FiPlus /> Add New Item
            </button>
@@ -123,10 +123,10 @@ const InventoryPage = () => {
                 <div className={`w-14 h-14 rounded-[24px] flex items-center justify-center text-white shadow-lg ${i === 1 ? 'bg-amber-500 shadow-amber-500/20' : 'bg-blue-600 shadow-blue-600/20'} group-hover:rotate-12 transition-transform`}>
                    {stat.icon}
                 </div>
-                <span className="text-[12px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100  tracking-widest">Live Audit</span>
+                <span className="text-[14px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100  tracking-widest">Live Audit</span>
              </div>
              <div className="relative z-10">
-                <p className="text-[12px] font-bold text-slate-950  tracking-widest mb-2">{stat.label}</p>
+                <p className="text-[14px] font-bold text-slate-950  tracking-widest mb-2">{stat.label}</p>
                 <h3 className="text-3xl font-serif-professional tracking-tight text-slate-950 tracking-tight leading-none">{stat.value}</h3>
              </div>
           </div>
@@ -185,7 +185,7 @@ const InventoryPage = () => {
                       </div>
                     </td>
                     <td className="py-8 px-8">
-                       <span className="text-[12px] font-bold text-slate-950  tracking-widest">{item.category}</span>
+                       <span className="text-[14px] font-bold text-slate-950  tracking-widest">{item.category}</span>
                     </td>
                     <td className="py-8 px-8">
                        <span className="text-xl font-bold text-slate-950  tracking-tight">{item.price}</span>
@@ -225,7 +225,7 @@ const InventoryPage = () => {
                  <div className="space-y-6">
                     {warehouses.map((wh, i) => (
                       <div key={i} className="space-y-2.5">
-                        <div className="flex justify-between items-center text-[12px] font-bold  tracking-widest text-white font-bold">
+                        <div className="flex justify-between items-center text-[14px] font-bold  tracking-widest text-white font-bold">
                           <span>{wh.name}</span>
                           <span className="text-white">{wh.capacity}%</span>
                         </div>
@@ -280,7 +280,7 @@ const InventoryPage = () => {
 
               <form onSubmit={addItem} className="space-y-8">
                  <div className="space-y-3">
-                   <label className="text-[12px] font-bold  tracking-widest text-slate-950 ml-1">Asset Nomenclature</label>
+                   <label className="text-[14px] font-bold  tracking-widest text-slate-950 ml-1">Asset Nomenclature</label>
                    <input 
                      required
                      type="text" 
@@ -292,7 +292,7 @@ const InventoryPage = () => {
                  </div>
                  <div className="grid grid-cols-2 gap-8">
                    <div className="space-y-3">
-                     <label className="text-[12px] font-bold  tracking-widest text-slate-950 ml-1">Domain Classification</label>
+                     <label className="text-[14px] font-bold  tracking-widest text-slate-950 ml-1">Domain Classification</label>
                      <select 
                        className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-950 appearance-none shadow-inner"
                        value={newItem.category}
@@ -305,7 +305,7 @@ const InventoryPage = () => {
                      </select>
                    </div>
                    <div className="space-y-3">
-                     <label className="text-[12px] font-bold  tracking-widest text-slate-950 ml-1">Batch Quantum (Quantity)</label>
+                     <label className="text-[14px] font-bold  tracking-widest text-slate-950 ml-1">Batch Quantum (Quantity)</label>
                      <input 
                        required
                        type="number" 
@@ -318,7 +318,7 @@ const InventoryPage = () => {
                  </div>
                  <div className="grid grid-cols-2 gap-8">
                    <div className="space-y-3">
-                     <label className="text-[12px] font-bold  tracking-widest text-slate-950 ml-1">Target Cluster (Warehouse)</label>
+                     <label className="text-[14px] font-bold  tracking-widest text-slate-950 ml-1">Target Cluster (Warehouse)</label>
                      <select 
                        className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-950 appearance-none shadow-inner"
                        value={newItem.warehouse}
@@ -330,7 +330,7 @@ const InventoryPage = () => {
                      </select>
                    </div>
                    <div className="space-y-3">
-                     <label className="text-[12px] font-bold  tracking-widest text-slate-950 ml-1">Market Valuation</label>
+                     <label className="text-[14px] font-bold  tracking-widest text-slate-950 ml-1">Market Valuation</label>
                      <input 
                        required
                        type="text" 
