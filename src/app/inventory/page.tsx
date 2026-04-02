@@ -81,7 +81,7 @@ const InventoryPage = () => {
             <FiGlobe className="animate-spin-slow" /> Supply Chain Infrastructure Active
           </div>
           <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Asset Inventory</h1>
-          <p className="text-slate-500 font-bold text-sm mt-2 flex items-center gap-2">
+          <p className="text-slate-700 font-bold text-sm mt-2 flex items-center gap-2">
             <FiLayers className="text-blue-600" /> Multi-Unit Stock Ledger & Warehouse Intelligence
           </p>
         </div>
@@ -120,7 +120,7 @@ const InventoryPage = () => {
                 <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100 uppercase tracking-widest">Live Audit</span>
              </div>
              <div className="relative z-10">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{stat.label}</p>
+                <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">{stat.label}</p>
                 <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
              </div>
           </div>
@@ -132,11 +132,11 @@ const InventoryPage = () => {
           <div className="p-8 border-b border-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-slate-50/20">
             <div>
                <h3 className="text-lg font-black tracking-widest text-slate-900 uppercase italic">Stock Ledger</h3>
-               <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Multi-Node SKU Identification</p>
+               <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-1">Multi-Node SKU Identification</p>
             </div>
             <div className="flex gap-4 w-full md:w-auto">
                <div className="relative group flex-1 md:w-80">
-                  <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                  <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-blue-600 transition-colors" />
                   <input 
                     type="text" 
                     placeholder="Search logic identifiers..." 
@@ -145,14 +145,14 @@ const InventoryPage = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                </div>
-               <button className="p-4 bg-white border border-slate-100 rounded-2xl text-slate-500 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
+               <button className="p-4 bg-white border border-slate-100 rounded-2xl text-slate-700 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
             </div>
           </div>
 
           <div className="overflow-x-auto no-scrollbar">
             <table className="w-full text-left">
               <thead>
-                <tr className="bg-slate-50/40 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                <tr className="bg-slate-50/40 text-[9px] font-black uppercase tracking-widest text-slate-600">
                   <th className="py-5 px-10">Asset Designation</th>
                   <th className="py-5 px-6 italic">Category</th>
                   <th className="py-5 px-6">Valuation</th>
@@ -172,14 +172,14 @@ const InventoryPage = () => {
                         </div>
                         <div>
                           <p className="text-sm font-black text-slate-900 uppercase leading-none group-hover:text-blue-600 transition-colors">{item.name}</p>
-                          <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1.5 flex items-center gap-2">
+                          <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mt-1.5 flex items-center gap-2">
                              <FiMapPin size={10} /> {item.warehouse} • {item.id}
                           </p>
                         </div>
                       </div>
                     </td>
                     <td className="py-8 px-6">
-                       <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{item.category}</span>
+                       <span className="text-[10px] font-black text-slate-700 uppercase tracking-widest">{item.category}</span>
                     </td>
                     <td className="py-8 px-6">
                        <span className="text-xs font-black text-slate-900 italic tracking-tighter">{item.price}</span>
@@ -187,13 +187,13 @@ const InventoryPage = () => {
                     <td className="py-8 px-10 text-right">
                         <div className="flex items-center gap-8 justify-end">
                            <div className="text-right">
-                              <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1 leading-none">Units</p>
+                              <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-1 leading-none">Units</p>
                               <p className="text-sm font-black text-slate-900 leading-none">{item.stock.toLocaleString()}</p>
                            </div>
                            <span className={`px-5 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border border-black/5 shadow-sm min-w-[100px] text-center ${item.color}`}>
                               {item.status}
                            </span>
-                           <button className="p-3 bg-white border border-slate-100 rounded-xl text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all shadow-sm">
+                           <button className="p-3 bg-white border border-slate-100 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all shadow-sm">
                               <FiBarChart2 size={16} />
                            </button>
                         </div>
@@ -262,11 +262,11 @@ const InventoryPage = () => {
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Register Artifact</h2>
-                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Supply Chain Ledger Entry</p>
+                  <p className="text-slate-600 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Supply Chain Ledger Entry</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-400 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-600 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -274,7 +274,7 @@ const InventoryPage = () => {
 
               <form onSubmit={addItem} className="space-y-8">
                  <div className="space-y-3">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Asset Nomenclature</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Asset Nomenclature</label>
                    <input 
                      required
                      type="text" 
@@ -286,7 +286,7 @@ const InventoryPage = () => {
                  </div>
                  <div className="grid grid-cols-2 gap-8">
                    <div className="space-y-3">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Domain Classification</label>
+                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Domain Classification</label>
                      <select 
                        className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900 appearance-none shadow-inner"
                        value={newItem.category}
@@ -299,7 +299,7 @@ const InventoryPage = () => {
                      </select>
                    </div>
                    <div className="space-y-3">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Batch Quantum (Quantity)</label>
+                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Batch Quantum (Quantity)</label>
                      <input 
                        required
                        type="number" 
@@ -312,7 +312,7 @@ const InventoryPage = () => {
                  </div>
                  <div className="grid grid-cols-2 gap-8">
                    <div className="space-y-3">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Target Cluster (Warehouse)</label>
+                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Target Cluster (Warehouse)</label>
                      <select 
                        className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900 appearance-none shadow-inner"
                        value={newItem.warehouse}
@@ -324,7 +324,7 @@ const InventoryPage = () => {
                      </select>
                    </div>
                    <div className="space-y-3">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Market Valuation</label>
+                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Market Valuation</label>
                      <input 
                        required
                        type="text" 

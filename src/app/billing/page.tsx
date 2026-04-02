@@ -62,7 +62,7 @@ const BillingPage = () => {
             <FiShield className="animate-pulse" /> Fiscal Integrity Protocol Active
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 text-slate-900 uppercase leading-none">Accounts Receivable</h1>
-          <p className="text-slate-500 text-slate-500 font-medium tracking-tight mt-1 flex items-center gap-2">
+          <p className="text-slate-700 text-slate-700 font-medium tracking-tight mt-1 flex items-center gap-2">
             <FiFileText className="text-blue-500" /> Automated Invoice Orchestration & GST Compliance Master
           </p>
         </div>
@@ -100,7 +100,7 @@ const BillingPage = () => {
               {stat.icon}
             </div>
             <div>
-              <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
+              <p className="text-[10px] font-black text-slate-600 dark:text-slate-700 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
               <h4 className="text-4xl font-black tracking-tighter text-slate-900 text-slate-900 leading-none">{stat.value}</h4>
             </div>
           </motion.div>
@@ -111,7 +111,7 @@ const BillingPage = () => {
       <div className="bg-white  rounded-[48px] border border-slate-200 border-slate-200 shadow-sm overflow-hidden flex flex-col">
         <div className="p-10 border-b border-slate-100 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-8 bg-slate-50/20 /10">
           <div className="relative w-full xl:max-w-xl group">
-            <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors w-5 h-5" />
+            <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-blue-500 transition-colors w-5 h-5" />
             <input 
               type="text" 
               placeholder="Search invoice registry, client descriptor, or GST identifier..."
@@ -125,7 +125,7 @@ const BillingPage = () => {
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-white  text-slate-500 text-slate-500 border border-black/5 hover:bg-slate-100 active:scale-95 shadow-sm'}`}
+                className={`px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-white  text-slate-700 text-slate-700 border border-black/5 hover:bg-slate-100 active:scale-95 shadow-sm'}`}
               >
                 {s}
               </button>
@@ -137,10 +137,10 @@ const BillingPage = () => {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50/30 /30">
-                <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Asset Descriptor</th>
-                <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Quantum (INR)</th>
-                <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Maturity Target</th>
-                <th className="px-10 py-6 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] text-center">Lifecycle State</th>
+                <th className="px-10 py-6 text-[10px] font-black text-slate-600 dark:text-slate-700 uppercase tracking-[0.2em]">Asset Descriptor</th>
+                <th className="px-10 py-6 text-[10px] font-black text-slate-600 dark:text-slate-700 uppercase tracking-[0.2em]">Quantum (INR)</th>
+                <th className="px-10 py-6 text-[10px] font-black text-slate-600 dark:text-slate-700 uppercase tracking-[0.2em]">Maturity Target</th>
+                <th className="px-10 py-6 text-[10px] font-black text-slate-600 dark:text-slate-700 uppercase tracking-[0.2em] text-center">Lifecycle State</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 divide-slate-100">
@@ -155,12 +155,12 @@ const BillingPage = () => {
                   >
                     <td className="px-10 py-8">
                       <div className="flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-2xl bg-slate-100  flex items-center justify-center text-slate-500 group-hover:text-blue-500 transition-colors shadow-inner border border-black/5">
+                        <div className="w-14 h-14 rounded-2xl bg-slate-100  flex items-center justify-center text-slate-700 group-hover:text-blue-500 transition-colors shadow-inner border border-black/5">
                           <FiFileText size={24} />
                         </div>
                         <div>
                           <p className="text-xl font-black text-slate-900 text-slate-900 tracking-tighter uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors">{inv.clientName}</p>
-                          <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 uppercase font-black tracking-[0.3em] flex items-center gap-2">
+                          <p className="text-[10px] text-slate-600 dark:text-slate-700 mt-1 uppercase font-black tracking-[0.3em] flex items-center gap-2">
                              <span className="text-blue-500">ID:</span> {inv.id} • <span className="text-blue-500 text-[8px]">GST:</span> {inv.gst}
                           </p>
                         </div>
@@ -168,11 +168,11 @@ const BillingPage = () => {
                     </td>
                     <td className="px-10 py-8">
                        <p className="text-2xl font-black text-slate-900 text-slate-900 tracking-tighter whitespace-nowrap">₹{inv.amount.toLocaleString('en-IN')}</p>
-                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Settlement Value</p>
+                       <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mt-1">Settlement Value</p>
                     </td>
                     <td className="px-10 py-8">
                        <p className="text-sm font-black text-slate-600 text-slate-600 tracking-tight uppercase">{inv.dueDate}</p>
-                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Fiscal Deadline</p>
+                       <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mt-1">Fiscal Deadline</p>
                     </td>
                     <td className="px-10 py-8 text-center">
                       <span className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border shadow-sm ${getStatusColor(inv.status)}`}>
@@ -207,11 +207,11 @@ const BillingPage = () => {
                <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 text-slate-900 uppercase leading-none">Dispatch Legal Instrument</h2>
-                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Corporate Billing Infrastructure</p>
+                  <p className="text-slate-700 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Corporate Billing Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-400 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-slate-600 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -219,7 +219,7 @@ const BillingPage = () => {
 
               <form onSubmit={addInvoice} className="space-y-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Client/Entity Portfolio</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Client/Entity Portfolio</label>
                   <input 
                     required
                     type="text" 
@@ -231,7 +231,7 @@ const BillingPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-3">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Settlement Quantum (INR)</label>
+                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Settlement Quantum (INR)</label>
                      <input 
                        required
                        type="number" 
@@ -242,7 +242,7 @@ const BillingPage = () => {
                      />
                   </div>
                   <div className="space-y-3">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Maturity Target Date</label>
+                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Maturity Target Date</label>
                      <input 
                        required
                        type="date" 
@@ -253,7 +253,7 @@ const BillingPage = () => {
                   </div>
                 </div>
                 <div className="space-y-3">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Corporate GSTIN Identifier</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Corporate GSTIN Identifier</label>
                    <input 
                      required
                      type="text" 

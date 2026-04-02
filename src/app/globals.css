@@ -28,7 +28,7 @@
     --card-border: #e2e8f0;
     --border-accent: #0ea5e9;
     --accent: #38bdf8;
-    --muted: #64748b;
+    --muted: #475569; /* Darkened from Slate-500 (#64748b) to Slate-600 for better visibility */
     --glass: rgba(255, 255, 255, 0.9);
     --glass-border: rgba(14, 165, 233, 0.15);
     --ring: rgba(14, 165, 233, 0.1);

@@ -50,7 +50,7 @@ const AccountingPage = () => {
             <FiGlobe className="animate-spin-slow" /> Financial Governance Matrix Active
           </div>
           <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Treasury Hub</h1>
-          <p className="text-slate-500 font-bold text-sm mt-2 flex items-center gap-2">
+          <p className="text-slate-700 font-bold text-sm mt-2 flex items-center gap-2">
             <FiCreditCard className="text-blue-500" /> Real-time Capital Flux & Operational Accounting
           </p>
         </div>
@@ -83,7 +83,7 @@ const AccountingPage = () => {
                 </span>
              </div>
              <div className="relative z-10">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{stat.label}</p>
+                <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">{stat.label}</p>
                 <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
              </div>
           </div>
@@ -94,11 +94,11 @@ const AccountingPage = () => {
         <div className="p-8 border-b border-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-slate-50/20">
           <div>
              <h3 className="text-lg font-black tracking-widest text-slate-900 uppercase italic">Transaction Ledger</h3>
-             <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Multi-Node Capital Correlation</p>
+             <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-1">Multi-Node Capital Correlation</p>
           </div>
           <div className="flex gap-4 w-full md:w-auto">
              <div className="relative group flex-1 md:w-80">
-                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-blue-600 transition-colors" />
                 <input 
                   type="text" 
                   placeholder="ID / Nomenclature Query..." 
@@ -107,14 +107,14 @@ const AccountingPage = () => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
              </div>
-             <button className="p-4 bg-white border border-slate-100 rounded-2xl text-slate-500 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
+             <button className="p-4 bg-white border border-slate-100 rounded-2xl text-slate-700 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
           </div>
         </div>
 
         <div className="overflow-x-auto no-scrollbar">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-50/40 text-[9px] font-black uppercase tracking-widest text-slate-400">
+              <tr className="bg-slate-50/40 text-[9px] font-black uppercase tracking-widest text-slate-600">
                 <th className="py-5 px-10">Flux Reference</th>
                 <th className="py-5 px-6">Description Artifact</th>
                 <th className="py-5 px-6">Quantum</th>
@@ -130,7 +130,7 @@ const AccountingPage = () => {
                   </td>
                   <td className="py-6 px-6">
                      <p className="text-xs font-black text-slate-900 uppercase group-hover:text-blue-600 transition-colors">{t.description}</p>
-                     <p className="text-[8px] font-bold text-slate-400 uppercase mt-0.5">Corporate Node X-1</p>
+                     <p className="text-[8px] font-bold text-slate-600 uppercase mt-0.5">Corporate Node X-1</p>
                   </td>
                   <td className="py-6 px-6">
                      <span className={`text-xs font-black italic ${t.type === 'Credit' ? 'text-emerald-600' : 'text-rose-600'}`}>
@@ -146,7 +146,7 @@ const AccountingPage = () => {
                      </span>
                   </td>
                   <td className="py-6 px-10 text-right">
-                     <span className="text-[10px] font-black text-slate-400 uppercase">{t.date}</span>
+                     <span className="text-[10px] font-black text-slate-600 uppercase">{t.date}</span>
                   </td>
                 </tr>
               ))}
@@ -175,11 +175,11 @@ const AccountingPage = () => {
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase">Record Flux</h2>
-                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Treasury Ledger Artifact</p>
+                  <p className="text-slate-700 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Treasury Ledger Artifact</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-400 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-600 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -187,7 +187,7 @@ const AccountingPage = () => {
 
               <form onSubmit={addTransaction} className="space-y-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Flux Description</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Flux Description</label>
                   <input 
                     required
                     type="text" 
@@ -199,7 +199,7 @@ const AccountingPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Flux Quantum (Amount)</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Flux Quantum (Amount)</label>
                     <input 
                       required
                       type="text" 
@@ -210,7 +210,7 @@ const AccountingPage = () => {
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Flux Vector (Type)</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Flux Vector (Type)</label>
                     <select 
                       className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none"
                       value={newTxn.type}

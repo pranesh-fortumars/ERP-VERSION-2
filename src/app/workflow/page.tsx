@@ -50,7 +50,7 @@ const WorkflowPage = () => {
             <FiGlobe className="animate-spin-slow" /> Orchestration Infrastructure Active
           </div>
           <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Workflow Matrix</h1>
-          <p className="text-slate-500 font-bold text-sm mt-2 flex items-center gap-2">
+          <p className="text-slate-700 font-bold text-sm mt-2 flex items-center gap-2">
             <FiLayers className="text-blue-500" /> BPA Pipeline Execution & Node Tracking
           </p>
         </div>
@@ -78,17 +78,17 @@ const WorkflowPage = () => {
                  </div>
                  <div>
                     <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter leading-none">{flow.name}</h3>
-                    <p className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mt-2 flex items-center gap-2">
+                    <p className="text-xs font-black text-slate-600 uppercase tracking-[0.2em] mt-2 flex items-center gap-2">
                        {flow.status} <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     </p>
                  </div>
               </div>
               <div className="flex items-center gap-10">
                  <div className="text-center">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Efficiency Delta</p>
+                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-1">Efficiency Delta</p>
                     <p className="text-2xl font-black text-blue-600 italic tracking-tighter">{flow.efficiency}</p>
                  </div>
-                 <button className="p-4 bg-slate-50 rounded-2xl text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all border border-slate-100">
+                 <button className="p-4 bg-slate-50 rounded-2xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all border border-slate-100">
                     <FiSettings size={20} />
                  </button>
               </div>
@@ -154,11 +154,11 @@ const WorkflowPage = () => {
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Initialize Pipe</h2>
-                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Protocol Orchestration Artifact</p>
+                  <p className="text-slate-700 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Protocol Orchestration Artifact</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-400 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-600 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -166,7 +166,7 @@ const WorkflowPage = () => {
 
               <form className="space-y-10">
                 <div className="space-y-4">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Process Identification</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Process Identification</label>
                   <input 
                     type="text" 
                     placeholder="e.g. Asset Recovery Pipeline Delta" 
@@ -175,7 +175,7 @@ const WorkflowPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Priority Vector</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Priority Vector</label>
                     <select className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none shadow-inner">
                       <option>Standard</option>
                       <option>High Priority</option>
@@ -183,7 +183,7 @@ const WorkflowPage = () => {
                     </select>
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Node Selection</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Node Selection</label>
                     <select className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none shadow-inner">
                       <option>All Logic Nodes</option>
                       <option>Cluster Alpha Only</option>

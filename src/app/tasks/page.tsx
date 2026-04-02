@@ -38,8 +38,8 @@ const TasksPage = () => {
     switch (status) {
       case 'Completed': return 'bg-emerald-50 text-emerald-600 border-emerald-200';
       case 'In Progress': return 'bg-blue-50 text-blue-600 border-blue-200';
-      case 'Pending': return 'bg-slate-50 text-slate-400 border-slate-200';
-      default: return 'bg-slate-100 text-slate-500';
+      case 'Pending': return 'bg-slate-50 text-slate-600 border-slate-200';
+      default: return 'bg-slate-100 text-slate-700';
     }
   };
 
@@ -48,7 +48,7 @@ const TasksPage = () => {
       case 'Critical': return 'text-rose-600 bg-rose-50';
       case 'High': return 'text-amber-600 bg-amber-50';
       case 'Med': return 'text-blue-600 bg-blue-50';
-      default: return 'text-slate-500 bg-slate-50';
+      default: return 'text-slate-700 bg-slate-50';
     }
   };
 
@@ -61,7 +61,7 @@ const TasksPage = () => {
              <FiGlobe className="animate-spin-slow" /> Global Task Network Active
           </div>
           <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Task Matrix</h1>
-          <p className="text-slate-500 font-bold text-sm mt-2 flex items-center gap-2">
+          <p className="text-slate-700 font-bold text-sm mt-2 flex items-center gap-2">
             <FiActivity className="text-blue-500" /> Real-time Operational Execution & Service Maintenance
           </p>
         </div>
@@ -80,7 +80,7 @@ const TasksPage = () => {
         <div className="xl:col-span-3 space-y-8">
            <div className="p-8 bg-white rounded-[40px] border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-8">
               <div className="relative group flex-1 w-full">
-                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors w-5 h-5" />
+                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-blue-600 transition-colors w-5 h-5" />
                 <input 
                   type="text" 
                   placeholder="Query task identifier, nomenclature, or priority..."
@@ -90,7 +90,7 @@ const TasksPage = () => {
                 />
               </div>
               <div className="flex gap-4">
-                 <button className="padding-6 py-3.5 bg-white border border-slate-100 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all active:scale-95 px-6">
+                 <button className="padding-6 py-3.5 bg-white border border-slate-100 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-700 hover:text-blue-600 transition-all active:scale-95 px-6">
                     Audit Log
                  </button>
                  <button className="p-3.5 bg-blue-50 text-blue-600 rounded-2xl hover:bg-blue-600 hover:text-white transition-all active:scale-95 border border-blue-100">
@@ -115,7 +115,7 @@ const TasksPage = () => {
                        </div>
                        <div className="overflow-hidden">
                           <h3 className="text-lg font-black text-slate-900 uppercase tracking-tighter truncate group-hover:text-blue-600 transition-colors leading-none mb-1">{task.title}</h3>
-                          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                          <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest flex items-center gap-2">
                              <FiTool className="text-blue-500" /> {task.id} • Assigned to {task.assignedTo}
                           </p>
                        </div>
@@ -123,7 +123,7 @@ const TasksPage = () => {
 
                     <div className="flex flex-wrap items-center gap-6 w-full md:w-auto justify-end">
                        <div className="text-right flex flex-col items-end">
-                          <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Target Deadline</p>
+                          <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">Target Deadline</p>
                           <p className="text-[10px] font-black text-slate-900 flex items-center gap-2"><FiCalendar className="text-blue-600" /> {task.deadline}</p>
                        </div>
                        <span className={`px-6 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border ${getStatusColor(task.status)} shadow-sm`}>
@@ -199,11 +199,11 @@ const TasksPage = () => {
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Initialize Task</h2>
-                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Operational Network Ledger</p>
+                  <p className="text-slate-700 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Operational Network Ledger</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-400 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-600 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -211,7 +211,7 @@ const TasksPage = () => {
 
               <form onSubmit={addTask} className="space-y-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Task Nomenclature</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Task Nomenclature</label>
                   <input 
                     required
                     type="text" 
@@ -223,7 +223,7 @@ const TasksPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Priority Vector</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Priority Vector</label>
                     <select 
                       className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none"
                       value={newTask.priority}
@@ -236,7 +236,7 @@ const TasksPage = () => {
                     </select>
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Execution Deadline</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Execution Deadline</label>
                     <input 
                       required
                       type="date" 

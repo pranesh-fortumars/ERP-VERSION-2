@@ -9,7 +9,7 @@ const Header = () => {
     <header className="h-24 px-10 hidden lg:flex justify-between items-center sticky top-0 z-40 bg-white/40 backdrop-blur-xl border-b border-blue-500/5 transition-all duration-300">
       <div className="flex-1 flex items-center">
         <div className="relative group max-w-md w-full">
-          <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+          <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-blue-600 transition-colors" />
           <input 
             type="text" 
             placeholder="Search operational clusters..." 
@@ -25,7 +25,7 @@ const Header = () => {
               key={i}
               whileHover={{ scale: 1.1, translateY: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3.5 hover:bg-white rounded-2xl text-slate-500 transition-all border border-transparent hover:border-blue-500/10 shadow-sm"
+              className="p-3.5 hover:bg-white rounded-2xl text-slate-700 transition-all border border-transparent hover:border-blue-500/10 shadow-sm"
             >
               <Icon size={18} />
             </motion.button>
@@ -35,7 +35,7 @@ const Header = () => {
         <motion.button 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="relative p-3.5 hover:bg-white rounded-2xl text-slate-500 transition-colors shadow-sm border border-transparent hover:border-blue-500/10"
+          className="relative p-3.5 hover:bg-white rounded-2xl text-slate-700 transition-colors shadow-sm border border-transparent hover:border-blue-500/10"
         >
           <FiBell size={20} />
           <span className="absolute top-3.5 right-3.5 w-2.5 h-2.5 bg-blue-600 rounded-full border-2 border-white animate-pulse" />

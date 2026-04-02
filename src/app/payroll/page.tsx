@@ -50,7 +50,7 @@ const PayrollPage = () => {
             <FiGlobe className="animate-spin-slow" /> Workforce Governance Infrastructure Active
           </div>
           <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Payroll Matrix</h1>
-          <p className="text-slate-500 font-bold text-sm mt-2 flex items-center gap-2">
+          <p className="text-slate-700 font-bold text-sm mt-2 flex items-center gap-2">
             <FiSettings className="text-blue-500" /> Automated Human Capital Resource Allocation
           </p>
         </div>
@@ -81,7 +81,7 @@ const PayrollPage = () => {
                 <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">{m.delta}</span>
              </div>
              <div className="relative z-10">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{m.label}</p>
+                <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-1">{m.label}</p>
                 <h3 className="text-2xl font-black text-slate-900 tracking-tighter">{m.value}</h3>
              </div>
           </div>
@@ -93,11 +93,11 @@ const PayrollPage = () => {
            <div className="p-8 border-b border-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-slate-50/20">
               <div>
                  <h3 className="text-md font-black tracking-widest text-slate-900 uppercase">Contributor Ledger</h3>
-                 <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Multi-Node Personnel Infrastructure</p>
+                 <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-1">Multi-Node Personnel Infrastructure</p>
               </div>
               <div className="flex gap-4 w-full md:w-auto">
                  <div className="relative group flex-1 md:w-64">
-                    <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                    <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-blue-600 transition-colors" />
                     <input 
                       type="text" 
                       placeholder="ID / Name Query..." 
@@ -106,14 +106,14 @@ const PayrollPage = () => {
                       onChange={(e) => setSearchTerm(e.target.value)}
                     />
                  </div>
-                 <button className="p-3.5 bg-white border border-slate-100 rounded-2xl text-slate-500 hover:text-blue-600 transition-all shadow-sm"><FiFilter size={18} /></button>
+                 <button className="p-3.5 bg-white border border-slate-100 rounded-2xl text-slate-700 hover:text-blue-600 transition-all shadow-sm"><FiFilter size={18} /></button>
               </div>
            </div>
            
            <div className="overflow-x-auto no-scrollbar">
               <table className="w-full text-left">
                  <thead>
-                    <tr className="bg-slate-50/20 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                    <tr className="bg-slate-50/20 text-[9px] font-black uppercase tracking-widest text-slate-600">
                        <th className="py-5 px-10">Contributor Reference</th>
                        <th className="py-5 px-6">Role / Cluster</th>
                        <th className="py-5 px-6">Allocation Cycle</th>
@@ -137,7 +137,7 @@ const PayrollPage = () => {
                           </td>
                           <td className="py-6 px-6">
                              <p className="text-[10px] font-black text-slate-700 uppercase leading-none mb-1">{e.role}</p>
-                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">Node Cluster Alpha</p>
+                             <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest italic">Node Cluster Alpha</p>
                           </td>
                           <td className="py-6 px-6">
                              <p className="text-xs font-black text-slate-900 tracking-tighter whitespace-nowrap">{e.salary} / Cycle</p>
@@ -149,7 +149,7 @@ const PayrollPage = () => {
                                 {e.status}
                              </span>
                           </td>
-                          <td className="py-6 px-10 text-right text-[10px] font-black text-slate-400">
+                          <td className="py-6 px-10 text-right text-[10px] font-black text-slate-600">
                              {e.lastPaid}
                           </td>
                        </tr>
@@ -192,11 +192,11 @@ const PayrollPage = () => {
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase">Register Contributor</h2>
-                  <p className="text-slate-500 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Workforce Ledger Infrastructure</p>
+                  <p className="text-slate-700 font-black text-[10px] mt-2 uppercase tracking-[0.3em]">Workforce Ledger Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-400 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-50 rounded-2xl text-slate-600 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -204,7 +204,7 @@ const PayrollPage = () => {
 
               <form onSubmit={addEmployee} className="space-y-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Member Nomenclature (Name)</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Member Nomenclature (Name)</label>
                   <input 
                     required
                     type="text" 
@@ -216,7 +216,7 @@ const PayrollPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Functional Vector (Role)</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Functional Vector (Role)</label>
                     <input 
                       required
                       type="text" 
@@ -227,7 +227,7 @@ const PayrollPage = () => {
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Cycle Quantum (Salary)</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Cycle Quantum (Salary)</label>
                     <input 
                       required
                       type="text" 

@@ -74,7 +74,7 @@ const SalesPage = () => {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Sales Revenue</h1>
-          <p className="text-slate-500 text-slate-500 text-sm font-medium mt-1 flex items-center gap-2">
+          <p className="text-slate-700 text-slate-700 text-sm font-medium mt-1 flex items-center gap-2">
             <FiTarget className="text-blue-600" /> Enterprise Contract Orchestration • Performance Node 01
           </p>
         </div>
@@ -103,7 +103,7 @@ const SalesPage = () => {
               {stat.icon}
             </div>
             <div>
-              <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
+              <p className="text-[10px] font-bold text-slate-600 dark:text-slate-700 uppercase tracking-widest mb-1">{stat.label}</p>
               <h4 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 leading-none">{stat.value}</h4>
             </div>
           </div>
@@ -116,7 +116,7 @@ const SalesPage = () => {
           <div className="flex items-center justify-between mb-10">
              <div>
                 <h3 className="text-sm font-black text-slate-900 text-slate-900 uppercase tracking-widest">Revenue Trajectory</h3>
-                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Cross-Sectoral Yield Analysis</p>
+                <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-1">Cross-Sectoral Yield Analysis</p>
              </div>
              <div className="flex gap-2">
                <span className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1.5 rounded">
@@ -150,7 +150,7 @@ const SalesPage = () => {
                 <FiBox className="w-7 h-7" />
              </div>
              <h3 className="text-3xl font-black tracking-tighter uppercase leading-none mb-4">Flux Matrix</h3>
-             <p className="text-slate-400 font-medium text-xs leading-relaxed mb-10 max-w-[220px]">Real-time demand sensing has identified <span className="text-blue-400 font-black">08 high-intensity</span> bulk contracts for dispatch synchronization.</p>
+             <p className="text-slate-600 font-medium text-xs leading-relaxed mb-10 max-w-[220px]">Real-time demand sensing has identified <span className="text-blue-400 font-black">08 high-intensity</span> bulk contracts for dispatch synchronization.</p>
              <div className="space-y-3">
                {[45, 82, 60].map((w, i) => (
                  <div key={i} className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
@@ -169,7 +169,7 @@ const SalesPage = () => {
       <div className="industrial-card flex flex-col overflow-hidden">
         <div className="p-8 border-b border-slate-200 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-6 bg-slate-50/50 /50">
           <div className="relative w-full xl:max-w-md group">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
+            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-blue-500 transition-colors" />
             <input 
               type="text" 
               placeholder="Search Invoice ID or Customer Matrix..."
@@ -183,7 +183,7 @@ const SalesPage = () => {
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-4 py-2 rounded text-[9px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white  text-slate-400 border border-slate-200 border-slate-200 hover:text-blue-500 active:scale-95'}`}
+                className={`px-4 py-2 rounded text-[9px] font-black uppercase tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white  text-slate-600 border border-slate-200 border-slate-200 hover:text-blue-500 active:scale-95'}`}
               >
                 {s}
               </button>
@@ -195,12 +195,12 @@ const SalesPage = () => {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-slate-50/20 /20">
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">ID Trace</th>
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Client Engagement</th>
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Base Valuation</th>
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest text-center">Taxation</th>
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest text-right">Settlements</th>
-                <th className="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest text-center">Status</th>
+                <th className="px-8 py-5 text-[9px] font-black text-slate-600 uppercase tracking-widest">ID Trace</th>
+                <th className="px-8 py-5 text-[9px] font-black text-slate-600 uppercase tracking-widest">Client Engagement</th>
+                <th className="px-8 py-5 text-[9px] font-black text-slate-600 uppercase tracking-widest">Base Valuation</th>
+                <th className="px-8 py-5 text-[9px] font-black text-slate-600 uppercase tracking-widest text-center">Taxation</th>
+                <th className="px-8 py-5 text-[9px] font-black text-slate-600 uppercase tracking-widest text-right">Settlements</th>
+                <th className="px-8 py-5 text-[9px] font-black text-slate-600 uppercase tracking-widest text-center">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 divide-slate-100">
@@ -209,18 +209,18 @@ const SalesPage = () => {
                   <td className="px-8 py-6 text-[10px] font-bold text-blue-600 uppercase tracking-tight">{sale.id}</td>
                   <td className="px-8 py-6">
                     <div className="flex items-center gap-4">
-                       <div className="w-10 h-10 rounded bg-slate-100  flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
+                       <div className="w-10 h-10 rounded bg-slate-100  flex items-center justify-center text-slate-600 group-hover:text-blue-600 transition-colors">
                           <FiShoppingCart size={18} />
                        </div>
                        <div>
                           <p className="text-xs font-bold text-slate-900 text-slate-900 uppercase leading-none mb-1.5 group-hover:text-blue-600 transition-colors">{sale.customer}</p>
-                          <p className="text-[8px] text-slate-400 uppercase font-bold tracking-widest">{sale.product}</p>
+                          <p className="text-[8px] text-slate-600 uppercase font-bold tracking-widest">{sale.product}</p>
                        </div>
                     </div>
                   </td>
-                  <td className="px-8 py-6 text-xs font-bold text-slate-500 tracking-tight">₹{sale.baseAmount.toLocaleString('en-IN')}</td>
+                  <td className="px-8 py-6 text-xs font-bold text-slate-700 tracking-tight">₹{sale.baseAmount.toLocaleString('en-IN')}</td>
                   <td className="px-8 py-6 text-center">
-                     <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100  rounded">
+                     <span className="text-[8px] font-bold text-slate-600 uppercase tracking-widest px-2 py-0.5 bg-slate-100  rounded">
                         {sale.gstRate}% Statutory
                      </span>
                   </td>
@@ -257,7 +257,7 @@ const SalesPage = () => {
               <div className="flex justify-between items-start mb-10">
                 <div>
                   <h2 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Record Engagement</h2>
-                  <p className="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Fiscal Revenue Infrastructure</p>
+                  <p className="text-[9px] font-bold text-slate-600 mt-1 uppercase tracking-widest">Fiscal Revenue Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
@@ -269,7 +269,7 @@ const SalesPage = () => {
 
               <form onSubmit={addSale} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Client Organization Portfolio</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Client Organization Portfolio</label>
                   <input 
                     required
                     type="text" 
@@ -280,7 +280,7 @@ const SalesPage = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Engagement Core</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Engagement Core</label>
                   <input 
                     required
                     type="text" 
@@ -292,7 +292,7 @@ const SalesPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Base Valuation</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Base Valuation</label>
                     <input 
                       required
                       type="number" 
@@ -303,7 +303,7 @@ const SalesPage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Statutory GST (%)</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Statutory GST (%)</label>
                     <select 
                       className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[10px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
                       value={newSale.gstRate}
