@@ -14,7 +14,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white  text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/10 transition-colors">
+    <div className="min-h-screen bg-white  text-slate-950 dark:text-slate-100 font-sans selection:bg-blue-500/10 transition-colors">
       
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-slate-200 border-slate-200 bg-white/80 /80 backdrop-blur-md">
@@ -23,15 +23,15 @@ const LandingPage = () => {
             <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white">
               <FiServer size={18} />
             </div>
-            <span className="text-base font-black tracking-tight">PRO<span className="text-blue-600">ERP</span></span>
+            <span className="text-xl font-black tracking-tight">PRO<span className="text-blue-600">ERP</span></span>
           </div>
           <div className="hidden md:flex items-center gap-10">
              {['Solutions', 'Features', 'Compliance', 'Security'].map(item => (
-               <button key={item} className="text-sm font-serif-professional tracking-wide  tracking-widest text-slate-900 hover:text-blue-600 transition-colors">{item}</button>
+               <button key={item} className="text-base font-serif-professional tracking-wide  tracking-widest text-slate-950 hover:text-blue-600 transition-colors">{item}</button>
              ))}
           </div>
           <Link href="/dashboard">
-            <button className="bg-slate-900 text-white px-6 py-2.5 rounded-lg text-sm font-serif-professional tracking-wide  tracking-widest transition-all hover:bg-black active:scale-95 shadow-lg">
+            <button className="bg-slate-900 text-white px-6 py-2.5 rounded-lg text-base font-serif-professional tracking-wide  tracking-widest transition-all hover:bg-black active:scale-95 shadow-lg">
               Console Access
             </button>
           </Link>
@@ -46,15 +46,15 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-blue-600/20 bg-blue-600/5 text-blue-600 text-[12px] font-serif-professional tracking-wide  tracking-[0.2em] mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-blue-600/20 bg-blue-600/5 text-blue-600 text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] mb-10">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
               v2.8.0 Enterprise Release
             </div>
-            <h1 className="text-4xl md:text-6xl font-serif-professional tracking-tight font-black tracking-tight leading-[1.05] mb-10 text-slate-900">
+            <h1 className="text-4xl md:text-6xl font-serif-professional tracking-tight font-black tracking-tight leading-[1.05] mb-10 text-slate-950">
               The Industrial <br />
               <span className="text-blue-600">Operating System</span>
             </h1>
-            <p className="text-sm text-slate-800 max-w-lg font-bold leading-relaxed mb-12">
+            <p className="text-base text-slate-800 max-w-lg font-bold leading-relaxed mb-12">
               Mission-critical ERP & Business Process Automation infrastructure for high-scale Indian manufacturing and corporate giants.
             </p>
             <div className="flex flex-wrap gap-5">
@@ -63,7 +63,7 @@ const LandingPage = () => {
                   Command Center <FiArrowRight size={18} />
                 </button>
               </Link>
-              <button className="bg-white border-2 border-slate-200 text-slate-900 font-black py-4 px-10 rounded-xl hover:bg-slate-50 transition-all active:scale-95 shadow-sm">
+              <button className="bg-white border-2 border-slate-200 text-slate-950 font-black py-4 px-10 rounded-xl hover:bg-slate-50 transition-all active:scale-95 shadow-sm">
                 Technical Blueprint
               </button>
             </div>
@@ -98,7 +98,7 @@ const LandingPage = () => {
                      </div>
                      <div className="grid grid-cols-2 gap-4">
                         <div className="h-40 bg-white  rounded-lg border border-slate-200 border-slate-200 p-4 shadow-sm">
-                           <FiBox className="text-slate-900 mb-4" />
+                           <FiBox className="text-slate-950 mb-4" />
                            <div className="space-y-2">
                              <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
                              <div className="h-2 w-3/4 bg-slate-100 dark:bg-slate-700 rounded" />
@@ -106,7 +106,7 @@ const LandingPage = () => {
                            </div>
                         </div>
                         <div className="h-40 bg-white  rounded-lg border border-slate-200 border-slate-200 p-4 shadow-sm">
-                           <FiActivity className="text-slate-900 mb-4" />
+                           <FiActivity className="text-slate-950 mb-4" />
                            <div className="space-y-2">
                              <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
                              <div className="h-2 w-2/3 bg-slate-100 dark:bg-slate-700 rounded" />
@@ -119,8 +119,8 @@ const LandingPage = () => {
                      <div className="h-full bg-blue-600 text-white rounded-lg p-6 flex flex-col justify-between shadow-xl">
                         <FiDatabase className="text-blue-400" />
                         <div>
-                           <p className="text-[12px] font-serif-professional tracking-wide  text-white font-black mb-1">Fiscal Balance</p>
-                           <p className="text-xl font-black tracking-tight">₹42.8 Cr</p>
+                           <p className="text-[14px] font-serif-professional tracking-wide  text-white font-black mb-1">Fiscal Balance</p>
+                           <p className="text-3xl font-black tracking-tight">₹42.8 Cr</p>
                         </div>
                         <div className="space-y-2">
                            <div className="h-1 w-full bg-white/10 rounded" />
@@ -141,8 +141,8 @@ const LandingPage = () => {
             >
                <div className="p-2 bg-emerald-500 rounded text-white"><FiTrendingUp size={16} /></div>
                <div>
-                  <p className="text-[12px] font-black text-slate-900 uppercase tracking-widest">Growth</p>
-                  <p className="text-base font-black">+12.4%</p>
+                  <p className="text-[14px] font-black text-slate-950 uppercase tracking-widest">Growth</p>
+                  <p className="text-xl font-black">+12.4%</p>
                </div>
             </motion.div>
           </motion.div>
@@ -166,7 +166,7 @@ const LandingPage = () => {
                   {f.icon}
                 </div>
                 <h3 className="text-3xl font-serif-professional tracking-tight mb-4 tracking-tight">{f.title}</h3>
-                <p className="text-slate-900 text-slate-900 text-base leading-relaxed font-bold transition-colors">{f.desc}</p>
+                <p className="text-slate-950 text-slate-950 text-xl leading-relaxed font-bold transition-colors">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -175,12 +175,12 @@ const LandingPage = () => {
 
       {/* Footer */}
       <footer className="py-20 px-6 border-t border-slate-200 border-slate-200 bg-white ">
-          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-slate-900 text-sm font-serif-professional tracking-wide  tracking-widest">
+          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-slate-950 text-base font-serif-professional tracking-wide  tracking-widest">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">
               <FiLayers size={14} />
             </div>
-            <span className="text-slate-900 text-slate-900">PRO<span className="text-blue-600">ERP</span></span>
+            <span className="text-slate-950 text-slate-950">PRO<span className="text-blue-600">ERP</span></span>
           </div>
           <div className="flex gap-10">
             <span>Platform</span>

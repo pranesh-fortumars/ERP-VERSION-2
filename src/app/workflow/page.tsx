@@ -46,18 +46,18 @@ const WorkflowPage = () => {
       {/* Structural Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[12px] font-serif-professional tracking-wide  tracking-widest mb-4 border border-blue-100">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[14px] font-serif-professional tracking-wide  tracking-widest mb-4 border border-blue-100">
             <FiGlobe className="animate-spin-slow" /> Orchestration Infrastructure Active
           </div>
-          <h1 className="text-xl font-black text-slate-900 uppercase tracking-tight leading-none">Workflow Matrix</h1>
-          <p className="text-slate-900 font-bold text-base mt-2 flex items-center gap-2">
+          <h1 className="text-3xl font-black text-slate-950 uppercase tracking-tight leading-none">Workflow Matrix</h1>
+          <p className="text-slate-950 font-bold text-xl mt-2 flex items-center gap-2">
             <FiLayers className="text-blue-500" /> BPA Pipeline Execution & Node Tracking
           </p>
         </div>
         <div className="flex items-center gap-4">
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-8 py-3.5 bg-blue-600 text-white rounded-[24px] text-[12px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-8 py-3.5 bg-blue-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Initialize Pipe
            </button>
@@ -77,18 +77,18 @@ const WorkflowPage = () => {
                     <FiZap size={28} />
                  </div>
                  <div>
-                    <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight leading-none">{flow.name}</h3>
-                    <p className="text-sm font-black text-slate-900 uppercase tracking-[0.2em] mt-2 flex items-center gap-2">
+                    <h3 className="text-3xl font-black text-slate-950 uppercase tracking-tight leading-none">{flow.name}</h3>
+                    <p className="text-base font-black text-slate-950 uppercase tracking-[0.2em] mt-2 flex items-center gap-2">
                        {flow.status} <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     </p>
                  </div>
               </div>
               <div className="flex items-center gap-10">
                  <div className="text-center">
-                    <p className="text-[12px] font-black text-slate-900 uppercase tracking-widest mb-1">Efficiency Delta</p>
-                    <p className="text-xl font-black text-blue-600  tracking-tight">{flow.efficiency}</p>
+                    <p className="text-[14px] font-black text-slate-950 uppercase tracking-widest mb-1">Efficiency Delta</p>
+                    <p className="text-3xl font-black text-blue-600  tracking-tight">{flow.efficiency}</p>
                  </div>
-                 <button className="p-4 bg-slate-50 rounded-[24px] text-slate-900 hover:text-blue-600 hover:bg-blue-50 transition-all border border-slate-100">
+                 <button className="p-4 bg-slate-50 rounded-[24px] text-slate-950 hover:text-blue-600 hover:bg-blue-50 transition-all border border-slate-100">
                     <FiSettings size={20} />
                  </button>
               </div>
@@ -121,8 +121,8 @@ const WorkflowPage = () => {
                       )}
                     </motion.div>
                     <div className="mt-8 text-center px-4">
-                       <h4 className="text-[13px] font-black text-slate-900 uppercase tracking-widest leading-none mb-2">{node.title}</h4>
-                       <p className={`text-[10px] font-serif-professional tracking-wide  tracking-[0.3em] ${node.status === 'Pending' ? 'text-slate-300' : 'text-blue-600'}`}>
+                       <h4 className="text-[13px] font-black text-slate-950 uppercase tracking-widest leading-none mb-2">{node.title}</h4>
+                       <p className={`text-[12px] font-serif-professional tracking-wide  tracking-[0.3em] ${node.status === 'Pending' ? 'text-slate-300' : 'text-blue-600'}`}>
                          {node.status} • {node.time}
                        </p>
                     </div>
@@ -153,12 +153,12 @@ const WorkflowPage = () => {
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-black tracking-tight text-slate-900 uppercase leading-none">Initialize Pipe</h2>
-                  <p className="text-slate-900 font-black text-[12px] mt-2 uppercase tracking-[0.3em]">Protocol Orchestration Artifact</p>
+                  <h2 className="text-3xl font-black tracking-tight text-slate-950 uppercase leading-none">Initialize Pipe</h2>
+                  <p className="text-slate-950 font-black text-[14px] mt-2 uppercase tracking-[0.3em]">Protocol Orchestration Artifact</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-50 rounded-[24px] text-slate-900 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-50 rounded-[24px] text-slate-950 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -166,25 +166,25 @@ const WorkflowPage = () => {
 
               <form className="space-y-10">
                 <div className="space-y-4">
-                  <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Process Identification</label>
+                  <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950 ml-1">Process Identification</label>
                   <input 
                     type="text" 
                     placeholder="e.g. Asset Recovery Pipeline Delta" 
-                    className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 shadow-inner"
+                    className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950 shadow-inner"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Priority Vector</label>
-                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none shadow-inner">
+                    <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950 ml-1">Priority Vector</label>
+                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950 appearance-none shadow-inner">
                       <option>Standard</option>
                       <option>High Priority</option>
                       <option>Critical</option>
                     </select>
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900 ml-1">Node Selection</label>
-                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-900 appearance-none shadow-inner">
+                    <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950 ml-1">Node Selection</label>
+                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950 appearance-none shadow-inner">
                       <option>All Logic Nodes</option>
                       <option>Cluster Alpha Only</option>
                     </select>

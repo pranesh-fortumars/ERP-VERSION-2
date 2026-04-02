@@ -73,18 +73,18 @@ const SalesPage = () => {
       {/* Professional Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Sales Revenue</h1>
-          <p className="text-slate-900 text-slate-900 text-base font-bold mt-1 flex items-center gap-2">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-950 text-slate-950 uppercase leading-none">Sales Revenue</h1>
+          <p className="text-slate-950 text-slate-950 text-xl font-bold mt-1 flex items-center gap-2">
             <FiTarget className="text-blue-600" /> Enterprise Contract Orchestration • Performance Node 01
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <button className="px-5 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-lg text-[12px] font-serif-professional tracking-wide  tracking-widest hover:bg-slate-50 transition-all flex items-center gap-2 text-slate-900 text-slate-900 shadow-sm">
+          <button className="px-5 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-lg text-[14px] font-serif-professional tracking-wide  tracking-widest hover:bg-slate-50 transition-all flex items-center gap-2 text-slate-950 text-slate-950 shadow-sm">
             <FiFileText className="w-4 h-4" /> Ledger
           </button>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="px-8 py-2.5 bg-blue-600 text-white rounded-lg text-[12px] font-serif-professional tracking-wide  tracking-[0.2em] shadow-lg shadow-blue-600/20 active:scale-95 transition-all flex items-center gap-2"
+            className="px-8 py-2.5 bg-blue-600 text-white rounded-lg text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] shadow-lg shadow-blue-600/20 active:scale-95 transition-all flex items-center gap-2"
           >
             <FiPlus className="w-4 h-4" /> Record Contract
           </button>
@@ -103,8 +103,8 @@ const SalesPage = () => {
               {stat.icon}
             </div>
             <div>
-              <p className="text-[12px] font-bold text-slate-900 dark:text-slate-900 uppercase tracking-widest mb-1">{stat.label}</p>
-              <h4 className="text-xl font-bold tracking-tight text-slate-900 text-slate-900 leading-none">{stat.value}</h4>
+              <p className="text-[14px] font-bold text-slate-950 dark:text-slate-950 uppercase tracking-widest mb-1">{stat.label}</p>
+              <h4 className="text-3xl font-bold tracking-tight text-slate-950 text-slate-950 leading-none">{stat.value}</h4>
             </div>
           </div>
         ))}
@@ -115,11 +115,11 @@ const SalesPage = () => {
         <div className="xl:col-span-2 industrial-card animate-fade-up p-10 flex flex-col">
           <div className="flex items-center justify-between mb-10">
              <div>
-                <h3 className="text-base font-black text-slate-900 text-slate-900 uppercase tracking-widest">Revenue Trajectory</h3>
-                <p className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mt-1">Cross-Sectoral Yield Analysis</p>
+                <h3 className="text-xl font-black text-slate-950 text-slate-950 uppercase tracking-widest">Revenue Trajectory</h3>
+                <p className="text-[13px] font-bold text-slate-950 uppercase tracking-widest mt-1">Cross-Sectoral Yield Analysis</p>
              </div>
              <div className="flex gap-2">
-               <span className="flex items-center gap-2 text-[11px] font-serif-professional tracking-wide  tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1.5 rounded">
+               <span className="flex items-center gap-2 text-[13px] font-serif-professional tracking-wide  tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1.5 rounded">
                   <FiTrendingUp /> +14.2% Growth
                </span>
              </div>
@@ -150,7 +150,7 @@ const SalesPage = () => {
                 <FiBox className="w-7 h-7" />
              </div>
              <h3 className="text-3xl font-black tracking-tight uppercase leading-none mb-4">Flux Matrix</h3>
-             <p className="text-slate-900 font-bold text-sm leading-relaxed mb-10 max-w-[220px]">Real-time demand sensing has identified <span className="text-blue-400 font-black">08 high-intensity</span> bulk contracts for dispatch synchronization.</p>
+             <p className="text-slate-950 font-bold text-base leading-relaxed mb-10 max-w-[220px]">Real-time demand sensing has identified <span className="text-blue-400 font-black">08 high-intensity</span> bulk contracts for dispatch synchronization.</p>
              <div className="space-y-3">
                {[45, 82, 60].map((w, i) => (
                  <div key={i} className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
@@ -159,7 +159,7 @@ const SalesPage = () => {
                ))}
              </div>
           </div>
-          <button className="w-full py-4 bg-white text-slate-900 font-black rounded-lg text-[12px] uppercase tracking-[0.4em] shadow-xl hover:bg-slate-100 transition-all active:scale-95 z-10">
+          <button className="w-full py-4 bg-white text-slate-950 font-black rounded-lg text-[14px] uppercase tracking-[0.4em] shadow-xl hover:bg-slate-100 transition-all active:scale-95 z-10">
             Audit Fulfillment
           </button>
         </div>
@@ -169,13 +169,13 @@ const SalesPage = () => {
       <div className="industrial-card animate-fade-up flex flex-col overflow-hidden">
         <div className="p-8 border-b border-slate-200 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-6 bg-slate-50/50 /50">
           <div className="relative w-full xl:max-w-md group">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-900 group-focus-within:text-blue-500 transition-colors" />
+            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-500 transition-colors" />
             <input 
               type="text" 
               placeholder="Search Invoice ID or Customer Matrix..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-2.5 pl-11 pr-4 text-sm font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-slate-900"
+              className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-2.5 pl-11 pr-4 text-base font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-slate-950"
             />
           </div>
           <div className="flex flex-wrap justify-center gap-2">
@@ -183,7 +183,7 @@ const SalesPage = () => {
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-4 py-2 rounded text-[11px] font-serif-professional tracking-wide  tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white  text-slate-900 border border-slate-200 border-slate-200 hover:text-blue-500 active:scale-95'}`}
+                className={`px-4 py-2 rounded text-[13px] font-serif-professional tracking-wide  tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white  text-slate-950 border border-slate-200 border-slate-200 hover:text-blue-500 active:scale-95'}`}
               >
                 {s}
               </button>
@@ -195,38 +195,38 @@ const SalesPage = () => {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-slate-50/20 /20">
-                <th className="px-8 py-3 text-[11px] font-black text-slate-900 uppercase tracking-widest">ID Trace</th>
-                <th className="px-8 py-3 text-[11px] font-black text-slate-900 uppercase tracking-widest">Client Engagement</th>
-                <th className="px-8 py-3 text-[11px] font-black text-slate-900 uppercase tracking-widest">Base Valuation</th>
-                <th className="px-8 py-3 text-[11px] font-black text-slate-900 uppercase tracking-widest text-center">Taxation</th>
-                <th className="px-8 py-3 text-[11px] font-black text-slate-900 uppercase tracking-widest text-right">Settlements</th>
-                <th className="px-8 py-3 text-[11px] font-black text-slate-900 uppercase tracking-widest text-center">Status</th>
+                <th className="px-8 py-3 text-[13px] font-black text-slate-950 uppercase tracking-widest">ID Trace</th>
+                <th className="px-8 py-3 text-[13px] font-black text-slate-950 uppercase tracking-widest">Client Engagement</th>
+                <th className="px-8 py-3 text-[13px] font-black text-slate-950 uppercase tracking-widest">Base Valuation</th>
+                <th className="px-8 py-3 text-[13px] font-black text-slate-950 uppercase tracking-widest text-center">Taxation</th>
+                <th className="px-8 py-3 text-[13px] font-black text-slate-950 uppercase tracking-widest text-right">Settlements</th>
+                <th className="px-8 py-3 text-[13px] font-black text-slate-950 uppercase tracking-widest text-center">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 divide-slate-100">
               {filteredSales.map((sale) => (
                 <tr key={sale.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all group cursor-pointer data-table-row">
-                  <td className="px-8 py-4 text-[12px] font-bold text-blue-600 uppercase tracking-tight">{sale.id}</td>
+                  <td className="px-8 py-4 text-[14px] font-bold text-blue-600 uppercase tracking-tight">{sale.id}</td>
                   <td className="px-8 py-4">
                     <div className="flex items-center gap-4">
-                       <div className="w-10 h-10 rounded bg-slate-100  flex items-center justify-center text-slate-900 group-hover:text-blue-600 transition-colors">
+                       <div className="w-10 h-10 rounded bg-slate-100  flex items-center justify-center text-slate-950 group-hover:text-blue-600 transition-colors">
                           <FiShoppingCart size={18} />
                        </div>
                        <div>
-                          <p className="text-sm font-bold text-slate-900 text-slate-900 uppercase leading-none mb-1.5 group-hover:text-blue-600 transition-colors">{sale.customer}</p>
-                          <p className="text-[10px] text-slate-900 uppercase font-bold tracking-widest">{sale.product}</p>
+                          <p className="text-base font-bold text-slate-950 text-slate-950 uppercase leading-none mb-1.5 group-hover:text-blue-600 transition-colors">{sale.customer}</p>
+                          <p className="text-[12px] text-slate-950 uppercase font-bold tracking-widest">{sale.product}</p>
                        </div>
                     </div>
                   </td>
-                  <td className="px-8 py-4 text-sm font-bold text-slate-900 tracking-tight">₹{sale.baseAmount.toLocaleString('en-IN')}</td>
+                  <td className="px-8 py-4 text-base font-bold text-slate-950 tracking-tight">₹{sale.baseAmount.toLocaleString('en-IN')}</td>
                   <td className="px-8 py-4 text-center">
-                     <span className="text-[10px] font-bold text-slate-900 uppercase tracking-widest px-2 py-0.5 bg-slate-100  rounded">
+                     <span className="text-[12px] font-bold text-slate-950 uppercase tracking-widest px-2 py-0.5 bg-slate-100  rounded">
                         {sale.gstRate}% Statutory
                      </span>
                   </td>
-                  <td className="px-8 py-4 text-base font-black text-right text-slate-900 text-slate-900 tracking-tight">₹{calculateTotal(sale.baseAmount, sale.gstRate).toLocaleString('en-IN')}</td>
+                  <td className="px-8 py-4 text-xl font-black text-right text-slate-950 text-slate-950 tracking-tight">₹{calculateTotal(sale.baseAmount, sale.gstRate).toLocaleString('en-IN')}</td>
                   <td className="px-8 py-4 text-center">
-                    <span className={`px-4 py-1 rounded text-[10px] font-serif-professional tracking-wide  tracking-widest ${getStatusColor(sale.status)}`}>
+                    <span className={`px-4 py-1 rounded text-[12px] font-serif-professional tracking-wide  tracking-widest ${getStatusColor(sale.status)}`}>
                       {sale.status}
                     </span>
                   </td>
@@ -256,8 +256,8 @@ const SalesPage = () => {
             >
               <div className="flex justify-between items-start mb-10">
                 <div>
-                  <h2 className="text-xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Record Engagement</h2>
-                  <p className="text-[11px] font-bold text-slate-900 mt-1 uppercase tracking-widest">Fiscal Revenue Infrastructure</p>
+                  <h2 className="text-3xl font-bold tracking-tight text-slate-950 text-slate-950 uppercase leading-none">Record Engagement</h2>
+                  <p className="text-[13px] font-bold text-slate-950 mt-1 uppercase tracking-widest">Fiscal Revenue Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
@@ -269,43 +269,43 @@ const SalesPage = () => {
 
               <form onSubmit={addSale} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900">Client Organization Portfolio</label>
+                  <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950">Client Organization Portfolio</label>
                   <input 
                     required
                     type="text" 
                     placeholder="e.g. Tata Steel Ltd" 
-                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-base font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
                     value={newSale.customer}
                     onChange={(e) => setNewSale({...newSale, customer: e.target.value})}
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900">Engagement Core</label>
+                  <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950">Engagement Core</label>
                   <input 
                     required
                     type="text" 
                     placeholder="e.g. Precision Components" 
-                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-base font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
                     value={newSale.product}
                     onChange={(e) => setNewSale({...newSale, product: e.target.value})}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900">Base Valuation</label>
+                    <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950">Base Valuation</label>
                     <input 
                       required
                       type="number" 
                       placeholder="0.00" 
-                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-base font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
                       value={newSale.baseAmount}
                       onChange={(e) => setNewSale({...newSale, baseAmount: e.target.value})}
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[12px] font-serif-professional tracking-wide  tracking-widest text-slate-900">Statutory GST (%)</label>
+                    <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950">Statutory GST (%)</label>
                     <select 
-                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[12px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-900"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[14px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
                       value={newSale.gstRate}
                       onChange={(e) => setNewSale({...newSale, gstRate: parseInt(e.target.value)})}
                     >
@@ -316,7 +316,7 @@ const SalesPage = () => {
                     </select>
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-black text-[12px] uppercase tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all">
+                <button type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-black text-[14px] uppercase tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all">
                   Commit Transaction
                 </button>
               </form>

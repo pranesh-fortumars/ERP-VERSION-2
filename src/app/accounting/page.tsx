@@ -68,25 +68,25 @@ const AccountingPage = () => {
       {/* Structural Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-bold  tracking-widest mb-4 border border-blue-100">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[13px] font-bold  tracking-widest mb-4 border border-blue-100">
             <FiGlobe className="animate-spin-slow" /> Finance Dashboard Active
           </div>
-          <h1 className="text-3xl font-serif-professional tracking-tight text-slate-900  tracking-tight leading-none">Finance Center</h1>
-          <p className="text-slate-900 font-bold text-sm mt-2 flex items-center gap-2">
+          <h1 className="text-3xl font-serif-professional tracking-tight text-slate-950  tracking-tight leading-none">Finance Center</h1>
+          <p className="text-slate-950 font-bold text-base mt-2 flex items-center gap-2">
             <FiCreditCard className="text-blue-500" /> Real-time Capital Transactions & Operational Accounting
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
            
-           <button onClick={handleLedgerSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[11px] font-bold  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+           <button onClick={handleLedgerSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[13px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              {isSyncing ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isSyncing ? 'Synchronizing...' : 'Sync Accounts'}
            </button>
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[11px] font-bold  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[13px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiDownload /> Export Audit
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-14 py-3 bg-blue-600 text-white rounded-[24px] text-[11px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-14 py-3 bg-blue-600 text-white rounded-[24px] text-[13px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Record Transactions
            </button>
@@ -98,16 +98,16 @@ const AccountingPage = () => {
           <div key={i} className="industrial-card animate-fade-up p-10 flex flex-col justify-between bg-white border border-slate-100 shadow-sm rounded-[40px] hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
              <div className="flex justify-between items-start mb-10 relative z-10">
-                <div className="w-14 h-14 bg-blue-600 rounded-[24px] flex items-center justify-center text-white shadow-xl shadow-blue-600/20 group-hover:rotate-12 transition-transform text-xl">
+                <div className="w-14 h-14 bg-blue-600 rounded-[24px] flex items-center justify-center text-white shadow-xl shadow-blue-600/20 group-hover:rotate-12 transition-transform text-3xl">
                    {stat.icon}
                 </div>
-                <span className={`text-[11px] font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 ${stat.isUp ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'}`}>
+                <span className={`text-[13px] font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 ${stat.isUp ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'}`}>
                    {stat.isUp ? <FiArrowUpRight /> : <FiArrowDownRight />} {stat.delta}
                 </span>
              </div>
              <div className="relative z-10">
-                <p className="text-[11px] font-bold text-slate-900  tracking-widest mb-2">{stat.label}</p>
-                <h3 className="text-xl font-serif-professional tracking-tight text-slate-900 tracking-tight leading-none">{stat.value}</h3>
+                <p className="text-[13px] font-bold text-slate-950  tracking-widest mb-2">{stat.label}</p>
+                <h3 className="text-3xl font-serif-professional tracking-tight text-slate-950 tracking-tight leading-none">{stat.value}</h3>
              </div>
           </div>
         ))}
@@ -116,28 +116,28 @@ const AccountingPage = () => {
       <div className="industrial-card animate-fade-up flex flex-col bg-white border border-slate-100 shadow-sm rounded-[40px] overflow-hidden">
         <div className="p-8 border-b border-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-slate-50/20">
           <div>
-             <h3 className="text-sm font-bold tracking-widest text-slate-900  ">Transaction Ledger</h3>
-             <p className="text-[12px] font-bold text-slate-900  tracking-widest mt-1">Total Company Balances</p>
+             <h3 className="text-base font-bold tracking-widest text-slate-950  ">Transaction Ledger</h3>
+             <p className="text-[14px] font-bold text-slate-950  tracking-widest mt-1">Total Company Balances</p>
           </div>
           <div className="flex gap-4 w-full md:w-auto">
              <div className="relative group flex-1 md:w-80">
-                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-900 group-focus-within:text-blue-600 transition-colors" />
+                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-600 transition-colors" />
                 <input 
                   type="text" 
                   placeholder="ID / Nomenclature Query..." 
-                  className="w-full bg-slate-100/50 border-none rounded-[24px] py-4 pl-16 pr-6 text-base font-bold outline-none focus:bg-white focus:ring-4 focus:ring-blue-600/5 transition-all text-slate-900"
+                  className="w-full bg-slate-100/50 border-none rounded-[24px] py-4 pl-16 pr-6 text-xl font-bold outline-none focus:bg-white focus:ring-4 focus:ring-blue-600/5 transition-all text-slate-950"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
              </div>
-             <button className="p-4 bg-white border border-slate-100 rounded-[24px] text-slate-900 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
+             <button className="p-4 bg-white border border-slate-100 rounded-[24px] text-slate-950 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
           </div>
         </div>
 
         <div className="overflow-x-auto no-scrollbar">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-50/40 text-[12px] font-bold  tracking-widest text-slate-900">
+              <tr className="bg-slate-50/40 text-[14px] font-bold  tracking-widest text-slate-950">
                 <th className="py-3 px-14">Transactions Reference</th>
                 <th className="py-3 px-6">Description</th>
                 <th className="py-3 px-6">Amount</th>
@@ -149,19 +149,19 @@ const AccountingPage = () => {
               {filteredTxns.map((t) => (
                 <tr key={t.id} className="group hover:bg-blue-50/30 transition-all cursor-pointer">
                   <td className="py-4 px-14">
-                     <span className="text-base font-bold text-blue-600  tracking-tight">{t.id}</span>
+                     <span className="text-xl font-bold text-blue-600  tracking-tight">{t.id}</span>
                   </td>
                   <td className="py-4 px-6">
-                     <p className="text-base font-bold text-slate-900  group-hover:text-blue-600 transition-colors">{t.description}</p>
-                     <p className="text-[12px] font-bold text-slate-900  mt-0.5">Corporate Node X-1</p>
+                     <p className="text-xl font-bold text-slate-950  group-hover:text-blue-600 transition-colors">{t.description}</p>
+                     <p className="text-[14px] font-bold text-slate-950  mt-0.5">Corporate Node X-1</p>
                   </td>
                   <td className="py-4 px-6">
-                     <span className={`text-base font-bold  ${t.type === 'Credit' ? 'text-emerald-600' : 'text-rose-600'}`}>
+                     <span className={`text-xl font-bold  ${t.type === 'Credit' ? 'text-emerald-600' : 'text-rose-600'}`}>
                         {t.type === 'Credit' ? '+' : '-'}{t.amount}
                      </span>
                   </td>
                   <td className="py-4 px-6">
-                     <span className={`px-4 py-1.5 rounded-xl text-[12px] font-bold  tracking-widest border ${
+                     <span className={`px-4 py-1.5 rounded-xl text-[14px] font-bold  tracking-widest border ${
                        t.status === 'Cleared' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 
                        t.status === 'Pending' ? 'bg-amber-50 text-amber-600 border-amber-100' : 'bg-blue-50 text-blue-600 border-blue-100'
                      }`}>
@@ -169,7 +169,7 @@ const AccountingPage = () => {
                      </span>
                   </td>
                   <td className="py-4 px-14 text-right">
-                     <span className="text-[11px] font-bold text-slate-900 ">{t.date}</span>
+                     <span className="text-[13px] font-bold text-slate-950 ">{t.date}</span>
                   </td>
                 </tr>
               ))}
@@ -197,12 +197,12 @@ const AccountingPage = () => {
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-xl font-serif-professional tracking-tight tracking-tight text-slate-900 ">Record Transactions</h2>
-                  <p className="text-slate-900 font-bold text-[11px] mt-2  tracking-[0.3em]">Treasury Ledger Artifact</p>
+                  <h2 className="text-3xl font-serif-professional tracking-tight tracking-tight text-slate-950 ">Record Transactions</h2>
+                  <p className="text-slate-950 font-bold text-[13px] mt-2  tracking-[0.3em]">Treasury Ledger Artifact</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-4 hover:bg-slate-50 rounded-[24px] text-slate-900 transition-colors active:scale-95"
+                  className="p-4 hover:bg-slate-50 rounded-[24px] text-slate-950 transition-colors active:scale-95"
                 >
                   <FiX className="w-6 h-6" />
                 </button>
@@ -210,32 +210,32 @@ const AccountingPage = () => {
 
               <form onSubmit={handleTransactionsSubmit} className="space-y-8">
                 <div className="space-y-3">
-                  <label className="text-[11px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Description</label>
+                  <label className="text-[13px] font-bold  tracking-widest text-slate-950 ml-1">Transactions Description</label>
                   <input 
                     required
                     type="text" 
                     placeholder="e.g. Inward Capital Injection: Node Cluster B" 
-                    className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900"
+                    className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-950"
                     value={newTxn.description}
                     onChange={(e) => setNewTxn({...newTxn, description: e.target.value})}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[11px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Amount (Amount)</label>
+                    <label className="text-[13px] font-bold  tracking-widest text-slate-950 ml-1">Transactions Amount (Amount)</label>
                     <input 
                       required
                       type="text" 
                       placeholder="e.g. ₹5,00,000" 
-                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-950"
                       value={newTxn.amount}
                       onChange={(e) => setNewTxn({...newTxn, amount: e.target.value})}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[11px] font-bold  tracking-widest text-slate-900 ml-1">Transactions Vector (Type)</label>
+                    <label className="text-[13px] font-bold  tracking-widest text-slate-950 ml-1">Transactions Vector (Type)</label>
                     <select 
-                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-sm outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-900 appearance-none"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-950 appearance-none"
                       value={newTxn.type}
                       onChange={(e) => setNewTxn({...newTxn, type: e.target.value})}
                     >
@@ -244,7 +244,7 @@ const AccountingPage = () => {
                     </select>
                   </div>
                 </div>
-                                  <button disabled={isPending} type="submit" className="w-full mt-6 py-4 bg-blue-600 text-white rounded-[24px] font-bold text-[12px]  tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 disabled:opacity-50">
+                                  <button disabled={isPending} type="submit" className="w-full mt-6 py-4 bg-blue-600 text-white rounded-[24px] font-bold text-[14px]  tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 disabled:opacity-50">
                      {isPending ? (
                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                      ) : (
