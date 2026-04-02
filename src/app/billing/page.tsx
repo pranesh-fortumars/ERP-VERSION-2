@@ -94,7 +94,7 @@ const BillingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="p-10 bg-white  rounded-[40px] border border-slate-200 border-slate-200 shadow-sm flex items-center gap-10 group hover:border-blue-500/50 transition-all duration-500"
+            className="industrial-card p-10 bg-white  rounded-[40px] border border-slate-200 border-slate-200 shadow-sm flex items-center gap-10 group hover:border-blue-500/50 transition-all duration-500"
           >
             <div className={`p-8 rounded-[32px] ${stat.bg} ${stat.color} shadow-inner group-hover:scale-110 transition-transform duration-700 ring-1 ring-black/5`}>
               {stat.icon}
@@ -108,7 +108,7 @@ const BillingPage = () => {
       </div>
 
       {/* Invoice Ledger */}
-      <div className="bg-white  rounded-[40px] border border-slate-200 border-slate-200 shadow-sm overflow-hidden flex flex-col">
+      <div className="industrial-card bg-white  rounded-[40px] border border-slate-200 border-slate-200 shadow-sm overflow-hidden flex flex-col">
         <div className="p-10 border-b border-slate-100 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-8 bg-slate-50/20 /10">
           <div className="relative w-full xl:max-w-xl group">
             <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-500 transition-colors w-5 h-5" />

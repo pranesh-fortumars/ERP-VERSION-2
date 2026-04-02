@@ -78,7 +78,7 @@ const TasksPage = () => {
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-10">
         {/* Main Task List */}
         <div className="xl:col-span-3 space-y-8">
-           <div className="p-8 bg-white rounded-[40px] border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-8">
+           <div className="industrial-card p-8 bg-white rounded-[40px] border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-8">
               <div className="relative group flex-1 w-full">
                 <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-600 transition-colors w-5 h-5" />
                 <input 
@@ -154,7 +154,7 @@ const TasksPage = () => {
               </div>
            </div>
 
-           <div className="p-8 bg-white rounded-[40px] border border-slate-100 shadow-sm">
+           <div className="industrial-card p-8 bg-white rounded-[40px] border border-slate-100 shadow-sm">
               <h4 className="text-base font-black text-slate-950 uppercase tracking-tight mb-6 flex items-center gap-3">
                  <FiDatabase className="text-blue-600" /> Network Nodes
               </h4>

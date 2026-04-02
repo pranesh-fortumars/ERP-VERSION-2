@@ -113,7 +113,7 @@ const ReportGenerationPage = () => {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Report Config */}
         <div className="space-y-8">
-          <div className="bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm relative overflow-hidden group">
+          <div className="industrial-card bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-1000" />
             <h2 className="text-[13px] font-bold text-blue-600 mb-8  tracking-[0.3em]">Execution Parameters</h2>
             <div className="space-y-8 relative z-10">
@@ -165,7 +165,7 @@ const ReportGenerationPage = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm">
+          <div className="industrial-card bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm">
              <h2 className="text-[13px] font-bold text-slate-950 mb-8  tracking-[0.3em]">Active Templates</h2>
              <div className="space-y-6">
                 {templates.map((tpl, i) => (
@@ -188,7 +188,7 @@ const ReportGenerationPage = () => {
 
         {/* Visual Analytics */}
         <div className="xl:col-span-2 space-y-8">
-           <div className="bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm relative overflow-hidden group">
+           <div className="industrial-card bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent opacity-50" />
               <div className="flex items-center justify-between mb-12">
                  <div>
@@ -222,7 +222,7 @@ const ReportGenerationPage = () => {
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm">
+              <div className="industrial-card bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm">
                 <div className="flex items-center justify-between mb-8">
                    <h3 className="text-[13px] font-bold text-slate-950  tracking-[0.3em]">Substrate Mix</h3>
                    <FiPieChart className="text-blue-500" />

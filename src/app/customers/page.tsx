@@ -140,7 +140,7 @@ const CustomersPage = () => {
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
         {/* Search & Filters */}
         <div className="xl:col-span-3 space-y-8">
-           <div className="p-8 bg-white rounded-[40px] border border-slate-200 shadow-sm flex flex-col md:flex-row items-center gap-6">
+           <div className="industrial-card p-8 bg-white rounded-[40px] border border-slate-200 shadow-sm flex flex-col md:flex-row items-center gap-6">
               <div className="relative flex-1 group w-full">
                 <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-500 transition-colors w-5 h-5" />
                 <input 
@@ -178,7 +178,7 @@ const CustomersPage = () => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
-                    className="group bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm hover:shadow-2xl hover:border-blue-500/30 transition-all duration-500 relative overflow-hidden"
+                    className="industrial-card group bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm hover:shadow-2xl hover:border-blue-500/30 transition-all duration-500 relative overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:scale-150 transition-transform duration-1000" />
                     
@@ -281,7 +281,7 @@ const CustomersPage = () => {
               </div>
            </div>
 
-           <div className="p-8 bg-white rounded-[40px] border border-slate-200 shadow-sm">
+           <div className="industrial-card p-8 bg-white rounded-[40px] border border-slate-200 shadow-sm">
               <h4 className="text-base font-black text-slate-950 uppercase tracking-tight mb-6 flex items-center gap-3">
                  <FiLayers className="text-blue-600" /> Key Accounts
               </h4>
