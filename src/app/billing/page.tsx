@@ -61,7 +61,7 @@ const BillingPage = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] mb-4">
             <FiShield className="animate-pulse" /> Fiscal Integrity Protocol Active
           </div>
-          <h1 className="text-3xl md:text-3xl font-black tracking-tight text-slate-950 text-slate-950 uppercase leading-none">Accounts Receivable</h1>
+          <h1 className="text-3xl font-serif-professional tracking-tight text-slate-950 uppercase leading-none">Accounts Receivable</h1>
           <p className="text-slate-950 text-slate-950 font-bold tracking-tight mt-1 flex items-center gap-2">
             <FiFileText className="text-blue-500" /> Automated Invoice Orchestration & GST Compliance Master
           </p>
@@ -75,7 +75,7 @@ const BillingPage = () => {
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-10 py-3.5 bg-blue-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-8 py-3.5 bg-blue-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Dispatch Invoice
            </button>
@@ -100,8 +100,8 @@ const BillingPage = () => {
               {stat.icon}
             </div>
             <div>
-              <p className="text-[14px] font-black text-slate-950 dark:text-slate-950 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
-              <h4 className="text-3xl font-black tracking-tight text-slate-950 text-slate-950 leading-none">{stat.value}</h4>
+              <p className="text-[14px] font-bold text-slate-950 dark:text-slate-950 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
+              <h4 className="text-3xl font-bold tracking-tight text-slate-950 text-slate-950 leading-none">{stat.value}</h4>
             </div>
           </motion.div>
         ))}
@@ -117,7 +117,7 @@ const BillingPage = () => {
               placeholder="Search invoice registry, client descriptor, or GST identifier..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white  border-none rounded-[24px] py-4.5 pl-14 pr-6 text-xl font-black focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-950 shadow-inner"
+              className="w-full bg-white  border-none rounded-[24px] py-4.5 pl-14 pr-6 text-xl font-bold focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-950 shadow-inner"
             />
           </div>
           <div className="flex flex-wrap justify-center gap-3">
@@ -137,10 +137,10 @@ const BillingPage = () => {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50/30 /30">
-                <th className="px-10 py-4 text-[14px] font-black text-slate-950 dark:text-slate-950 uppercase tracking-[0.2em]">Asset Descriptor</th>
-                <th className="px-10 py-4 text-[14px] font-black text-slate-950 dark:text-slate-950 uppercase tracking-[0.2em]">Quantum (INR)</th>
-                <th className="px-10 py-4 text-[14px] font-black text-slate-950 dark:text-slate-950 uppercase tracking-[0.2em]">Maturity Target</th>
-                <th className="px-10 py-4 text-[14px] font-black text-slate-950 dark:text-slate-950 uppercase tracking-[0.2em] text-center">Lifecycle State</th>
+                <th className="px-8 py-4 text-[14px] font-bold text-slate-950 dark:text-slate-950 uppercase tracking-[0.2em]">Asset Descriptor</th>
+                <th className="px-8 py-4 text-[14px] font-bold text-slate-950 dark:text-slate-950 uppercase tracking-[0.2em]">Quantum (INR)</th>
+                <th className="px-8 py-4 text-[14px] font-bold text-slate-950 dark:text-slate-950 uppercase tracking-[0.2em]">Maturity Target</th>
+                <th className="px-8 py-4 text-[14px] font-bold text-slate-950 dark:text-slate-950 uppercase tracking-[0.2em] text-center">Lifecycle State</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 divide-slate-100">
@@ -153,28 +153,28 @@ const BillingPage = () => {
                     animate={{ opacity: 1 }}
                     className="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-all group cursor-pointer"
                   >
-                    <td className="px-10 py-8">
+                    <td className="px-8 py-6">
                       <div className="flex items-center gap-6">
                         <div className="w-14 h-14 rounded-[24px] bg-slate-100  flex items-center justify-center text-slate-950 group-hover:text-blue-500 transition-colors shadow-inner border border-black/5">
                           <FiFileText size={24} />
                         </div>
                         <div>
-                          <p className="text-xl font-black text-slate-950 text-slate-950 tracking-tight uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors">{inv.clientName}</p>
-                          <p className="text-[14px] text-slate-950 dark:text-slate-950 mt-1 uppercase font-black tracking-[0.3em] flex items-center gap-2">
+                          <p className="text-xl font-serif-professional tracking-tight text-slate-950 leading-none mb-2 group-hover:text-blue-600 transition-colors">{inv.clientName}</p>
+                          <p className="text-[14px] text-slate-950 dark:text-slate-950 mt-1 uppercase font-bold tracking-[0.3em] flex items-center gap-2">
                              <span className="text-blue-500">ID:</span> {inv.id} • <span className="text-blue-500 text-[12px]">GST:</span> {inv.gst}
                           </p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-10 py-8">
-                       <p className="text-3xl font-black text-slate-950 text-slate-950 tracking-tight whitespace-nowrap">₹{inv.amount.toLocaleString('en-IN')}</p>
-                       <p className="text-[13px] font-black text-slate-950 uppercase tracking-widest mt-1">Settlement Value</p>
+                    <td className="px-8 py-6">
+                       <p className="text-3xl font-bold text-slate-950 text-slate-950 tracking-tight whitespace-nowrap">₹{inv.amount.toLocaleString('en-IN')}</p>
+                       <p className="text-[13px] font-bold text-slate-950 uppercase tracking-widest mt-1">Settlement Value</p>
                     </td>
-                    <td className="px-10 py-8">
-                       <p className="text-xl font-black text-slate-950 text-slate-950 tracking-tight uppercase">{inv.dueDate}</p>
-                       <p className="text-[13px] font-black text-slate-950 uppercase tracking-widest mt-1">Fiscal Deadline</p>
+                    <td className="px-8 py-6">
+                       <p className="text-xl font-bold text-slate-950 text-slate-950 tracking-tight uppercase">{inv.dueDate}</p>
+                       <p className="text-[13px] font-bold text-slate-950 uppercase tracking-widest mt-1">Fiscal Deadline</p>
                     </td>
-                    <td className="px-10 py-8 text-center">
+                    <td className="px-8 py-6 text-center">
                       <span className={`px-5 py-2 rounded-xl text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] border shadow-sm ${getStatusColor(inv.status)}`}>
                         {inv.status}
                       </span>
@@ -206,8 +206,8 @@ const BillingPage = () => {
             >
                <div className="flex justify-between items-start mb-12">
                 <div>
-                  <h2 className="text-3xl font-black tracking-tight text-slate-950 text-slate-950 uppercase leading-none">Dispatch Legal Instrument</h2>
-                  <p className="text-slate-950 font-black text-[14px] mt-2 uppercase tracking-[0.3em]">Corporate Billing Infrastructure</p>
+                  <h2 className="text-3xl font-bold tracking-tight text-slate-950 text-slate-950 uppercase leading-none">Dispatch Legal Instrument</h2>
+                  <p className="text-slate-950 font-bold text-[14px] mt-2 uppercase tracking-[0.3em]">Corporate Billing Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
@@ -224,7 +224,7 @@ const BillingPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Tata Advanced Systems Ltd"
-                    className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
+                    className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
                     value={newInv.clientName}
                     onChange={(e) => setNewInv({...newInv, clientName: e.target.value})}
                   />
@@ -236,7 +236,7 @@ const BillingPage = () => {
                        required
                        type="number" 
                        placeholder="0.00"
-                       className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
+                       className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
                        value={newInv.amount}
                        onChange={(e) => setNewInv({...newInv, amount: Number(e.target.value)})}
                      />
@@ -246,7 +246,7 @@ const BillingPage = () => {
                      <input 
                        required
                        type="date" 
-                       className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
+                       className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
                        value={newInv.dueDate}
                        onChange={(e) => setNewInv({...newInv, dueDate: e.target.value})}
                      />
@@ -258,12 +258,12 @@ const BillingPage = () => {
                      required
                      type="text" 
                      placeholder="e.g. 27AAAAA0000A1Z5"
-                     className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950 uppercase"
+                     className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950 uppercase"
                      value={newInv.gst}
                      onChange={(e) => setNewInv({...newInv, gst: e.target.value})}
                    />
                 </div>
-                <button type="submit" className="w-full mt-6 py-3 bg-blue-600 text-white rounded-[32px] font-black text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95">
+                <button type="submit" className="w-full mt-6 py-3 bg-blue-600 text-white rounded-[32px] font-bold text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95">
                   Commit Invoice to Ledger
                 </button>
               </form>
