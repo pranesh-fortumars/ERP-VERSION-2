@@ -68,7 +68,7 @@ const DashboardPage = () => {
             <FiGlobe className="animate-spin-slow" /> Global Command Infrastructure Alpha-9
           </div>
           <h1 className="text-4xl font-black tracking-tighter text-slate-900 uppercase leading-none">Enterprise Matrix</h1>
-          <p className="text-slate-700 font-bold text-sm mt-3 flex items-center gap-2">
+          <p className="text-slate-900 font-bold text-sm mt-3 flex items-center gap-2">
             <FiActivity className="text-blue-600" /> Real-time Node Telemetry & Orchestration Dashboard
           </p>
         </div>
@@ -115,7 +115,7 @@ const DashboardPage = () => {
                 </div>
              </div>
              <div className="relative z-10">
-                <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">{stat.label}</p>
+                <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-2">{stat.label}</p>
                 <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
              </div>
           </div>
@@ -128,11 +128,11 @@ const DashboardPage = () => {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 relative z-10 gap-6">
             <div>
               <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter italic">Throughput Intelligence</h3>
-              <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mt-1">Operational Flux Monitoring</p>
+              <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest mt-1">Operational Flux Monitoring</p>
             </div>
             <div className="flex gap-3">
                {['Revenue Flux', 'Batch Yield'].map((m, i) => (
-                 <button key={i} className={`text-[9px] font-black uppercase tracking-widest px-6 py-2.5 rounded-2xl transition-all ${i === 0 ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-50 text-slate-600 border border-slate-100 hover:bg-white'}`}>
+                 <button key={i} className={`text-[9px] font-black uppercase tracking-widest px-6 py-2.5 rounded-2xl transition-all ${i === 0 ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-50 text-slate-900 border border-slate-100 hover:bg-white'}`}>
                    {m}
                  </button>
                ))}
@@ -163,7 +163,7 @@ const DashboardPage = () => {
                     <FiZap size={28} />
                  </div>
                  <h3 className="text-3xl font-black tracking-tighter mb-4 uppercase italic">System Health</h3>
-                 <p className="text-blue-50 text-sm font-medium leading-relaxed">Infrastructure status is currently <span className="text-white font-black underline decoration-blue-400 underline-offset-4">Optimal</span> across all nodes.</p>
+                 <p className="text-blue-50 text-sm font-bold leading-relaxed">Infrastructure status is currently <span className="text-white font-black underline decoration-blue-400 underline-offset-4">Optimal</span> across all nodes.</p>
               </div>
               <div className="pt-10 border-t border-white/10 flex items-end justify-between relative z-10">
                  <div>
@@ -185,7 +185,7 @@ const DashboardPage = () => {
                    { label: 'BPA Engines', status: 'Scaling', color: 'amber' }
                  ].map((item, i) => (
                    <div key={i} className="flex items-center justify-between group">
-                     <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{item.label}</span>
+                     <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{item.label}</span>
                      <span className={`text-[9px] font-black uppercase px-4 py-1.5 rounded-xl border shadow-sm ${
                        item.color === 'emerald' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
                        item.color === 'blue' ? 'bg-blue-50 text-blue-600 border-blue-100' :
@@ -202,7 +202,7 @@ const DashboardPage = () => {
         <div className="p-10 border-b border-slate-50 flex flex-col md:flex-row justify-between items-center gap-10 bg-slate-50/20">
            <div>
               <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter italic">Incident Tracking Ledger</h3>
-              <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mt-1">Real-time Node Telemetry Log</p>
+              <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest mt-1">Real-time Node Telemetry Log</p>
            </div>
            <span className="text-[10px] font-black text-white bg-slate-900 px-6 py-2.5 rounded-2xl uppercase tracking-widest">
               {incidents.filter(i => i.status !== 'Resolved').length} Pending Vectors
@@ -219,16 +219,16 @@ const DashboardPage = () => {
                    }`} />
                    <div>
                       <p className="text-sm font-black text-slate-900 uppercase tracking-tight group-hover:text-blue-600 transition-colors">{inc.type}</p>
-                      <p className="text-[9px] font-black text-slate-600 uppercase tracking-[0.2em] mt-1">{inc.id} • {inc.time}</p>
+                      <p className="text-[9px] font-black text-slate-900 uppercase tracking-[0.2em] mt-1">{inc.id} • {inc.time}</p>
                    </div>
                 </div>
                 <div className="flex items-center gap-10">
                    <div className="text-right hidden md:block">
-                      <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-1">Severity</p>
-                      <p className={`text-[10px] font-black uppercase ${inc.severity === 'High' ? 'text-rose-600' : 'text-slate-600'}`}>{inc.severity}</p>
+                      <p className="text-[9px] font-black text-slate-900 uppercase tracking-widest mb-1">Severity</p>
+                      <p className={`text-[10px] font-black uppercase ${inc.severity === 'High' ? 'text-rose-600' : 'text-slate-900'}`}>{inc.severity}</p>
                    </div>
                    <span className={`px-6 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border border-slate-100 ${
-                     inc.status === 'Resolved' ? 'bg-emerald-50 text-emerald-600' : 'bg-white text-slate-600'
+                     inc.status === 'Resolved' ? 'bg-emerald-50 text-emerald-600' : 'bg-white text-slate-900'
                    }`}>
                       {inc.status}
                    </span>
@@ -259,20 +259,20 @@ const DashboardPage = () => {
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Log Global Incident</h2>
-                  <p className="text-[10px] font-black text-slate-600 mt-2 uppercase tracking-[0.3em]">Critical Infrastructure Telemetry</p>
+                  <p className="text-[10px] font-black text-slate-900 mt-2 uppercase tracking-[0.3em]">Critical Infrastructure Telemetry</p>
                 </div>
                 <button onClick={() => setIsModalOpen(false)} className="p-4 hover:bg-slate-50 rounded-2xl transition-all"><FiX size={24} /></button>
               </div>
 
               <form onSubmit={handleAddIncident} className="space-y-10">
                 <div className="space-y-4">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Incident Classification</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Incident Classification</label>
                   <input required type="text" placeholder="e.g. Node Cluster Desync" className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900" 
                          value={newIncident.type} onChange={(e) => setNewIncident({...newIncident, type: e.target.value})} />
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Severity Vector</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Severity Vector</label>
                     <select className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900 appearance-none"
                             value={newIncident.severity} onChange={(e) => setNewIncident({...newIncident, severity: e.target.value})}>
                       <option>Low</option>
@@ -281,7 +281,7 @@ const DashboardPage = () => {
                     </select>
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Origin Node</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Origin Node</label>
                     <input required type="text" placeholder="e.g. Unit-7A" className="w-full bg-slate-50 border-none rounded-3xl py-6 px-8 text-sm font-black outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-900"
                            value={newIncident.node} onChange={(e) => setNewIncident({...newIncident, node: e.target.value})} />
                   </div>
@@ -304,7 +304,7 @@ const DashboardPage = () => {
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none">Audit Engine</h2>
-                  <p className="text-[10px] font-black text-slate-600 mt-2 uppercase tracking-[0.3em]">System Identity & Access Logs</p>
+                  <p className="text-[10px] font-black text-slate-900 mt-2 uppercase tracking-[0.3em]">System Identity & Access Logs</p>
                 </div>
                 <button onClick={() => setIsAuditOpen(false)} className="p-4 hover:bg-slate-50 rounded-2xl transition-all"><FiX size={28} /></button>
               </div>
@@ -316,9 +316,9 @@ const DashboardPage = () => {
                             <FiShield className="text-blue-600" size={20} />
                             <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Access Authorized</span>
                          </div>
-                         <span className="text-[9px] font-bold text-slate-600">14:02:{10+log} AM</span>
+                         <span className="text-[9px] font-bold text-slate-900">14:02:{10+log} AM</span>
                       </div>
-                      <p className="text-xs font-bold text-slate-600 leading-relaxed uppercase tracking-tight">
+                      <p className="text-xs font-bold text-slate-900 leading-relaxed uppercase tracking-tight">
                          User <span className="text-blue-600">Admin_Root</span> initiated metadata sync for Node cluster {log}A. Security check: <span className="text-emerald-500 underline decoration-emerald-200">Passed</span>.
                       </p>
                    </div>

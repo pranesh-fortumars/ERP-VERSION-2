@@ -40,15 +40,15 @@ const ManufacturingPage = () => {
              <FiCpu className="animate-spin-slow" /> Manufacturing Execution System Active
           </div>
           <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">Floor Intelligence</h1>
-          <p className="text-slate-700 font-bold text-sm mt-2 flex items-center gap-2">
+          <p className="text-slate-900 font-bold text-sm mt-2 flex items-center gap-2">
             <FiActivity className="text-blue-500" /> Real-time OEE & Neural Production Analytics
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiUpload /> Floor Sync
            </button>
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiDownload /> Audit Export
            </button>
            <button 
@@ -69,7 +69,7 @@ const ManufacturingPage = () => {
                <FiActivity className="animate-pulse" /> Live Stream Node-4A
             </div>
             <h2 className="text-4xl font-black text-white tracking-tighter uppercase leading-none">High-Speed <br />Assembly Line</h2>
-            <p className="text-blue-50 text-xs font-medium max-w-sm">Autonomous robotic matrix with real-time desync correction and AI-driven quality validation protocols active.</p>
+            <p className="text-blue-50 text-xs font-bold max-w-sm">Autonomous robotic matrix with real-time desync correction and AI-driven quality validation protocols active.</p>
          </div>
       </div>
 
@@ -88,7 +88,7 @@ const ManufacturingPage = () => {
               {stat.icon}
             </div>
             <div>
-              <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">{stat.label}</p>
+              <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-2">{stat.label}</p>
               <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
               <p className="text-[9px] font-black text-emerald-500 mt-2 uppercase tracking-widest">{stat.change} vs Last Shift</p>
             </div>
@@ -126,7 +126,7 @@ const ManufacturingPage = () => {
                     className={`h-full ${m.color}`} 
                   />
                 </div>
-                <div className="flex justify-between items-center text-[8px] font-black text-slate-600 uppercase tracking-widest mt-2 px-1">
+                <div className="flex justify-between items-center text-[8px] font-black text-slate-900 uppercase tracking-widest mt-2 px-1">
                    <span>Unit Integrity</span>
                    <span>{m.health}%</span>
                 </div>
@@ -139,7 +139,7 @@ const ManufacturingPage = () => {
           <div className="p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50/30">
              <div>
                  <h3 className="text-sm font-black tracking-widest text-slate-900 uppercase leading-none">Work Order Backlog</h3>
-                <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-1">Real-time batch progress</p>
+                <p className="text-[9px] font-bold text-slate-900 uppercase tracking-widest mt-1">Real-time batch progress</p>
              </div>
              <button className="text-[9px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-4 py-2 rounded-xl border border-blue-100">View High Priority</button>
           </div>
@@ -148,7 +148,7 @@ const ManufacturingPage = () => {
               <div key={i} className="p-6 flex items-center justify-between group hover:bg-slate-50 transition-all cursor-pointer">
                 <div>
                    <p className="text-xs font-black text-slate-900 uppercase tracking-tight">{job.part}</p>
-                   <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">{job.id} • {job.startTime}</p>
+                   <p className="text-[9px] font-bold text-slate-900 uppercase tracking-widest mt-0.5">{job.id} • {job.startTime}</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-right">
@@ -185,7 +185,7 @@ const ManufacturingPage = () => {
               <div className="flex justify-between items-start mb-8">
                 <div>
                   <h2 className="text-2xl font-bold tracking-tight text-slate-900 uppercase">New Work Order</h2>
-                  <p className="text-[9px] font-bold text-slate-600 mt-1 uppercase tracking-widest">Execute Production Cycle</p>
+                  <p className="text-[9px] font-bold text-slate-900 mt-1 uppercase tracking-widest">Execute Production Cycle</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
@@ -197,7 +197,7 @@ const ManufacturingPage = () => {
 
               <form className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Inventory SKU / Part Part</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Inventory SKU / Part Part</label>
                   <input 
                     required
                     type="text" 
@@ -207,7 +207,7 @@ const ManufacturingPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Target Volume</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Target Volume</label>
                     <input 
                       required
                       type="number" 
@@ -216,7 +216,7 @@ const ManufacturingPage = () => {
                     />
                   </div>
                    <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Priority Matrix</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Priority Matrix</label>
                     <select className="w-full bg-slate-50 border-none rounded-lg py-4 px-6 text-xs outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900 font-bold appearance-none">
                       <option>Low</option>
                       <option>Med</option>

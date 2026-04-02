@@ -56,7 +56,7 @@ const ReportGenerationPage = () => {
             <FiLayers /> Intelligence Engine v3.2
           </div>
           <h1 className="text-4xl font-black tracking-tight text-slate-900 uppercase">Analytical Intelligence</h1>
-          <p className="text-slate-700 font-medium tracking-tight mt-1 flex items-center gap-2">
+          <p className="text-slate-900 font-bold tracking-tight mt-1 flex items-center gap-2">
             <FiBarChart2 className="text-blue-500" /> High-Fidelity Business Process Reporting Cluster
           </p>
         </div>
@@ -102,9 +102,9 @@ const ReportGenerationPage = () => {
             <h2 className="text-[11px] font-black text-blue-600 mb-8 uppercase tracking-[0.3em]">Execution Parameters</h2>
             <div className="space-y-8 relative z-10">
               <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Analytical Domain</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Analytical Domain</label>
                 <div className="relative group/select">
-                  <FiPieChart className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-600 group-hover/select:text-blue-500 transition-colors" />
+                  <FiPieChart className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-900 group-hover/select:text-blue-500 transition-colors" />
                   <select 
                     value={reportType} 
                     onChange={(e) => setReportType(e.target.value)}
@@ -120,9 +120,9 @@ const ReportGenerationPage = () => {
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Temporal Horizon</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Temporal Horizon</label>
                 <div className="relative group/select">
-                  <FiBarChart2 className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-600 group-hover/select:text-blue-500 transition-colors" />
+                  <FiBarChart2 className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-900 group-hover/select:text-blue-500 transition-colors" />
                   <select 
                     className="w-full bg-slate-50  border-none rounded-2xl py-4.5 pl-14 pr-6 text-xs font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 appearance-none cursor-pointer"
                   >
@@ -139,10 +139,10 @@ const ReportGenerationPage = () => {
                   <p className="text-[10px] font-black uppercase text-blue-500 tracking-[0.2em] mb-2 leading-none">Status: Stable</p>
                   <div className="flex items-center justify-between">
                       <span className="text-xs font-black text-slate-900 text-slate-900">Last Compilation</span>
-                      <span className="text-[10px] font-bold text-slate-600">Mar 28, 2024</span>
+                      <span className="text-[10px] font-bold text-slate-900">Mar 28, 2024</span>
                   </div>
                 </div>
-                <p className="text-[10px] text-slate-600 font-bold px-3 leading-relaxed uppercase tracking-tight">
+                <p className="text-[10px] text-slate-900 font-bold px-3 leading-relaxed uppercase tracking-tight">
                   Reports are cryptographically hashed and committed to the secure audit ledger automatically.
                 </p>
               </div>
@@ -155,12 +155,12 @@ const ReportGenerationPage = () => {
                 {templates.map((tpl, i) => (
                   <div key={i} className="flex items-center justify-between group cursor-pointer">
                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-slate-50  rounded-xl flex items-center justify-center text-slate-600 group-hover:text-blue-600 group-hover:bg-blue-50 transition-all">
+                        <div className="w-10 h-10 bg-slate-50  rounded-xl flex items-center justify-center text-slate-900 group-hover:text-blue-600 group-hover:bg-blue-50 transition-all">
                            <FiFileText size={18} />
                         </div>
                         <div>
-                           <p className="text-xs font-black text-slate-700 text-slate-600 group-hover:text-blue-600 transition-colors">{tpl.name}</p>
-                           <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">{tpl.cluster} • {tpl.frequency}</p>
+                           <p className="text-xs font-black text-slate-900 text-slate-900 group-hover:text-blue-600 transition-colors">{tpl.name}</p>
+                           <p className="text-[9px] font-bold text-slate-900 uppercase tracking-widest mt-0.5">{tpl.cluster} • {tpl.frequency}</p>
                         </div>
                      </div>
                      <FiArrowUpRight className="text-slate-300 group-hover:text-blue-500 transition-all" />
@@ -177,7 +177,7 @@ const ReportGenerationPage = () => {
               <div className="flex items-center justify-between mb-12">
                  <div>
                    <h3 className="text-2xl font-black text-slate-900 text-slate-900 tracking-tighter uppercase leading-none mb-1">Fiscal Trajectory</h3>
-                   <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest">Revenue Vectors & Performance Anchors</p>
+                   <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Revenue Vectors & Performance Anchors</p>
                  </div>
                  <div className="flex items-center gap-3 text-emerald-500 bg-emerald-500/10 px-5 py-2 rounded-2xl border border-emerald-500/10 font-black text-xs">
                     <FiArrowUpRight /> +14.2% Growth
@@ -225,7 +225,7 @@ const ReportGenerationPage = () => {
                    {inventoryData.map((item, i) => (
                      <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-transparent hover:border-blue-500/10 transition-all">
                         <div className="w-2.5 h-2.5 rounded-full shadow-lg" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
-                        <span className="text-[9px] font-black text-slate-700 uppercase tracking-tight truncate">{item.name}</span>
+                        <span className="text-[9px] font-black text-slate-900 uppercase tracking-tight truncate">{item.name}</span>
                      </div>
                    ))}
                 </div>
@@ -237,7 +237,7 @@ const ReportGenerationPage = () => {
                     <FiDownload size={36} />
                  </div>
                  <h4 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tighter leading-none italic">Automated Archival</h4>
-                 <p className="text-xs font-bold text-slate-600 leading-relaxed max-w-[240px] mx-auto mb-12 uppercase tracking-widest">
+                 <p className="text-xs font-bold text-slate-900 leading-relaxed max-w-[240px] mx-auto mb-12 uppercase tracking-widest">
                    Enable scheduled delivery of <span className="text-blue-600">Encrypted Analytical Clusters</span> to authorized stakeholders.
                  </p>
                  <button className="py-6 bg-blue-600 text-white rounded-[32px] text-[10px] font-black uppercase tracking-[0.4em] hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-95 mx-auto px-16">
@@ -268,7 +268,7 @@ const ReportGenerationPage = () => {
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase leading-none mb-2">Register Blueprint</h2>
-                  <p className="text-slate-700 font-black text-[10px] uppercase tracking-[0.3em]">Analytical Intelligence Manifest</p>
+                  <p className="text-slate-900 font-black text-[10px] uppercase tracking-[0.3em]">Analytical Intelligence Manifest</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
@@ -280,7 +280,7 @@ const ReportGenerationPage = () => {
 
               <form onSubmit={handleAddTemplate} className="space-y-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Template Designation</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Template Designation</label>
                   <input 
                     required
                     type="text" 
@@ -292,7 +292,7 @@ const ReportGenerationPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Target Cluster</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Target Cluster</label>
                     <select 
                       className="w-full bg-slate-50  border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 appearance-none cursor-pointer"
                       value={newTemplate.cluster}
@@ -305,7 +305,7 @@ const ReportGenerationPage = () => {
                     </select>
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 ml-1">Temporal Frequency</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900 ml-1">Temporal Frequency</label>
                     <select 
                       className="w-full bg-slate-50  border-none rounded-2xl py-5 px-8 text-sm font-black outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-900 appearance-none cursor-pointer"
                       value={newTemplate.frequency}

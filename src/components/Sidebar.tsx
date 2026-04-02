@@ -55,14 +55,14 @@ const Sidebar = () => {
              </div>
              <div>
                <h1 className="text-lg font-black tracking-tighter text-slate-900 uppercase italic leading-none">PRO <span className="text-blue-600">ERP</span></h1>
-               <p className="text-[8px] font-black text-slate-600 uppercase tracking-[0.3em] leading-none mt-1">Industrial Command</p>
+               <p className="text-[8px] font-black text-slate-800 uppercase tracking-[0.3em] leading-none mt-1">Industrial Command</p>
              </div>
           </div>
         </div>
 
         {/* Multi-Instance Selector (Tenant Switcher) */}
         <div className="mb-8 relative">
-           <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest ml-3 mb-3">Enterprise Node</p>
+           <p className="text-[9px] font-black text-blue-600 uppercase tracking-widest ml-3 mb-3">Enterprise Node</p>
            <button 
              onClick={() => setIsInstanceSelectorOpen(!isInstanceSelectorOpen)}
              className={`w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all duration-300 ${isInstanceSelectorOpen ? 'bg-blue-50 border-blue-200' : 'bg-slate-50/50 border-slate-100 hover:border-blue-500/20'}`}
@@ -73,10 +73,10 @@ const Sidebar = () => {
                  </div>
                  <div className="overflow-hidden">
                     <p className="text-[10px] font-black text-slate-900 uppercase truncate leading-none mb-1">{activeInstance.name}</p>
-                    <p className="text-[8px] font-bold text-slate-600 uppercase tracking-[0.1em]">{activeInstance.location}</p>
+                    <p className="text-[8px] font-black text-slate-800 uppercase tracking-[0.1em]">{activeInstance.location}</p>
                  </div>
               </div>
-              <FiChevronDown className={`text-slate-600 transition-transform duration-300 ${isInstanceSelectorOpen ? 'rotate-180 text-blue-600' : ''}`} />
+              <FiChevronDown className={`text-slate-900 transition-transform duration-300 ${isInstanceSelectorOpen ? 'rotate-180 text-blue-600' : ''}`} />
            </button>
 
            <AnimatePresence>
@@ -96,12 +96,12 @@ const Sidebar = () => {
                      }}
                      className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all text-left group hover:bg-blue-50 ${activeInstance.id === instance.id ? 'bg-blue-50' : ''}`}
                    >
-                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-[10px] font-black transition-colors ${activeInstance.id === instance.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-blue-600 group-hover:text-white'}`}>
+                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-[10px] font-black transition-colors ${activeInstance.id === instance.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-900 group-hover:bg-blue-600 group-hover:text-white'}`}>
                         {instance.id.split('-')[1]}
                      </div>
                      <div className="overflow-hidden">
-                        <p className={`text-[10px] font-black uppercase leading-none mb-1 ${activeInstance.id === instance.id ? 'text-blue-600' : 'text-slate-600 group-hover:text-blue-600'}`}>{instance.name}</p>
-                        <p className="text-[8px] font-bold text-slate-600 uppercase">{instance.location}</p>
+                        <p className={`text-[10px] font-black uppercase leading-none mb-1 ${activeInstance.id === instance.id ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>{instance.name}</p>
+                        <p className="text-[8px] font-bold text-slate-900 uppercase">{instance.location}</p>
                      </div>
                    </button>
                  ))}
@@ -126,7 +126,7 @@ const Sidebar = () => {
                     className={`flex items-center gap-4 px-5 py-3 rounded-2xl transition-all duration-300 group relative ${
                       isActive 
                         ? 'text-blue-600 bg-blue-50/50' 
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-slate-50/50'
+                        : 'text-slate-900 hover:text-blue-600 hover:bg-slate-50/50'
                     }`}
                   >
                     {isActive && (
@@ -135,10 +135,10 @@ const Sidebar = () => {
                         className="absolute left-0 top-2 bottom-2 w-1.5 bg-blue-600 rounded-r-full shadow-[0_0_10px_rgba(37,99,235,0.4)]"
                       />
                     )}
-                    <span className={`text-xl transition-all duration-500 ${isActive ? 'text-blue-600 scale-110 drop-shadow-[0_0_8px_rgba(37,99,235,0.2)]' : 'text-slate-600 group-hover:text-blue-600 group-hover:scale-110'}`}>
+                    <span className={`text-xl transition-all duration-500 ${isActive ? 'text-blue-600 scale-110 drop-shadow-[0_0_8px_rgba(37,99,235,0.2)]' : 'text-slate-900 group-hover:text-blue-600 group-hover:scale-110'}`}>
                       {item.icon}
                     </span>
-                    <span className={`text-[11px] font-black uppercase tracking-[0.15em] shrink-0 ${isActive ? 'text-blue-600' : 'text-slate-700 font-bold'}`}>{item.label}</span>
+                    <span className={`text-[11px] font-black uppercase tracking-[0.15em] shrink-0 ${isActive ? 'text-blue-600' : 'text-slate-900 font-bold'}`}>{item.label}</span>
                   </Link>
                 </li>
               );
@@ -172,7 +172,7 @@ const Sidebar = () => {
            {/* Multi-Industry Quick Switcher (Mobile) */}
            <button 
              onClick={() => setIsInstanceSelectorOpen(!isInstanceSelectorOpen)}
-             className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-600 active:scale-90 transition-all font-black text-[10px]"
+             className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-900 active:scale-90 transition-all font-black text-[10px]"
            >
               {activeInstance.id.split('-')[1]}
            </button>
@@ -203,7 +203,7 @@ const Sidebar = () => {
                        {activeInstance.id.split('-')[1]}
                     </div>
                     <h2 className="text-xs font-black text-slate-900 uppercase tracking-widest">{activeInstance.name}</h2>
-                    <p className="text-[9px] text-slate-600 font-bold uppercase mt-1">Cluster {activeInstance.id}</p>
+                    <p className="text-[9px] text-slate-900 font-bold uppercase mt-1">Cluster {activeInstance.id}</p>
                  </div>
 
                  <nav className="overflow-y-auto flex-1 no-scrollbar pr-2 mb-8">
@@ -218,7 +218,7 @@ const Sidebar = () => {
                             className={`flex items-center gap-5 px-6 py-4 rounded-2xl transition-all ${
                               isActive 
                                 ? 'bg-blue-600 text-white shadow-2xl shadow-blue-600/30' 
-                                : 'text-slate-700 hover:text-blue-600 hover:bg-slate-50'
+                                : 'text-slate-900 hover:text-blue-600 hover:bg-slate-50'
                             }`}
                           >
                             <span className="text-2xl">{item.icon}</span>
@@ -236,7 +236,7 @@ const Sidebar = () => {
                        <p className="text-xs font-black text-slate-900 uppercase">Arjun S.</p>
                        <p className="text-[9px] text-blue-600 font-bold uppercase">Node Operator</p>
                     </div>
-                    <button className="ml-auto w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600">
+                    <button className="ml-auto w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-900">
                        <FiSettings size={14} />
                     </button>
                 </div>
@@ -276,7 +276,7 @@ const Sidebar = () => {
                   <div className="flex justify-between items-start mb-8">
                      <div>
                         <h3 className="text-2xl font-black text-slate-900 tracking-tighter uppercase leading-none">Select Instance</h3>
-                        <p className="text-[9px] font-black text-slate-600 mt-2 uppercase tracking-[0.2em]">Global EPR Deployment Switcher</p>
+                        <p className="text-[9px] font-black text-slate-900 mt-2 uppercase tracking-[0.2em]">Global EPR Deployment Switcher</p>
                      </div>
                      <button onClick={() => setIsInstanceSelectorOpen(false)} className="p-3 bg-slate-50 rounded-2xl"><FiX /></button>
                   </div>
@@ -287,12 +287,12 @@ const Sidebar = () => {
                           onClick={() => { setActiveInstance(instance); setIsInstanceSelectorOpen(false); }}
                           className={`w-full p-6 rounded-3xl border transition-all flex items-center gap-4 ${activeInstance.id === instance.id ? 'bg-blue-50 border-blue-600/30' : 'bg-white border-slate-100 hover:border-blue-500/20'}`}
                         >
-                           <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg ${activeInstance.id === instance.id ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-100 text-slate-600'}`}>
+                           <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg ${activeInstance.id === instance.id ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-100 text-slate-900'}`}>
                               {instance.id.split('-')[1]}
                            </div>
                            <div className="text-left overflow-hidden">
                               <p className="font-black text-slate-900 uppercase text-sm leading-none mb-1 truncate">{instance.name}</p>
-                              <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">{instance.location}</p>
+                              <p className="text-[9px] font-black text-slate-900 uppercase tracking-widest">{instance.location}</p>
                            </div>
                         </button>
                      ))}

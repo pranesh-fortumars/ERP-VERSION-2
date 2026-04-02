@@ -53,12 +53,12 @@ const ProductManagementPage = () => {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 border-slate-200">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Product Lifecycle</h1>
-          <p className="text-slate-700 text-slate-700 text-sm font-medium mt-1 flex items-center gap-2">
+          <p className="text-slate-900 text-slate-900 text-sm font-bold mt-1 flex items-center gap-2">
             <FiCpu className="text-blue-600" /> Enterprise SKU Orchestration • Catalog Master 01
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <button className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-600 text-slate-600 hover:bg-slate-50 shadow-sm transition-all">
+          <button className="px-6 py-2.5 bg-white  border border-slate-200 border-slate-200 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-900 text-slate-900 hover:bg-slate-50 shadow-sm transition-all">
             EXPORT LEDGER
           </button>
           <button 
@@ -73,7 +73,7 @@ const ProductManagementPage = () => {
       {/* Filter Section */}
       <div className="industrial-card p-6 flex flex-col md:flex-row items-center gap-6">
         <div className="relative flex-1 group w-full">
-          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-blue-500 transition-colors" />
+          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-900 group-focus-within:text-blue-500 transition-colors" />
           <input 
             type="text" 
             placeholder="Search by SKU designation or vendor portfolio..."
@@ -84,7 +84,7 @@ const ProductManagementPage = () => {
         </div>
         <div className="flex flex-wrap gap-3 w-full md:w-auto">
           <div className="flex items-center gap-3 bg-white  px-4 py-3 rounded-lg border border-slate-200 border-slate-200 shadow-sm group">
-            <FiFilter className="text-slate-600 group-hover:text-blue-500 transition-colors" />
+            <FiFilter className="text-slate-900 group-hover:text-blue-500 transition-colors" />
             <select 
               className="bg-transparent text-[10px] font-bold uppercase tracking-widest outline-none dark:text-slate-200 appearance-none cursor-pointer min-w-[120px]"
               value={categoryFilter}
@@ -94,7 +94,7 @@ const ProductManagementPage = () => {
             </select>
           </div>
           <div className="flex items-center gap-3 bg-white  px-4 py-3 rounded-lg border border-slate-200 border-slate-200 shadow-sm group">
-            <FiLayers className="text-slate-600 group-hover:text-blue-500 transition-colors" />
+            <FiLayers className="text-slate-900 group-hover:text-blue-500 transition-colors" />
             <select 
               className="bg-transparent text-[10px] font-bold uppercase tracking-widest outline-none dark:text-slate-200 appearance-none cursor-pointer min-w-[140px]"
               value={sortBy}
@@ -155,18 +155,18 @@ const ProductManagementPage = () => {
               <div className="p-8 flex flex-col flex-1">
                 <div className="flex-1">
                    <h3 className="text-lg font-bold text-slate-900 text-slate-900 uppercase leading-none group-hover:text-blue-600 transition-colors mb-3">{product.name}</h3>
-                   <p className="text-[9px] font-bold text-slate-600 dark:text-slate-700 uppercase tracking-widest flex items-center gap-2">
+                   <p className="text-[9px] font-bold text-slate-900 dark:text-slate-900 uppercase tracking-widest flex items-center gap-2">
                      <FiTruck className="text-blue-500" /> {product.supplier}
                    </p>
                 </div>
                 
                 <div className="mt-8 pt-6 border-t border-slate-100 border-slate-200/80 flex items-end justify-between">
                   <div>
-                    <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest mb-1.5">UNIT VALUATION</p>
+                    <p className="text-[8px] font-black text-slate-900 uppercase tracking-widest mb-1.5">UNIT VALUATION</p>
                     <p className="text-xl font-bold text-slate-900 text-slate-900 tracking-tight">₹{product.price.toLocaleString('en-IN')}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest mb-1.5">UNITS IN NODE</p>
+                    <p className="text-[8px] font-black text-slate-900 uppercase tracking-widest mb-1.5">UNITS IN NODE</p>
                     <div className="flex items-center gap-2 justify-end px-3 py-1 bg-slate-50  rounded">
                       <span className={`w-1.5 h-1.5 rounded-full ${Number(product.stock) < 100 ? 'bg-rose-500 animate-pulse' : 'bg-emerald-500'}`} />
                       <p className={`text-xs font-bold ${Number(product.stock) < 100 ? 'text-rose-600' : 'text-slate-900 text-slate-900'}`}>
@@ -200,7 +200,7 @@ const ProductManagementPage = () => {
                <div className="flex justify-between items-start mb-10">
                 <div>
                   <h2 className="text-2xl font-bold tracking-tight text-slate-900 text-slate-900 uppercase leading-none">Register Strategic SKU</h2>
-                  <p className="text-[9px] font-bold text-slate-600 mt-1 uppercase tracking-widest">Catalog Master Infrastructure</p>
+                  <p className="text-[9px] font-bold text-slate-900 mt-1 uppercase tracking-widest">Catalog Master Infrastructure</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
@@ -212,7 +212,7 @@ const ProductManagementPage = () => {
 
               <form onSubmit={handleAddProduct} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Asset Designation</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Asset Designation</label>
                   <input 
                     required
                     type="text" 
@@ -223,7 +223,7 @@ const ProductManagementPage = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Vendor Portfolio</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Vendor Portfolio</label>
                   <input 
                     required
                     type="text" 
@@ -235,7 +235,7 @@ const ProductManagementPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Valuation (₹)</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Valuation (₹)</label>
                     <input 
                       required
                       type="number" 
@@ -246,7 +246,7 @@ const ProductManagementPage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600">Opening Stock</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Opening Stock</label>
                     <input 
                       required
                       type="number" 
