@@ -94,30 +94,37 @@ const BillingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="industrial-card p-10 bg-white  rounded-[40px] border border-slate-200 border-slate-200 shadow-sm flex items-center gap-10 group hover:border-blue-500/50 transition-all duration-500"
+            className="industrial-card p-10 flex flex-col justify-between bg-white border border-slate-100 shadow-sm rounded-[40px] hover:shadow-2xl transition-all duration-700 relative overflow-hidden group"
           >
-            <div className={`p-8 rounded-[32px] ${stat.bg} ${stat.color} shadow-inner group-hover:scale-110 transition-transform duration-700 ring-1 ring-black/5`}>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
+            <div className={`w-14 h-14 rounded-[24px] flex items-center justify-center text-white shadow-xl group-hover:rotate-12 transition-transform text-3xl ${stat.bg.replace('500/10', '600')} ${stat.color.replace('text-', 'bg-')} shadow-inner group-hover:scale-110 transition-transform duration-700`}>
               {stat.icon}
             </div>
-            <div>
-              <p className="text-[14px] font-bold text-slate-950 dark:text-slate-950 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
-              <h4 className="text-3xl font-bold tracking-tight text-slate-950 text-slate-950 leading-none">{stat.value}</h4>
+            <div className="mt-8">
+              <p className="text-[14px] font-bold text-slate-950 uppercase tracking-[0.3em] leading-none mb-3">{stat.label}</p>
+              <h4 className="text-3xl font-serif-professional tracking-tight text-slate-950 leading-none">{stat.value}</h4>
             </div>
           </motion.div>
         ))}
       </div>
 
       {/* Invoice Ledger */}
-      <div className="industrial-card bg-white  rounded-[40px] border border-slate-200 border-slate-200 shadow-sm overflow-hidden flex flex-col">
-        <div className="p-10 border-b border-slate-100 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-8 bg-slate-50/20 /10">
-          <div className="relative w-full xl:max-w-xl group">
+      <div className="industrial-card p-10 flex flex-col relative overflow-hidden bg-white border border-slate-100 shadow-sm rounded-[40px] animate-fade-up group">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-[0.03] rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 relative z-10 gap-8">
+          <div>
+             <h3 className="text-3xl font-serif-professional tracking-tight text-slate-950 uppercase tracking-tight ">Financial Registry</h3>
+             <p className="text-[14px] font-bold text-slate-950 uppercase tracking-widest mt-1">Fiscal Record Orchestration</p>
+          </div>
+          <div className="flex flex-col md:flex-row gap-6 w-full md:w-auto">
+            <div className="relative w-full xl:max-w-xl group">
             <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-500 transition-colors w-5 h-5" />
             <input 
               type="text" 
               placeholder="Search invoice registry, client descriptor, or GST identifier..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white  border-none rounded-[24px] py-4.5 pl-14 pr-6 text-xl font-bold focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-950 shadow-inner"
+              className="w-full bg-slate-50/50 border border-slate-100 rounded-[24px] py-4 pl-14 pr-6 text-base font-medium focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-950 focus:bg-white shadow-sm"
             />
           </div>
           <div className="flex flex-wrap justify-center gap-3">
@@ -130,6 +137,7 @@ const BillingPage = () => {
                 {s}
               </button>
             ))}
+          </div>
           </div>
         </div>
 
