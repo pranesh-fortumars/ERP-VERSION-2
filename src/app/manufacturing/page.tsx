@@ -61,40 +61,40 @@ const ManufacturingPage = () => {
       {/* Structural Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100">
-             <FiCpu className="animate-spin-slow" /> Manufacturing Execution System Active
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-50 text-blue-600 text-[10px] font-bold  tracking-widest mb-4 border border-blue-100">
+             <FiCpu className="animate-spin-slow" /> Production System Active
           </div>
-          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">{activeIndustry.name} Floor</h1>
+          <h1 className="text-4xl font-bold text-slate-900  tracking-tighter leading-none">{activeIndustry.name} Floor</h1>
           <p className="text-slate-900 font-bold text-sm mt-2 flex items-center gap-2">
             <FiActivity className="text-blue-500" /> Production Analytics for {activeIndustry.location} for {activeIndustry.location}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
            
-           <button onClick={handleFloorSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
-             {isSyncing ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isSyncing ? 'Optimizing...' : 'Floor Sync'}
+           <button onClick={handleFloorSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-bold  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             {isSyncing ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isSyncing ? 'Optimizing...' : 'Sync Floor'}
            </button>
-           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
-             <FiDownload /> Audit Export
+           <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-2xl text-[10px] font-bold  tracking-widest text-slate-900 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
+             <FiDownload /> Report Export
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-10 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-10 py-3.5 bg-blue-600 text-white rounded-2xl text-[10px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> New Work Order
            </button>
         </div>
       </div>
 
-      {/* Industrial Digital Twin (Replaces Image) */}
-      <div className="h-64 w-full rounded-3xl overflow-hidden border border-blue-500/20 bg-blue-600 p-8 flex flex-col justify-between relative group shadow-2xl">
+      {/* Shift Operations View (Replaces Image) */}
+      <div className="h-64 w-full rounded-[40px] overflow-hidden border border-blue-500/20 bg-blue-600 p-8 flex flex-col justify-between relative group shadow-xl">
          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
          
          <div className="relative z-10 space-y-4 max-w-md">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-white/20 text-white text-[10px] font-black uppercase tracking-widest mb-2 backdrop-blur">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-white/20 text-white text-[10px] font-bold  tracking-widest mb-2 backdrop-blur">
                <FiActivity className="animate-pulse" /> Live Stream Node-4A
             </div>
-            <h2 className="text-4xl font-black text-white tracking-tighter uppercase leading-none">High-Speed <br />Assembly Line</h2>
+            <h2 className="text-4xl font-bold text-white tracking-tighter  leading-none">High-Speed <br />Assembly Line</h2>
             <p className="text-blue-50 text-xs font-bold max-w-sm">Autonomous robotic matrix with real-time desync correction and AI-driven quality validation protocols active.</p>
          </div>
       </div>
@@ -103,8 +103,8 @@ const ManufacturingPage = () => {
         {stats.map((stat, i) => (
           <motion.div 
             key={i}
-            whileHover={{ y: -5 }}
-            className="industrial-card p-8 flex flex-col justify-between bg-white border border-slate-200 shadow-sm rounded-3xl"
+            whileHover={{ y: -10, transition: { duration: 0.5, ease: 'easeOut' } }}
+            className="industrial-card p-8 flex flex-col justify-between bg-white border border-slate-200 shadow-sm rounded-[40px]"
           >
             <div className={`p-4 rounded-2xl ${
               stat.color === 'blue' ? 'bg-blue-600/10 text-blue-600' :
@@ -114,18 +114,18 @@ const ManufacturingPage = () => {
               {stat.icon}
             </div>
             <div>
-              <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-2">{stat.label}</p>
-              <h3 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
-              <p className="text-[9px] font-black text-emerald-500 mt-2 uppercase tracking-widest">{stat.change} vs Last Shift</p>
+              <p className="text-[10px] font-bold text-slate-900  tracking-widest mb-2">{stat.label}</p>
+              <h3 className="text-3xl font-bold text-slate-900 tracking-tighter leading-none">{stat.value}</h3>
+              <p className="text-[9px] font-bold text-emerald-500 mt-2  tracking-widest">{stat.change} vs Last Shift</p>
             </div>
           </motion.div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        <div className="xl:col-span-2 industrial-card flex flex-col bg-white border border-slate-200 shadow-sm rounded-3xl overflow-hidden">
+        <div className="xl:col-span-2 industrial-card flex flex-col bg-white border border-slate-200 shadow-sm rounded-[40px] overflow-hidden">
           <div className="p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50/30">
-            <h3 className="text-sm font-black tracking-widest text-slate-900 uppercase leading-none">Node Cluster Performance</h3>
+            <h3 className="text-sm font-bold tracking-widest text-slate-900  leading-none">Machine Performance Status</h3>
             <div className="flex gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500" />
               <span className="w-2 h-2 rounded-full bg-blue-500" />
@@ -140,9 +140,9 @@ const ManufacturingPage = () => {
                      <div className={`p-2 rounded ${m.status === 'Optimal' ? 'bg-blue-500/10 text-blue-500' : 'bg-sky-500/10 text-sky-500'}`}>
                         <FiActivity className="w-4 h-4" />
                      </div>
-                     <h4 className="text-xs font-bold uppercase tracking-tight">{m.machine}</h4>
+                     <h4 className="text-xs font-bold  tracking-tight">{m.machine}</h4>
                   </div>
-                  <span className={`px-4 py-1 rounded-xl text-[8px] font-black uppercase tracking-widest border ${m.status === 'Optimal' ? 'bg-blue-50 text-blue-600 border-blue-100' : 'bg-rose-50 text-rose-600 border-rose-100 animate-pulse'}`}>{m.status}</span>
+                  <span className={`px-4 py-1 rounded-xl text-[8px] font-bold  tracking-widest border ${m.status === 'Optimal' ? 'bg-blue-50 text-blue-600 border-blue-100' : 'bg-rose-50 text-rose-600 border-rose-100 animate-pulse'}`}>{m.status}</span>
                 </div>
                 <div className="h-1.5 w-full bg-blue-50 rounded-full overflow-hidden">
                   <motion.div 
@@ -152,8 +152,8 @@ const ManufacturingPage = () => {
                     className={`h-full ${m.color}`} 
                   />
                 </div>
-                <div className="flex justify-between items-center text-[8px] font-black text-slate-900 uppercase tracking-widest mt-2 px-1">
-                   <span>Unit Integrity</span>
+                <div className="flex justify-between items-center text-[8px] font-bold text-slate-900  tracking-widest mt-2 px-1">
+                   <span>Equipment Health</span>
                    <span>{m.health}%</span>
                 </div>
               </div>
@@ -161,24 +161,24 @@ const ManufacturingPage = () => {
           </div>
         </div>
 
-        <div className="industrial-card bg-white border border-slate-200 shadow-sm rounded-3xl overflow-hidden flex flex-col">
+        <div className="industrial-card bg-white border border-slate-200 shadow-sm rounded-[40px] overflow-hidden flex flex-col">
           <div className="p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50/30">
              <div>
-                 <h3 className="text-sm font-black tracking-widest text-slate-900 uppercase leading-none">Work Order Backlog</h3>
-                <p className="text-[9px] font-bold text-slate-900 uppercase tracking-widest mt-1">Real-time batch progress</p>
+                 <h3 className="text-sm font-bold tracking-widest text-slate-900  leading-none">Production Schedule</h3>
+                <p className="text-[9px] font-bold text-slate-900  tracking-widest mt-1">Real-time batch progress</p>
              </div>
-             <button className="text-[9px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-4 py-2 rounded-xl border border-blue-100">View High Priority</button>
+             <button className="text-[9px] font-bold text-blue-600  tracking-widest bg-blue-50 px-4 py-2 rounded-xl border border-blue-100">View High Priority</button>
           </div>
           <div className="divide-y divide-slate-100">
             {jobs.map((job, i) => (
               <div key={i} className="p-6 flex items-center justify-between group hover:bg-slate-50 transition-all cursor-pointer">
                 <div>
-                   <p className="text-xs font-black text-slate-900 uppercase tracking-tight">{job.part}</p>
-                   <p className="text-[9px] font-bold text-slate-900 uppercase tracking-widest mt-0.5">{job.id} • {job.startTime}</p>
+                   <p className="text-xs font-bold text-slate-900  tracking-tight">{job.part}</p>
+                   <p className="text-[9px] font-bold text-slate-900  tracking-widest mt-0.5">{job.id} • {job.startTime}</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-right">
-                     <p className="text-[10px] font-black text-blue-600">{job.progress}%</p>
+                     <p className="text-[10px] font-bold text-blue-600">{job.progress}%</p>
                      <div className="w-12 h-1 bg-slate-100 rounded-full mt-1 overflow-hidden">
                         <div className="h-full bg-blue-600" style={{ width: `${job.progress}%` }} />
                      </div>
@@ -206,12 +206,12 @@ const ManufacturingPage = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-lg bg-white rounded-3xl p-10 border border-slate-200 shadow-2xl"
+              className="relative w-full max-w-lg bg-white rounded-[40px] p-10 border border-slate-200 shadow-xl"
             >
               <div className="flex justify-between items-start mb-8">
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 uppercase">New Work Order</h2>
-                  <p className="text-[9px] font-bold text-slate-900 mt-1 uppercase tracking-widest">Execute Production Cycle</p>
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 ">New Work Order</h2>
+                  <p className="text-[9px] font-bold text-slate-900 mt-1  tracking-widest">Execute Production Cycle</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
@@ -223,7 +223,7 @@ const ManufacturingPage = () => {
 
               <form onSubmit={handleOrderSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Inventory SKU / Part Part</label>
+                  <label className="text-[10px] font-bold  tracking-widest text-slate-900">Inventory SKU / Part Part</label>
                   <input 
                     required
                     type="text" 
@@ -233,7 +233,7 @@ const ManufacturingPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Target Volume</label>
+                    <label className="text-[10px] font-bold  tracking-widest text-slate-900">Production Target</label>
                     <input 
                       required
                       type="number" 
@@ -242,7 +242,7 @@ const ManufacturingPage = () => {
                     />
                   </div>
                    <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-900">Priority Matrix</label>
+                    <label className="text-[10px] font-bold  tracking-widest text-slate-900">Order Priority</label>
                     <select name="priority" className="w-full bg-slate-50 border-none rounded-lg py-4 px-6 text-xs outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-900 font-bold appearance-none">
                       <option>Low</option>
                       <option>Med</option>
@@ -252,8 +252,8 @@ const ManufacturingPage = () => {
                   </div>
                 </div>
                 
-                <button disabled={isPending} type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-black text-[10px] uppercase tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all disabled:opacity-50">
-                  {isPending ? 'Synchronizing MES...' : 'Initialize Work Order'}
+                <button disabled={isPending} type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-bold text-[10px]  tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all disabled:opacity-50">
+                  {isPending ? 'Synchronizing MES...' : 'Start Production Order'}
                 </button>
               </form>
             </motion.div>

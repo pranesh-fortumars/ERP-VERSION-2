@@ -2,8 +2,6 @@
 
 @layer base {
   :root {
-    /* Standard CSS Custom Properties for Tailwind v4 Theme Tokens */
-    /* This notation is understood by both Tailwind v4 and the IDE's CSS validator */
     --color-blue-50: #f0f9ff;
     --color-blue-100: #e0f2fe;
     --color-blue-200: #bae6fd;
@@ -16,7 +14,6 @@
     --color-blue-900: #0c4a6e;
     --color-blue-950: #082f49;
 
-    /* ERP Pro Theme Core Variables */
     --background-start: #ffffff;
     --background-end: #f8fafc;
     --foreground: #0f172a;
@@ -28,11 +25,11 @@
     --card-border: #e2e8f0;
     --border-accent: #0ea5e9;
     --accent: #38bdf8;
-    --muted: #475569; /* Darkened from Slate-500 (#64748b) to Slate-600 for better visibility */
+    --muted: #64748b;
     --glass: rgba(255, 255, 255, 0.9);
     --glass-border: rgba(14, 165, 233, 0.15);
     --ring: rgba(14, 165, 233, 0.1);
-    --radius-premium: 56px;
+    --radius-premium: 40px;
     --radius-standard: 20px;
     --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
   }
@@ -41,9 +38,14 @@
     background-color: var(--background-start);
     color: var(--foreground);
     min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-image: 
       radial-gradient(at 0% 0%, hsla(200, 100%, 98%, 1) 0px, transparent 50%),
       radial-gradient(at 100% 0%, hsla(190, 100%, 98%, 1) 0px, transparent 50%);
+  }
+
+  h1, h2, h3, h4, .font-professional {
+    font-family: 'Outfit', sans-serif;
   }
 
   * {
@@ -52,80 +54,78 @@
 }
 
 @layer components {
-  /* Industrial Card Structure using Standard CSS */
+  /* Premium Industrial Card */
   .industrial-card {
     background-color: white;
-    border: 1px solid rgba(14, 165, 233, 0.15);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.03);
     border-radius: var(--radius-premium);
-    backdrop-filter: blur(8px);
-    transition: all 500ms;
+    backdrop-filter: blur(12px);
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .industrial-card:hover {
-    box-shadow: 0 12px 40px rgba(0, 68, 127, 0.05);
-    border-color: rgba(14, 165, 233, 0.5);
-    transform: translateY(-4px);
+    box-shadow: 0 20px 50px -12px rgba(2, 132, 199, 0.08);
+    border-color: rgba(14, 165, 233, 0.3);
+    transform: translateY(-6px);
   }
 
   .glass-header {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid #f1f5f9;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
     position: sticky;
     top: 0;
     z-index: 40;
   }
 
-  .sidebar-standard {
-    background-color: white;
-    border-right: 1px solid #f1f5f9;
-  }
-
   .btn-primary {
     background-color: var(--color-blue-600);
     color: white;
-    transition: all 300ms;
-    box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.2);
-    border-radius: 0.75rem;
+    transition: all 400ms;
+    box-shadow: 0 10px 20px -5px rgba(2, 132, 199, 0.3);
+    border-radius: 18px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     font-size: 11px;
-    padding: 0.75rem 1.5rem;
+    padding: 0.85rem 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .btn-primary:hover {
     background-color: var(--color-blue-700);
+    box-shadow: 0 15px 25px -5px rgba(2, 132, 199, 0.4);
+    transform: translateY(-2px);
   }
 
-  .btn-primary:active {
-    transform: scale(0.95);
-  }
-
-  .data-table-row {
-    border-bottom: 1px solid #f8fafc;
+  .btn-secondary {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    border-radius: 18px;
+    padding: 0.85rem 1.75rem;
+    font-weight: 700;
+    font-size: 11px;
     transition: all 300ms;
   }
 
-  .data-table-row:hover {
-    background-color: rgba(240, 249, 255, 0.3);
-    transform: scale(1.002);
+  .btn-secondary:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 }
 
-.grid-dots {
-  background-image: radial-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px);
-  background-size: 24px 24px;
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 .no-scrollbar::-webkit-scrollbar {
