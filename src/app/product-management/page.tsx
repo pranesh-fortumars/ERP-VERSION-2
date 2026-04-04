@@ -54,7 +54,7 @@ const ProductManagementPage = () => {
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-950 text-slate-950 uppercase leading-none">Product Lifecycle</h1>
           <p className="text-slate-950 text-slate-950 text-xl font-bold mt-1 flex items-center gap-2">
-            <FiCpu className="text-blue-600" /> Enterprise SKU Orchestration • Catalog Master 01
+            <FiCpu className="text-indigo-600" /> Enterprise SKU Orchestration • Catalog Master 01
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
@@ -63,7 +63,7 @@ const ProductManagementPage = () => {
           </button>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="px-8 py-2.5 bg-blue-600 text-white rounded-lg text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-lg shadow-blue-600/20 active:scale-95 transition-all flex items-center gap-2"
+            className="px-8 py-2.5 bg-indigo-600 text-white rounded-lg text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-lg shadow-indigo-600/20 active:scale-95 transition-all flex items-center gap-2"
           >
             <FiPlus className="w-4 h-4" /> Register SKU
           </button>
@@ -73,18 +73,18 @@ const ProductManagementPage = () => {
       {/* Filter Section */}
       <div className="industrial-card animate-fade-up p-6 flex flex-col md:flex-row items-center gap-6">
         <div className="relative flex-1 group w-full">
-          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-500 transition-colors" />
+          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-indigo-500 transition-colors" />
           <input 
             type="text" 
             placeholder="Search by SKU designation or vendor portfolio..."
-            className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-3 pl-11 pr-4 text-base font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-slate-950"
+            className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-3 pl-11 pr-4 text-base font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 transition-all text-slate-950"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <div className="flex flex-wrap gap-3 w-full md:w-auto">
           <div className="flex items-center gap-3 bg-white  px-4 py-3 rounded-lg border border-slate-200 border-slate-200 shadow-sm group">
-            <FiFilter className="text-slate-950 group-hover:text-blue-500 transition-colors" />
+            <FiFilter className="text-slate-950 group-hover:text-indigo-500 transition-colors" />
             <select 
               className="bg-transparent text-[14px] font-bold uppercase tracking-widest outline-none dark:text-slate-200 appearance-none cursor-pointer min-w-[120px]"
               value={categoryFilter}
@@ -94,7 +94,7 @@ const ProductManagementPage = () => {
             </select>
           </div>
           <div className="flex items-center gap-3 bg-white  px-4 py-3 rounded-lg border border-slate-200 border-slate-200 shadow-sm group">
-            <FiLayers className="text-slate-950 group-hover:text-blue-500 transition-colors" />
+            <FiLayers className="text-slate-950 group-hover:text-indigo-500 transition-colors" />
             <select 
               className="bg-transparent text-[14px] font-bold uppercase tracking-widest outline-none dark:text-slate-200 appearance-none cursor-pointer min-w-[140px]"
               value={sortBy}
@@ -125,8 +125,8 @@ const ProductManagementPage = () => {
               {/* CSS Schematic Visualization */}
               <div className="w-full h-48 relative bg-white border-b border-slate-800 overflow-hidden">
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#2563eb 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
-                <div className="absolute top-1/2 left-0 w-full h-px bg-blue-500/20" />
-                <div className="absolute top-0 left-1/2 w-px h-full bg-blue-500/20" />
+                <div className="absolute top-1/2 left-0 w-full h-px bg-indigo-500/20" />
+                <div className="absolute top-0 left-1/2 w-px h-full bg-indigo-500/20" />
                 
                 <motion.div 
                   animate={{ 
@@ -136,27 +136,27 @@ const ProductManagementPage = () => {
                   transition={{ duration: 4, repeat: Infinity }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="w-24 h-24 border-2 border-blue-500/30 rounded-full animate-spin-slow" />
-                  <div className="absolute w-16 h-16 border border-blue-400/20 rounded-lg transform rotate-45" />
+                  <div className="w-24 h-24 border-2 border-indigo-500/30 rounded-full animate-spin-slow" />
+                  <div className="absolute w-16 h-16 border border-indigo-400/20 rounded-lg transform rotate-45" />
                 </motion.div>
 
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-blue-600 text-white text-[12px] font-serif-professional tracking-wide  tracking-widest rounded shadow-lg">
+                  <span className="px-3 py-1 bg-indigo-600 text-white text-[12px] font-serif-professional tracking-wide  tracking-widest rounded shadow-lg">
                     {product.category}
                   </span>
                 </div>
                 
                 <div className="absolute bottom-4 right-4 flex items-center gap-2">
-                   <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                   <span className="text-[12px] font-black text-blue-500/80 uppercase tracking-widest">Active Matrix</span>
+                   <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                   <span className="text-[12px] font-black text-indigo-500/80 uppercase tracking-widest">Active Matrix</span>
                 </div>
               </div>
 
               <div className="p-8 flex flex-col flex-1">
                 <div className="flex-1">
-                   <h3 className="text-base font-bold text-slate-950 text-slate-950 uppercase leading-none group-hover:text-blue-600 transition-colors mb-3">{product.name}</h3>
+                   <h3 className="text-base font-bold text-slate-950 text-slate-950 uppercase leading-none group-hover:text-indigo-600 transition-colors mb-3">{product.name}</h3>
                    <p className="text-[13px] font-bold text-slate-950 dark:text-slate-950 uppercase tracking-widest flex items-center gap-2">
-                     <FiTruck className="text-blue-500" /> {product.supplier}
+                     <FiTruck className="text-indigo-500" /> {product.supplier}
                    </p>
                 </div>
                 
@@ -217,7 +217,7 @@ const ProductManagementPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Industrial Transformer" 
-                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 text-slate-950"
                     value={newProduct.name}
                     onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
                   />
@@ -228,7 +228,7 @@ const ProductManagementPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Tata Systems" 
-                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 text-slate-950"
                     value={newProduct.supplier}
                     onChange={(e) => setNewProduct({...newProduct, supplier: e.target.value})}
                   />
@@ -240,7 +240,7 @@ const ProductManagementPage = () => {
                       required
                       type="number" 
                       placeholder="0.00" 
-                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 text-slate-950"
                       value={newProduct.price}
                       onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
                     />
@@ -251,13 +251,13 @@ const ProductManagementPage = () => {
                       required
                       type="number" 
                       placeholder="000" 
-                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 text-slate-950"
                       value={newProduct.stock}
                       onChange={(e) => setNewProduct({...newProduct, stock: e.target.value})}
                     />
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-black text-[14px] uppercase tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all">
+                <button type="submit" className="w-full mt-4 py-4 bg-indigo-600 text-white rounded-lg font-black text-[14px] uppercase tracking-[0.4em] shadow-xl shadow-indigo-600/20 active:scale-95 transition-all">
                   Commit SKU to Ledger
                 </button>
               </form>

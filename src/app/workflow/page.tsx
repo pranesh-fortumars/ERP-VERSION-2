@@ -15,7 +15,7 @@ const WorkflowPage = () => {
   const workflowNodes = [
     { id: '1', title: 'Procurement Request', status: 'Completed', color: 'bg-emerald-500', icon: <FiShoppingCart className="w-8 h-8" />, time: '12m' },
     { id: '2', title: 'Vendor Approval', status: 'Completed', color: 'bg-indigo-500', icon: <FiBriefcase className="w-8 h-8" />, time: '45m' },
-    { id: '3', title: 'Quality Assurance', status: 'In Progress', color: 'bg-blue-600', icon: <FiActivity className="w-8 h-8" />, time: 'ACT' },
+    { id: '3', title: 'Quality Assurance', status: 'In Progress', color: 'bg-indigo-600', icon: <FiActivity className="w-8 h-8" />, time: 'ACT' },
     { id: '4', title: 'Logistics Deployment', status: 'Pending', color: 'bg-slate-300', icon: <FiTruck className="w-8 h-8" />, time: 'TBD' }
   ];
 
@@ -46,18 +46,18 @@ const WorkflowPage = () => {
       {/* Structural Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[14px] font-serif-professional tracking-wide  tracking-widest mb-4 border border-blue-100">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[14px] font-serif-professional tracking-wide  tracking-widest mb-4 border border-indigo-100">
             <FiGlobe className="animate-spin-slow" /> Orchestration Infrastructure Active
           </div>
           <h1 className="text-3xl font-black text-slate-950 uppercase tracking-tight leading-none">Workflow Matrix</h1>
           <p className="text-slate-950 font-bold text-xl mt-2 flex items-center gap-2">
-            <FiLayers className="text-blue-500" /> BPA Pipeline Execution & Node Tracking
+            <FiLayers className="text-indigo-500" /> BPA Pipeline Execution & Node Tracking
           </p>
         </div>
         <div className="flex items-center gap-4">
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-8 py-3.5 bg-blue-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-8 py-3.5 bg-indigo-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Initialize Pipe
            </button>
@@ -68,12 +68,12 @@ const WorkflowPage = () => {
         {workflows.map((flow) => (
           <div 
             key={flow.id}
-            className={`industrial-card animate-fade-up p-10 bg-white group transition-all duration-700 ${activeWorkflow === flow.id ? 'ring-2 ring-blue-600/20 shadow-2xl' : ''}`}
+            className={`industrial-card animate-fade-up p-10 bg-white group transition-all duration-700 ${activeWorkflow === flow.id ? 'ring-2 ring-indigo-600/20 shadow-2xl' : ''}`}
             onClick={() => setActiveWorkflow(flow.id)}
           >
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-16 px-4">
               <div className="flex items-center gap-6">
-                 <div className={`w-16 h-16 rounded-[32px] flex items-center justify-center text-white shadow-2xl shadow-blue-600/30 ${flow.status === 'Active' ? 'bg-blue-600' : 'bg-amber-500'}`}>
+                 <div className={`w-16 h-16 rounded-[32px] flex items-center justify-center text-white shadow-2xl shadow-indigo-600/30 ${flow.status === 'Active' ? 'bg-indigo-600' : 'bg-amber-500'}`}>
                     <FiZap size={28} />
                  </div>
                  <div>
@@ -86,9 +86,9 @@ const WorkflowPage = () => {
               <div className="flex items-center gap-10">
                  <div className="text-center">
                     <p className="text-[14px] font-black text-slate-950 uppercase tracking-widest mb-1">Efficiency Delta</p>
-                    <p className="text-3xl font-black text-blue-600  tracking-tight">{flow.efficiency}</p>
+                    <p className="text-3xl font-black text-indigo-600  tracking-tight">{flow.efficiency}</p>
                  </div>
-                 <button className="p-4 bg-slate-50 rounded-[24px] text-slate-950 hover:text-blue-600 hover:bg-blue-50 transition-all border border-slate-100">
+                 <button className="p-4 bg-slate-50 rounded-[24px] text-slate-950 hover:text-indigo-600 hover:bg-indigo-50 transition-all border border-slate-100">
                     <FiSettings size={20} />
                  </button>
               </div>
@@ -101,7 +101,7 @@ const WorkflowPage = () => {
                    initial={{ width: 0 }}
                    animate={{ width: flow.status === 'Active' ? '70%' : '100%' }}
                    transition={{ duration: 2 }}
-                   className={`h-full ${flow.status === 'Active' ? 'bg-blue-600' : 'bg-amber-400'}`}
+                   className={`h-full ${flow.status === 'Active' ? 'bg-indigo-600' : 'bg-amber-400'}`}
                  />
               </div>
 
@@ -111,7 +111,7 @@ const WorkflowPage = () => {
                     <motion.div 
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       className={`w-24 h-24 rounded-[36px] flex items-center justify-center text-white shadow-2xl transition-all duration-500 border-8 border-white ${node.color}
-                      ${node.status === 'In Progress' ? 'ring-8 ring-blue-600/10' : ''}`}
+                      ${node.status === 'In Progress' ? 'ring-8 ring-indigo-600/10' : ''}`}
                     >
                       {node.icon}
                       {node.status === 'Completed' && (
@@ -122,7 +122,7 @@ const WorkflowPage = () => {
                     </motion.div>
                     <div className="mt-8 text-center px-4">
                        <h4 className="text-[13px] font-black text-slate-950 uppercase tracking-widest leading-none mb-2">{node.title}</h4>
-                       <p className={`text-[12px] font-serif-professional tracking-wide  tracking-[0.3em] ${node.status === 'Pending' ? 'text-slate-300' : 'text-blue-600'}`}>
+                       <p className={`text-[12px] font-serif-professional tracking-wide  tracking-[0.3em] ${node.status === 'Pending' ? 'text-slate-300' : 'text-indigo-600'}`}>
                          {node.status} • {node.time}
                        </p>
                     </div>
@@ -149,7 +149,7 @@ const WorkflowPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-xl bg-white rounded-[40px] p-8 md:p-10 border border-blue-500/10 shadow-3xl"
+              className="relative w-full max-w-xl bg-white rounded-[40px] p-8 md:p-10 border border-indigo-500/10 shadow-3xl"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
@@ -170,13 +170,13 @@ const WorkflowPage = () => {
                   <input 
                     type="text" 
                     placeholder="e.g. Asset Recovery Pipeline Delta" 
-                    className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950 shadow-inner"
+                    className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-indigo-600/5 font-black text-slate-950 shadow-inner"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-4">
                     <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950 ml-1">Priority Vector</label>
-                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950 appearance-none shadow-inner">
+                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-indigo-600/5 font-black text-slate-950 appearance-none shadow-inner">
                       <option>Standard</option>
                       <option>High Priority</option>
                       <option>Critical</option>
@@ -184,13 +184,13 @@ const WorkflowPage = () => {
                   </div>
                   <div className="space-y-4">
                     <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950 ml-1">Node Selection</label>
-                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950 appearance-none shadow-inner">
+                    <select className="w-full bg-slate-50 border-none rounded-[32px] py-4 px-8 text-xl outline-none focus:ring-4 focus:ring-indigo-600/5 font-black text-slate-950 appearance-none shadow-inner">
                       <option>All Logic Nodes</option>
                       <option>Cluster Alpha Only</option>
                     </select>
                   </div>
                 </div>
-                <button type="button" className="w-full mt-6 py-4 bg-blue-600 text-white rounded-[32px] font-black text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90">
+                <button type="button" className="w-full mt-6 py-4 bg-indigo-600 text-white rounded-[32px] font-black text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-90">
                    Deploy Workflow Orchestration
                 </button>
               </form>

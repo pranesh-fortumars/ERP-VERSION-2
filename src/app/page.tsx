@@ -14,20 +14,20 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white  text-slate-950 dark:text-slate-100 font-sans selection:bg-blue-500/10 transition-colors">
+    <div className="min-h-screen bg-white text-slate-950 font-sans selection:bg-indigo-500/10 transition-colors">
       
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-slate-200 border-slate-200 bg-white/80 /80 backdrop-blur-md">
         <div className="max-w-[1600px] mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white">
+            <div className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center text-white">
               <FiServer size={18} />
             </div>
-            <span className="text-xl font-black tracking-tight">PRO<span className="text-blue-600">ERP</span></span>
+            <span className="text-xl font-black tracking-tight">PRO<span className="text-indigo-600">ERP</span></span>
           </div>
           <div className="hidden md:flex items-center gap-10">
              {['Solutions', 'Features', 'Compliance', 'Security'].map(item => (
-               <button key={item} className="text-base font-serif-professional tracking-wide  tracking-widest text-slate-950 hover:text-blue-600 transition-colors">{item}</button>
+               <button key={item} className="text-[14px] font-black uppercase tracking-[0.3em] text-slate-950 hover:text-indigo-600 transition-colors">{item}</button>
              ))}
           </div>
           <Link href="/dashboard">
@@ -46,20 +46,20 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-blue-600/20 bg-blue-600/5 text-blue-600 text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] mb-10">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-indigo-600/20 bg-indigo-600/5 text-indigo-600 text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] mb-10">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse" />
               v2.8.0 Enterprise Release
             </div>
             <h1 className="text-4xl md:text-6xl font-serif-professional tracking-tight font-black tracking-tight leading-[1.05] mb-10 text-slate-950">
               The Industrial <br />
-              <span className="text-blue-600">Operating System</span>
+              <span className="text-indigo-600">Operating System</span>
             </h1>
             <p className="text-base text-slate-800 max-w-lg font-bold leading-relaxed mb-12">
               Mission-critical ERP & Business Process Automation infrastructure for high-scale Indian manufacturing and corporate giants.
             </p>
             <div className="flex flex-wrap gap-5">
               <Link href="/dashboard">
-                <button className="bg-blue-600 text-white font-black py-4 px-10 rounded-xl shadow-xl shadow-blue-600/20 transition-all flex items-center gap-3 active:scale-95 hover:bg-blue-700">
+                <button className="bg-indigo-600 text-white font-black py-4 px-10 rounded-xl shadow-xl shadow-indigo-600/20 transition-all flex items-center gap-3 active:scale-95 hover:bg-indigo-700">
                   Command Center <FiArrowRight size={18} />
                 </button>
               </Link>
@@ -87,12 +87,12 @@ const LandingPage = () => {
                   <div className="col-span-2 space-y-4">
                      <div className="h-32 bg-white  rounded-lg border border-slate-200 border-slate-200 p-4 shadow-sm">
                         <div className="flex items-center justify-between mb-4">
-                           <div className="w-20 h-2 bg-blue-600/20 rounded" />
-                           <FiTrendingUp className="text-blue-500" />
+                           <div className="w-20 h-2 bg-indigo-600/20 rounded" />
+                           <FiTrendingUp className="text-indigo-500" />
                         </div>
                         <div className="flex items-end gap-2 h-16">
                            {[40, 70, 45, 90, 65, 80, 50].map((h, i) => (
-                             <div key={i} className="flex-1 bg-blue-500/10 dark:bg-blue-500/20 rounded-t" style={{ height: `${h}%` }} />
+                             <div key={i} className="flex-1 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-t" style={{ height: `${h}%` }} />
                            ))}
                         </div>
                      </div>
@@ -102,7 +102,7 @@ const LandingPage = () => {
                            <div className="space-y-2">
                              <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
                              <div className="h-2 w-3/4 bg-slate-100 dark:bg-slate-700 rounded" />
-                             <div className="h-2 w-1/2 bg-blue-500/40 rounded" />
+                             <div className="h-2 w-1/2 bg-indigo-500/40 rounded" />
                            </div>
                         </div>
                         <div className="h-40 bg-white  rounded-lg border border-slate-200 border-slate-200 p-4 shadow-sm">
@@ -110,14 +110,14 @@ const LandingPage = () => {
                            <div className="space-y-2">
                              <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
                              <div className="h-2 w-2/3 bg-slate-100 dark:bg-slate-700 rounded" />
-                             <div className="h-8 w-8 rounded-full border-4 border-blue-600/30 border-t-blue-600 animate-spin mx-auto mt-4" />
+                             <div className="h-8 w-8 rounded-full border-4 border-indigo-600/30 border-t-indigo-600 animate-spin mx-auto mt-4" />
                            </div>
                         </div>
                      </div>
                   </div>
                   <div className="space-y-4">
-                     <div className="h-full bg-blue-600 text-white rounded-lg p-6 flex flex-col justify-between shadow-xl">
-                        <FiDatabase className="text-blue-400" />
+                     <div className="h-full bg-indigo-600 text-white rounded-lg p-6 flex flex-col justify-between shadow-xl">
+                        <FiDatabase className="text-indigo-400" />
                         <div>
                            <p className="text-[14px] font-serif-professional tracking-wide  text-white font-black mb-1">Fiscal Balance</p>
                            <p className="text-3xl font-black tracking-tight">₹42.8 Cr</p>
@@ -130,7 +130,7 @@ const LandingPage = () => {
                   </div>
                </div>
                
-               <div className="absolute inset-0 border-[20px] border-transparent pointer-events-none group-hover:border-blue-600/5 transition-all duration-700" />
+               <div className="absolute inset-0 border-[20px] border-transparent pointer-events-none group-hover:border-indigo-600/5 transition-all duration-700" />
             </div>
 
             {/* Float Cards */}
@@ -162,11 +162,11 @@ const LandingPage = () => {
                 transition={{ delay: i * 0.1 }}
                 className="industrial-card animate-fade-up animate-float p-10 bg-white  group"
               >
-                <div className="w-12 h-12 rounded-lg bg-blue-600/10 dark:bg-blue-600/10 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 mb-8 border border-blue-600/10">
+                <div className="w-12 h-12 rounded-lg bg-indigo-600/10 dark:bg-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 mb-8 border border-indigo-600/10">
                   {f.icon}
                 </div>
-                <h3 className="text-3xl font-serif-professional tracking-tight mb-4 tracking-tight">{f.title}</h3>
-                <p className="text-slate-950 text-slate-950 text-xl leading-relaxed font-bold transition-colors">{f.desc}</p>
+                <h3 className="text-3xl font-serif-professional tracking-tight mb-4 text-slate-950 font-black">{f.title}</h3>
+                <p className="text-slate-800 text-xl leading-relaxed font-bold">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -177,10 +177,10 @@ const LandingPage = () => {
       <footer className="py-20 px-6 border-t border-slate-200 border-slate-200 bg-white ">
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-slate-950 text-base font-serif-professional tracking-wide  tracking-widest">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">
+            <div className="w-6 h-6 bg-indigo-600 rounded flex items-center justify-center text-white">
               <FiLayers size={14} />
             </div>
-            <span className="text-slate-950 text-slate-950">PRO<span className="text-blue-600">ERP</span></span>
+            <span className="text-slate-950">PRO<span className="text-indigo-600">ERP</span></span>
           </div>
           <div className="flex gap-10">
             <span>Platform</span>

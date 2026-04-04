@@ -68,25 +68,25 @@ const AccountingPage = () => {
       {/* Structural Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[13px] font-bold  tracking-widest mb-4 border border-blue-100">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[13px] font-bold  tracking-widest mb-4 border border-indigo-100">
             <FiGlobe className="animate-spin-slow" /> Finance Dashboard Active
           </div>
           <h1 className="text-3xl font-serif-professional tracking-tight text-slate-950  tracking-tight leading-none">Finance Center</h1>
           <p className="text-slate-950 font-bold text-base mt-2 flex items-center gap-2">
-            <FiCreditCard className="text-blue-500" /> Real-time Capital Transactions & Operational Accounting
+            <FiCreditCard className="text-indigo-500" /> Real-time Capital Transactions & Operational Accounting
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
            
            <button onClick={handleLedgerSync} disabled={isSyncing} className="px-6 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[13px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
-             {isSyncing ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isSyncing ? 'Synchronizing...' : 'Sync Accounts'}
+             {isSyncing ? <div className="w-3 h-3 border-2 border-indigo-600/30 border-t-indigo-600 rounded-full animate-spin" /> : <FiUpload />} {isSyncing ? 'Synchronizing...' : 'Sync Accounts'}
            </button>
            <button className="px-6 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[13px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
              <FiDownload /> Export Audit
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-14 py-3 bg-blue-600 text-white rounded-[24px] text-[13px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-14 py-3 bg-indigo-600 text-white rounded-[24px] text-[13px] font-bold  tracking-[0.3em] shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Record Transactions
            </button>
@@ -96,9 +96,9 @@ const AccountingPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {summary.map((stat, i) => (
           <div key={i} className="industrial-card animate-fade-up p-10 flex flex-col justify-between bg-white border border-slate-100 shadow-sm rounded-[40px] hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
-             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
+             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
              <div className="flex justify-between items-start mb-10 relative z-10">
-                <div className="w-14 h-14 bg-blue-600 rounded-[24px] flex items-center justify-center text-white shadow-xl shadow-blue-600/20 group-hover:rotate-12 transition-transform text-3xl">
+                <div className="w-14 h-14 bg-indigo-600 rounded-[24px] flex items-center justify-center text-white shadow-xl shadow-indigo-600/20 group-hover:rotate-12 transition-transform text-3xl">
                    {stat.icon}
                 </div>
                 <span className={`text-[13px] font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 ${stat.isUp ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'}`}>
@@ -121,16 +121,16 @@ const AccountingPage = () => {
           </div>
           <div className="flex gap-4 w-full md:w-auto">
              <div className="relative group flex-1 md:w-80">
-                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-600 transition-colors" />
+                <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-indigo-600 transition-colors" />
                 <input 
                   type="text" 
                   placeholder="ID / Nomenclature Query..." 
-                  className="w-full bg-slate-100/50 border-none rounded-[24px] py-4 pl-16 pr-6 text-xl font-bold outline-none focus:bg-white focus:ring-4 focus:ring-blue-600/5 transition-all text-slate-950"
+                  className="w-full bg-slate-100/50 border-none rounded-[24px] py-4 pl-16 pr-6 text-xl font-bold outline-none focus:bg-white focus:ring-4 focus:ring-indigo-600/5 transition-all text-slate-950"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
              </div>
-             <button className="p-4 bg-white border border-slate-100 rounded-[24px] text-slate-950 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
+             <button className="p-4 bg-white border border-slate-100 rounded-[24px] text-slate-950 hover:text-indigo-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
           </div>
         </div>
 
@@ -147,12 +147,12 @@ const AccountingPage = () => {
             </thead>
             <tbody className="divide-y divide-slate-50">
               {filteredTxns.map((t) => (
-                <tr key={t.id} className="group hover:bg-blue-50/30 transition-all cursor-pointer">
+                <tr key={t.id} className="group hover:bg-indigo-50/30 transition-all cursor-pointer">
                   <td className="py-4 px-14">
-                     <span className="text-xl font-bold text-blue-600  tracking-tight">{t.id}</span>
+                     <span className="text-xl font-bold text-indigo-600  tracking-tight">{t.id}</span>
                   </td>
                   <td className="py-4 px-6">
-                     <p className="text-xl font-bold text-slate-950  group-hover:text-blue-600 transition-colors">{t.description}</p>
+                     <p className="text-xl font-bold text-slate-950  group-hover:text-indigo-600 transition-colors">{t.description}</p>
                      <p className="text-[14px] font-bold text-slate-950  mt-0.5">Corporate Node X-1</p>
                   </td>
                   <td className="py-4 px-6">
@@ -163,7 +163,7 @@ const AccountingPage = () => {
                   <td className="py-4 px-6">
                      <span className={`px-4 py-1.5 rounded-xl text-[14px] font-bold  tracking-widest border ${
                        t.status === 'Cleared' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 
-                       t.status === 'Pending' ? 'bg-amber-50 text-amber-600 border-amber-100' : 'bg-blue-50 text-blue-600 border-blue-100'
+                       t.status === 'Pending' ? 'bg-amber-50 text-amber-600 border-amber-100' : 'bg-indigo-50 text-indigo-600 border-indigo-100'
                      }`}>
                         {t.status}
                      </span>
@@ -193,7 +193,7 @@ const AccountingPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-xl bg-white rounded-[40px] p-10 md:p-10 border border-blue-500/10 shadow-3xl"
+              className="relative w-full max-w-xl bg-white rounded-[40px] p-10 md:p-10 border border-indigo-500/10 shadow-3xl"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
@@ -215,7 +215,7 @@ const AccountingPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Inward Capital Injection: Node Cluster B" 
-                    className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-950"
+                    className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-indigo-600/5 font-bold text-slate-950"
                     value={newTxn.description}
                     onChange={(e) => setNewTxn({...newTxn, description: e.target.value})}
                   />
@@ -227,7 +227,7 @@ const AccountingPage = () => {
                       required
                       type="text" 
                       placeholder="e.g. ₹5,00,000" 
-                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-950"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-indigo-600/5 font-bold text-slate-950"
                       value={newTxn.amount}
                       onChange={(e) => setNewTxn({...newTxn, amount: e.target.value})}
                     />
@@ -235,7 +235,7 @@ const AccountingPage = () => {
                   <div className="space-y-3">
                     <label className="text-[13px] font-bold  tracking-widest text-slate-950 ml-1">Transactions Vector (Type)</label>
                     <select 
-                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-blue-600/5 font-bold text-slate-950 appearance-none"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-base outline-none focus:ring-4 focus:ring-indigo-600/5 font-bold text-slate-950 appearance-none"
                       value={newTxn.type}
                       onChange={(e) => setNewTxn({...newTxn, type: e.target.value})}
                     >
@@ -244,7 +244,7 @@ const AccountingPage = () => {
                     </select>
                   </div>
                 </div>
-                                  <button disabled={isPending} type="submit" className="w-full mt-6 py-4 bg-blue-600 text-white rounded-[24px] font-bold text-[14px]  tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 disabled:opacity-50">
+                                  <button disabled={isPending} type="submit" className="w-full mt-6 py-4 bg-indigo-600 text-white rounded-[24px] font-bold text-[14px]  tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-90 disabled:opacity-50">
                      {isPending ? (
                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                      ) : (

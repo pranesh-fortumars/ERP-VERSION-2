@@ -22,7 +22,7 @@ export const industries: Industry[] = [
     name: 'Pune Manufacturing Hub', 
     location: 'Maharashtra',
     type: 'Manufacturing',
-    accentColor: 'blue',
+    accentColor: 'indigo',
     stats: { revenue: '₹4.2 Cr', throughput: '1,284', efficiency: '94.2%', workforce: '850' }
   },
   { 
@@ -38,7 +38,7 @@ export const industries: Industry[] = [
     name: 'Global R&D Center', 
     location: 'Bangalore',
     type: 'R&D',
-    accentColor: 'indigo',
+    accentColor: 'violet',
     stats: { revenue: '₹1.5 Cr', throughput: '42', efficiency: '99.1%', workforce: '150' }
   },
 ];

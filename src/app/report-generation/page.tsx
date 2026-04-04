@@ -70,12 +70,12 @@ const ReportGenerationPage = () => {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-[13px] font-bold  tracking-[0.2em] mb-4">
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 text-[13px] font-bold  tracking-[0.2em] mb-4">
             <FiLayers /> Intelligence Engine v3.2
           </div>
           <h1 className="text-3xl font-serif-professional tracking-tight tracking-tight text-slate-950 ">Analytical Intelligence</h1>
           <p className="text-slate-950 font-bold tracking-tight mt-1 flex items-center gap-2">
-            <FiBarChart2 className="text-blue-500" /> High-Fidelity Business Process Reporting Cluster
+            <FiBarChart2 className="text-indigo-500" /> High-Fidelity Business Process Reporting Cluster
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
@@ -83,7 +83,7 @@ const ReportGenerationPage = () => {
              onClick={startReportGeneration} disabled={isGenerating || isPending}
              className="px-8 py-3 bg-white border border-slate-200 rounded-[24px] text-[13px] font-bold transition-all flex items-center gap-2  tracking-widest hover:shadow-lg active:scale-95"
            >
-             {isGenerating ? <div className="w-4 h-4 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isGenerating ? 'Archiving...' : 'Import Data'}
+             {isGenerating ? <div className="w-4 h-4 border-2 border-indigo-600/30 border-t-indigo-600 rounded-full animate-spin" /> : <FiUpload />} {isGenerating ? 'Archiving...' : 'Import Data'}
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
@@ -93,7 +93,7 @@ const ReportGenerationPage = () => {
           </button>
           <button 
             onClick={startReportGeneration} disabled={isGenerating || isPending}
-            className="px-10 py-3 bg-blue-600 text-white rounded-[24px] text-[13px] font-bold shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-3  tracking-[0.3em] relative overflow-hidden active:scale-95"
+            className="px-10 py-3 bg-indigo-600 text-white rounded-[24px] text-[13px] font-bold shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all flex items-center gap-3  tracking-[0.3em] relative overflow-hidden active:scale-95"
           >
             <AnimatePresence mode="wait">
               {isGenerating ? (
@@ -114,17 +114,17 @@ const ReportGenerationPage = () => {
         {/* Report Config */}
         <div className="space-y-8">
           <div className="industrial-card bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-1000" />
-            <h2 className="text-[13px] font-bold text-blue-600 mb-8  tracking-[0.3em]">Execution Parameters</h2>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-1000" />
+            <h2 className="text-[13px] font-bold text-indigo-600 mb-8  tracking-[0.3em]">Execution Parameters</h2>
             <div className="space-y-8 relative z-10">
               <div className="space-y-3">
                 <label className="text-[13px] font-bold  tracking-widest text-slate-950 ml-1">Analytical Domain</label>
                 <div className="relative group/select">
-                  <FiPieChart className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-hover/select:text-blue-500 transition-colors" />
+                  <FiPieChart className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-hover/select:text-indigo-500 transition-colors" />
                   <select 
                     value={reportType} 
                     onChange={(e) => setReportType(e.target.value)}
-                    className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 pl-14 pr-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950 appearance-none cursor-pointer"
+                    className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 pl-14 pr-6 text-xl font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950 appearance-none cursor-pointer"
                   >
                     <option>Sales Performance</option>
                     <option>Inventory Health</option>
@@ -138,9 +138,9 @@ const ReportGenerationPage = () => {
               <div className="space-y-3">
                 <label className="text-[13px] font-bold  tracking-widest text-slate-950 ml-1">Temporal Horizon</label>
                 <div className="relative group/select">
-                  <FiBarChart2 className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-hover/select:text-blue-500 transition-colors" />
+                  <FiBarChart2 className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-hover/select:text-indigo-500 transition-colors" />
                   <select 
-                    className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 pl-14 pr-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950 appearance-none cursor-pointer"
+                    className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 pl-14 pr-6 text-xl font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950 appearance-none cursor-pointer"
                   >
                     <option>Last 6 Fiscal Months</option>
                     <option>Quarterly Analysis</option>
@@ -151,8 +151,8 @@ const ReportGenerationPage = () => {
               </div>
 
               <div className="pt-6 space-y-5">
-                <div className="p-6 bg-blue-500/5 /10 rounded-[32px] border border-blue-500/10">
-                  <p className="text-[13px] font-bold  text-blue-500 tracking-[0.2em] mb-2 leading-none">Status: Stable</p>
+                <div className="p-6 bg-indigo-500/5 /10 rounded-[32px] border border-indigo-500/10">
+                  <p className="text-[13px] font-bold  text-indigo-500 tracking-[0.2em] mb-2 leading-none">Status: Stable</p>
                   <div className="flex items-center justify-between">
                       <span className="text-xl font-bold text-slate-950 text-slate-950">Last Compilation</span>
                       <span className="text-[13px] font-bold text-slate-950">Mar 28, 2024</span>
@@ -171,15 +171,15 @@ const ReportGenerationPage = () => {
                 {templates.map((tpl, i) => (
                   <div key={i} className="flex items-center justify-between group cursor-pointer">
                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-slate-50  rounded-xl flex items-center justify-center text-slate-950 group-hover:text-blue-600 group-hover:bg-blue-50 transition-all">
+                        <div className="w-10 h-10 bg-slate-50  rounded-xl flex items-center justify-center text-slate-950 group-hover:text-indigo-600 group-hover:bg-indigo-50 transition-all">
                            <FiFileText size={18} />
                         </div>
                         <div>
-                           <p className="text-xl font-bold text-slate-950 text-slate-950 group-hover:text-blue-600 transition-colors">{tpl.name}</p>
+                           <p className="text-xl font-bold text-slate-950 text-slate-950 group-hover:text-indigo-600 transition-colors">{tpl.name}</p>
                            <p className="text-[14px] font-bold text-slate-950  tracking-widest mt-0.5">{tpl.cluster} • {tpl.frequency}</p>
                         </div>
                      </div>
-                     <FiArrowUpRight className="text-slate-300 group-hover:text-blue-500 transition-all" />
+                     <FiArrowUpRight className="text-slate-300 group-hover:text-indigo-500 transition-all" />
                   </div>
                 ))}
              </div>
@@ -189,7 +189,7 @@ const ReportGenerationPage = () => {
         {/* Visual Analytics */}
         <div className="xl:col-span-2 space-y-8">
            <div className="industrial-card bg-white  rounded-[40px] border border-slate-200 border-slate-200 p-10 shadow-sm relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent opacity-50" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-600 to-transparent opacity-50" />
               <div className="flex items-center justify-between mb-12">
                  <div>
                    <h3 className="text-3xl font-serif-professional tracking-tight text-slate-950 text-slate-950 tracking-tight  leading-none mb-1">Fiscal Trajectory</h3>
@@ -225,7 +225,7 @@ const ReportGenerationPage = () => {
               <div className="industrial-card bg-white rounded-[40px] border border-slate-200 p-10 shadow-sm">
                 <div className="flex items-center justify-between mb-8">
                    <h3 className="text-[13px] font-bold text-slate-950  tracking-[0.3em]">Substrate Mix</h3>
-                   <FiPieChart className="text-blue-500" />
+                   <FiPieChart className="text-indigo-500" />
                 </div>
                 <div style={{ width: '100%', minWidth: 0 }}>
                   <ResponsiveContainer width="100%" height={260}>
@@ -239,7 +239,7 @@ const ReportGenerationPage = () => {
                 </div>
                 <div className="mt-8 grid grid-cols-2 gap-4">
                    {inventoryData.map((item, i) => (
-                     <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 rounded-[24px] border border-transparent hover:border-blue-500/10 transition-all">
+                     <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 rounded-[24px] border border-transparent hover:border-indigo-500/10 transition-all">
                         <div className="w-2.5 h-2.5 rounded-full shadow-lg" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                         <span className="text-[14px] font-bold text-slate-950  tracking-tight truncate">{item.name}</span>
                      </div>
@@ -248,15 +248,15 @@ const ReportGenerationPage = () => {
               </div>
 
               <div className="bg-white border border-slate-100 rounded-[40px] p-8 flex flex-col justify-center text-center relative overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-700">
-                 <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700" />
-                 <div className="w-24 h-24 bg-blue-50 rounded-[36px] flex items-center justify-center mx-auto mb-10 text-blue-600 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 border border-blue-100">
+                 <div className="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700" />
+                 <div className="w-24 h-24 bg-indigo-50 rounded-[36px] flex items-center justify-center mx-auto mb-10 text-indigo-600 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 border border-indigo-100">
                     <FiDownload size={36} />
                  </div>
                  <h4 className="text-3xl font-serif-professional tracking-tight text-slate-950 mb-4  tracking-tight leading-none ">Automated Archival</h4>
                  <p className="text-xl font-bold text-slate-950 leading-relaxed max-w-[240px] mx-auto mb-12  tracking-widest">
-                   Enable scheduled delivery of <span className="text-blue-600">Encrypted Analytical Clusters</span> to authorized stakeholders.
+                   Enable scheduled delivery of <span className="text-indigo-600">Encrypted Analytical Clusters</span> to authorized stakeholders.
                  </p>
-                 <button className="py-4 bg-blue-600 text-white rounded-[32px] text-[13px] font-bold  tracking-[0.4em] hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-95 mx-auto px-10">
+                 <button className="py-4 bg-indigo-600 text-white rounded-[32px] text-[13px] font-bold  tracking-[0.4em] hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20 active:scale-95 mx-auto px-10">
                    Configure cron
                  </button>
               </div>
@@ -279,7 +279,7 @@ const ReportGenerationPage = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg bg-white rounded-[40px] p-8 md:p-16 border border-blue-500/20 shadow-2xl"
+              className="relative w-full max-w-lg bg-white rounded-[40px] p-8 md:p-16 border border-indigo-500/20 shadow-2xl"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
@@ -301,7 +301,7 @@ const ReportGenerationPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Sales Master Audit v3" 
-                    className="w-full bg-slate-50  border-none rounded-[24px] py-3 px-8 text-base font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
+                    className="w-full bg-slate-50  border-none rounded-[24px] py-3 px-8 text-base font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950"
                     value={newTemplate.name}
                     onChange={(e) => setNewTemplate({...newTemplate, name: e.target.value})}
                   />
@@ -310,7 +310,7 @@ const ReportGenerationPage = () => {
                   <div className="space-y-3">
                     <label className="text-[13px] font-bold  tracking-widest text-slate-950 ml-1">Target Cluster</label>
                     <select 
-                      className="w-full bg-slate-50  border-none rounded-[24px] py-3 px-8 text-base font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950 appearance-none cursor-pointer"
+                      className="w-full bg-slate-50  border-none rounded-[24px] py-3 px-8 text-base font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950 appearance-none cursor-pointer"
                       value={newTemplate.cluster}
                       onChange={(e) => setNewTemplate({...newTemplate, cluster: e.target.value})}
                     >
@@ -323,7 +323,7 @@ const ReportGenerationPage = () => {
                   <div className="space-y-3">
                     <label className="text-[13px] font-bold  tracking-widest text-slate-950 ml-1">Temporal Frequency</label>
                     <select 
-                      className="w-full bg-slate-50  border-none rounded-[24px] py-3 px-8 text-base font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950 appearance-none cursor-pointer"
+                      className="w-full bg-slate-50  border-none rounded-[24px] py-3 px-8 text-base font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950 appearance-none cursor-pointer"
                       value={newTemplate.frequency}
                       onChange={(e) => setNewTemplate({...newTemplate, frequency: e.target.value})}
                     >
@@ -334,7 +334,7 @@ const ReportGenerationPage = () => {
                     </select>
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-6 py-4 bg-blue-600 text-white rounded-[32px] font-bold text-xl  tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
+                <button type="submit" className="w-full mt-6 py-4 bg-indigo-600 text-white rounded-[32px] font-bold text-xl  tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
                   <FiPlus /> Commit Template to Registry
                 </button>
               </form>

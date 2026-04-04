@@ -46,20 +46,20 @@ const Sidebar = () => {
       <motion.div 
         animate={{ width: isCollapsed ? 100 : 300 }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="sidebar-standard p-6 hidden lg:flex flex-col h-screen fixed left-0 top-0 z-50 border-r border-blue-500/10 shadow-2xl bg-white overflow-hidden group/sidebar"
+        className="sidebar-standard p-6 hidden lg:flex flex-col h-screen fixed left-0 top-0 z-50 border-r border-indigo-500/10 shadow-2xl bg-white overflow-hidden group/sidebar"
       >
         {/* Brand Header */}
         <div className="flex items-center justify-between mb-8 px-2 mt-4 group">
           <div className={`flex items-center gap-3 overflow-hidden ${isCollapsed ? 'justify-center w-full' : ''}`}>
              <div 
                onClick={toggleCollapse}
-               className="w-10 h-10 bg-blue-600 rounded-[16px] flex items-center justify-center text-white shadow-xl shadow-blue-600/20 group-hover:scale-110 transition-transform duration-500 ring-4 ring-blue-50 cursor-pointer shrink-0"
+               className="w-10 h-10 bg-indigo-600 rounded-[16px] flex items-center justify-center text-white shadow-xl shadow-indigo-600/20 group-hover:scale-110 transition-transform duration-500 ring-4 ring-indigo-50 cursor-pointer shrink-0"
              >
                <FiServer size={20} />
              </div>
              {!isCollapsed && (
                <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
-                 <h1 className="text-xl font-serif-professional font-black tracking-tight text-slate-950 uppercase  leading-none">PRO <span className="text-blue-600">ERP</span></h1>
+                 <h1 className="text-xl font-serif-professional font-black tracking-tight text-slate-950 uppercase  leading-none">PRO <span className="text-indigo-600">ERP</span></h1>
                  <p className="text-[16px] font-black text-slate-800 uppercase tracking-[0.3em] leading-none mt-1">Industrial Command</p>
                </motion.div>
              )}
@@ -70,13 +70,13 @@ const Sidebar = () => {
         <div className={`mb-8 relative ${isCollapsed ? 'flex justify-center' : 'px-2'}`}>
            {!isCollapsed ? (
              <>
-               <p className="text-[18px] font-black text-blue-600 uppercase tracking-widest ml-3 mb-3">Enterprise Node</p>
+               <p className="text-[18px] font-black text-indigo-600 uppercase tracking-widest ml-3 mb-3">Enterprise Node</p>
                <button 
                  onClick={() => setIsInstanceSelectorOpen(!isInstanceSelectorOpen)}
-                 className={`w-full flex items-center justify-between p-3.5 rounded-[32px] border transition-all duration-300 ${isInstanceSelectorOpen ? 'bg-blue-50 border-blue-200' : 'bg-slate-50/50 border-slate-100 hover:border-blue-500/20'}`}
+                 className={`w-full flex items-center justify-between p-3.5 rounded-[32px] border transition-all duration-300 ${isInstanceSelectorOpen ? 'bg-indigo-50 border-indigo-200' : 'bg-slate-50/50 border-slate-100 hover:border-indigo-500/20'}`}
                >
                   <div className="flex items-center gap-3 overflow-hidden text-left">
-                     <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white text-[14px] font-black shrink-0 shadow-lg">
+                     <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-[14px] font-black shrink-0 shadow-lg">
                         {activeInstance.id.split('-')[1]}
                      </div>
                      <div className="overflow-hidden">
@@ -84,13 +84,13 @@ const Sidebar = () => {
                         <p className="text-[16px] font-black text-slate-800 uppercase tracking-[0.1em]">{activeInstance.location}</p>
                      </div>
                   </div>
-                  <FiChevronDown className={`text-slate-950 transition-transform duration-300 ${isInstanceSelectorOpen ? 'rotate-180 text-blue-600' : ''}`} />
+                  <FiChevronDown className={`text-slate-950 transition-transform duration-300 ${isInstanceSelectorOpen ? 'rotate-180 text-indigo-600' : ''}`} />
                </button>
              </>
            ) : (
              <button 
                onClick={() => setIsInstanceSelectorOpen(!isInstanceSelectorOpen)}
-               className={`w-12 h-12 rounded-[32px] border flex items-center justify-center transition-all ${isInstanceSelectorOpen ? 'bg-blue-600 text-white border-blue-600' : 'bg-slate-50 border-slate-100 text-slate-950 hover:border-blue-500'}`}
+               className={`w-12 h-12 rounded-[32px] border flex items-center justify-center transition-all ${isInstanceSelectorOpen ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-slate-50 border-slate-100 text-slate-950 hover:border-indigo-500'}`}
              >
                 <FiGlobe size={20} />
              </button>
@@ -104,7 +104,7 @@ const Sidebar = () => {
                  exit={{ opacity: 0, x: isCollapsed ? 20 : 0, y: isCollapsed ? 0 : -10, scale: 0.95 }}
                  className={`absolute bg-white border border-slate-200 rounded-[32px] shadow-3xl z-[100] p-3 overflow-hidden min-w-[240px] ${isCollapsed ? 'left-0 bottom-0' : 'top-full left-0 right-0'}`}
                >
-                 <p className="text-[14px] font-black text-blue-600 uppercase tracking-[0.2em] mb-3 ml-2">Switch Cluster</p>
+                 <p className="text-[14px] font-black text-indigo-600 uppercase tracking-[0.2em] mb-3 ml-2">Switch Cluster</p>
                  <div className="space-y-1">
                    {industries.map((instance) => (
                      <button
@@ -113,13 +113,13 @@ const Sidebar = () => {
                          setIndustry(instance.id);
                          setIsInstanceSelectorOpen(false);
                        }}
-                       className={`w-full flex items-center gap-3 p-3 rounded-[32px] transition-all text-left group hover:bg-blue-50 ${activeInstance.id === instance.id ? 'bg-blue-50' : ''}`}
+                       className={`w-full flex items-center gap-3 p-3 rounded-[32px] transition-all text-left group hover:bg-indigo-50 ${activeInstance.id === instance.id ? 'bg-indigo-50' : ''}`}
                      >
-                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-[14px] font-black transition-colors ${activeInstance.id === instance.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-100 text-slate-950 group-hover:bg-blue-600 group-hover:text-white'}`}>
+                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-[14px] font-black transition-colors ${activeInstance.id === instance.id ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'bg-slate-100 text-slate-950 group-hover:bg-indigo-600 group-hover:text-white'}`}>
                           {instance.id.split('-')[1]}
                        </div>
                        <div className="overflow-hidden">
-                          <p className={`text-[14px] font-serif-professional tracking-wide  leading-none mb-1 ${activeInstance.id === instance.id ? 'text-blue-600' : 'text-slate-950 group-hover:text-blue-600'}`}>{instance.name}</p>
+                          <p className={`text-[14px] font-serif-professional tracking-wide  leading-none mb-1 ${activeInstance.id === instance.id ? 'text-indigo-600' : 'text-slate-950 group-hover:text-indigo-600'}`}>{instance.name}</p>
                           <p className="text-[14px] font-bold text-slate-950 uppercase opacity-60">{instance.location}</p>
                        </div>
                      </button>
@@ -145,20 +145,20 @@ const Sidebar = () => {
                     href={item.href}
                     className={`flex items-center gap-5 px-6 py-3.5 rounded-[32px] transition-all duration-300 group relative ${
                       isActive 
-                        ? 'text-blue-600 bg-blue-50/50' 
-                        : 'text-slate-950 hover:text-blue-600 hover:bg-slate-50/50'
+                        ? 'text-indigo-600 bg-indigo-50/50' 
+                        : 'text-slate-950 hover:text-indigo-600 hover:bg-slate-50/50'
                     } ${isCollapsed ? 'justify-center px-0' : ''}`}
                   >
                     {isActive && (
                       <motion.div 
                         layoutId="nav-pill"
-                        className={`absolute left-0 top-2 bottom-2 w-2 bg-blue-600 rounded-r-full shadow-[0_0_10px_rgba(37,99,235,0.4)] ${isCollapsed ? 'w-1' : ''}`}
+                        className={`absolute left-0 top-2 bottom-2 w-2 bg-indigo-600 rounded-r-full shadow-[0_0_10px_rgba(37,99,235,0.4)] ${isCollapsed ? 'w-1' : ''}`}
                       />
                     )}
-                    <span className={`text-xl transition-all duration-500 ${isActive ? 'text-blue-600 scale-110 drop-shadow-[0_0_8px_rgba(37,99,235,0.2)]' : 'text-slate-950 group-hover:text-blue-600 group-hover:scale-110'} ${isCollapsed ? 'text-3xl' : ''}`}>
+                    <span className={`text-xl transition-all duration-500 ${isActive ? 'text-indigo-600 scale-110 drop-shadow-[0_0_8px_rgba(37,99,235,0.2)]' : 'text-slate-950 group-hover:text-indigo-600 group-hover:scale-110'} ${isCollapsed ? 'text-3xl' : ''}`}>
                       {item.icon}
                     </span>
-                    {!isCollapsed && <span className={`text-[18px] font-serif-professional tracking-wide  tracking-[0.15em] shrink-0 ${isActive ? 'text-blue-600' : 'text-slate-950 font-bold'}`}>{item.label}</span>}
+                    {!isCollapsed && <span className={`text-[18px] font-serif-professional tracking-wide  tracking-[0.15em] shrink-0 ${isActive ? 'text-indigo-600' : 'text-slate-950 font-bold'}`}>{item.label}</span>}
                     {isCollapsed && (
                       <div className="absolute left-24 bg-slate-900 text-white text-[18px] font-black px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-all uppercase tracking-widest whitespace-nowrap z-[100] border border-white/10 shadow-2xl">
                         {item.label}
@@ -172,14 +172,14 @@ const Sidebar = () => {
         </nav>
 
         <div className="mt-auto pt-6 border-t border-slate-100">
-          <div className={`flex items-center gap-4 px-4 py-4 bg-slate-50/50 rounded-[22px] border border-transparent hover:border-blue-500/20 hover:bg-white transition-all cursor-pointer group shadow-sm ${isCollapsed ? 'justify-center p-2' : ''}`}>
-            <div className="w-11 h-11 rounded-[14px] bg-blue-600 flex items-center justify-center font-black text-white shadow-xl shadow-blue-600/20 group-hover:rotate-12 transition-all shrink-0">
+          <div className={`flex items-center gap-4 px-4 py-4 bg-slate-50/50 rounded-[22px] border border-transparent hover:border-indigo-500/20 hover:bg-white transition-all cursor-pointer group shadow-sm ${isCollapsed ? 'justify-center p-2' : ''}`}>
+            <div className="w-11 h-11 rounded-[14px] bg-indigo-600 flex items-center justify-center font-black text-white shadow-xl shadow-indigo-600/20 group-hover:rotate-12 transition-all shrink-0">
               AS
             </div>
             {!isCollapsed && (
               <div className="flex-1 overflow-hidden">
                 <p className="text-lg font-black truncate text-slate-950 uppercase  leading-tight">Arjun S.</p>
-                <p className="text-[14px] text-blue-600 font-serif-professional tracking-wide  tracking-widest leading-none mt-1 opacity-60">Global Ops Manager</p>
+                <p className="text-[14px] text-indigo-600 font-serif-professional tracking-wide  tracking-widest leading-none mt-1 opacity-60">Global Ops Manager</p>
               </div>
             )}
           </div>
@@ -191,10 +191,10 @@ const Sidebar = () => {
         {/* Mobile Top Bar */}
         <div className="fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-xl border-b border-slate-100 z-[60] flex items-center justify-between px-6">
            <div className="flex items-center gap-3">
-             <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+             <div className="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg">
                 <FiServer size={18} />
              </div>
-             <h1 className="text-xl font-serif-professional font-black tracking-tight text-slate-950 uppercase ">PRO <span className="text-blue-600">ERP</span></h1>
+             <h1 className="text-xl font-serif-professional font-black tracking-tight text-slate-950 uppercase ">PRO <span className="text-indigo-600">ERP</span></h1>
            </div>
            {/* Multi-Industry Quick Switcher (Mobile) */}
            <button 
@@ -226,7 +226,7 @@ const Sidebar = () => {
               >
                  {/* Instance Switcher in Mobile Drawer */}
                  <div className="mb-10 text-center">
-                    <div className="w-16 h-16 bg-blue-600 rounded-[32px] flex items-center justify-center text-white shadow-2xl shadow-blue-600/30 mx-auto mb-4 font-black text-lg">
+                    <div className="w-16 h-16 bg-indigo-600 rounded-[32px] flex items-center justify-center text-white shadow-2xl shadow-indigo-600/30 mx-auto mb-4 font-black text-lg">
                        {activeInstance.id.split('-')[1]}
                     </div>
                     <h2 className="text-lg font-black text-slate-950 uppercase tracking-widest">{activeInstance.name}</h2>
@@ -244,8 +244,8 @@ const Sidebar = () => {
                             onClick={() => setIsNavOpen(false)}
                             className={`flex items-center gap-5 px-6 py-4 rounded-[32px] transition-all ${
                               isActive 
-                                ? 'bg-blue-600 text-white shadow-2xl shadow-blue-600/30' 
-                                : 'text-slate-950 hover:text-blue-600 hover:bg-slate-50'
+                                ? 'bg-indigo-600 text-white shadow-2xl shadow-indigo-600/30' 
+                                : 'text-slate-950 hover:text-indigo-600 hover:bg-slate-50'
                             }`}
                           >
                             <span className="text-3xl">{item.icon}</span>
@@ -258,10 +258,10 @@ const Sidebar = () => {
                 </nav>
                 
                 <div className="mt-6 p-4 bg-slate-50 rounded-[24px] border border-slate-100 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black">AS</div>
+                    <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black">AS</div>
                     <div>
                        <p className="text-lg font-black text-slate-950 uppercase">Arjun S.</p>
-                       <p className="text-[15px] text-blue-600 font-bold uppercase">Node Operator</p>
+                       <p className="text-[15px] text-indigo-600 font-bold uppercase">Node Operator</p>
                     </div>
                     <button className="ml-auto w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-950">
                        <FiSettings size={14} />
@@ -278,7 +278,7 @@ const Sidebar = () => {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             onClick={() => setIsNavOpen(true)}
-            className="fixed bottom-10 right-10 w-16 h-16 bg-blue-600 text-white rounded-[32px] shadow-3xl shadow-blue-600/40 z-[70] flex items-center justify-center active:scale-90 transition-all border border-blue-400/20"
+            className="fixed bottom-10 right-10 w-16 h-16 bg-indigo-600 text-white rounded-[32px] shadow-3xl shadow-indigo-600/40 z-[70] flex items-center justify-center active:scale-90 transition-all border border-indigo-400/20"
           >
             <FiMenu size={32} />
           </motion.button>
@@ -312,9 +312,9 @@ const Sidebar = () => {
                         <button 
                           key={instance.id}
                           onClick={() => { setIndustry(instance.id); setIsInstanceSelectorOpen(false); }}
-                          className={`w-full p-6 rounded-[32px] border transition-all flex items-center gap-4 ${activeInstance.id === instance.id ? 'bg-blue-50 border-blue-600/30' : 'bg-white border-slate-100 hover:border-blue-500/20'}`}
+                          className={`w-full p-6 rounded-[32px] border transition-all flex items-center gap-4 ${activeInstance.id === instance.id ? 'bg-indigo-50 border-indigo-600/30' : 'bg-white border-slate-100 hover:border-indigo-500/20'}`}
                         >
-                           <div className={`w-12 h-12 rounded-[32px] flex items-center justify-center font-black text-xl font-serif-professional ${activeInstance.id === instance.id ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-slate-100 text-slate-950'}`}>
+                           <div className={`w-12 h-12 rounded-[32px] flex items-center justify-center font-black text-xl font-serif-professional ${activeInstance.id === instance.id ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'bg-slate-100 text-slate-950'}`}>
                               {instance.id.split('-')[1]}
                            </div>
                            <div className="text-left overflow-hidden">
@@ -324,7 +324,7 @@ const Sidebar = () => {
                         </button>
                      ))}
                   </div>
-                  <button className="w-full mt-8 py-3 bg-blue-600 text-white rounded-[32px] font-black text-[14px] uppercase tracking-[0.3em] active:scale-95 transition-all">New Deployment</button>
+                  <button className="w-full mt-8 py-3 bg-indigo-600 text-white rounded-[32px] font-black text-[14px] uppercase tracking-[0.3em] active:scale-95 transition-all">New Deployment</button>
                </motion.div>
             </div>
          )}

@@ -46,12 +46,12 @@ const PayrollPage = () => {
       {/* Structural Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[14px] font-serif-professional tracking-wide  tracking-widest mb-4 border border-blue-100">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[14px] font-serif-professional tracking-wide  tracking-widest mb-4 border border-indigo-100">
             <FiGlobe className="animate-spin-slow" /> Workforce Governance Infrastructure Active
           </div>
           <h1 className="text-3xl font-black text-slate-950 uppercase tracking-tight leading-none">Payroll Matrix</h1>
           <p className="text-slate-950 font-bold text-xl mt-2 flex items-center gap-2">
-            <FiSettings className="text-blue-500" /> Automated Human Capital Resource Allocation
+            <FiSettings className="text-indigo-500" /> Automated Human Capital Resource Allocation
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
@@ -63,7 +63,7 @@ const PayrollPage = () => {
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-10 py-3.5 bg-blue-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-10 py-3.5 bg-indigo-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Register Contributor
            </button>
@@ -73,12 +73,12 @@ const PayrollPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((m, i) => (
           <div key={i} className="industrial-card animate-fade-up p-8 flex flex-col justify-between bg-white border border-slate-100 shadow-sm rounded-[32px] hover:shadow-2xl transition-all relative overflow-hidden group">
-             <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-700" />
+             <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-700" />
              <div className="flex justify-between items-start mb-8 relative z-10">
-                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-xl shadow-blue-600/20 group-hover:rotate-12 transition-transform text-xl">
+                <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-xl shadow-indigo-600/20 group-hover:rotate-12 transition-transform text-xl">
                    {m.icon}
                 </div>
-                <span className="text-[14px] font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">{m.delta}</span>
+                <span className="text-[14px] font-black text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg border border-indigo-100">{m.delta}</span>
              </div>
              <div className="relative z-10">
                 <p className="text-[14px] font-black text-slate-950 uppercase tracking-widest mb-1">{m.label}</p>
@@ -97,16 +97,16 @@ const PayrollPage = () => {
               </div>
               <div className="flex gap-4 w-full md:w-auto">
                  <div className="relative group flex-1 md:w-64">
-                    <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-600 transition-colors" />
+                    <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-indigo-600 transition-colors" />
                     <input 
                       type="text" 
                       placeholder="ID / Name Query..." 
-                      className="w-full bg-slate-100/50 border-none rounded-[24px] py-3.5 pl-14 pr-6 text-base font-black outline-none focus:bg-white focus:ring-4 focus:ring-blue-600/5 transition-all text-slate-950"
+                      className="w-full bg-slate-100/50 border-none rounded-[24px] py-3.5 pl-14 pr-6 text-base font-black outline-none focus:bg-white focus:ring-4 focus:ring-indigo-600/5 transition-all text-slate-950"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                     />
                  </div>
-                 <button className="p-3.5 bg-white border border-slate-100 rounded-[24px] text-slate-950 hover:text-blue-600 transition-all shadow-sm"><FiFilter size={18} /></button>
+                 <button className="p-3.5 bg-white border border-slate-100 rounded-[24px] text-slate-950 hover:text-indigo-600 transition-all shadow-sm"><FiFilter size={18} /></button>
               </div>
            </div>
            
@@ -123,15 +123,15 @@ const PayrollPage = () => {
                  </thead>
                  <tbody className="divide-y divide-slate-50">
                     {filteredEmployees.map(e => (
-                       <tr key={e.id} className="group hover:bg-blue-50/30 transition-all">
+                       <tr key={e.id} className="group hover:bg-indigo-50/30 transition-all">
                           <td className="py-4 px-10">
                              <div className="flex items-center gap-4">
-                               <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white text-[14px] font-black">
+                               <div className="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white text-[14px] font-black">
                                   {e.name.charAt(0)}
                                </div>
                                <div>
                                   <p className="text-base font-black text-slate-950 uppercase">{e.name}</p>
-                                  <p className="text-[14px] font-bold text-blue-600 uppercase tracking-widest">{e.id}</p>
+                                  <p className="text-[14px] font-bold text-indigo-600 uppercase tracking-widest">{e.id}</p>
                                </div>
                              </div>
                           </td>
@@ -159,16 +159,16 @@ const PayrollPage = () => {
            </div>
         </div>
 
-        <div className="industrial-card animate-fade-up p-10 bg-blue-600 text-white flex flex-col justify-between relative overflow-hidden group min-h-[400px] rounded-[40px] shadow-3xl">
+        <div className="industrial-card animate-fade-up p-10 bg-indigo-600 text-white flex flex-col justify-between relative overflow-hidden group min-h-[400px] rounded-[40px] shadow-3xl">
            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
            <div className="relative z-10">
               <div className="w-14 h-14 bg-white rounded-[24px] flex items-center justify-center mb-8 shadow-lg group-hover:rotate-12 transition-transform">
-                 <FiActivity className="text-blue-600" size={24} />
+                 <FiActivity className="text-indigo-600" size={24} />
               </div>
               <h3 className="text-3xl font-black text-white uppercase tracking-tight leading-none mb-4">Capital Allocation Protocol</h3>
-              <p className="text-blue-50 text-base font-bold leading-relaxed">Automated cycle optimization has reduced outward flux latency by <span className="text-white font-black">1.2d</span> for all Indian nodes.</p>
+              <p className="text-indigo-50 text-base font-bold leading-relaxed">Automated cycle optimization has reduced outward flux latency by <span className="text-white font-black">1.2d</span> for all Indian nodes.</p>
            </div>
-           <button className="relative z-10 w-full py-3 bg-white text-blue-600 rounded-[32px] font-black text-[14px] uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all">Deploy Batch Process</button>
+           <button className="relative z-10 w-full py-3 bg-white text-indigo-600 rounded-[32px] font-black text-[14px] uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all">Deploy Batch Process</button>
         </div>
       </div>
 
@@ -187,7 +187,7 @@ const PayrollPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-xl bg-white rounded-[40px] p-10 md:p-10 border border-blue-500/10 shadow-3xl"
+              className="relative w-full max-w-xl bg-white rounded-[40px] p-10 md:p-10 border border-indigo-500/10 shadow-3xl"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
@@ -209,7 +209,7 @@ const PayrollPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Arjun Sharma" 
-                    className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950"
+                    className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl outline-none focus:ring-4 focus:ring-indigo-600/5 font-black text-slate-950"
                     value={newEmployee.name}
                     onChange={(e) => setNewEmployee({...newEmployee, name: e.target.value})}
                   />
@@ -221,7 +221,7 @@ const PayrollPage = () => {
                       required
                       type="text" 
                       placeholder="e.g. Node Operator" 
-                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl outline-none focus:ring-4 focus:ring-indigo-600/5 font-black text-slate-950"
                       value={newEmployee.role}
                       onChange={(e) => setNewEmployee({...newEmployee, role: e.target.value})}
                     />
@@ -232,13 +232,13 @@ const PayrollPage = () => {
                       required
                       type="text" 
                       placeholder="e.g. ₹1,20,000" 
-                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl outline-none focus:ring-4 focus:ring-blue-600/5 font-black text-slate-950"
+                      className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl outline-none focus:ring-4 focus:ring-indigo-600/5 font-black text-slate-950"
                       value={newEmployee.salary}
                       onChange={(e) => setNewEmployee({...newEmployee, salary: e.target.value})}
                     />
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-6 py-4 bg-blue-600 text-white rounded-[24px] font-black text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 flex items-center justify-center gap-3">
+                <button type="submit" className="w-full mt-6 py-4 bg-indigo-600 text-white rounded-[24px] font-black text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-90 flex items-center justify-center gap-3">
                    Commit Contributor to Ledger
                 </button>
               </form>

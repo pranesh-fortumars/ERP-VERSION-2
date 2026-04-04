@@ -2,33 +2,33 @@
 
 @layer base {
   :root {
-    --color-blue-50: #f0f9ff;
-    --color-blue-100: #e0f2fe;
-    --color-blue-200: #bae6fd;
-    --color-blue-300: #7dd3fc;
-    --color-blue-400: #38bdf8;
-    --color-blue-500: #0ea5e9;
-    --color-blue-600: #0284c7;
-    --color-blue-700: #0369a1;
-    --color-blue-800: #075985;
-    --color-blue-900: #0c4a6e;
-    --color-blue-950: #082f49;
+    --color-indigo-50: #f5f3ff;
+    --color-indigo-100: #ede9fe;
+    --color-indigo-200: #ddd6fe;
+    --color-indigo-300: #c4b5fd;
+    --color-indigo-400: #a78bfa;
+    --color-indigo-500: #8b5cf6;
+    --color-indigo-600: #4f46e5;
+    --color-indigo-700: #4338ca;
+    --color-indigo-800: #3730a3;
+    --color-indigo-900: #312e81;
+    --color-indigo-950: #1e1b4b;
 
     --background-start: #ffffff;
     --background-end: #f8fafc;
     --foreground: #0f172a;
-    --primary: #0284c7;
+    --primary: #4f46e5;
     --primary-foreground: #ffffff;
     --sidebar-bg: #ffffff;
     --sidebar-fg: #1e293b;
     --card-bg: #ffffff;
     --card-border: #e2e8f0;
-    --border-accent: #0ea5e9;
-    --accent: #38bdf8;
+    --border-accent: #6366f1;
+    --accent: #8b5cf6;
     --muted: #64748b;
     --glass: rgba(255, 255, 255, 0.9);
-    --glass-border: rgba(14, 165, 233, 0.15);
-    --ring: rgba(14, 165, 233, 0.1);
+    --glass-border: rgba(99, 102, 241, 0.15);
+    --ring: rgba(99, 102, 241, 0.1);
     --radius-premium: 40px;
     --radius-standard: 20px;
     --shadow-premium: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
@@ -47,8 +47,10 @@
 
   h1, h2, h3, h4, .font-serif-professional {
     font-family: "Libertinus Serif Display", system-ui;
-    font-weight: 400;
+    font-weight: 700;
     font-style: normal;
+    color: var(--foreground);
+    letter-spacing: -0.02em;
   }
 
   /* Global Serif Support Wrapper */
@@ -67,7 +69,7 @@
   /* High-Fidelity Industrial Card Overhaul */
   .industrial-card {
     background-color: white;
-    border: 1px solid rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.12);
     box-shadow: 0 15px 50px -15px rgba(0, 0, 0, 0.04);
     border-radius: var(--radius-premium);
     backdrop-filter: blur(12px);
@@ -85,13 +87,13 @@
     height: 3px;
     background: linear-gradient(
       90deg, 
-      rgba(14, 165, 233, 0.4) 0%, 
-      rgba(14, 165, 233, 1) 50%, 
-      rgba(14, 165, 233, 0.4) 100%
+      rgba(99, 102, 241, 0.4) 0%, 
+      rgba(99, 102, 241, 1) 50%, 
+      rgba(99, 102, 241, 0.4) 100%
     );
     background-size: 200% 100%;
     animation: pulse-scan 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
     z-index: 20;
     opacity: 0.8;
   }
@@ -102,8 +104,8 @@
   }
 
   .industrial-card:hover {
-    box-shadow: 0 30px 70px -15px rgba(2, 132, 199, 0.12);
-    border-color: rgba(14, 165, 233, 0.5);
+    box-shadow: 0 30px 70px -15px rgba(79, 70, 229, 0.12);
+    border-color: rgba(99, 102, 241, 0.5);
     transform: translateY(-12px);
   }
 
@@ -111,7 +113,7 @@
     height: 4px;
     opacity: 1;
     animation: pulse-scan 1s linear infinite;
-    box-shadow: 0 0 20px rgba(14, 165, 233, 0.6);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
   }
 
   .glass-header {
@@ -124,10 +126,10 @@
   }
 
   .btn-primary {
-    background-color: var(--color-blue-600);
+    background-color: var(--color-indigo-600);
     color: white;
     transition: all 500ms;
-    box-shadow: 0 15px 30px -5px rgba(2, 132, 199, 0.4);
+    box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.4);
     border-radius: 24px;
     font-weight: 700;
     font-size: 15px; /* Increased from 13px */
@@ -139,8 +141,8 @@
   }
 
   .btn-primary:hover {
-    background-color: var(--color-blue-700);
-    box-shadow: 0 25px 50px -5px rgba(2, 132, 199, 0.5);
+    background-color: var(--color-indigo-700);
+    box-shadow: 0 25px 50px -5px rgba(79, 70, 229, 0.5);
     transform: translateY(-4px) scale(1.02);
   }
 }

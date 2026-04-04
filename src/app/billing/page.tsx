@@ -58,12 +58,12 @@ const BillingPage = () => {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] mb-4">
             <FiShield className="animate-pulse" /> Fiscal Integrity Protocol Active
           </div>
           <h1 className="text-3xl font-serif-professional tracking-tight text-slate-950 uppercase leading-none">Accounts Receivable</h1>
           <p className="text-slate-950 text-slate-950 font-bold tracking-tight mt-1 flex items-center gap-2">
-            <FiFileText className="text-blue-500" /> Automated Invoice Orchestration & GST Compliance Master
+            <FiFileText className="text-indigo-500" /> Automated Invoice Orchestration & GST Compliance Master
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
@@ -75,7 +75,7 @@ const BillingPage = () => {
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-8 py-3.5 bg-blue-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all flex items-center gap-2"
+             className="px-8 py-3.5 bg-indigo-600 text-white rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-[0.3em] shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 active:scale-95 transition-all flex items-center gap-2"
            >
              <FiPlus /> Dispatch Invoice
            </button>
@@ -85,7 +85,7 @@ const BillingPage = () => {
       {/* Stats Summary */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
-          { label: 'Total Invoiced', value: `₹${(stats.total/100000).toFixed(1)}L`, icon: <FiLayers className="w-8 h-8" />, color: 'text-blue-600', bg: 'bg-blue-500/10' },
+          { label: 'Total Invoiced', value: `₹${(stats.total/100000).toFixed(1)}L`, icon: <FiLayers className="w-8 h-8" />, color: 'text-indigo-600', bg: 'bg-indigo-500/10' },
           { label: 'Settled Funds', value: `₹${(stats.paid/100000).toFixed(1)}L`, icon: <FiCheckCircle className="w-8 h-8" />, color: 'text-emerald-600', bg: 'bg-emerald-500/10' },
           { label: 'Pending Liquidity', value: `₹${(stats.pending/100000).toFixed(1)}L`, icon: <FiClock className="w-8 h-8" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
         ].map((stat, i) => (
@@ -96,7 +96,7 @@ const BillingPage = () => {
             transition={{ delay: i * 0.1 }}
             className="industrial-card p-10 flex flex-col justify-between bg-white border border-slate-100 shadow-sm rounded-[40px] hover:shadow-2xl transition-all duration-700 relative overflow-hidden group"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
             <div className={`w-14 h-14 rounded-[24px] flex items-center justify-center text-white shadow-xl group-hover:rotate-12 transition-transform text-3xl ${stat.bg.replace('500/10', '600')} ${stat.color.replace('text-', 'bg-')} shadow-inner group-hover:scale-110 transition-transform duration-700`}>
               {stat.icon}
             </div>
@@ -110,7 +110,7 @@ const BillingPage = () => {
 
       {/* Invoice Ledger */}
       <div className="industrial-card p-10 flex flex-col relative overflow-hidden bg-white border border-slate-100 shadow-sm rounded-[40px] animate-fade-up group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-[0.03] rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500 opacity-[0.03] rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 relative z-10 gap-8">
           <div>
              <h3 className="text-3xl font-serif-professional tracking-tight text-slate-950 uppercase tracking-tight ">Financial Registry</h3>
@@ -118,13 +118,13 @@ const BillingPage = () => {
           </div>
           <div className="flex flex-col md:flex-row gap-6 w-full md:w-auto">
             <div className="relative w-full xl:max-w-xl group">
-            <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-500 transition-colors w-5 h-5" />
+            <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-indigo-500 transition-colors w-5 h-5" />
             <input 
               type="text" 
               placeholder="Search invoice registry, client descriptor, or GST identifier..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-50/50 border border-slate-100 rounded-[24px] py-4 pl-14 pr-6 text-base font-medium focus:ring-2 focus:ring-blue-500/10 outline-none transition-all text-slate-950 focus:bg-white shadow-sm"
+              className="w-full bg-slate-50/50 border border-slate-100 rounded-[24px] py-4 pl-14 pr-6 text-base font-medium focus:ring-2 focus:ring-indigo-500/10 outline-none transition-all text-slate-950 focus:bg-white shadow-sm"
             />
           </div>
           <div className="flex flex-wrap justify-center gap-3">
@@ -132,7 +132,7 @@ const BillingPage = () => {
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-6 py-2.5 rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-white  text-slate-950 text-slate-950 border border-black/5 hover:bg-slate-100 active:scale-95 shadow-sm'}`}
+                className={`px-6 py-2.5 rounded-[24px] text-[14px] font-serif-professional tracking-wide  tracking-widest transition-all ${filter === s ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'bg-white  text-slate-950 text-slate-950 border border-black/5 hover:bg-slate-100 active:scale-95 shadow-sm'}`}
               >
                 {s}
               </button>
@@ -163,13 +163,13 @@ const BillingPage = () => {
                   >
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-[24px] bg-slate-100  flex items-center justify-center text-slate-950 group-hover:text-blue-500 transition-colors shadow-inner border border-black/5">
+                        <div className="w-14 h-14 rounded-[24px] bg-slate-100  flex items-center justify-center text-slate-950 group-hover:text-indigo-500 transition-colors shadow-inner border border-black/5">
                           <FiFileText size={24} />
                         </div>
                         <div>
-                          <p className="text-xl font-serif-professional tracking-tight text-slate-950 leading-none mb-2 group-hover:text-blue-600 transition-colors">{inv.clientName}</p>
+                          <p className="text-xl font-serif-professional tracking-tight text-slate-950 leading-none mb-2 group-hover:text-indigo-600 transition-colors">{inv.clientName}</p>
                           <p className="text-[14px] text-slate-950 dark:text-slate-950 mt-1 uppercase font-bold tracking-[0.3em] flex items-center gap-2">
-                             <span className="text-blue-500">ID:</span> {inv.id} • <span className="text-blue-500 text-[12px]">GST:</span> {inv.gst}
+                             <span className="text-indigo-500">ID:</span> {inv.id} • <span className="text-indigo-500 text-[12px]">GST:</span> {inv.gst}
                           </p>
                         </div>
                       </div>
@@ -232,7 +232,7 @@ const BillingPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Tata Advanced Systems Ltd"
-                    className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
+                    className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950"
                     value={newInv.clientName}
                     onChange={(e) => setNewInv({...newInv, clientName: e.target.value})}
                   />
@@ -244,7 +244,7 @@ const BillingPage = () => {
                        required
                        type="number" 
                        placeholder="0.00"
-                       className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
+                       className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950"
                        value={newInv.amount}
                        onChange={(e) => setNewInv({...newInv, amount: Number(e.target.value)})}
                      />
@@ -254,7 +254,7 @@ const BillingPage = () => {
                      <input 
                        required
                        type="date" 
-                       className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950"
+                       className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950"
                        value={newInv.dueDate}
                        onChange={(e) => setNewInv({...newInv, dueDate: e.target.value})}
                      />
@@ -266,12 +266,12 @@ const BillingPage = () => {
                      required
                      type="text" 
                      placeholder="e.g. 27AAAAA0000A1Z5"
-                     className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-blue-500/10 text-slate-950 uppercase"
+                     className="w-full bg-slate-50  border-none rounded-[24px] py-4.5 px-6 text-xl font-bold outline-none focus:ring-2 focus:ring-indigo-500/10 text-slate-950 uppercase"
                      value={newInv.gst}
                      onChange={(e) => setNewInv({...newInv, gst: e.target.value})}
                    />
                 </div>
-                <button type="submit" className="w-full mt-6 py-3 bg-blue-600 text-white rounded-[32px] font-bold text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-95">
+                <button type="submit" className="w-full mt-6 py-3 bg-indigo-600 text-white rounded-[32px] font-bold text-[13px] uppercase tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-95">
                   Commit Invoice to Ledger
                 </button>
               </form>

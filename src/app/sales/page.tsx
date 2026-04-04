@@ -63,7 +63,7 @@ const SalesPage = () => {
     switch (status) {
       case 'Completed': return 'bg-emerald-500 text-white';
       case 'Processing': return 'bg-amber-500 text-white';
-      case 'Shipped': return 'bg-blue-600 text-white';
+      case 'Shipped': return 'bg-indigo-600 text-white';
       default: return 'bg-slate-500 text-white';
     }
   };
@@ -75,7 +75,7 @@ const SalesPage = () => {
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-950 text-slate-950 uppercase leading-none">Sales Revenue</h1>
           <p className="text-slate-950 text-slate-950 text-xl font-bold mt-1 flex items-center gap-2">
-            <FiTarget className="text-blue-600" /> Enterprise Contract Orchestration • Performance Node 01
+            <FiTarget className="text-indigo-600" /> Enterprise Contract Orchestration • Performance Node 01
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
@@ -84,7 +84,7 @@ const SalesPage = () => {
           </button>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="px-8 py-2.5 bg-blue-600 text-white rounded-lg text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] shadow-lg shadow-blue-600/20 active:scale-95 transition-all flex items-center gap-2"
+            className="px-8 py-2.5 bg-indigo-600 text-white rounded-lg text-[14px] font-serif-professional tracking-wide  tracking-[0.2em] shadow-lg shadow-indigo-600/20 active:scale-95 transition-all flex items-center gap-2"
           >
             <FiPlus className="w-4 h-4" /> Record Contract
           </button>
@@ -94,12 +94,12 @@ const SalesPage = () => {
       {/* Stats Summary */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
-          { label: 'Quarterly Revenue', value: `₹${(stats.totalRevenue/100000).toFixed(2)}L`, icon: <FiTrendingUp className="w-5 h-5" />, color: 'blue' },
+          { label: 'Quarterly Revenue', value: `₹${(stats.totalRevenue/100000).toFixed(2)}L`, icon: <FiTrendingUp className="w-5 h-5" />, color: 'indigo' },
           { label: 'Invoice Count', value: stats.count, icon: <FiFileText className="w-5 h-5" />, color: 'emerald' },
           { label: 'Avg Contract', value: `₹${(stats.avgOrder/1000).toFixed(1)}k`, icon: <FiDollarSign className="w-5 h-5" />, color: 'amber' },
         ].map((stat, i) => (
           <div key={i} className="industrial-card animate-fade-up p-8 flex items-center gap-6 group">
-            <div className={`p-4 rounded-lg bg-${stat.color === 'blue' ? 'blue' : stat.color === 'emerald' ? 'emerald' : 'amber'}-600/10 text-${stat.color === 'blue' ? 'blue' : stat.color === 'emerald' ? 'emerald' : 'amber'}-600 group-hover:bg-blue-600 group-hover:text-white transition-all`}>
+            <div className={`p-4 rounded-lg bg-${stat.color === 'indigo' ? 'indigo' : stat.color === 'emerald' ? 'emerald' : 'amber'}-600/10 text-${stat.color === 'indigo' ? 'indigo' : stat.color === 'emerald' ? 'emerald' : 'amber'}-600 group-hover:bg-indigo-600 group-hover:text-white transition-all`}>
               {stat.icon}
             </div>
             <div>
@@ -143,18 +143,18 @@ const SalesPage = () => {
           </div>
         </div>
 
-        <div className="industrial-card animate-fade-up p-10 bg-blue-600 text-white flex flex-col justify-between relative overflow-hidden group min-h-[450px]">
+        <div className="industrial-card animate-fade-up p-10 bg-indigo-600 text-white flex flex-col justify-between relative overflow-hidden group min-h-[450px]">
           <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
           <div className="relative z-10">
-             <div className="w-14 h-14 bg-blue-600 rounded flex items-center justify-center mb-8 shadow-lg group-hover:rotate-12 transition-transform">
+             <div className="w-14 h-14 bg-indigo-600 rounded flex items-center justify-center mb-8 shadow-lg group-hover:rotate-12 transition-transform">
                 <FiBox className="w-7 h-7" />
              </div>
              <h3 className="text-3xl font-black tracking-tight uppercase leading-none mb-4">Flux Matrix</h3>
-             <p className="text-slate-950 font-bold text-base leading-relaxed mb-10 max-w-[220px]">Real-time demand sensing has identified <span className="text-blue-400 font-black">08 high-intensity</span> bulk contracts for dispatch synchronization.</p>
+             <p className="text-slate-950 font-bold text-base leading-relaxed mb-10 max-w-[220px]">Real-time demand sensing has identified <span className="text-indigo-400 font-black">08 high-intensity</span> bulk contracts for dispatch synchronization.</p>
              <div className="space-y-3">
                {[45, 82, 60].map((w, i) => (
                  <div key={i} className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500" style={{ width: `${w}%` }} />
+                    <div className="h-full bg-indigo-500" style={{ width: `${w}%` }} />
                  </div>
                ))}
              </div>
@@ -169,13 +169,13 @@ const SalesPage = () => {
       <div className="industrial-card animate-fade-up flex flex-col overflow-hidden">
         <div className="p-8 border-b border-slate-200 border-slate-200 flex flex-col xl:flex-row justify-between items-center gap-6 bg-slate-50/50 /50">
           <div className="relative w-full xl:max-w-md group">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-500 transition-colors" />
+            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-indigo-500 transition-colors" />
             <input 
               type="text" 
               placeholder="Search Invoice ID or Customer Matrix..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-2.5 pl-11 pr-4 text-base font-bold outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-slate-950"
+              className="w-full bg-white  border border-slate-200 border-slate-200 rounded-lg py-2.5 pl-11 pr-4 text-base font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 transition-all text-slate-950"
             />
           </div>
           <div className="flex flex-wrap justify-center gap-2">
@@ -183,7 +183,7 @@ const SalesPage = () => {
               <button 
                 key={s} 
                 onClick={() => setFilter(s)}
-                className={`px-4 py-2 rounded text-[13px] font-serif-professional tracking-wide  tracking-widest transition-all ${filter === s ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-white  text-slate-950 border border-slate-200 border-slate-200 hover:text-blue-500 active:scale-95'}`}
+                className={`px-4 py-2 rounded text-[13px] font-serif-professional tracking-wide  tracking-widest transition-all ${filter === s ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'bg-white  text-slate-950 border border-slate-200 border-slate-200 hover:text-indigo-500 active:scale-95'}`}
               >
                 {s}
               </button>
@@ -206,14 +206,14 @@ const SalesPage = () => {
             <tbody className="divide-y divide-slate-100 divide-slate-100">
               {filteredSales.map((sale) => (
                 <tr key={sale.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all group cursor-pointer data-table-row">
-                  <td className="px-8 py-4 text-[14px] font-bold text-blue-600 uppercase tracking-tight">{sale.id}</td>
+                  <td className="px-8 py-4 text-[14px] font-bold text-indigo-600 uppercase tracking-tight">{sale.id}</td>
                   <td className="px-8 py-4">
                     <div className="flex items-center gap-4">
-                       <div className="w-10 h-10 rounded bg-slate-100  flex items-center justify-center text-slate-950 group-hover:text-blue-600 transition-colors">
+                       <div className="w-10 h-10 rounded bg-slate-100  flex items-center justify-center text-slate-950 group-hover:text-indigo-600 transition-colors">
                           <FiShoppingCart size={18} />
                        </div>
                        <div>
-                          <p className="text-base font-bold text-slate-950 text-slate-950 uppercase leading-none mb-1.5 group-hover:text-blue-600 transition-colors">{sale.customer}</p>
+                          <p className="text-base font-bold text-slate-950 text-slate-950 uppercase leading-none mb-1.5 group-hover:text-indigo-600 transition-colors">{sale.customer}</p>
                           <p className="text-[12px] text-slate-950 uppercase font-bold tracking-widest">{sale.product}</p>
                        </div>
                     </div>
@@ -274,7 +274,7 @@ const SalesPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Tata Steel Ltd" 
-                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 text-slate-950"
                     value={newSale.customer}
                     onChange={(e) => setNewSale({...newSale, customer: e.target.value})}
                   />
@@ -285,7 +285,7 @@ const SalesPage = () => {
                     required
                     type="text" 
                     placeholder="e.g. Precision Components" 
-                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
+                    className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 text-slate-950"
                     value={newSale.product}
                     onChange={(e) => setNewSale({...newSale, product: e.target.value})}
                   />
@@ -297,7 +297,7 @@ const SalesPage = () => {
                       required
                       type="number" 
                       placeholder="0.00" 
-                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-xl font-bold outline-none focus:ring-1 focus:ring-indigo-500/50 text-slate-950"
                       value={newSale.baseAmount}
                       onChange={(e) => setNewSale({...newSale, baseAmount: e.target.value})}
                     />
@@ -305,7 +305,7 @@ const SalesPage = () => {
                   <div className="space-y-2">
                     <label className="text-[14px] font-serif-professional tracking-wide  tracking-widest text-slate-950">Statutory GST (%)</label>
                     <select 
-                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[14px] font-bold outline-none appearance-none focus:ring-1 focus:ring-blue-500/50 text-slate-950"
+                      className="w-full bg-slate-50  border-none rounded-lg py-4 px-6 text-[14px] font-bold outline-none appearance-none focus:ring-1 focus:ring-indigo-500/50 text-slate-950"
                       value={newSale.gstRate}
                       onChange={(e) => setNewSale({...newSale, gstRate: parseInt(e.target.value)})}
                     >
@@ -316,7 +316,7 @@ const SalesPage = () => {
                     </select>
                   </div>
                 </div>
-                <button type="submit" className="w-full mt-4 py-4 bg-blue-600 text-white rounded-lg font-black text-[14px] uppercase tracking-[0.4em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all">
+                <button type="submit" className="w-full mt-4 py-4 bg-indigo-600 text-white rounded-lg font-black text-[14px] uppercase tracking-[0.4em] shadow-xl shadow-indigo-600/20 active:scale-95 transition-all">
                   Commit Transaction
                 </button>
               </form>

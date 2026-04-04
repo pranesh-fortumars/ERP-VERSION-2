@@ -11,9 +11,9 @@ const InventoryPage = () => {
   const [isPending, startTransition] = useTransition();
   const { activeIndustry } = useIndustry();
   const [inventory, setInventory] = useState([
-    { id: 'SKU-7701', name: 'Precision Alloy Plate', category: 'Raw Materials', stock: 1240, status: 'Stable', color: 'text-blue-600 bg-blue-50', warehouse: activeIndustry.location, price: '₹75,000' },
+    { id: 'SKU-7701', name: 'Precision Alloy Plate', category: 'Raw Materials', stock: 1240, status: 'Stable', color: 'text-indigo-600 bg-indigo-50', warehouse: activeIndustry.location, price: '₹75,000' },
     { id: 'SKU-8824', name: 'Neural Logic Core v2', category: 'WIP Goods', stock: 85, status: 'Low Stock', color: 'text-amber-600 bg-amber-50', warehouse: 'Chennai U2', price: '₹12,400' },
-    { id: 'SKU-0091', name: 'Steel Housing - Node 7', category: 'Finished Goods', stock: 450, status: 'Stable', color: 'text-blue-600 bg-blue-50', warehouse: activeIndustry.location, price: '₹5,200' },
+    { id: 'SKU-0091', name: 'Steel Housing - Node 7', category: 'Finished Goods', stock: 450, status: 'Stable', color: 'text-indigo-600 bg-indigo-50', warehouse: activeIndustry.location, price: '₹5,200' },
     { id: 'SKU-2150', name: 'High-Tensile Fasteners', category: 'Consumables', stock: 12, status: 'Critical', color: 'text-rose-600 bg-rose-50', warehouse: 'Mumbai Depot', price: '₹850' }
   ]);
 
@@ -67,14 +67,14 @@ const InventoryPage = () => {
   };
 
   const inventorySummary = [
-    { label: 'Total Assets', value: inventory.reduce((acc, curr) => acc + curr.stock, 0).toLocaleString(), icon: <FiPackage className="w-5 h-5" />, color: 'blue' },
+    { label: 'Total Assets', value: inventory.reduce((acc, curr) => acc + curr.stock, 0).toLocaleString(), icon: <FiPackage className="w-5 h-5" />, color: 'indigo' },
     { label: 'Critical SKU', value: inventory.filter(s => s.status !== 'Stable').length, icon: <FiAlertCircle className="w-5 h-5" />, color: 'sky' },
-    { label: 'Load Factor', value: '82%', icon: <FiDatabase className="w-5 h-5" />, color: 'blue' },
-    { label: 'In-Transit', value: '08', icon: <FiTruck className="w-5 h-5" />, color: 'blue' },
+    { label: 'Load Factor', value: '82%', icon: <FiDatabase className="w-5 h-5" />, color: 'indigo' },
+    { label: 'In-Transit', value: '08', icon: <FiTruck className="w-5 h-5" />, color: 'indigo' },
   ];
 
   const warehouses = [
-    { name: 'Pune Logistics Hub', capacity: 92, location: 'Chakan, MH', color: 'bg-blue-600' },
+    { name: 'Pune Logistics Hub', capacity: 92, location: 'Chakan, MH', color: 'bg-indigo-600' },
     { name: 'Chennai Unit 2', capacity: 45, location: 'Sriperumbudur, TN', color: 'bg-indigo-600' },
     { name: 'Mumbai Central Depot', capacity: 78, location: 'Bhiwandi, MH', color: 'bg-sky-500' },
   ];
@@ -83,12 +83,12 @@ const InventoryPage = () => {
     <div className="space-y-8 max-w-[1600px] mx-auto pb-12 transition-all">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200">
         <div>
-           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[14px] font-bold  tracking-widest mb-4 border border-blue-100">
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[14px] font-bold  tracking-widest mb-4 border border-indigo-100">
             <FiGlobe className="animate-spin-slow" /> Inventory System Stable
           </div>
           <h1 className="text-3xl font-serif-professional tracking-tight text-slate-950  tracking-tight leading-none">{activeIndustry.name} Inventory</h1>
           <p className="text-slate-950 font-bold text-xl mt-2 flex items-center gap-2">
-            <FiLayers className="text-blue-600" /> Product Registry for {activeIndustry.location}
+            <FiLayers className="text-indigo-600" /> Product Registry for {activeIndustry.location}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
@@ -97,18 +97,18 @@ const InventoryPage = () => {
              disabled={isImporting}
              className="px-8 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[14px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
            >
-             {isImporting ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiUpload />} {isImporting ? 'Syncing...' : 'Bulk Sync'}
+             {isImporting ? <div className="w-3 h-3 border-2 border-indigo-600/30 border-t-indigo-600 rounded-full animate-spin" /> : <FiUpload />} {isImporting ? 'Syncing...' : 'Bulk Sync'}
            </button>
            <button 
              onClick={handleExport}
              disabled={isExporting}
              className="px-8 py-2.5 bg-white border border-slate-200 rounded-[24px] text-[14px] font-bold  tracking-widest text-slate-950 hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
            >
-             {isExporting ? <div className="w-3 h-3 border-2 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" /> : <FiDownload />} {isExporting ? 'Generating...' : 'Audit Export'}
+             {isExporting ? <div className="w-3 h-3 border-2 border-indigo-600/30 border-t-indigo-600 rounded-full animate-spin" /> : <FiDownload />} {isExporting ? 'Generating...' : 'Audit Export'}
            </button>
            <button 
              onClick={() => setIsModalOpen(true)}
-             className="px-10 py-3 bg-blue-600 text-white rounded-[24px] text-[14px] font-bold  tracking-[0.3em] shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2 active:scale-95"
+             className="px-10 py-3 bg-indigo-600 text-white rounded-[24px] text-[14px] font-bold  tracking-[0.3em] shadow-xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all flex items-center gap-2 active:scale-95"
            >
              <FiPlus /> Add New Item
            </button>
@@ -118,12 +118,12 @@ const InventoryPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {inventorySummary.map((stat, i) => (
           <div key={i} className="industrial-card animate-fade-up p-8 flex flex-col justify-between bg-white border border-slate-100 shadow-sm rounded-[40px] hover:shadow-xl transition-all group overflow-hidden">
-             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-1000" />
+             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-1000" />
              <div className="flex justify-between items-start mb-10 relative z-10">
-                <div className={`w-14 h-14 rounded-[24px] flex items-center justify-center text-white shadow-lg ${i === 1 ? 'bg-amber-500 shadow-amber-500/20' : 'bg-blue-600 shadow-blue-600/20'} group-hover:rotate-12 transition-transform`}>
+                <div className={`w-14 h-14 rounded-[24px] flex items-center justify-center text-white shadow-lg ${i === 1 ? 'bg-amber-500 shadow-amber-500/20' : 'bg-indigo-600 shadow-indigo-600/20'} group-hover:rotate-12 transition-transform`}>
                    {stat.icon}
                 </div>
-                <span className="text-[14px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100  tracking-widest">Live Audit</span>
+                <span className="text-[14px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg border border-indigo-100  tracking-widest">Live Audit</span>
              </div>
              <div className="relative z-10">
                 <p className="text-[14px] font-bold text-slate-950  tracking-widest mb-2">{stat.label}</p>
@@ -142,16 +142,16 @@ const InventoryPage = () => {
             </div>
             <div className="flex gap-4 w-full md:w-auto">
                <div className="relative group flex-1 md:w-80">
-                  <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-blue-600 transition-colors" />
+                  <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-950 group-focus-within:text-indigo-600 transition-colors" />
                   <input 
                     type="text" 
                     placeholder="Search logic identifiers..." 
-                    className="w-full bg-slate-100/50 border-none rounded-[24px] py-3 pl-16 pr-6 text-xl font-bold outline-none focus:bg-white focus:ring-4 focus:ring-blue-600/5 transition-all text-slate-950"
+                    className="w-full bg-slate-100/50 border-none rounded-[24px] py-3 pl-16 pr-6 text-xl font-bold outline-none focus:bg-white focus:ring-4 focus:ring-indigo-600/5 transition-all text-slate-950"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                </div>
-               <button className="p-4 bg-white border border-slate-100 rounded-[24px] text-slate-950 hover:text-blue-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
+               <button className="p-4 bg-white border border-slate-100 rounded-[24px] text-slate-950 hover:text-indigo-600 transition-all shadow-sm active:scale-95"><FiFilter size={20} /></button>
             </div>
           </div>
 
@@ -167,17 +167,17 @@ const InventoryPage = () => {
               </thead>
               <tbody className="divide-y divide-slate-50">
                 {filteredStocks.map((item) => (
-                  <tr key={item.id} className="group hover:bg-blue-50/30 transition-all cursor-pointer">
+                  <tr key={item.id} className="group hover:bg-indigo-50/30 transition-all cursor-pointer">
                     <td className="py-8 px-10">
                       <div className="flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-[24px] bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all text-blue-600 shadow-sm relative">
+                        <div className="w-14 h-14 rounded-[24px] bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all text-indigo-600 shadow-sm relative">
                            <FiPackage size={24} />
                            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-white border border-slate-200 rounded-full flex items-center justify-center text-[7px] font-bold text-slate-950 shadow-sm">
                               {item.id.split('-')[1].charAt(0)}
                            </div>
                         </div>
                         <div>
-                          <p className="text-xl font-bold text-slate-950  leading-none group-hover:text-blue-600 transition-colors">{item.name}</p>
+                          <p className="text-xl font-bold text-slate-950  leading-none group-hover:text-indigo-600 transition-colors">{item.name}</p>
                           <p className="text-[14px] font-bold text-slate-950  tracking-widest mt-1.5 flex items-center gap-2">
                              <FiMapPin size={10} /> {item.warehouse} • {item.id}
                           </p>
@@ -199,7 +199,7 @@ const InventoryPage = () => {
                            <span className={`px-5 py-2 rounded-xl text-[14px] font-bold  tracking-widest border border-black/5 shadow-sm min-w-[100px] text-center ${item.color}`}>
                               {item.status}
                            </span>
-                           <button className="p-3 bg-white border border-slate-100 rounded-xl text-slate-950 hover:text-blue-600 hover:bg-blue-50 transition-all shadow-sm">
+                           <button className="p-3 bg-white border border-slate-100 rounded-xl text-slate-950 hover:text-indigo-600 hover:bg-indigo-50 transition-all shadow-sm">
                               <FiBarChart2 size={16} />
                            </button>
                         </div>
@@ -212,15 +212,15 @@ const InventoryPage = () => {
         </div>
 
         <div className="space-y-10">
-           <div className="industrial-card animate-fade-up p-8 bg-blue-600 text-white rounded-[40px] overflow-hidden relative group min-h-[450px] flex flex-col justify-between shadow-2xl">
+           <div className="industrial-card animate-fade-up p-8 bg-indigo-600 text-white rounded-[40px] overflow-hidden relative group min-h-[450px] flex flex-col justify-between shadow-2xl">
               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
               <div className="relative z-10 flex flex-col h-full justify-between">
                  <div>
                     <div className="w-16 h-16 bg-white rounded-[24px] flex items-center justify-center shadow-2xl mb-8 group-hover:rotate-12 transition-transform ring-8 ring-white/10">
-                       <FiActivity className="text-blue-600 w-8 h-8" />
+                       <FiActivity className="text-indigo-600 w-8 h-8" />
                     </div>
                     <h3 className="text-3xl font-serif-professional tracking-tight text-white  tracking-tight leading-none mb-4">Capacity Vector</h3>
-                    <p className="text-blue-50 text-xl font-bold leading-relaxed">Storage utilization is at <span className="text-white font-bold ">Theoretical Peak</span>. Scalability check recommended.</p>
+                    <p className="text-indigo-50 text-xl font-bold leading-relaxed">Storage utilization is at <span className="text-white font-bold ">Theoretical Peak</span>. Scalability check recommended.</p>
                  </div>
                  <div className="space-y-6">
                     {warehouses.map((wh, i) => (
@@ -229,7 +229,7 @@ const InventoryPage = () => {
                           <span>{wh.name}</span>
                           <span className="text-white">{wh.capacity}%</span>
                         </div>
-                        <div className="h-1.5 w-full bg-blue-700/50 rounded-full overflow-hidden border border-white/5">
+                        <div className="h-1.5 w-full bg-indigo-700/50 rounded-full overflow-hidden border border-white/5">
                           <motion.div 
                             initial={{ width: 0 }}
                             animate={{ width: `${wh.capacity}%` }}
@@ -240,7 +240,7 @@ const InventoryPage = () => {
                       </div>
                     ))}
                  </div>
-                 <button className="w-full mt-10 py-3 bg-white text-blue-600 font-bold rounded-[32px] text-[12px]  tracking-[0.4em] active:scale-95 transition-all shadow-2xl hover:scale-[1.02]">
+                 <button className="w-full mt-10 py-3 bg-white text-indigo-600 font-bold rounded-[32px] text-[12px]  tracking-[0.4em] active:scale-95 transition-all shadow-2xl hover:scale-[1.02]">
                     Warehouse Audit
                  </button>
               </div>
@@ -262,9 +262,9 @@ const InventoryPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-2xl bg-white rounded-[40px] p-8 md:p-10 border border-blue-500/10 shadow-3xl overflow-hidden"
+              className="relative w-full max-w-2xl bg-white rounded-[40px] p-8 md:p-10 border border-indigo-500/10 shadow-3xl overflow-hidden"
             >
-              <div className="absolute top-0 left-0 w-full h-2 bg-blue-600" />
+              <div className="absolute top-0 left-0 w-full h-2 bg-indigo-600" />
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <h2 className="text-3xl font-serif-professional tracking-tight tracking-tight text-slate-950  leading-none">Add New Item</h2>
@@ -285,7 +285,7 @@ const InventoryPage = () => {
                      required
                      type="text" 
                      placeholder="e.g. Precision Alloy Cast v4" 
-                     className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-950 shadow-inner"
+                     className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-indigo-600/5 text-slate-950 shadow-inner"
                      value={newItem.name}
                      onChange={(e) => setNewItem({...newItem, name: e.target.value})}
                    />
@@ -294,7 +294,7 @@ const InventoryPage = () => {
                    <div className="space-y-3">
                      <label className="text-[14px] font-bold  tracking-widest text-slate-950 ml-1">Domain Classification</label>
                      <select 
-                       className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-950 appearance-none shadow-inner"
+                       className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-indigo-600/5 text-slate-950 appearance-none shadow-inner"
                        value={newItem.category}
                        onChange={(e) => setNewItem({...newItem, category: e.target.value})}
                      >
@@ -310,7 +310,7 @@ const InventoryPage = () => {
                        required
                        type="number" 
                        placeholder="0.00" 
-                       className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-950 shadow-inner"
+                       className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-indigo-600/5 text-slate-950 shadow-inner"
                        value={newItem.stock}
                        onChange={(e) => setNewItem({...newItem, stock: e.target.value})}
                      />
@@ -320,7 +320,7 @@ const InventoryPage = () => {
                    <div className="space-y-3">
                      <label className="text-[14px] font-bold  tracking-widest text-slate-950 ml-1">Target Cluster (Warehouse)</label>
                      <select 
-                       className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-950 appearance-none shadow-inner"
+                       className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-indigo-600/5 text-slate-950 appearance-none shadow-inner"
                        value={newItem.warehouse}
                        onChange={(e) => setNewItem({...newItem, warehouse: e.target.value})}
                      >
@@ -335,13 +335,13 @@ const InventoryPage = () => {
                        required
                        type="text" 
                        placeholder="₹0.00" 
-                       className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-blue-600/5 text-slate-950 shadow-inner"
+                       className="w-full bg-slate-50 border-none rounded-[24px] py-3 px-8 text-xl font-bold outline-none focus:ring-4 focus:ring-indigo-600/5 text-slate-950 shadow-inner"
                        value={newItem.price}
                        onChange={(e) => setNewItem({...newItem, price: e.target.value})}
                      />
                    </div>
                  </div>
-                                   <button disabled={isPending} type="submit" className="w-full mt-6 py-4 bg-blue-600 text-white rounded-[32px] font-bold text-[13px]  tracking-[0.4em] shadow-2xl shadow-blue-600/30 hover:bg-blue-700 transition-all hover:scale-[1.02] active:scale-90 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed">
+                                   <button disabled={isPending} type="submit" className="w-full mt-6 py-4 bg-indigo-600 text-white rounded-[32px] font-bold text-[13px]  tracking-[0.4em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-90 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed">
                      {isPending ? (
                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                      ) : (
